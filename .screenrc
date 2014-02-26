@@ -1,0 +1,22 @@
+# Color Support
+attrcolor b ".I"
+defbce on
+defutf8 on 
+utf8 on on 
+
+hardstatus on
+termcapinfo xterm*|rxvt*|kterm*|Eterm* 'ti:\E7\E[?47l;hs:ts=\E]0;:fs=\007:ds=\E]0;\007:Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+# I have no clue what that line above means. It was cobbled together over the years
+hardstatus alwayslastline
+
+shelltitle "$ |bash"
+
+defscrollback 10000
+startup_message off
+autodetach on
+autonuke on
+msgwait 1
+
+caption string '%?%F%{.R.}%?%3n %t%? [%h]%?'
+hardstatus string "%{= .d}[%{B}$USER%{W}@%{R}%H%{d}][%{+b y}%n %{g}%t%{d}][%L=%-w%L>%{c}%n %t%{-}%+w%-17=][%{g}%d.%m.%y %{m}%c%{d}]"
+

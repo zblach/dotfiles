@@ -1,0 +1,42 @@
+" .vimrc.local - zblach 2013
+" vim: set foldmarker={{{,}}} foldmethod=marker tabstop=2 nospell
+
+" Additional Bundles {{{
+"NeoBundleLazy "Valloric/YouCompleteMe" "GPL v3 :(
+"au FileType c,cpp NeoBundleSource YouCompleteMe
+NeoBundle "Shougo/neosnippet"
+NeoBundle "Shougo/neocomplete" " {{{
+let g:neocomplete#enable_at_startup=1
+" }}}
+NeoBundle "Shougo/neosnippet-snippets" " {{{ 
+imap <C-k>	<Plug>(neosnippet_expand_or_jump)
+smap <C-k>	<Plug>(neosnippet_expand_or_jump)
+xmap <C-k>	<Plug>(neosnippet_expand_target)
+
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+			\ "\<Plug>(neosnippet_expand_or_jump)"
+			\: pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+			\ "\<Plug>(neosnippet_expand_or_jump)"
+			\: "\<TAB>"
+
+if has('conceal')
+	set conceallevel=2 concealcursor=i
+endif
+
+let g:neocomplete#enable_at_startup = 1
+let g:neosnippet#enable_snipmate_compatibility = 1
+" }}}
+
+NeoBundle "rizzatti/funcoo.vim"
+NeoBundle "rizzatti/dash.vim"
+
+
+NeoBundle 'chriskempson/base16-vim'
+colorscheme Tomorrow-Night
+
+" reformatting binding for xml files
+au FileType xml,html,xhtml let &l:equal='xmllint --format --recover -'
+
+"allow osx keyboard
+set clipboard=unnamed

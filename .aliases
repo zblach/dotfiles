@@ -1,0 +1,35 @@
+# Colorcat!
+alias pyg="pygmentize -f 256 -O bg=dark,style=monokai,linenos=1"
+alias acat="pyg -g"
+alias bcat="pyg -l bash"
+alias jcat="pyg -l java"
+alias xcat="pyg -l xml"
+
+export LESSOPEN='|pygmentize -f 256 -O style=monokai -g %s'
+
+#fat-fingered ls commands
+alias l=ls
+alias sl=ls
+alias s=;
+
+#fat-fingered cd commands
+alias c=cd
+alias dc=cd
+alias d=;
+
+#nicer default options
+alias less='less -R'
+alias grep='grep --color=auto -n -C 5'
+alias ls='ls -G'
+
+#colorize directory separators
+alias pwd='echo ${PWD//\//"\033[1;32m"\/"\033[0m"}'
+
+cdd() {
+	cd `dirname $1`
+}
+u () {
+	set -A ud
+	ud[1+${1-1}]=
+	cd ${(j:../:)ud}
+}
