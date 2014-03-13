@@ -32,7 +32,7 @@ let g:airline_left_alt_sep = '⮁'
 let g:airline_right_sep = '⮂'
 let g:airline_right_alt_sep = '⮃'
 
-let g:airline_symbols = {} 
+let g:airline_symbols = {}
 let g:airline_symbols.space = ' '
 let g:airline_symbols.paste = 'paste'
 let g:airline_symbols.branch = '⭠'
@@ -62,7 +62,9 @@ au BufReadPost * :DetectIndent
 "let g:miniBufExplStatusLineText='Buffers'
 "let g:miniBufExplCloseOnSelect=1
 " }}}
-NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'kien/ctrlp.vim'                       " ctrlp {{{
+set wildignore+="*.class,*/eclipse-bin/*"
+" }}}
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'oblitum/rainbow'                      " rainbow brackets! {{{
@@ -105,7 +107,7 @@ NeoBundle 'tpope/vim-surround'
 NeoBundle 'Shougo/unite.vim'
 NeoBundle 'Shougo/vimproc.vim'
 NeoBundle 'Shougo/vimshell.vim'
-NeoBundle 'vim-scripts/YankRing.vim'         " Yankring {{{
+"NeoBundle 'vim-scripts/YankRing.vim'         " Yankring {{{
 let g:yankring_history_dir='~/.vim_temp/'
 " }}}
 NeoBundle 'tpope/vim-unimpaired'
@@ -124,12 +126,12 @@ set backup
 set history=5000
 
 if v:version >= 703
-	set undoreload=10000
-	set undodir=~/.vim_temp/undo/
-	set undofile
-	set noswapfile
+  set undoreload=10000
+  set undodir=~/.vim_temp/undo/
+  set undofile
+  set noswapfile
 else
-	set swapfile
+  set swapfile
 endif
 
 " bind view creation to focus gain/loss
@@ -148,7 +150,7 @@ syntax on
 
 if &term =~ '*256color'
   " disable background color erase in a 256 color terminal
-	set t_ut=
+  set t_ut=
 endif
 
 let g:did_minibufexplorer_syntax_inits=1
@@ -227,10 +229,10 @@ nnor <leader>? :map<cr>
 
 " Source local vimrc, if exists {{{
 if filereadable(glob("~/.vimrc.local"))
-	source ~/.vimrc.local
+  source ~/.vimrc.local
 endif
 if has("gui_running")
-	source ~/.gvimrc
+  source ~/.gvimrc
 endif
 " }}}
 filetype plugin indent on

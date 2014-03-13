@@ -1,11 +1,11 @@
 # Colorcat!
-alias pyg="pygmentize -f 256 -O bg=dark,style=monokai,linenos=1"
+alias pyg="pygmentize -f 256 -O bg=dark,style=monokai,linenos=1,encoding=utf-8"
 alias acat="pyg -g"
 alias bcat="pyg -l bash"
 alias jcat="pyg -l java"
 alias xcat="pyg -l xml"
 
-export LESSOPEN='|pygmentize -f 256 -O style=monokai -g %s'
+export LESSOPEN='|acat %s'
 
 #fat-fingered ls commands
 alias l=ls
