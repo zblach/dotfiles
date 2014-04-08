@@ -56,12 +56,6 @@ NeoBundle 'ciaranm/detectindent'                 " detect indent {{{
 let g:detectindent_preferred_indent=4
 au BufReadPost * :DetectIndent
 " }}}
-"NeoBundle 'fholgado/minibufexpl.vim'             " MiniBufExplorer {{{
-"let g:miniBufExplHideWhenDiff=1
-"let g:miniBufExplBRSplit=1
-"let g:miniBufExplStatusLineText='Buffers'
-"let g:miniBufExplCloseOnSelect=1
-" }}}
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'majutsushi/tagbar'
@@ -151,8 +145,6 @@ if &term =~ '*256color'
 	set t_ut=
 endif
 
-let g:did_minibufexplorer_syntax_inits=1
-
 set cursorline
 set colorcolumn=80
 set shiftround
@@ -221,6 +213,7 @@ cno w!! w !sudo tee % >/dev/null
 " Key maps {{{
 nnor <leader>i :set list! list?<cr>
 nnor <leader>v :set paste! paste?<cr>
+nnor <leader>w :set wrap! wrap?<cr>
 nnor <leader>? :map<cr>
 " }}}
 
