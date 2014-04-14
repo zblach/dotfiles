@@ -1,0 +1,28 @@
+# Enable tab-autocomplete for sudo commands
+complete -cf sudo
+
+# Exports
+export EDITOR="vim"
+export PATH=~/sbin/:~/bin/:/usr/lib/colorgcc/bin:$PATH
+
+
+# Aliases
+alias ls='ls -lhF --color=auto'
+alias screen='screen -xRAad'
+alias grep='grep --color'
+alias egrep='egrep --color'
+alias vi='vim'
+alias du='cdu -idh'
+alias less='less -r'
+alias ccat='pygmentize -g'
+alias sudo='sudo -E'
+
+# Functions
+pd () {
+   if [ $# -eq 0 ] ; then
+      popd
+   else
+      pushd $@ > /dev/null
+   fi
+}
+

@@ -1,0 +1,20 @@
+# Exports
+export EDITOR="vim"
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+
+# Aliases
+alias ls='ls -lhG'
+alias screen='screen -xRAad'
+alias grep='grep --color'
+alias egrep='egrep --color'
+alias vi='vim'
+alias less='less -r'
+
+# Functions
+pd () {
+   if [ $# -eq 0 ] ; then
+      popd
+   else
+      pushd $@ > /dev/null
+   fi
+}

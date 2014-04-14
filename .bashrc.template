@@ -1,0 +1,13 @@
+# Exports
+
+# Aliases
+
+# Functions
+pd () {
+   if [ $# -eq 0 ] ; then
+      popd
+   else
+      pushd $@ > /dev/null
+   fi
+}
+

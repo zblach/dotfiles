@@ -1,232 +1,256 @@
-" .vimrc - zblach 2013
+" .vimrc - zblach 2014
 " vim: set foldmarker={{{,}}} foldmethod=marker tabstop=2 nospell
 set nocompatible
 filetype off
 
-" Rebind leader key
-let mapleader=','
+" Vim Settings & Options {{{
+	" auto-scan files for vim settings
+	set modeline 
+	set modelines=10
 
-" Bundles {{{
-set runtimepath+=~/.vim/bundle/neobundle.vim/
-call neobundle#rc(expand('~/.vim/bundle/'))
+	set cursorline
+	set shiftround
 
-" NeoBundle is now the package manager of choice
-NeoBundleFetch 'Shougo/neobundle.vim'
+	" search and navigation
+	set incsearch
+	set ignorecase
+	set smartcase
+	set hls
 
-"   Includes {{{
-" snipmate dependencies {{{
-"NeoBundleLazy 'tomtom/tlib_vim'
-"NeoBundleLazy 'MarcWeber/vim-addon-mw-utils'
-"NeoBundleLazy 'honza/vim-snippets'
-"NeoBundleLazy 'garbas/vim-snipmate'
+	" terminal settings
+	set encoding=utf-8
+	set hidden
+	set lazyredraw
+	set ttyfast
+	set shell=/bin/zsh
+	set title
+	set visualbell
+
+	" unknown
+	set laststatus=2
+	set backspace=indent,eol,start
+	set scrolloff=7
+	set scrolljump=4
+	set virtualedit="all,onemore"
+	set display+=lastline
+	set wildmenu
+	set wildmode=list:full
+	set wildignorecase
+	set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.idea/*,*/.DS_Store
+
+	set autoindent
+	set expandtab
+	set smarttab
+	set tabstop=4
+	set softtabstop=4
+	set shiftwidth=4
 " }}}
+" Key Remapping {{{
+	" Rebind leader key
+	let mapleader=','
 
-" bundles
-NeoBundle 'bling/vim-airline'                    " powerline replacement {{{
-set noshowmode
+	" common bindings
+	nnor <leader>i :set list! list?<cr>
+	nnor <leader>n :set number!<cr>
+	nnor <leader>N :set relativenumber!<cr>
+	nnor <leader>v :set paste! paste?<cr>
+	nnor <leader>w :set wrap! wrap?<cr>
 
-let g:airline_powerline_fonts = 1
+	nnor <leader><space> :silent nohl<cr>
+	nnor <leader>? :map<cr>
 
-let g:airline_left_sep = '⮀'
-let g:airline_left_alt_sep = '⮁'
-let g:airline_right_sep = '⮂'
-let g:airline_right_alt_sep = '⮃'
+	" search and navigation
+	nnor j gj
+	nnor k gk
 
-let g:airline_symbols = {} 
-let g:airline_symbols.space = ' '
-let g:airline_symbols.paste = 'paste'
-let g:airline_symbols.branch = '⭠'
-let g:airline_symbols.readonly = '⭤'
-let g:airline_symbols.linenr = '⭡'
-let g:airline_symbols.whitespace = ' '
+    nnor n nzzzv
+    nnor N Nzzzv
+    nnor g; g;zz
+    nnor g, g,zz
 
-let g:airline#extensions#whitespace#enabled = 0
+	" visual block reselect
+	vnor < <gv
+	vnor > >gv
 
-let g:airline#extensions#tabline#enabled = 1
+	" let ; function as :
+	nnor ; :
 
-let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-
-let g:airline#extensions#tabline#left_sep = '⮀'
-let g:airline#extensions#tabline#left_alt_sep = '⮁'
-let g:airline#extensions#tabline#right_sep = '⮂'
-let g:airline#extensions#tabline#right_alt_sep = '⮃'
+	" nuke 'ex' mode
+	nnor Q <nop>
 " }}}
-NeoBundle 'chrisbra/csv.vim'
-NeoBundle 'ciaranm/detectindent'                 " detect indent {{{
-let g:detectindent_preferred_indent=4
-au BufReadPost * :DetectIndent
+" Display Character Settings {{{
+	set listchars=tab:>-,eol:$,precedes:<,extends:>,trail:~,conceal:#,nbsp:_
+	set fillchars=vert:\│,fold:-
+	let &showbreak = '↪ '
 " }}}
-NeoBundle 'kien/ctrlp.vim'
-NeoBundle 'Lokaltog/vim-easymotion'
-NeoBundle 'majutsushi/tagbar'
-NeoBundle 'oblitum/rainbow'                      " rainbow brackets! {{{
-let g:rainbow_active = 1
-let g:rainbow_load_separately = [
-    \ [ '*' , [['(', ')'], ['\[', '\]'], ['{', '}']] ],
-    \ [ '*.tex' , [['(', ')'], ['\[', '\]']] ],
-    \ [ '*.cpp' , [['(', ')'], ['\[', '\]'], ['{', '}']] ],
-    \ [ '*.{html,htm,xml}' , [['(', ')'], ['\[', '\]'], ['{', '}'], ['<\a[^>]*>', '</[^>]*>']] ],
-    \ ]
+" Backups, History, and Views {{{
+	sil !mkdir -p ~/.vim_temp/{views,backup,undo,cache}
 
-let g:rainbow_guifgs = ['RoyalBlue3', 'DarkOrange3', 'DarkOrchid3', 'FireBrick', 'magenta']
-let g:rainbow_ctermfgs = ['lightblue', 'lightgreen', 'yellow', 'red', 'magenta']
-" }}}
-NeoBundle 'scrooloose/nerdtree'
-NeoBundle 'scrooloose/syntastic'                 " Syntastic {{{
-" Enable jsl as a javascript checker for syntastic
-let g:syntastic_javascript_checkers=['jsl']
+	set backupdir=~/.vim_temp/backup/
+	set backup
 
-" symbols
-let g:syntastic_check_on_open=1
-let g:syntastic_warning_symbol='?'
-let g:syntastic_error_symbol='x'
-let g:syntastic_enable_highlighting=1
-let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
-
-" c++ options
-let g:syntastic_cpp_compiler = 'clang++'
-let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
-"}}}
-NeoBundle 'sjl/gundo.vim'                        " undotree {{{
-map <leader>u :GundoToggle<cr>
-"}}}
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'tpope/vim-repeat'
-NeoBundle 'tpope/vim-speeddating'
-NeoBundle 'tpope/vim-surround'
-
-" new toys :D
-NeoBundle 'Shougo/unite.vim'
-NeoBundle 'Shougo/vimproc.vim'
-NeoBundle 'Shougo/vimshell.vim'
-NeoBundle 'vim-scripts/YankRing.vim'         " Yankring {{{
-let g:yankring_history_dir='~/.vim_temp/'
-" }}}
-NeoBundle 'tpope/vim-unimpaired'
-NeoBundle 'terryma/vim-multiple-cursors'
-NeoBundle 'gregsexton/gitv'
-" }}}
-" }}}
-
-" Backups, History & Views {{{
-" Make temporary directories
-sil !mkdir -p ~/.vim_temp/{views,backup,swap,undo}
-set viewdir=~/.vim_temp/views/
-set backupdir=~/.vim_temp/backup/
-set directory=~/.vim_temp/swap/
-set backup
-set history=5000
-
-if v:version >= 703
-	set undoreload=10000
 	set undodir=~/.vim_temp/undo/
 	set undofile
-	set noswapfile
-else
-	set swapfile
-endif
+	set undolevels=10000
 
-" bind view creation to focus gain/loss
-au BufWinLeave * if expand("%") != "" | mkview | endif
-au BufWinEnter * if expand("%") != "" | silent loadview | endif
+	set viewdir=~/.vim_temp/views/
 
-" ignore whitespace differences in vimdiff
-set diffopt+=iwhite
+	" bind view creation to focus loss/gain
+	au BufWinLeave * if expand("%") != "" | mkview | endif
+	au BufWinEnter * if expand("%") != "" | silent loadview | endif
 " }}}
 
-" Color & Syntax {{{
-set t_Co=256
-set background=dark
-colorscheme badwolf
-syntax on
+" Bundles {{{
+	" Neobundle Configuration {{{
+		set runtimepath+=~/.vim/bundle/neobundle.vim/
+		call neobundle#rc(expand('~/.vim/bundle/'))
 
-if &term =~ '*256color'
-  " disable background color erase in a 256 color terminal
-	set t_ut=
-endif
+		" NeoBundle is now the package manager of choice
+		NeoBundleFetch 'Shougo/neobundle.vim'
+	" }}}
+	NeoBundle 'bling/vim-airline'                    " powerline replacement {{{
+		set noshowmode
 
-set cursorline
-set colorcolumn=80
-set shiftround
+		let g:airline_powerline_fonts = 1
+
+		let g:airline_left_sep = '⮀'
+		let g:airline_left_alt_sep = '⮁'
+		let g:airline_right_sep = '⮂'
+		let g:airline_right_alt_sep = '⮃'
+
+		let g:airline_symbols = {} 
+		let g:airline_symbols.space = ' '
+		let g:airline_symbols.paste = 'paste'
+		let g:airline_symbols.branch = '⭠'
+		let g:airline_symbols.readonly = '⭤'
+		let g:airline_symbols.linenr = '⭡'
+		let g:airline_symbols.whitespace = ' '
+
+		let g:airline#extensions#whitespace#enabled = 0
+
+		let g:airline#extensions#tabline#enabled = 1
+
+		let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+
+		let g:airline#extensions#tabline#left_sep = '⮀'
+		let g:airline#extensions#tabline#left_alt_sep = '⮁'
+		let g:airline#extensions#tabline#right_sep = '⮂'
+		let g:airline#extensions#tabline#right_alt_sep = '⮃'
+	" }}}
+
+	" Shougo Bundles
+	NeoBundle 'Shougo/neocomplete'                   " tab-completion {{{
+		" Use neocomplete.
+		let g:acp_enableAtStartup = 0
+		let g:neocomplete#enable_at_startup = 1
+		let g:neocomplete#data_directory='~/.vim/cache/neocomplete'
+		" Use smartcase.
+		let g:neocomplete#enable_smart_case = 1
+		let g:neocomplete#enable_fuzzy_completion = 1
+	" }}}
+	NeoBundle 'Shougo/neosnippet'                    " snippets {{{
+		NeoBundle 'honza/vim-snippets'
+		NeoBundle 'Shougo/neosnippet-snippets'
+		let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets,~/.vim/snippets'
+		let g:neosnippet#enable_snipmate_compatibility=1
+
+	" }}}
+	" shell-style tab completions
+	imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : (pumvisible() ? "\<C-n>" : "\<TAB>")
+	smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+	imap <expr><S-TAB> pumvisible() ? "\<C-p>" : ""
+	smap <expr><S-TAB> pumvisible() ? "\<C-p>" : ""
 " }}}
 
-" Navigation {{{
-" line movement
-nnor j gj
-nnor k gk
+	NeoBundle 'Shougo/unite.vim'                      " unite plugin {{{
+		let g:unite_enable_start_insert=1
+		let g:unite_winwidth=10
+		let g:unite_split_rule='botright'
+	" }}}
+	NeoBundle 'Shougo/vimproc.vim', {'build':{'mac': 'make -f make_mac.mak'}}
 
-" search to middle of screen
-nnor n nzzzv
-nnor N Nzzzv
-nnor g; g;zz
-nnor g, g,zz
+	NeoBundleLazy 'Shougo/vimshell.vim', {'depends': 'Shougo/vimshell.vim'}
 
-set hlsearch
-set ignorecase
-set incsearch
-set smartcase
-nnor <leader><space> :silent nohl<cr>
+	" tpope Bundles {{{
+		NeoBundle 'tpope/vim-fugitive'
+		NeoBundle 'tpope/vim-speeddating'
+		NeoBundle 'tpope/vim-surround'
+        NeoBundle 'tpope/vim-unimpaired'
+	" }}}
+	NeoBundle 'kien/ctrlp.vim'                        " ctrlp {{{
+		let g:ctrlp_regex_search=1
+	" }}}
+	" Scroolose bundles {{{
+		NeoBundle 'scrooloose/nerdtree'
+		NeoBundle 'scrooloose/syntastic'                 " Syntastic {{{
+			" Enable jsl as a javascript checker for syntastic
+			let g:syntastic_javascript_checkers=['jsl']
+
+			" symbols
+			let g:syntastic_check_on_open=1
+			let g:syntastic_warning_symbol='>'
+			let g:syntastic_error_symbol='x'
+			let g:syntastic_style_error_symbol='*'
+			let g:syntastic_style_warning_symbol='+'
+
+			let g:syntastic_enable_highlighting=1
+			let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
+
+			" c++ options
+			let g:syntastic_cpp_compiler = 'clang++'
+			let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
+		" }}}
+	" }}}
+" }}}
+NeoBundle 'sjl/gundo.vim'                        " undotree {{{
+map <leader>u :GundoToggle<cr>
 " }}}
 
-" Terminal & Window Compatibility Options {{{
-set backspace=2
-set encoding=utf-8
-set hidden
-set laststatus=2
-set lazyredraw
-set modeline
-set nowrap
-set scrolloff=7
-set scrolljump=4
-set shell=/bin/zsh
-set showcmd
-set title
-set ttyfast
-set visualbell
-" allow ';' to function as ':'
-nnor ; :
-" ... and nuke 'ex' mode while we're at it
-nnor Q <nop>
+NeoBundle 'guns/vim-sexp'
+NeoBundleLazy 'majutsushi/tagbar', {'autoload':{'commands':'TagbarToggle'}}
+" Language-specific bundles {{{
+	" python
+	NeoBundleLazy 'ivanov/vim-ipython', {'autoload':{'filetypes':['py']}}
+
+	" scala
+	NeoBundleLazy 'derekwyatt/vim-scala', {'autoload':{'filetypes':['scala']}}
+	NeoBundleLazy 'megaannum/vimside', {'autoload':{'filetypes':['scala']}}
+
+	" haskell
+	NeoBundleLazy 'ujihisa/neco-ghc', {'autoload':{'filetypes':['ghc']}}
+
+    " csv
+    NeoBundleLazy 'chrisbra/csv.vim', {'autoload':{'filetypes':['csv']}}
 " }}}
+" Colors {{{
+	NeoBundle 'chriskempson/base16-vim'
+	NeoBundle 'sjl/badwolf'
+	NeoBundle 'w0ng/vim-hybrid'
 
-" Window Split/diff options {{{
-set listchars=tab:>-,eol:$,precedes:<,extends:>,trail:~,conceal:#,nbsp:_
-set fillchars=vert:\│,fold:-
-let &showbreak = '↪ '
-
-" auto resize on window-resize
-"au VimResized * :wincmd =
+"	set background=dark
+"	colorscheme badwolf " base16-eighties "base16-isotope " badwolf " Tomorrow-Night-Eighties 
+	syntax on
 " }}}
-
-" Misc Unsorted Options {{{
-set virtualedit="all,onemore"
-" }}}
-
 " Misc tricks & hax {{{
-" Automatically source .vimrc and local on modification
-au! BufWritePost ~/.vimrc{,.local} source ~/.vimrc
+	" Automatically source .vimrc and local on modification
+	au! BufWritePost ~/{,.local}.vimrc source ~/.vimrc
+    " Source local vimrc, if exists {{{
+    if filereadable(glob("~/.local.vimrc"))
+        source ~/.local.vimrc
+    endif
+    if has("gui_running")
+        source ~/.gvimrc
+    endif
+    " }}}
 
-" super sudo write
-cno w!! w !sudo tee % >/dev/null
+	" super sudo write
+	cno w!! w !sudo tee % >/dev/null
+" }}}
+" Language-specific settings {{{
+	" xml
+	au FileType xml let &l:equalprg='xmllint --format --recover -'
 " }}}
 
-" Key maps {{{
-nnor <leader>i :set list! list?<cr>
-nnor <leader>v :set paste! paste?<cr>
-nnor <leader>w :set wrap! wrap?<cr>
-nnor <leader>? :map<cr>
-" }}}
-
-
-" Source local vimrc, if exists {{{
-if filereadable(glob("~/.vimrc.local"))
-	source ~/.vimrc.local
-endif
-if has("gui_running")
-	source ~/.gvimrc
-endif
-" }}}
 filetype plugin indent on
-
-
+syntax on
 NeoBundleCheck
