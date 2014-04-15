@@ -160,6 +160,20 @@ filetype off
 	smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
 	imap <expr><S-TAB> pumvisible() ? "\<C-p>" : ""
 	smap <expr><S-TAB> pumvisible() ? "\<C-p>" : ""
+  " Disabled legacy bundles {{{
+  " YankRing
+  " detectIndent
+  " gitv
+  " grep
+  " rainbow 
+  " tlib_vim
+  " vim-addon-mw-utils
+  " vim-easymotion
+  " vim-multiedit
+  " vim-multiple-cursors
+  " vim-repeat
+  " vim-snipmate
+  " }}}
 " }}}
 
 	NeoBundle 'Shougo/unite.vim'                      " unite plugin {{{
@@ -226,6 +240,7 @@ NeoBundleLazy 'majutsushi/tagbar', {'autoload':{'commands':'TagbarToggle'}}
 	NeoBundle 'chriskempson/base16-vim'
 	NeoBundle 'sjl/badwolf'
 	NeoBundle 'w0ng/vim-hybrid'
+    NeoBundle 'trapd00r/neverland-vim-theme'
 
 	set background=dark
 	colorscheme badwolf 

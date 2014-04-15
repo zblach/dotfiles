@@ -1,6 +1,6 @@
 typeset -U path
-if [[ -a "$HOME/.zshrc.local" ]]; then
-	source "$HOME/.zshrc.local"
+if [[ -a "$HOME/.local.pre.zshrc" ]]; then
+	source "$HOME/.local.pre.zshrc"
 fi
 
 ################################################################################
@@ -169,6 +169,9 @@ export RPS1="%{$fg[default]%}[%{%(?.$fg[gray].$fg[red])%}%?%{$fg[default]%} %D{%
 #export RPS1="[%? %D{%H:%M:%S}]"
 
 # Break ancient xterm compatibility
-#
-
 export TERM=xterm-256color
+
+# source local configuration file
+if [[ -a "$HOME/.local.zshrc" ]]; then
+	source "$HOME/.local.zshrc"
+fi
