@@ -12,7 +12,7 @@ autoload colors zsh/terminfo
 autoload -Uz compinit && compinit -u
 
 # History
-export HOSTNAME_SHORT=${HOSTNAME//[\.\-][0-9]+/}
+export HOSTNAME_SHORT=${$(hostname)//[\.\-][0-9]+/}
 export EDITOR=vim
 export PAGER=less
 
