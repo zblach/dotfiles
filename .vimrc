@@ -227,8 +227,8 @@ NeoBundleLazy 'majutsushi/tagbar', {'autoload':{'commands':'TagbarToggle'}}
 	NeoBundle 'sjl/badwolf'
 	NeoBundle 'w0ng/vim-hybrid'
 
-"	set background=dark
-"	colorscheme badwolf " base16-eighties "base16-isotope " badwolf " Tomorrow-Night-Eighties 
+	set background=dark
+	colorscheme badwolf " base16-eighties "base16-isotope " badwolf " Tomorrow-Night-Eighties 
 	syntax on
 " }}}
 " Misc tricks & hax {{{
