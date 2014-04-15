@@ -34,7 +34,7 @@ filetype off
 	set virtualedit="all,onemore"
 	set display+=lastline
 	set wildmenu
-	set wildmode=list:full
+	set wildmode=full:longest
 	set wildignorecase
 	set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.idea/*,*/.DS_Store
 
@@ -228,7 +228,7 @@ NeoBundleLazy 'majutsushi/tagbar', {'autoload':{'commands':'TagbarToggle'}}
 	NeoBundle 'w0ng/vim-hybrid'
 
 	set background=dark
-	colorscheme badwolf " base16-eighties "base16-isotope " badwolf " Tomorrow-Night-Eighties 
+	colorscheme badwolf 
 	syntax on
 " }}}
 " Misc tricks & hax {{{
