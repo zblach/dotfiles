@@ -34,7 +34,7 @@ filetype off
 	set virtualedit="all,onemore"
 	set display+=lastline
 	set wildmenu
-	set wildmode=full:longest
+	set wildmode=full
 	set wildignorecase
 	set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.idea/*,*/.DS_Store
 
