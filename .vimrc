@@ -183,7 +183,7 @@ filetype off
 	" }}}
 	NeoBundle 'Shougo/vimproc.vim', {'build':{'mac': 'make -f make_mac.mak'}}
 
-	NeoBundleLazy 'Shougo/vimshell.vim', {'depends': 'Shougo/vimshell.vim'}
+	NeoBundleLazy 'Shougo/vimshell.vim'
 
 	" tpope Bundles {{{
 		NeoBundle 'tpope/vim-fugitive'
@@ -228,7 +228,7 @@ NeoBundleLazy 'majutsushi/tagbar', {'autoload':{'commands':'TagbarToggle'}}
 
 	" scala
 	NeoBundleLazy 'derekwyatt/vim-scala', {'autoload':{'filetypes':['scala']}}
-	NeoBundleLazy 'megaannum/vimside', {'autoload':{'filetypes':['scala']}}
+	NeoBundleLazy 'megaannum/vimside', {'autoload':{'filetypes':['scala']}, 'depends': ['Shougo/vimshell.vim', 'Shougo/vimproc']}
 
 	" haskell
 	NeoBundleLazy 'ujihisa/neco-ghc', {'autoload':{'filetypes':['ghc']}}
