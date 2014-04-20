@@ -63,10 +63,10 @@ filetype off
 	nnor j gj
 	nnor k gk
 
-    nnor n nzzzv
-    nnor N Nzzzv
-    nnor g; g;zz
-    nnor g, g,zz
+	nnor n nzzzv
+	nnor N Nzzzv
+	nnor g; g;zz
+	nnor g, g,zz
 
 	" visual block reselect
 	vnor < <gv
@@ -108,7 +108,7 @@ filetype off
 		" NeoBundle is now the package manager of choice
 		NeoBundleFetch 'Shougo/neobundle.vim'
 	" }}}
-	NeoBundle 'bling/vim-airline'                    " powerline replacement {{{
+	NeoBundle 'bling/vim-airline' " powerline replacement {{{
 		set noshowmode
 
 		let g:airline_powerline_fonts = 1
@@ -139,7 +139,7 @@ filetype off
 	" }}}
 
 	" Shougo Bundles
-	NeoBundle 'Shougo/neocomplete'                   " tab-completion {{{
+	NeoBundle 'Shougo/neocomplete' " tab-completion {{{
 		" Use neocomplete.
 		let g:acp_enableAtStartup = 0
 		let g:neocomplete#enable_at_startup = 1
@@ -148,55 +148,43 @@ filetype off
 		let g:neocomplete#enable_smart_case = 1
 		let g:neocomplete#enable_fuzzy_completion = 1
 	" }}}
-	NeoBundle 'Shougo/neosnippet'                    " snippets {{{
+	NeoBundle 'Shougo/neosnippet' " snippets {{{
 		NeoBundle 'honza/vim-snippets'
 		NeoBundle 'Shougo/neosnippet-snippets'
 		let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets,~/.vim/snippets'
 		let g:neosnippet#enable_snipmate_compatibility=1
 
 	" }}}
-	" shell-style tab completions
-	imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : (pumvisible() ? "\<C-n>" : "\<TAB>")
-	smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-	imap <expr><S-TAB> pumvisible() ? "\<C-p>" : ""
-	smap <expr><S-TAB> pumvisible() ? "\<C-p>" : ""
-  " Disabled legacy bundles {{{
-  " YankRing
-  " detectIndent
-  " gitv
-  " grep
-  " rainbow 
-  " tlib_vim
-  " vim-addon-mw-utils
-  " vim-easymotion
-  " vim-multiedit
-  " vim-multiple-cursors
-  " vim-repeat
-  " vim-snipmate
-  " }}}
-" }}}
-
-	NeoBundle 'Shougo/unite.vim'                      " unite plugin {{{
+	" shell-style tab completions {{{
+		imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : (pumvisible() ? "\<C-n>" : "\<TAB>")
+		smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+		imap <expr><S-TAB> pumvisible() ? "\<C-p>" : ""
+		smap <expr><S-TAB> pumvisible() ? "\<C-p>" : ""
+	" }}}
+	NeoBundle 'Shougo/unite.vim' " unite plugin {{{
 		let g:unite_enable_start_insert=1
 		let g:unite_winwidth=10
 		let g:unite_split_rule='botright'
 	" }}}
 	NeoBundle 'Shougo/vimproc.vim', {'build':{'mac': 'make -f make_mac.mak'}}
-
-	NeoBundleLazy 'Shougo/vimshell.vim'
+	NeoBundle 'Shougo/vimshell.vim'
+	NeoBundle 'sjl/gundo.vim' " undotree {{{
+		map <leader>u :GundoToggle<cr>
+	" }}}
 
 	" tpope Bundles {{{
 		NeoBundle 'tpope/vim-fugitive'
 		NeoBundle 'tpope/vim-speeddating'
 		NeoBundle 'tpope/vim-surround'
-        NeoBundle 'tpope/vim-unimpaired'
+		NeoBundle 'tpope/vim-repeat'
+		NeoBundle 'tpope/vim-unimpaired'
 	" }}}
-	NeoBundle 'kien/ctrlp.vim'                        " ctrlp {{{
+	NeoBundle 'kien/ctrlp.vim' " ctrlp {{{
 		let g:ctrlp_regex_search=1
 	" }}}
 	" Scroolose bundles {{{
 		NeoBundle 'scrooloose/nerdtree'
-		NeoBundle 'scrooloose/syntastic'                 " Syntastic {{{
+		NeoBundle 'scrooloose/syntastic' " Syntastic {{{
 			" Enable jsl as a javascript checker for syntastic
 			let g:syntastic_javascript_checkers=['jsl']
 
@@ -215,32 +203,42 @@ filetype off
 			let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 		" }}}
 	" }}}
-" }}}
-NeoBundle 'sjl/gundo.vim'                        " undotree {{{
-map <leader>u :GundoToggle<cr>
-" }}}
+	" Disabled legacy bundles {{{
+		" YankRing
+		" detectIndent
+		" gitv
+		" grep
+		" rainbow 
+		" tlib_vim
+		" vim-addon-mw-utils
+		" vim-easymotion
+		" vim-multiedit
+		" vim-multiple-cursors
+		" vim-snipmate
+	" }}}
 
-NeoBundle 'guns/vim-sexp'
-NeoBundleLazy 'majutsushi/tagbar', {'autoload':{'commands':'TagbarToggle'}}
-" Language-specific bundles {{{
-	" python
-	NeoBundleLazy 'ivanov/vim-ipython', {'autoload':{'filetypes':['py']}}
+	NeoBundle 'guns/vim-sexp'
+	NeoBundleLazy 'majutsushi/tagbar', {'autoload':{'commands':'TagbarToggle'}}
+	" Language-specific bundles {{{
+		" python
+		NeoBundleLazy 'ivanov/vim-ipython', {'autoload':{'filetypes':['py']}}
 
-	" scala
-	NeoBundleLazy 'derekwyatt/vim-scala', {'autoload':{'filetypes':['scala']}}
-	NeoBundleLazy 'megaannum/vimside', {'autoload':{'filetypes':['scala']}, 'depends': ['Shougo/vimshell.vim', 'Shougo/vimproc']}
+		" scala
+		NeoBundleLazy 'derekwyatt/vim-scala', {'autoload':{'filetypes':['scala']}}
+		NeoBundleLazy 'megaannum/vimside', {'autoload':{'filetypes':['scala']}, 'depends': ['Shougo/vimshell.vim', 'Shougo/vimproc']}
 
-	" haskell
-	NeoBundleLazy 'ujihisa/neco-ghc', {'autoload':{'filetypes':['ghc']}}
+		" haskell
+		NeoBundleLazy 'ujihisa/neco-ghc', {'autoload':{'filetypes':['ghc']}}
 
-    " csv
-    NeoBundleLazy 'chrisbra/csv.vim', {'autoload':{'filetypes':['csv']}}
+		" csv
+		NeoBundleLazy 'chrisbra/csv.vim', {'autoload':{'filetypes':['csv']}}
+	" }}}
 " }}}
 " Colors {{{
 	NeoBundle 'chriskempson/base16-vim'
 	NeoBundle 'sjl/badwolf'
 	NeoBundle 'w0ng/vim-hybrid'
-    NeoBundle 'trapd00r/neverland-vim-theme'
+	NeoBundle 'trapd00r/neverland-vim-theme'
 
 	set background=dark
 	colorscheme badwolf 
@@ -249,14 +247,14 @@ NeoBundleLazy 'majutsushi/tagbar', {'autoload':{'commands':'TagbarToggle'}}
 " Misc tricks & hax {{{
 	" Automatically source .vimrc and local on modification
 	au! BufWritePost ~/{,.local}.vimrc source ~/.vimrc
-    " Source local vimrc, if exists {{{
-    if filereadable(glob("~/.local.vimrc"))
-        source ~/.local.vimrc
-    endif
-    if has("gui_running")
-        source ~/.gvimrc
-    endif
-    " }}}
+	" Source local vimrc, if exists {{{
+		if filereadable(glob("~/.local.vimrc"))
+			source ~/.local.vimrc
+		endif
+		if has("gui_running")
+			source ~/.gvimrc
+		endif
+	" }}}
 
 	" super sudo write
 	cno w!! w !sudo tee % >/dev/null
