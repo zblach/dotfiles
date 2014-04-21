@@ -105,7 +105,7 @@ filetype off
 		set runtimepath+=~/.vim/bundle/neobundle.vim/
 		call neobundle#rc(expand('~/.vim/bundle/'))
 
-		" NeoBundle is now the package manager of choice
+		" NeoBundle is my package manager of choice
 		NeoBundleFetch 'Shougo/neobundle.vim'
 	" }}}
 	NeoBundle 'bling/vim-airline' " powerline replacement {{{
@@ -148,6 +148,21 @@ filetype off
 		let g:neocomplete#enable_smart_case = 1
 		let g:neocomplete#enable_fuzzy_completion = 1
 	" }}}
+	NeoBundle 'luochen1990/rainbow' " rainbow brackets {{{
+		let g:rainbow_active = 1
+		let g:rainbow_conf = {
+		\	'guifgs' : ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
+		\	'ctermfgs' : ['darkblue', 'darkmagenta', 'darkcyan'],
+		\	'operators' : '_,_',
+		\	'parentheses' : [['(',')'], ['\[','\]'], ['{','}']],
+		\	'separately' : {
+		\		'*' : {},
+		\		'vim' : {
+		\			'parentheses' : [['{{{','}}}'], ['(',')'], ['\[','\]'], ['<','>']]
+		\		},
+		\	}
+		\}
+	" }}}
 	NeoBundle 'Shougo/neosnippet' " snippets {{{
 		NeoBundle 'honza/vim-snippets'
 		NeoBundle 'Shougo/neosnippet-snippets'
@@ -182,6 +197,10 @@ filetype off
 	NeoBundle 'kien/ctrlp.vim' " ctrlp {{{
 		let g:ctrlp_regex_search=1
 	" }}}
+	NeoBundleLazy 'tacahiroy/ctrlp-funky.git', {'depends': ['kien/ctrlp.vim']} " {{{
+		let g:ctrlp_extensions = ['funky']
+	" }}}
+	
 	" Scroolose bundles {{{
 		NeoBundle 'scrooloose/nerdtree'
 		NeoBundle 'scrooloose/syntastic' " Syntastic {{{
@@ -203,12 +222,15 @@ filetype off
 			let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
 		" }}}
 	" }}}
+	NeoBundle 'ciaranm/detectindent' " {{{
+		let g:detectindent_preferred_indent = 4
+		let g:detectindent_preferred_expandtab = 0
+	" }}}
 	" Disabled legacy bundles {{{
 		" YankRing
 		" detectIndent
 		" gitv
 		" grep
-		" rainbow 
 		" tlib_vim
 		" vim-addon-mw-utils
 		" vim-easymotion
@@ -219,6 +241,7 @@ filetype off
 
 	NeoBundle 'guns/vim-sexp'
 	NeoBundleLazy 'majutsushi/tagbar', {'autoload':{'commands':'TagbarToggle'}}
+
 	" Language-specific bundles {{{
 		" python
 		NeoBundleLazy 'ivanov/vim-ipython', {'autoload':{'filetypes':['py']}}
