@@ -1,5 +1,5 @@
 " .vimrc - zblach 2014
-" vim: set foldmarker={{{,}}} foldmethod=marker tabstop=2 nospell
+" vim: set foldmarker={{{,}}} foldmethod=marker tabstop=4 nospell softtabstop
 set nocompatible
 filetype off
 
@@ -44,6 +44,7 @@ filetype off
 	set tabstop=4
 	set softtabstop=4
 	set shiftwidth=4
+	set nowrap
 " }}}
 " Key Remapping {{{
 	" Rebind leader key
@@ -138,51 +139,52 @@ filetype off
 		let g:airline#extensions#tabline#right_alt_sep = '⮃'
 	" }}}
 
-	" Shougo Bundles
-	NeoBundle 'Shougo/neocomplete' " tab-completion {{{
-		" Use neocomplete.
-		let g:acp_enableAtStartup = 0
-		let g:neocomplete#enable_at_startup = 1
-		let g:neocomplete#data_directory='~/.vim/cache/neocomplete'
-		" Use smartcase.
-		let g:neocomplete#enable_smart_case = 1
-		let g:neocomplete#enable_fuzzy_completion = 1
-	" }}}
-	NeoBundle 'luochen1990/rainbow' " rainbow brackets {{{
-		let g:rainbow_active = 1
-		let g:rainbow_conf = {
-		\	'guifgs' : ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
-		\	'ctermfgs' : ['darkblue', 'darkmagenta', 'darkcyan'],
-		\	'operators' : '_,_',
-		\	'parentheses' : [['(',')'], ['\[','\]'], ['{','}']],
-		\	'separately' : {
-		\		'*' : {},
-		\		'vim' : {
-		\			'parentheses' : [['{{{','}}}'], ['(',')'], ['\[','\]'], ['<','>']]
-		\		},
-		\	}
-		\}
-	" }}}
-	NeoBundle 'Shougo/neosnippet' " snippets {{{
-		NeoBundle 'honza/vim-snippets'
-		NeoBundle 'Shougo/neosnippet-snippets'
-		let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets,~/.vim/snippets'
-		let g:neosnippet#enable_snipmate_compatibility=1
+	" Shougo Bundles {{{
+		NeoBundle 'Shougo/neocomplete' " tab-completion {{{
+			" Use neocomplete.
+			let g:acp_enableAtStartup = 0
+			let g:neocomplete#enable_at_startup = 1
+			let g:neocomplete#data_directory='~/.vim/cache/neocomplete'
+			" Use smartcase.
+			let g:neocomplete#enable_smart_case = 1
+			let g:neocomplete#enable_fuzzy_completion = 1
+		" }}}
+		NeoBundle 'luochen1990/rainbow' " rainbow brackets {{{
+			let g:rainbow_active = 1
+			let g:rainbow_conf = {
+			\	'guifgs' : ['RoyalBlue3', 'DarkOrange3', 'DarkOrchid3', 'FireBrick', 'magenta'],
+			\	'ctermfgs' : ['lightblue', 'lightgreen', 'yellow', 'red', 'magenta'],
+			\	'operators' : '_,_',
+			\	'parentheses' : [['(',')'], ['\[','\]'], ['{','}'], ['<','>']],
+			\	'separately' : {
+			\		'*' : {},
+			\		'vim' : {
+			\			'parentheses' : [['{{{','}}}']]
+			\		},
+			\	},
+			\}
+		" }}}
+		NeoBundle 'Shougo/neosnippet' " snippets {{{
+			NeoBundle 'honza/vim-snippets'
+			NeoBundle 'Shougo/neosnippet-snippets'
+			let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets,~/.vim/snippets'
+			let g:neosnippet#enable_snipmate_compatibility=1
 
+		" }}}
+		" shell-style tab completions {{{
+			imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : (pumvisible() ? "\<C-n>" : "\<TAB>")
+			smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+			imap <expr><S-TAB> pumvisible() ? "\<C-p>" : ""
+			smap <expr><S-TAB> pumvisible() ? "\<C-p>" : ""
+		" }}}
+		NeoBundle 'Shougo/unite.vim' " unite plugin {{{
+			let g:unite_enable_start_insert=1
+			let g:unite_winwidth=10
+			let g:unite_split_rule='botright'
+		" }}}
+		NeoBundle 'Shougo/vimproc.vim', {'build':{'mac': 'make -f make_mac.mak'}}
+		NeoBundle 'Shougo/vimshell.vim'
 	" }}}
-	" shell-style tab completions {{{
-		imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : (pumvisible() ? "\<C-n>" : "\<TAB>")
-		smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-		imap <expr><S-TAB> pumvisible() ? "\<C-p>" : ""
-		smap <expr><S-TAB> pumvisible() ? "\<C-p>" : ""
-	" }}}
-	NeoBundle 'Shougo/unite.vim' " unite plugin {{{
-		let g:unite_enable_start_insert=1
-		let g:unite_winwidth=10
-		let g:unite_split_rule='botright'
-	" }}}
-	NeoBundle 'Shougo/vimproc.vim', {'build':{'mac': 'make -f make_mac.mak'}}
-	NeoBundle 'Shougo/vimshell.vim'
 	NeoBundle 'sjl/gundo.vim' " undotree {{{
 		map <leader>u :GundoToggle<cr>
 	" }}}
@@ -226,6 +228,7 @@ filetype off
 		let g:detectindent_preferred_indent = 4
 		let g:detectindent_preferred_expandtab = 0
 	" }}}
+	NeoBundle 'Lokaltog/vim-easymotion'
 	" Disabled legacy bundles {{{
 		" YankRing
 		" detectIndent
@@ -233,11 +236,11 @@ filetype off
 		" grep
 		" tlib_vim
 		" vim-addon-mw-utils
-		" vim-easymotion
 		" vim-multiedit
-		" vim-multiple-cursors
 		" vim-snipmate
 	" }}}
+	"NeoBundle 'terryma/vim-expand-region'
+	"NeoBundle 'terryma/vim-multiple-cursors'
 
 	NeoBundle 'guns/vim-sexp'
 	NeoBundleLazy 'majutsushi/tagbar', {'autoload':{'commands':'TagbarToggle'}}
