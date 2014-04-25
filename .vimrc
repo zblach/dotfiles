@@ -45,15 +45,17 @@ filetype off
 	set softtabstop=4
 	set shiftwidth=4
 	set nowrap
+	set wrapmargin=0
 " }}}
 " Key Remapping {{{
 	" Rebind leader key
 	let mapleader=','
 
 	" common bindings
+	" toggles 
 	nnor <leader>i :set list! list?<cr>
-	nnor <leader>n :set number!<cr>
-	nnor <leader>N :set relativenumber!<cr>
+	nnor <leader>n :set number! number?<cr>
+	nnor <leader>N :set relativenumber! relativenumber?<cr>
 	nnor <leader>v :set paste! paste?<cr>
 	nnor <leader>w :set wrap! wrap?<cr>
 
@@ -198,6 +200,8 @@ filetype off
 	" }}}
 	NeoBundle 'kien/ctrlp.vim' " ctrlp {{{
 		let g:ctrlp_regex_search=1
+		nnor <leader>gw :CtrlP<c-\>w<cr>
+
 	" }}}
 	NeoBundleLazy 'tacahiroy/ctrlp-funky.git', {'depends': ['kien/ctrlp.vim']} " {{{
 		let g:ctrlp_extensions = ['funky']
@@ -225,8 +229,9 @@ filetype off
 		" }}}
 	" }}}
 	NeoBundle 'ciaranm/detectindent' " {{{
-		let g:detectindent_preferred_indent = 4
-		let g:detectindent_preferred_expandtab = 0
+		let g:detectindent_preferred_indent=4
+		let g:detectindent_preferred_expandtab=0
+		au BufReadPost :DetectIndent <cr>
 	" }}}
 	NeoBundle 'Lokaltog/vim-easymotion'
 	" Disabled legacy bundles {{{
@@ -243,7 +248,10 @@ filetype off
 	"NeoBundle 'terryma/vim-multiple-cursors'
 
 	NeoBundle 'guns/vim-sexp'
-	NeoBundleLazy 'majutsushi/tagbar', {'autoload':{'commands':'TagbarToggle'}}
+	NeoBundleLazy 'majutsushi/tagbar', {'autoload':{'commands':'TagbarToggle'}} " {{{
+		let g:tagbar_left=1
+		nnor <leader>t :TagbarToggle <cr>
+	" }}}
 
 	" Language-specific bundles {{{
 		" python
