@@ -171,6 +171,9 @@ filetype off
 			let g:neosnippet#enable_snipmate_compatibility=1
 
 		" }}}
+        NeoBundleLazy 'chrisbra/NrrwRgn', {'autoload':{'commands':['NR','NRP']}} " narrow region {{{
+            let g:nrrw_rgn_nohl=1
+        " }}}
 		" shell-style tab completions {{{
 			imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : (pumvisible() ? "\<C-n>" : "\<TAB>")
 			smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
@@ -247,7 +250,7 @@ filetype off
 
 	" Language-specific bundles {{{
 		" python
-		NeoBundleLazy 'ivanov/vim-ipython', {'autoload':{'filetypes':['py']}}
+		NeoBundleLazy 'ivanov/vim-ipython', {'autoload':{'filetypes':['python']}}
 
 		" scala
 		NeoBundleLazy 'derekwyatt/vim-scala', {'autoload':{'filetypes':['scala']}}
