@@ -8,6 +8,7 @@ filetype off
 	set modeline 
 	set modelines=10
 
+	set laststatus=2
 	set cursorline
 	set shiftround
 
@@ -26,14 +27,15 @@ filetype off
 	set title
 	set visualbell
 
-	" unknown
-	set laststatus=2
+	" misc 
 	set backspace=indent,eol,start
 	set scrolloff=7
 	set scrolljump=4
 	set virtualedit="all,onemore"
 	set display+=lastline
-	set wildmenu
+	
+    " tab-expansion configuration
+    set wildmenu
 	set wildmode=full
 	set wildignorecase
 	set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.idea/*,*/.DS_Store
@@ -242,8 +244,6 @@ filetype off
 		" detectIndent
 		" gitv
 		" grep
-		" tlib_vim
-		" vim-addon-mw-utils
 		" vim-multiedit
 		" vim-snipmate
 	" }}}
@@ -299,6 +299,7 @@ filetype off
 " Language-specific settings {{{
 	" xml
 	au FileType xml let &l:equalprg='xmllint --format --recover -'
+    
 " }}}
 
 filetype plugin indent on
