@@ -153,8 +153,8 @@ else
 fi
 
 # Additional shell-agnostic aliases
-if [ -f "$HOME/.aliases/$HOSTNAME_SHORT" ]; then
-    . "$HOME/.aliases/$HOSTNAME_SHORT";
+if [ -f "$HOME/.aliases" ]; then
+    . "$HOME/.aliases";
 fi
 
 # Prompts
