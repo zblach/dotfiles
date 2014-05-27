@@ -175,7 +175,7 @@ filetype off
 			let g:neosnippet#enable_snipmate_compatibility=1
 
 		" }}}
-        NeoBundleLazy 'chrisbra/NrrwRgn', {'autoload':{'commands':['NR','NRP']}} " narrow region {{{
+        NeoBundle 'chrisbra/NrrwRgn' " narrow region {{{
             let g:nrrw_rgn_nohl=1
         " }}}
 		" shell-style tab completions {{{
@@ -209,6 +209,10 @@ filetype off
         let g:ctrlp_use_caching=1
         let g:ctrlp_cache_dir="~/.vim/cache/ctrlp"
         let g:ctrlp_extensions=['quickfix','dir','funky','undo','changes','line']
+        if executable('ag')
+            set grepprg=ag\ --nogroup\ --nocolor
+            let g:ctrlp_user_command='ag %s -l --nocolor -g ""'
+        endif
 		nnor <leader>gw :CtrlP<c-\>w<cr>
 
 	" }}}
