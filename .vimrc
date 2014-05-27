@@ -203,9 +203,15 @@ filetype off
 		NeoBundle 'tpope/vim-repeat'
 		NeoBundle 'tpope/vim-unimpaired'
 	" }}}
+    " tommcdo bundles {{{
+        NeoBundle 'tommcdo-lion'
+        NeoBundle 'tommcdo/vim-fugitive-blame-ext', {'depends' : 'tpope/vim-fugitive'}
+        NeoBundle 'tommcdo/vim-ninja-feet'
+        NeoBundle 'tommcdo/vim-text-objects'
+    " }}}
 	NeoBundle 'kien/ctrlp.vim' " ctrlp {{{
 		let g:ctrlp_regex_search=1
-        let g:ctrlp_cmd='CtrlPLastMode'
+        let g:ctrlp_cmd='CtrlPLastMode --dir'
         let g:ctrlp_use_caching=1
         let g:ctrlp_cache_dir="~/.vim/cache/ctrlp"
         let g:ctrlp_extensions=['quickfix','dir','funky','undo','changes','line']
@@ -249,8 +255,6 @@ filetype off
 	NeoBundle 'Lokaltog/vim-easymotion'
 	" Disabled legacy bundles {{{
 		" YankRing
-		" detectIndent
-		" gitv
 		" grep
 		" vim-multiedit
 		" vim-snipmate
@@ -283,6 +287,7 @@ filetype off
 	" }}}
 
     NeoBundle 'airblade/vim-gitgutter'
+    NeoBundle 'mhinz/vim-tmuxify'
     NeoBundle 'gregsexton/gitv'
 	" Language-specific bundles {{{
 		" python
