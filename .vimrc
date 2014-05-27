@@ -205,6 +205,10 @@ filetype off
 	" }}}
 	NeoBundle 'kien/ctrlp.vim' " ctrlp {{{
 		let g:ctrlp_regex_search=1
+        let g:ctrlp_cmd='CtrlPLastMode'
+        let g:ctrlp_use_caching=1
+        let g:ctrlp_cache_dir="~/.vim/cache/ctrlp"
+        let g:ctrlp_extensions=['quickfix','dir','funky','undo','changes','line']
 		nnor <leader>gw :CtrlP<c-\>w<cr>
 
 	" }}}
@@ -274,6 +278,8 @@ filetype off
 		nnor <leader>t :TagbarToggle <cr>
 	" }}}
 
+    NeoBundle 'airblade/vim-gitgutter'
+    NeoBundle 'gregsexton/gitv'
 	" Language-specific bundles {{{
 		" python
 		NeoBundleLazy 'ivanov/vim-ipython', {'autoload':{'filetypes':['python']}}
