@@ -107,6 +107,13 @@ filetype off
 
 " Bundles {{{
 	" Neobundle Configuration {{{
+        " Bootstrapping {{{
+        if empty(glob("~/.vim/bundle/neobundle.vim"))
+            echo "NeoBundle not found, bootstrapping."
+            sil !mkdir -p ~/.vim/bundle/
+            sil !git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+        endif
+        " }}}
 		set runtimepath+=~/.vim/bundle/neobundle.vim/
 		call neobundle#rc(expand('~/.vim/bundle/'))
 
@@ -204,7 +211,7 @@ filetype off
 		NeoBundle 'tpope/vim-unimpaired'
 	" }}}
     " tommcdo bundles {{{
-        NeoBundle 'tommcdo-lion'
+        NeoBundle 'tommcdo/vim-lion'
         NeoBundle 'tommcdo/vim-fugitive-blame-ext', {'depends' : 'tpope/vim-fugitive'}
         NeoBundle 'tommcdo/vim-ninja-feet'
         NeoBundle 'tommcdo/vim-text-objects'
