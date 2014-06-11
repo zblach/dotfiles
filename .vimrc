@@ -318,12 +318,11 @@ filetype off
 	NeoBundle 'trapd00r/neverland-vim-theme'
 
 	set background=dark
-	colorscheme badwolf 
-	syntax on
+	let b:colorscheme = 'badwolf' 
 " }}}
 " Misc tricks & hax {{{
 	" Automatically source .vimrc and local on modification
-	au! BufWritePost ~/{,.local}.vimrc source ~/.vimrc
+	au! BufWritePost ~/{,.local}.{g,}vimrc source ~/.vimrc
 	" Source local vimrc, if exists {{{
 		if filereadable(glob("~/.local.vimrc"))
 			source ~/.local.vimrc
@@ -344,4 +343,7 @@ filetype off
 
 filetype plugin indent on
 syntax on
+if has('vim_starting')
+    exe "colorscheme ". b:colorscheme
+endif
 NeoBundleCheck
