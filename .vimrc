@@ -309,6 +309,9 @@ filetype off
 
 		" csv
 		NeoBundleLazy 'chrisbra/csv.vim', {'autoload':{'filetypes':['csv']}}
+
+        " swift
+        NeoBundleLazy 'toyamarinyon/vim-swift', {'autoload':{'filetypes':['swift']}}
 	" }}}
 " }}}
 " Colors {{{
