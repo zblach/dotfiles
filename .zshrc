@@ -157,6 +157,13 @@ if [ -f "$HOME/.aliases" ]; then
     . "$HOME/.aliases";
 fi
 
+# Z-shell style aliases
+# global aliases
+alias -g '@C'='| acat'
+alias -g '@S'='| sort'
+alias -g '@T'='| tail -f'
+alias -g '@U'='| sort | uniq'
+
 # Prompts
 colors
 

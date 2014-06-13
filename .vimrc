@@ -34,8 +34,8 @@ filetype off
 	set virtualedit="all,onemore"
 	set display+=lastline
 	
-    " tab-expansion configuration
-    set wildmenu
+	" tab-expansion configuration
+	set wildmenu
 	set wildmode=full
 	set wildignorecase
 	set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.idea/*,*/.DS_Store
@@ -107,13 +107,13 @@ filetype off
 
 " Bundles {{{
 	" Neobundle Configuration {{{
-        " Bootstrapping {{{
-        if empty(glob("~/.vim/bundle/neobundle.vim"))
-            echo "NeoBundle not found, bootstrapping."
-            sil !mkdir -p ~/.vim/bundle/
-            sil !git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
-        endif
-        " }}}
+	" Bootstrapping {{{
+	if empty(glob("~/.vim/bundle/neobundle.vim"))
+		echo "NeoBundle not found, bootstrapping."
+		sil !mkdir -p ~/.vim/bundle/
+		sil !git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+	endif
+	" }}}
 		set runtimepath+=~/.vim/bundle/neobundle.vim/
 		call neobundle#rc(expand('~/.vim/bundle/'))
 
@@ -182,22 +182,22 @@ filetype off
 			let g:neosnippet#enable_snipmate_compatibility=1
 
 		" }}}
-        NeoBundle 'chrisbra/NrrwRgn' " narrow region {{{
-            let g:nrrw_rgn_nohl=1
-        " }}}
-		" shell-style tab completions {{{
-			imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : (pumvisible() ? "\<C-n>" : "\<TAB>")
-			smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-			imap <expr><S-TAB> pumvisible() ? "\<C-p>" : ""
-			smap <expr><S-TAB> pumvisible() ? "\<C-p>" : ""
-		" }}}
-		NeoBundle 'Shougo/unite.vim' " unite plugin {{{
-			let g:unite_enable_start_insert=1
-			let g:unite_winwidth=10
-			let g:unite_split_rule='botright'
-		" }}}
-		NeoBundle 'Shougo/vimproc.vim', {'build':{'mac': 'make -f make_mac.mak'}}
-		NeoBundle 'Shougo/vimshell.vim'
+	NeoBundle 'chrisbra/NrrwRgn' " narrow region {{{
+		let g:nrrw_rgn_nohl=1
+	" }}}
+	" shell-style tab completions {{{
+		imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : (pumvisible() ? "\<C-n>" : "\<TAB>")
+		smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+		imap <expr><S-TAB> pumvisible() ? "\<C-p>" : ""
+		smap <expr><S-TAB> pumvisible() ? "\<C-p>" : ""
+	" }}}
+	NeoBundle 'Shougo/unite.vim' " unite plugin {{{
+		let g:unite_enable_start_insert=1
+		let g:unite_winwidth=10
+		let g:unite_split_rule='botright'
+	" }}}
+	NeoBundle 'Shougo/vimproc.vim', {'build':{'mac': 'make -f make_mac.mak', 'unix' : 'make -f make_unix.mak'}}
+	NeoBundle 'Shougo/vimshell.vim'
 	" }}}
 	NeoBundle 'sjl/gundo.vim' " undotree {{{
 		map <leader>u :GundoToggle<cr>
@@ -210,22 +210,22 @@ filetype off
 		NeoBundle 'tpope/vim-repeat'
 		NeoBundle 'tpope/vim-unimpaired'
 	" }}}
-    " tommcdo bundles {{{
-        NeoBundle 'tommcdo/vim-lion'
-        NeoBundle 'tommcdo/vim-fugitive-blame-ext', {'depends' : 'tpope/vim-fugitive'}
-        NeoBundle 'tommcdo/vim-ninja-feet'
-        NeoBundle 'tommcdo/vim-text-objects'
-    " }}}
+	" tommcdo bundles {{{
+	NeoBundle 'tommcdo/vim-lion'
+	NeoBundle 'tommcdo/vim-fugitive-blame-ext', {'depends' : 'tpope/vim-fugitive'}
+	NeoBundle 'tommcdo/vim-ninja-feet'
+	NeoBundle 'tommcdo/vim-text-objects'
+	" }}}
 	NeoBundle 'kien/ctrlp.vim' " ctrlp {{{
 		let g:ctrlp_regex_search=1
-        let g:ctrlp_cmd='CtrlPLastMode --dir'
-        let g:ctrlp_use_caching=1
-        let g:ctrlp_cache_dir="~/.vim/cache/ctrlp"
-        let g:ctrlp_extensions=['quickfix','dir','funky','undo','changes','line']
-        if executable('ag')
-            set grepprg=ag\ --nogroup\ --nocolor
-            let g:ctrlp_user_command='ag %s -l --nocolor -g ""'
-        endif
+	let g:ctrlp_cmd='CtrlPLastMode --dir'
+	let g:ctrlp_use_caching=1
+	let g:ctrlp_cache_dir="~/.vim/cache/ctrlp"
+	let g:ctrlp_extensions=['quickfix','dir','funky','undo','changes','line']
+	if executable('ag')
+		set grepprg=ag\ --nogroup\ --nocolor
+		let g:ctrlp_user_command='ag %s -l --nocolor -g ""'
+	endif
 		nnor <leader>gw :CtrlP<c-\>w<cr>
 
 	" }}}
@@ -269,23 +269,23 @@ filetype off
 	"NeoBundle 'terryma/vim-expand-region'
 	"NeoBundle 'terryma/vim-multiple-cursors'
 
-    NeoBundle 'bkad/CamelCaseMotion' " {{{
-        " overwrite default behaviour
-        map <silent> w <Plug>CamelCaseMotion_w
-        map <silent> b <Plug>CamelCaseMotion_b
-        map <silent> e <Plug>CamelCaseMotion_e
-        sunmap w
-        sunmap b
-        sunmap e
+	NeoBundle 'bkad/CamelCaseMotion' " {{{
+	" overwrite default behaviour
+	map <silent> w <Plug>CamelCaseMotion_w
+	map <silent> b <Plug>CamelCaseMotion_b
+	map <silent> e <Plug>CamelCaseMotion_e
+	sunmap w
+	sunmap b
+	sunmap e
 
-        " overwrite behaviour for text objects
-        omap <silent> iw <Plug>CamelCaseMotion_iw
-        xmap <silent> iw <Plug>CamelCaseMotion_iw
-        omap <silent> ib <Plug>CamelCaseMotion_ib
-        xmap <silent> ib <Plug>CamelCaseMotion_ib
-        omap <silent> ie <Plug>CamelCaseMotion_ie
-        xmap <silent> ie <Plug>CamelCaseMotion_ie
-    " }}}
+	" overwrite behaviour for text objects
+	omap <silent> iw <Plug>CamelCaseMotion_iw
+	xmap <silent> iw <Plug>CamelCaseMotion_iw
+	omap <silent> ib <Plug>CamelCaseMotion_ib
+	xmap <silent> ib <Plug>CamelCaseMotion_ib
+	omap <silent> ie <Plug>CamelCaseMotion_ie
+	xmap <silent> ie <Plug>CamelCaseMotion_ie
+	" }}}
 
 	NeoBundle 'guns/vim-sexp'
 	NeoBundleLazy 'majutsushi/tagbar', {'autoload':{'commands':'TagbarToggle'}} " {{{
@@ -293,9 +293,9 @@ filetype off
 		nnor <leader>t :TagbarToggle <cr>
 	" }}}
 
-    NeoBundle 'airblade/vim-gitgutter'
-    NeoBundle 'mhinz/vim-tmuxify'
-    NeoBundle 'gregsexton/gitv'
+	NeoBundle 'airblade/vim-gitgutter'
+	NeoBundle 'mhinz/vim-tmuxify'
+	NeoBundle 'gregsexton/gitv'
 	" Language-specific bundles {{{
 		" python
 		NeoBundleLazy 'ivanov/vim-ipython', {'autoload':{'filetypes':['python']}}
@@ -341,12 +341,12 @@ filetype off
 " Language-specific settings {{{
 	" xml
 	au FileType xml let &l:equalprg='xmllint --format --recover -'
-    
+	
 " }}}
 
 filetype plugin indent on
 syntax on
 if has('vim_starting')
-    exe "colorscheme ". b:colorscheme
+	exe "colorscheme ". b:colorscheme
 endif
 NeoBundleCheck
