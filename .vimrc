@@ -259,6 +259,7 @@ filetype off
 		let g:detectindent_preferred_expandtab=0
 		au BufReadPost :DetectIndent <cr>
 	" }}}
+    NeoBundle 'junegunn/vim-easy-align'
 	NeoBundle 'Lokaltog/vim-easymotion'
 	" Disabled legacy bundles {{{
 		" YankRing
