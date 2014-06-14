@@ -175,32 +175,31 @@ filetype off
 			\	},
 			\}
 		" }}}
-		NeoBundle 'Shougo/neosnippet' " snippets {{{
-			NeoBundle 'honza/vim-snippets'
-			NeoBundle 'Shougo/neosnippet-snippets'
+		NeoBundle 'Shougo/neosnippet', {'depends':['honza/vim-snippets', 'Shougo/neosnippet-snippets']} " snippets {{{
+			" NeoBundle 'honza/vim-snippets'
+			" NeoBundle 'Shougo/neosnippet-snippets'
 			let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets,~/.vim/snippets'
 			let g:neosnippet#enable_snipmate_compatibility=1
-
 		" }}}
-	NeoBundle 'chrisbra/NrrwRgn' " narrow region {{{
-		let g:nrrw_rgn_nohl=1
-	" }}}
-	" shell-style tab completions {{{
-		imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : (pumvisible() ? "\<C-n>" : "\<TAB>")
-		smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-		imap <expr><S-TAB> pumvisible() ? "\<C-p>" : ""
-		smap <expr><S-TAB> pumvisible() ? "\<C-p>" : ""
-	" }}}
-	NeoBundle 'Shougo/unite.vim' " unite plugin {{{
-		let g:unite_enable_start_insert=1
-		let g:unite_winwidth=10
-		let g:unite_split_rule='botright'
-	" }}}
-	NeoBundle 'Shougo/vimproc.vim', {'build':{'mac': 'make -f make_mac.mak', 'unix' : 'make -f make_unix.mak'}}
-	NeoBundle 'Shougo/vimshell.vim'
+		" shell-style tab completions {{{
+			imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : (pumvisible() ? "\<C-n>" : "\<TAB>")
+			smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+			imap <expr><S-TAB> pumvisible() ? "\<C-p>" : ""
+			smap <expr><S-TAB> pumvisible() ? "\<C-p>" : ""
+		" }}}
+		NeoBundle 'Shougo/unite.vim' " unite plugin {{{
+			let g:unite_enable_start_insert=1
+			let g:unite_winwidth=10
+			let g:unite_split_rule='botright'
+		" }}}
+		NeoBundle 'Shougo/vimproc.vim', {'build':{'mac': 'make -f make_mac.mak', 'unix' : 'make -f make_unix.mak'}}
+		NeoBundle 'Shougo/vimshell.vim'
 	" }}}
 	NeoBundle 'sjl/gundo.vim' " undotree {{{
 		map <leader>u :GundoToggle<cr>
+	" }}}
+	NeoBundle 'chrisbra/NrrwRgn' " narrow region {{{
+		let g:nrrw_rgn_nohl=1
 	" }}}
 
 	" tpope Bundles {{{
@@ -211,28 +210,26 @@ filetype off
 		NeoBundle 'tpope/vim-unimpaired'
 	" }}}
 	" tommcdo bundles {{{
-	NeoBundle 'tommcdo/vim-lion'
-	NeoBundle 'tommcdo/vim-fugitive-blame-ext', {'depends' : 'tpope/vim-fugitive'}
-	NeoBundle 'tommcdo/vim-ninja-feet'
-	NeoBundle 'tommcdo/vim-text-objects'
+		NeoBundle 'tommcdo/vim-lion'
+		NeoBundle 'tommcdo/vim-fugitive-blame-ext', {'depends' : 'tpope/vim-fugitive'}
+		NeoBundle 'tommcdo/vim-ninja-feet'
+		NeoBundle 'tommcdo/vim-text-objects'
 	" }}}
 	NeoBundle 'kien/ctrlp.vim' " ctrlp {{{
 		let g:ctrlp_regex_search=1
-	let g:ctrlp_cmd='CtrlPLastMode --dir'
-	let g:ctrlp_use_caching=1
-	let g:ctrlp_cache_dir="~/.vim/cache/ctrlp"
-	let g:ctrlp_extensions=['quickfix','dir','funky','undo','changes','line']
-	if executable('ag')
-		set grepprg=ag\ --nogroup\ --nocolor
-		let g:ctrlp_user_command='ag %s -l --nocolor -g ""'
-	endif
+		let g:ctrlp_cmd='CtrlPLastMode --dir'
+		let g:ctrlp_use_caching=1
+		let g:ctrlp_cache_dir="~/.vim/cache/ctrlp"
+		let g:ctrlp_extensions=['quickfix','dir','funky','undo','changes','line']
+		if executable('ag')
+			set grepprg=ag\ --nogroup\ --nocolor
+			let g:ctrlp_user_command='ag %s -l --nocolor -g ""'
+		endif
 		nnor <leader>gw :CtrlP<c-\>w<cr>
-
 	" }}}
 	NeoBundleLazy 'tacahiroy/ctrlp-funky.git', {'depends': ['kien/ctrlp.vim']} " {{{
 		let g:ctrlp_extensions = ['funky']
 	" }}}
-	
 	" Scroolose bundles {{{
 		NeoBundle 'scrooloose/nerdtree'
 		NeoBundle 'scrooloose/syntastic' " Syntastic {{{
@@ -257,7 +254,7 @@ filetype off
 	NeoBundle 'ciaranm/detectindent' " {{{
 		let g:detectindent_preferred_indent=4
 		let g:detectindent_preferred_expandtab=0
-		au BufReadPost :DetectIndent <cr>
+		au BufReadPost * :DetectIndent
 	" }}}
     NeoBundle 'junegunn/vim-easy-align'
 	NeoBundle 'Lokaltog/vim-easymotion'
@@ -311,8 +308,8 @@ filetype off
 		" csv
 		NeoBundleLazy 'chrisbra/csv.vim', {'autoload':{'filetypes':['csv']}}
 
-        " swift
-        NeoBundleLazy 'toyamarinyon/vim-swift', {'autoload':{'filetypes':['swift']}}
+		" swift
+		NeoBundleLazy 'toyamarinyon/vim-swift', {'autoload':{'filetypes':['swift']}}
 	" }}}
 " }}}
 " Colors {{{
