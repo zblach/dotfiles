@@ -205,7 +205,7 @@ filetype off
 			let g:unite_winwidth=10
 			let g:unite_split_rule='botright'
 		" }}}
-		NeoBundle 'Shougo/vimproc.vim', {'build':{'mac': 'make -f make_mac.mak', 'unix' : 'make -f make_unix.mak'}}
+		NeoBundleLazy 'Shougo/vimproc.vim', {'build':{'mac': 'make -f make_mac.mak', 'unix' : 'make -f make_unix.mak'}}
 		NeoBundle 'Shougo/vimshell.vim'
 	" }}}
 	NeoBundle 'sjl/gundo.vim' " undotree {{{
