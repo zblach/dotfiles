@@ -29,7 +29,8 @@
     ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]\\ %Cgreen(%cd)%Creset" --decorate --date=local
     ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]\\ %Cgreen(%cd)%Creset" --decorate --numstat --date=local
     unadd = reset HEAD --
-    last = log -1 HEAD
+	last = log -1 HEAD
+	diffa = whatchanged --diff-filter=A
 [color "status"]
 	branch = magenta
 	added = "green "

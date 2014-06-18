@@ -107,13 +107,13 @@ filetype off
 
 " Bundles {{{
 	" Neobundle Configuration {{{
-        " Bootstrapping {{{
-        if empty(glob("~/.vim/bundle/neobundle.vim"))
-            echo "NeoBundle not found, bootstrapping."
-            sil !mkdir -p ~/.vim/bundle/
-            sil !git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
-        endif
-        " }}}
+		" Bootstrapping {{{
+		if empty(glob("~/.vim/bundle/neobundle.vim"))
+			echo "NeoBundle not found, bootstrapping."
+			sil !mkdir -p ~/.vim/bundle/
+			sil !git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+		endif
+		" }}}
 		set runtimepath+=~/.vim/bundle/neobundle.vim/
 		call neobundle#rc(expand('~/.vim/bundle/'))
 
@@ -148,19 +148,19 @@ filetype off
 		let g:airline#extensions#tabline#left_alt_sep = '⮁'
 		let g:airline#extensions#tabline#right_sep = '⮂'
 		let g:airline#extensions#tabline#right_alt_sep = '⮃'
-        let g:airline_mode_map = {
-            \ '__' : '---',
-            \ 'n'  : 'NOR',
-            \ 'i'  : 'INS',
-            \ 'R'  : 'REP',
-            \ 'c'  : 'CMD',
-            \ 'v'  : 'VIS',
-            \ 'V'  : 'VSL',
-            \ '' : 'VBK',
-            \ 's'  : 'S',
-            \ 'S'  : 'S',
-            \ '' : 'S',
-            \ }
+		let g:airline_mode_map = {
+			\ '__' : '---',
+			\ 'n'  : 'NOR',
+			\ 'i'  : 'INS',
+			\ 'R'  : 'REP',
+			\ 'c'  : 'CMD',
+			\ 'v'  : 'VIS',
+			\ 'V'  : 'VSL',
+			\ '' : 'VBK',
+			\ 's'  : 'S',
+			\ 'S'  : 'S',
+			\ '' : 'S',
+			\ }
 	" }}}
 
 	" Shougo Bundles {{{
@@ -269,7 +269,7 @@ filetype off
 		let g:detectindent_preferred_expandtab=0
 		au BufReadPost * :DetectIndent
 	" }}}
-    NeoBundle 'junegunn/vim-easy-align'
+	NeoBundle 'junegunn/vim-easy-align'
 	NeoBundle 'Lokaltog/vim-easymotion'
 	" Disabled legacy bundles {{{
 		" YankRing
@@ -280,26 +280,26 @@ filetype off
 	"NeoBundle 'terryma/vim-expand-region'
 	"NeoBundle 'terryma/vim-multiple-cursors'
 
-    NeoBundle 'szw/vim-ctrlspace' " {{{
-        let g:airline_exclude_preview = 1
-    " }}}
+	NeoBundle 'szw/vim-ctrlspace' " {{{
+		let g:airline_exclude_preview = 1
+	" }}}
 
 	NeoBundle 'bkad/CamelCaseMotion' " {{{
-        " overwrite default behaviour
-        map <silent> w <Plug>CamelCaseMotion_w
-        map <silent> b <Plug>CamelCaseMotion_b
-        map <silent> e <Plug>CamelCaseMotion_e
-        sunmap w
-        sunmap b
-        sunmap e
+		" overwrite default behaviour
+		map <silent> w <Plug>CamelCaseMotion_w
+		map <silent> b <Plug>CamelCaseMotion_b
+		map <silent> e <Plug>CamelCaseMotion_e
+		sunmap w
+		sunmap b
+		sunmap e
 
-        " overwrite behaviour for text objects
-        omap <silent> iw <Plug>CamelCaseMotion_iw
-        xmap <silent> iw <Plug>CamelCaseMotion_iw
-        omap <silent> ib <Plug>CamelCaseMotion_ib
-        xmap <silent> ib <Plug>CamelCaseMotion_ib
-        omap <silent> ie <Plug>CamelCaseMotion_ie
-        xmap <silent> ie <Plug>CamelCaseMotion_ie
+		" overwrite behaviour for text objects
+		omap <silent> iw <Plug>CamelCaseMotion_iw
+		xmap <silent> iw <Plug>CamelCaseMotion_iw
+		omap <silent> ib <Plug>CamelCaseMotion_ib
+		xmap <silent> ib <Plug>CamelCaseMotion_ib
+		omap <silent> ie <Plug>CamelCaseMotion_ie
+		xmap <silent> ie <Plug>CamelCaseMotion_ie
 	" }}}
 
 	NeoBundle 'guns/vim-sexp'
