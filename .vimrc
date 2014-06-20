@@ -1,5 +1,5 @@
 " .vimrc - zblach 2014
-" vim: set foldmarker={{{,}}} foldmethod=marker tabstop=4 nospell softtabstop
+" vim: set fmr={{{,}}} fdm=marker ts=4 nospell tw=0
 set nocompatible
 filetype off
 
@@ -11,6 +11,8 @@ filetype off
 	set laststatus=2
 	set cursorline
 	set shiftround
+
+	set colorcolumn=80,+1
 
 	" search and navigation
 	set incsearch
