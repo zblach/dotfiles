@@ -159,9 +159,9 @@ filetype off
 			\ 'v'  : 'VIS',
 			\ 'V'  : 'VSL',
 			\ '' : 'VBK',
-			\ 's'  : 'S',
-			\ 'S'  : 'S',
-			\ '' : 'S',
+			\ 's'  : 'SCH',
+			\ 'S'  : 'SLN',
+			\ '' : 'SBK',
 			\ }
 	" }}}
 
@@ -208,7 +208,7 @@ filetype off
 			let g:unite_split_rule='botright'
 		" }}}
 		NeoBundleLazy 'Shougo/vimproc.vim', {'build':{'mac': 'make -f make_mac.mak', 'unix' : 'make -f make_unix.mak'}}
-		NeoBundle 'Shougo/vimshell.vim'
+		" NeoBundle 'Shougo/vimshell.vim'
 	" }}}
 	NeoBundle 'sjl/gundo.vim' " undotree {{{
 		map <leader>u :GundoToggle<cr>
@@ -271,7 +271,16 @@ filetype off
 		let g:detectindent_preferred_expandtab=0
 		au BufReadPost * :DetectIndent
 	" }}}
-	NeoBundle 'junegunn/vim-easy-align'
+	" NeoBundle 'junegunn/vim-easy-align'
+	NeoBundle 'benmills/vimux' " {{{
+		let g:VimuxPromptString=":t! "
+
+		nnor <leader>!! :VimuxRunLastCommand
+		nnor <leader>!<space> :VimuxPromptCommand<cr>
+		nnor <leader>!q :VimuxCloseRunner<cr>
+		nnor <leader>!x :VimuxInterruptRunner<cr>
+		nnor <leader>!z :VimuxZoomRunner<cr>
+	" }}}
 	NeoBundle 'Lokaltog/vim-easymotion'
 	" Disabled legacy bundles {{{
 		" YankRing
