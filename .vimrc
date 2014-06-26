@@ -289,7 +289,7 @@ filetype off
 		" vim-snipmate
 	" }}}
 	"NeoBundle 'terryma/vim-expand-region'
-	"NeoBundle 'terryma/vim-multiple-cursors'
+	NeoBundle 'terryma/vim-multiple-cursors'
 
 	NeoBundle 'szw/vim-ctrlspace' " {{{
 		let g:airline_exclude_preview = 1
