@@ -8,9 +8,6 @@
     excludesfile = /home/blacherz/.gitignore_global
 [push]
 	default = simple
-[alias]
-	dag = log --graph --format='format:%C(yellow)%h%C(reset) %C(blue)\"%an\" <%ae>%C(reset) %C(magenta)%ar%C(reset)%C(auto)%d%C(reset)%n%s' --date-order
-	d = difftool
 [amazon]
 	append-cr-url = true
 [diff]
@@ -29,7 +26,8 @@
     ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]\\ %Cgreen(%cd)%Creset" --decorate --date=local
     ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]\\ %Cgreen(%cd)%Creset" --decorate --numstat --date=local
     unadd = reset HEAD --
-    last = log -1 HEAD
+	last = log -1 HEAD
+	diffa = whatchanged --diff-filter=A
 [color "status"]
 	branch = magenta
 	added = "green "
