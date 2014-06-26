@@ -338,6 +338,9 @@ filetype off
 
 		" swift
 		NeoBundleLazy 'toyamarinyon/vim-swift', {'autoload':{'filetypes':['swift']}}
+
+		" markdown
+		NeoBundleLazy 'nelstrom/vim-markdown-folding', {'autoload':{'filetypes':['markdown','md']}}
 	" }}}
 " }}}
 " Colors {{{
