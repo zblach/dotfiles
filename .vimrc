@@ -1,5 +1,5 @@
 " .vimrc - zblach 2014
-" vim: set fmr={{{,}}} fdm=marker ts=4 nospell tw=0
+" vim: set fmr={{{,}}} fdm=marker ts=4 nospell tw=0 sbr=\\
 set nocompatible
 filetype off
 
@@ -281,7 +281,8 @@ filetype off
 		nnor <leader>!x :VimuxInterruptRunner<cr>
 		nnor <leader>!z :VimuxZoomRunner<cr>
 	" }}}
-	NeoBundle 'Lokaltog/vim-easymotion'
+    NeoBundle 'nathanaelkane/vim-indent-guides'	
+    NeoBundle 'Lokaltog/vim-easymotion'
 	" Disabled legacy bundles {{{
 		" YankRing
 		" grep
@@ -337,10 +338,13 @@ filetype off
 		NeoBundleLazy 'chrisbra/csv.vim', {'autoload':{'filetypes':['csv']}}
 
 		" swift
-		NeoBundleLazy 'toyamarinyon/vim-swift', {'autoload':{'filetypes':['swift']}}
+		NeoBundleLazy 'toyamarinyon/vim-swift', {'autoload':{'filetypes':['swift','playground']}}
 
 		" markdown
 		NeoBundleLazy 'nelstrom/vim-markdown-folding', {'autoload':{'filetypes':['markdown','md']}}
+
+        " rust
+        NeoBundleLazy 'wting/rust.vim', {'autoload':{'filetypes':['rust', 'rs']}}
 	" }}}
 " }}}
 " Colors {{{
@@ -369,13 +373,15 @@ filetype off
 " }}}
 " Language-specific settings {{{
 	" xml
-	au FileType xml let &l:equalprg='xmllint --format --recover -'
-	
+	au FileType xml if executable('xmllint') let &l:equalprg='xmllint --format --recover -' endif
+
+    " rust
+    au FileType rust if executable('rustc') setlocal makeprg='rustc "%"' endif
 " }}}
 
 filetype plugin indent on
 syntax on
-if has('vim_starting')
+"if has('vim_starting')
 	exe "colorscheme ". b:colorscheme
-endif
+"endif
 NeoBundleCheck
