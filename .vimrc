@@ -162,7 +162,7 @@ filetype off
 			\ 's'  : 'SCH',
 			\ 'S'  : 'SLN',
 			\ '' : 'SBK',
-			\ }
+		\ }
 	" }}}
 
 	" Shougo Bundles {{{
@@ -281,8 +281,8 @@ filetype off
 		nnor <leader>!x :VimuxInterruptRunner<cr>
 		nnor <leader>!z :VimuxZoomRunner<cr>
 	" }}}
-    NeoBundle 'nathanaelkane/vim-indent-guides'	
-    NeoBundle 'Lokaltog/vim-easymotion'
+	NeoBundle 'nathanaelkane/vim-indent-guides'
+	NeoBundle 'Lokaltog/vim-easymotion'
 	" Disabled legacy bundles {{{
 		" YankRing
 		" grep
@@ -343,8 +343,8 @@ filetype off
 		" markdown
 		NeoBundleLazy 'nelstrom/vim-markdown-folding', {'autoload':{'filetypes':['markdown','md']}}
 
-        " rust
-        NeoBundleLazy 'wting/rust.vim', {'autoload':{'filetypes':['rust', 'rs']}}
+	" rust
+	NeoBundleLazy 'wting/rust.vim', {'autoload':{'filetypes':['rust', 'rs']}}
 	" }}}
 " }}}
 " Colors {{{
@@ -375,13 +375,11 @@ filetype off
 	" xml
 	au FileType xml if executable('xmllint') let &l:equalprg='xmllint --format --recover -' endif
 
-    " rust
-    au FileType rust if executable('rustc') setlocal makeprg='rustc "%"' endif
+	" rust
+	au FileType rust if executable('rustc') setlocal makeprg='rustc "%"' endif
 " }}}
 
 filetype plugin indent on
 syntax on
-"if has('vim_starting')
-	exe "colorscheme ". b:colorscheme
-"endif
+exe "colorscheme ". b:colorscheme
 NeoBundleCheck
