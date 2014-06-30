@@ -373,10 +373,14 @@ filetype off
 " }}}
 " Language-specific settings {{{
 	" xml
-	au FileType xml if executable('xmllint') let &l:equalprg='xmllint --format --recover -' endif
+	au FileType xml if executable('xmllint') 
+						\let &l:equalprg='xmllint --format --recover -'
+					\endif
 
 	" rust
-	au FileType rust if executable('rustc') setlocal makeprg='rustc "%"' endif
+	au FileType rust if executable('rustc')
+						\setlocal makeprg='rustc "%"'
+					\endif
 " }}}
 
 filetype plugin indent on
