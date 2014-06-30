@@ -343,8 +343,8 @@ filetype off
 		" markdown
 		NeoBundleLazy 'nelstrom/vim-markdown-folding', {'autoload':{'filetypes':['markdown','md']}}
 
-	" rust
-	NeoBundleLazy 'wting/rust.vim', {'autoload':{'filetypes':['rust', 'rs']}}
+		" rust
+		NeoBundleLazy 'wting/rust.vim', {'autoload':{'filetypes':['rust', 'rs']}}
 	" }}}
 " }}}
 " Colors {{{
@@ -373,14 +373,10 @@ filetype off
 " }}}
 " Language-specific settings {{{
 	" xml
-	au FileType xml if executable('xmllint') 
-						\let &l:equalprg='xmllint --format --recover -'
-					\endif
+	au FileType xml let &l:equalprg='xmllint --format --recover -'
 
 	" rust
-	au FileType rust if executable('rustc')
-						\setlocal makeprg='rustc "%"'
-					\endif
+	au FileType rust setlocal makeprg='rustc "%"'
 " }}}
 
 filetype plugin indent on
