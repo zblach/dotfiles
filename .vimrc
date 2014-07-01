@@ -271,7 +271,10 @@ filetype off
 		let g:detectindent_preferred_expandtab=0
 		au BufReadPost * :DetectIndent
 	" }}}
-	" NeoBundle 'junegunn/vim-easy-align'
+	NeoBundle 'junegunn/vim-easy-align' " {{{
+		vmap <Enter> <Plug>(EasyAlign)
+		nmap <Leader>a <Plug>(EasyAlign)
+	" }}}
 	NeoBundle 'benmills/vimux' " {{{
 		let g:VimuxPromptString=":t! "
 
@@ -348,6 +351,8 @@ filetype off
 	" }}}
 " }}}
 " Colors {{{
+	NeoBundleLazy 'chrisbra/Colorizer', {'autoload':{'commands':'ColorToggle'}}
+
 	NeoBundle 'chriskempson/base16-vim'
 	NeoBundle 'sjl/badwolf'
 	NeoBundle 'w0ng/vim-hybrid'
