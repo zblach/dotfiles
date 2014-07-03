@@ -1,5 +1,5 @@
 " .vimrc - zblach 2014
-" vim: set fmr={{{,}}} fdm=marker ts=4 nospell tw=0 sbr=\\
+" vim: set fmr={{{,}}} fdm=marker ts=4 nospell tw=0 sbr=\\ noet
 set nocompatible
 filetype off
 
@@ -63,7 +63,7 @@ filetype off
 	nnor <leader>v :set paste! paste?<cr>
 	nnor <leader>w :set wrap! wrap?<cr>
 	
-	nnor <leader><space> :silent nohl<cr>
+	nnor <leader># :silent nohl<cr>
 	nnor <leader>? :map<cr>
 	
 	" search and navigation
@@ -106,7 +106,6 @@ filetype off
 	au BufWinLeave * if expand("%") != "" | mkview | endif
 	au BufWinEnter * if expand("%") != "" | silent loadview | endif
 " }}}
-
 " Bundles {{{
 	" Neobundle Configuration {{{
 		" Bootstrapping {{{
@@ -352,7 +351,17 @@ filetype off
 " }}}
 " Colors {{{
 	NeoBundleLazy 'chrisbra/Colorizer', {'autoload':{'commands':'ColorToggle'}}
-	NeoBundleLazy 'junegunn/goyo.vim', {'autoload':{'commands':'Goyo'}}
+	NeoBundleLazy 'junegunn/goyo.vim', {'autoload':{'commands':'Goyo'}} " {{{
+		nnor <leader>G :Goyo<cr>
+		function! GoyoBefore()
+			Limelight
+		endfunction
+
+		function! GoyoAfter()
+			Limelight!
+		endfunction
+		let g:goyo_callbacks = [function('GoyoBefore'), function('GoyoAfter')]
+	" }}}
 	NeoBundleLazy 'junegunn/limelight.vim', {'autoload':{'commands':'Limelight'}}
 	
 	NeoBundle 'chriskempson/base16-vim'
