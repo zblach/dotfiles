@@ -351,18 +351,18 @@ filetype off
 " }}}
 " Colors {{{
 	NeoBundleLazy 'chrisbra/Colorizer', {'autoload':{'commands':'ColorToggle'}}
+	NeoBundleLazy 'junegunn/limelight.vim', {'autoload':{'commands':'Limelight'}}
 	NeoBundleLazy 'junegunn/goyo.vim', {'autoload':{'commands':'Goyo'}} " {{{
 		nnor <leader>G :Goyo<cr>
 		function! GoyoBefore()
 			Limelight
 		endfunction
-
+		
 		function! GoyoAfter()
 			Limelight!
 		endfunction
 		let g:goyo_callbacks = [function('GoyoBefore'), function('GoyoAfter')]
 	" }}}
-	NeoBundleLazy 'junegunn/limelight.vim', {'autoload':{'commands':'Limelight'}}
 	
 	NeoBundle 'chriskempson/base16-vim'
 	NeoBundle 'sjl/badwolf'
