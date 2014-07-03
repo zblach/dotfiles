@@ -1,5 +1,5 @@
 " .vimrc - zblach 2014
-" vim: set fmr={{{,}}} fdm=marker ts=4 nospell tw=0 sbr=\\ noet
+" vim: set fmr={{{,}}} fdm='marker' ts=4 nospell tw=0 sbr=\\ noet
 set nocompatible
 filetype off
 
@@ -205,6 +205,15 @@ filetype off
 			let g:unite_enable_start_insert=1
 			let g:unite_winwidth=10
 			let g:unite_split_rule='botright'
+			
+			nnor <silent> <leader>/ :<C-u>Unite grep:. -buffer-name=results<cr>
+			if executable('ag')
+				let g:unite_source_grep_command='ag'
+				let g:unite_source_grep_default_opts = '--nogroup --nocolor'
+				let g:unite_source_grep_recursive_opt = ''
+				let g:unite_source_grep_encoding = 'utf-8'
+			endif
+			
 		" }}}
 		NeoBundleLazy 'Shougo/vimproc.vim', {'build':{'mac': 'make -f make_mac.mak', 'unix' : 'make -f make_unix.mak'}}
 		" NeoBundle 'Shougo/vimshell.vim'
@@ -395,7 +404,7 @@ filetype off
 	" rust
 	au FileType rust setlocal makeprg='rustc "%"'
 " }}}
-	
+
 filetype plugin indent on
 syntax on
 exe "colorscheme ". b:colorscheme
