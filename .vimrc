@@ -7,19 +7,19 @@ filetype off
 	" auto-scan files for vim settings
 	set modeline 
 	set modelines=10
-
+	
 	set laststatus=2
 	set cursorline
 	set shiftround
-
+	
 	set colorcolumn=80,+1
-
+	
 	" search and navigation
 	set incsearch
 	set ignorecase
 	set smartcase
 	set hls
-
+	
 	" terminal settings
 	set encoding=utf-8
 	set hidden
@@ -28,7 +28,7 @@ filetype off
 	set shell=/bin/zsh
 	set title
 	set visualbell
-
+	
 	" misc 
 	set backspace=indent,eol,start
 	set scrolloff=7
@@ -41,7 +41,7 @@ filetype off
 	set wildmode=full
 	set wildignorecase
 	set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.idea/*,*/.DS_Store
-
+	
 	set autoindent
 	set expandtab
 	set smarttab
@@ -54,7 +54,7 @@ filetype off
 " Key Remapping {{{
 	" Rebind leader key
 	let mapleader=','
-
+	
 	" common bindings
 	" toggles 
 	nnor <leader>i :set list! list?<cr>
@@ -62,26 +62,26 @@ filetype off
 	nnor <leader>N :set relativenumber! relativenumber?<cr>
 	nnor <leader>v :set paste! paste?<cr>
 	nnor <leader>w :set wrap! wrap?<cr>
-
+	
 	nnor <leader><space> :silent nohl<cr>
 	nnor <leader>? :map<cr>
-
+	
 	" search and navigation
 	nnor j gj
 	nnor k gk
-
+	
 	nnor n nzzzv
 	nnor N Nzzzv
 	nnor g; g;zz
 	nnor g, g,zz
-
+	
 	" visual block reselect
 	vnor < <gv
 	vnor > >gv
-
+	
 	" let ; function as :
 	nnor ; :
-
+	
 	" nuke 'ex' mode
 	nnor Q <nop>
 " }}}
@@ -92,16 +92,16 @@ filetype off
 " }}}
 " Backups, History, and Views {{{
 	sil !mkdir -p ~/.vim_temp/{views,backup,undo,cache}
-
+	
 	set backupdir=~/.vim_temp/backup/
 	set backup
-
+	
 	set undodir=~/.vim_temp/undo/
 	set undofile
 	set undolevels=10000
-
+	
 	set viewdir=~/.vim_temp/views/
-
+	
 	" bind view creation to focus loss/gain
 	au BufWinLeave * if expand("%") != "" | mkview | endif
 	au BufWinEnter * if expand("%") != "" | silent loadview | endif
@@ -118,20 +118,20 @@ filetype off
 		" }}}
 		set runtimepath+=~/.vim/bundle/neobundle.vim/
 		call neobundle#rc(expand('~/.vim/bundle/'))
-
+		
 		" NeoBundle is my package manager of choice
 		NeoBundleFetch 'Shougo/neobundle.vim'
 	" }}}
 	NeoBundle 'bling/vim-airline' " powerline replacement {{{
 		set noshowmode
-
+		
 		let g:airline_powerline_fonts = 1
-
+		
 		let g:airline_left_sep = '⮀'
 		let g:airline_left_alt_sep = '⮁'
 		let g:airline_right_sep = '⮂'
 		let g:airline_right_alt_sep = '⮃'
-
+		
 		let g:airline_symbols = {} 
 		let g:airline_symbols.space = ' '
 		let g:airline_symbols.paste = 'paste'
@@ -139,13 +139,13 @@ filetype off
 		let g:airline_symbols.readonly = '⭤'
 		let g:airline_symbols.linenr = '⭡'
 		let g:airline_symbols.whitespace = ' '
-
+		
 		let g:airline#extensions#whitespace#enabled = 0
-
+		
 		let g:airline#extensions#tabline#enabled = 1
-
+		
 		let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
-
+		
 		let g:airline#extensions#tabline#left_sep = '⮀'
 		let g:airline#extensions#tabline#left_alt_sep = '⮁'
 		let g:airline#extensions#tabline#right_sep = '⮂'
@@ -164,7 +164,7 @@ filetype off
 			\ '' : 'SBK',
 		\ }
 	" }}}
-
+	
 	" Shougo Bundles {{{
 		NeoBundle 'Shougo/neocomplete' " tab-completion {{{
 			" Use neocomplete.
@@ -216,7 +216,7 @@ filetype off
 	NeoBundle 'chrisbra/NrrwRgn' " narrow region {{{
 		let g:nrrw_rgn_nohl=1
 	" }}}
-
+	
 	" tpope Bundles {{{
 		NeoBundle 'tpope/vim-fugitive'
 		NeoBundle 'tpope/vim-speeddating'
@@ -250,17 +250,17 @@ filetype off
 		NeoBundle 'scrooloose/syntastic' " Syntastic {{{
 			" Enable jsl as a javascript checker for syntastic
 			let g:syntastic_javascript_checkers=['jsl']
-
+			
 			" symbols
 			let g:syntastic_check_on_open=1
 			let g:syntastic_warning_symbol='>'
 			let g:syntastic_error_symbol='x'
 			let g:syntastic_style_error_symbol='*'
 			let g:syntastic_style_warning_symbol='+'
-
+			
 			let g:syntastic_enable_highlighting=1
 			let g:syntastic_stl_format = '⮂[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
-
+			
 			" c++ options
 			let g:syntastic_cpp_compiler = 'clang++'
 			let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
@@ -277,7 +277,7 @@ filetype off
 	" }}}
 	NeoBundle 'benmills/vimux' " {{{
 		let g:VimuxPromptString=":t! "
-
+		
 		nnor <leader>!! :VimuxRunLastCommand
 		nnor <leader>!<space> :VimuxPromptCommand<cr>
 		nnor <leader>!q :VimuxCloseRunner<cr>
@@ -294,11 +294,11 @@ filetype off
 	" }}}
 	"NeoBundle 'terryma/vim-expand-region'
 	NeoBundle 'terryma/vim-multiple-cursors'
-
+	
 	NeoBundle 'szw/vim-ctrlspace' " {{{
 		let g:airline_exclude_preview = 1
 	" }}}
-
+	
 	NeoBundle 'bkad/CamelCaseMotion' " {{{
 		" overwrite default behaviour
 		map <silent> w <Plug>CamelCaseMotion_w
@@ -307,7 +307,7 @@ filetype off
 		sunmap w
 		sunmap b
 		sunmap e
-
+		
 		" overwrite behaviour for text objects
 		omap <silent> iw <Plug>CamelCaseMotion_iw
 		xmap <silent> iw <Plug>CamelCaseMotion_iw
@@ -316,48 +316,51 @@ filetype off
 		omap <silent> ie <Plug>CamelCaseMotion_ie
 		xmap <silent> ie <Plug>CamelCaseMotion_ie
 	" }}}
-
+	
 	NeoBundle 'guns/vim-sexp'
 	NeoBundleLazy 'majutsushi/tagbar', {'autoload':{'commands':'TagbarToggle'}} " {{{
 		let g:tagbar_left=1
 		nnor <leader>t :TagbarToggle <cr>
 	" }}}
-
+	
 	NeoBundle 'airblade/vim-gitgutter'
 	NeoBundle 'mhinz/vim-tmuxify'
 	NeoBundle 'gregsexton/gitv'
 	" Language-specific bundles {{{
 		" python
 		NeoBundleLazy 'ivanov/vim-ipython', {'autoload':{'filetypes':['python']}}
-
+		
 		" scala
 		NeoBundleLazy 'derekwyatt/vim-scala', {'autoload':{'filetypes':['scala']}}
 		NeoBundleLazy 'megaannum/vimside', {'autoload':{'filetypes':['scala']}, 'depends': ['Shougo/vimshell.vim', 'Shougo/vimproc']}
-
+		
 		" haskell
 		NeoBundleLazy 'ujihisa/neco-ghc', {'autoload':{'filetypes':['ghc']}}
-
+		
 		" csv
 		NeoBundleLazy 'chrisbra/csv.vim', {'autoload':{'filetypes':['csv']}}
-
+		
 		" swift
 		NeoBundleLazy 'toyamarinyon/vim-swift', {'autoload':{'filetypes':['swift','playground']}}
-
+		
 		" markdown
 		NeoBundleLazy 'nelstrom/vim-markdown-folding', {'autoload':{'filetypes':['markdown','md']}}
-
+		
 		" rust
 		NeoBundleLazy 'wting/rust.vim', {'autoload':{'filetypes':['rust', 'rs']}}
 	" }}}
 " }}}
 " Colors {{{
 	NeoBundleLazy 'chrisbra/Colorizer', {'autoload':{'commands':'ColorToggle'}}
-
+	NeoBundleLazy 'junegunn/goyo.vim', {'autoload':{'commands':'Goyo'}}
+	NeoBundleLazy 'junegunn/limelight.vim', {'autoload':{'commands':'Limelight'}}
+	
 	NeoBundle 'chriskempson/base16-vim'
 	NeoBundle 'sjl/badwolf'
 	NeoBundle 'w0ng/vim-hybrid'
 	NeoBundle 'trapd00r/neverland-vim-theme'
-
+	NeoBundle 'junegunn/seoul256.vim'
+	
 	set background=dark
 	let b:colorscheme = 'badwolf' 
 " }}}
@@ -372,18 +375,18 @@ filetype off
 			source ~/.gvimrc
 		endif
 	" }}}
-
+	
 	" super sudo write
 	cno w!! w !sudo tee % >/dev/null
 " }}}
 " Language-specific settings {{{
 	" xml
 	au FileType xml let &l:equalprg='xmllint --format --recover -'
-
+	
 	" rust
 	au FileType rust setlocal makeprg='rustc "%"'
 " }}}
-
+	
 filetype plugin indent on
 syntax on
 exe "colorscheme ". b:colorscheme
