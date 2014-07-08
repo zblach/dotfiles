@@ -93,6 +93,8 @@ filetype off
 " Backups, History, and Views {{{
 	sil !mkdir -p ~/.vim_temp/{views,backup,undo,cache}
 	
+	set noswapfile
+	
 	set backupdir=~/.vim_temp/backup/
 	set backup
 	
@@ -402,10 +404,12 @@ filetype off
 		nnor <leader>G :Goyo<cr>
 		function! GoyoBefore()
 			Limelight
+			silent !tmux set status off
 		endfunction
 		
 		function! GoyoAfter()
 			Limelight!
+			silent !tmux set status on
 		endfunction
 		let g:goyo_callbacks = [function('GoyoBefore'), function('GoyoAfter')]
 	" }}}
