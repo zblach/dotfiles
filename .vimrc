@@ -38,8 +38,8 @@ filetype off
 	
 	" tab-expansion configuration
 	set wildmenu
-	set wildmode=full
-	set wildignorecase
+	set wildmode=longest,full
+    set wildignorecase
 	set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.idea/*,*/.DS_Store
 	
 	set autoindent
@@ -63,8 +63,8 @@ filetype off
 	nnor <leader>v :set paste! paste?<cr>
 	nnor <leader>w :set wrap! wrap?<cr>
 	
-	nnor <leader># :silent nohl<cr>
-	nnor <leader>? :map<cr>
+	nnor <silent><leader># :nohl<cr>
+	" nnor <leader>? :map<cr> -- deprecated in favor of unite
 	
 	" search and navigation
 	nnor j gj
@@ -101,10 +101,17 @@ filetype off
 	set undolevels=10000
 	
 	set viewdir=~/.vim_temp/views/
+
+    set noswapfile 
 	
 	" bind view creation to focus loss/gain
 	au BufWinLeave * if expand("%") != "" | mkview | endif
 	au BufWinEnter * if expand("%") != "" | silent loadview | endif
+" }}}
+" Language-specific configuration options {{{
+    " cpp {{{
+        let g:additional_cpp_sources = "/usr/local/include/boost/"
+    " }}}
 " }}}
 " Bundles {{{
 	" Neobundle Configuration {{{
@@ -173,6 +180,14 @@ filetype off
 			" Use smartcase.
 			let g:neocomplete#enable_smart_case = 1
 			let g:neocomplete#enable_fuzzy_completion = 1
+
+            " additional C++ sources
+            if (!exists('g:neocomplete#sources#include#paths'))
+                let g:neocomplete#sources#include#paths = {}
+                let g:neocomplete#sources#include#paths.cpp = ""
+            endif
+
+            let g:neocomplete#sources#include#paths.cpp .= ".,/usr/local/include/"
 		" }}}
 		NeoBundle 'luochen1990/rainbow' " rainbow brackets {{{
 			let g:rainbow_active = 1
@@ -213,9 +228,30 @@ filetype off
 				let g:unite_source_grep_recursive_opt = ''
 				let g:unite_source_grep_encoding = 'utf-8'
 			endif
-			
+
+            nnor <silent> <leader>? :Unite -buffer-name=keymap mapping<cr>
+		
+            NeoBundleLazy 'Shougo/unite-outline', {'autoload':{'unite_sources':'outline'}}
+            NeoBundleLazy 'tsukkee/unite-help', {'autoload':{'unite_sources':'help'}}
+            NeoBundleLazy 'ujihisa/unite-colorscheme', {'autoload':{'unite_sources':
+                        \ 'colorscheme'}}
+            NeoBundleLazy 'ujihisa/unite-locate', {'autoload':{'unite_sources':'locate'}}
+            NeoBundleLazy 'thinca/vim-unite-history', { 'autoload' : { 'unite_sources' :
+                        \ ['history/command', 'history/search']}}
+            NeoBundleLazy 'osyo-manga/unite-filetype', { 'autoload' : {'unite_sources' :
+                        \ 'filetype', }}
+            NeoBundleLazy 'osyo-manga/unite-quickfix', {'autoload':{'unite_sources':
+                        \ ['quickfix', 'location_list']}}
+            " NeoBundleLazy 'osyo-manga/vim-snowdrop', {'autoload':{'unite_sources': ['snowdrop']}}
+            NeoBundleLazy 'osyo-manga/unite-fold', {'autoload':{'unite_sources':'fold'}}
+            NeoBundleLazy 'tacroe/unite-mark', {'autoload':{'unite_sources':'mark'}}
+            NeoBundleLazy 'Shougo/neomru.vim', {'autoload':{'unite_sources': 
+                        \['file_mru', 'directory_mru']}}
+
 		" }}}
 		NeoBundleLazy 'Shougo/vimproc.vim', {'build':{'mac': 'make -f make_mac.mak', 'unix' : 'make -f make_unix.mak'}}
+
+
 		" NeoBundle 'Shougo/vimshell.vim'
 	" }}}
 	NeoBundle 'sjl/gundo.vim' " undotree {{{
@@ -272,6 +308,7 @@ filetype off
 			" c++ options
 			let g:syntastic_cpp_compiler = 'clang++'
 			let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
+            let g:syntastic_cpp_include_dirs=['/usr/local/include']
 		" }}}
 	" }}}
 	NeoBundle 'ciaranm/detectindent' " {{{
