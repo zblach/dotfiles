@@ -104,7 +104,6 @@ filetype off
 	
 	set viewdir=~/.vim_temp/views/
 
-    set noswapfile 
 	
 	" bind view creation to focus loss/gain
 	au BufWinLeave * if expand("%") != "" | mkview | endif
