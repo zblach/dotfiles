@@ -171,7 +171,7 @@ filetype off
 			\ '' : 'SBK',
 		\ }
 	" }}}
-	
+	NeoBundle 'dbakker/vim-projectroot'
 	" Shougo Bundles {{{
 		NeoBundle 'Shougo/neocomplete' " tab-completion {{{
 			" Use neocomplete.
@@ -373,6 +373,7 @@ filetype off
 	" }}}
 	
 	NeoBundle 'airblade/vim-gitgutter'
+	" NeoBundle 'airblade/'
 	NeoBundle 'mhinz/vim-tmuxify'
 	NeoBundle 'gregsexton/gitv'
 	" Language-specific bundles {{{
