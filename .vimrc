@@ -372,7 +372,9 @@ filetype off
 	NeoBundle 'mhinz/vim-tmuxify'
 	NeoBundle 'gregsexton/gitv'
 	" Language-specific bundles {{{
-		" python
+		" vim
+        NeoBundleLazy 'dbakker/vim-lint', {'autoload':{'filetypes':['vim']}}
+        " python
 		NeoBundleLazy 'ivanov/vim-ipython', {'autoload':{'filetypes':['python']}}
 		
 		" scala
