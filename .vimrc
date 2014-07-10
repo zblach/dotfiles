@@ -129,6 +129,31 @@ filetype off
 		" NeoBundle is my package manager of choice
 		NeoBundleFetch 'Shougo/neobundle.vim'
 	" }}}
+	" Language-specific bundles {{{
+		" vim
+        NeoBundleLazy 'dbakker/vim-lint', {'autoload':{'filetypes':['vim']}}
+        " python
+		NeoBundleLazy 'ivanov/vim-ipython', {'autoload':{'filetypes':['python']}}
+		
+		" scala
+		NeoBundleLazy 'derekwyatt/vim-scala', {'autoload':{'filetypes':['scala']}}
+		NeoBundleLazy 'megaannum/vimside', {'autoload':{'filetypes':['scala']}, 'depends': ['Shougo/vimshell.vim', 'Shougo/vimproc']}
+		
+		" haskell
+		NeoBundleLazy 'ujihisa/neco-ghc', {'autoload':{'filetypes':['ghc']}}
+		
+		" csv
+		NeoBundleLazy 'chrisbra/csv.vim', {'autoload':{'filetypes':['csv']}}
+		
+		" swift
+		NeoBundleLazy 'toyamarinyon/vim-swift', {'autoload':{'filetypes':['swift','playground']}}
+		
+		" markdown
+		NeoBundleLazy 'nelstrom/vim-markdown-folding', {'autoload':{'filetypes':['markdown','md']}}
+		
+		" rust
+		NeoBundleLazy 'wting/rust.vim', {'autoload':{'filetypes':['rust', 'rs']}}
+	" }}}
 	NeoBundle 'bling/vim-airline' " powerline replacement {{{
 		set noshowmode
 		
@@ -376,31 +401,6 @@ filetype off
 	" NeoBundle 'airblade/'
 	NeoBundle 'mhinz/vim-tmuxify'
 	NeoBundle 'gregsexton/gitv'
-	" Language-specific bundles {{{
-		" vim
-        NeoBundleLazy 'dbakker/vim-lint', {'autoload':{'filetypes':['vim']}}
-        " python
-		NeoBundleLazy 'ivanov/vim-ipython', {'autoload':{'filetypes':['python']}}
-		
-		" scala
-		NeoBundleLazy 'derekwyatt/vim-scala', {'autoload':{'filetypes':['scala']}}
-		NeoBundleLazy 'megaannum/vimside', {'autoload':{'filetypes':['scala']}, 'depends': ['Shougo/vimshell.vim', 'Shougo/vimproc']}
-		
-		" haskell
-		NeoBundleLazy 'ujihisa/neco-ghc', {'autoload':{'filetypes':['ghc']}}
-		
-		" csv
-		NeoBundleLazy 'chrisbra/csv.vim', {'autoload':{'filetypes':['csv']}}
-		
-		" swift
-		NeoBundleLazy 'toyamarinyon/vim-swift', {'autoload':{'filetypes':['swift','playground']}}
-		
-		" markdown
-		NeoBundleLazy 'nelstrom/vim-markdown-folding', {'autoload':{'filetypes':['markdown','md']}}
-		
-		" rust
-		NeoBundleLazy 'wting/rust.vim', {'autoload':{'filetypes':['rust', 'rs']}}
-	" }}}
 " }}}
 " Colors {{{
 	NeoBundleLazy 'chrisbra/Colorizer', {'autoload':{'commands':'ColorToggle'}}
