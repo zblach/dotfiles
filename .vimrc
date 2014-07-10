@@ -39,7 +39,7 @@ filetype off
 	" tab-expansion configuration
 	set wildmenu
 	set wildmode=longest,full
-    set wildignorecase
+	set wildignorecase
 	set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.idea/*,*/.DS_Store
 	
 	set autoindent
@@ -93,6 +93,8 @@ filetype off
 " Backups, History, and Views {{{
 	sil !mkdir -p ~/.vim_temp/{views,backup,undo,cache}
 	
+	set noswapfile
+	
 	set backupdir=~/.vim_temp/backup/
 	set backup
 	
@@ -102,16 +104,15 @@ filetype off
 	
 	set viewdir=~/.vim_temp/views/
 
-    set noswapfile 
 	
 	" bind view creation to focus loss/gain
 	au BufWinLeave * if expand("%") != "" | mkview | endif
 	au BufWinEnter * if expand("%") != "" | silent loadview | endif
 " }}}
 " Language-specific configuration options {{{
-    " cpp {{{
-        let g:additional_cpp_sources = "/usr/local/include/boost/"
-    " }}}
+	" cpp {{{
+		let g:additional_cpp_sources = "/usr/local/include/boost/"
+	" }}}
 " }}}
 " Bundles {{{
 	" Neobundle Configuration {{{
@@ -170,7 +171,7 @@ filetype off
 			\ '' : 'SBK',
 		\ }
 	" }}}
-	
+	NeoBundle 'dbakker/vim-projectroot'
 	" Shougo Bundles {{{
 		NeoBundle 'Shougo/neocomplete' " tab-completion {{{
 			" Use neocomplete.
@@ -181,13 +182,13 @@ filetype off
 			let g:neocomplete#enable_smart_case = 1
 			let g:neocomplete#enable_fuzzy_completion = 1
 
-            " additional C++ sources
-            if (!exists('g:neocomplete#sources#include#paths'))
-                let g:neocomplete#sources#include#paths = {}
-                let g:neocomplete#sources#include#paths.cpp = ""
-            endif
+			" additional C++ sources
+			if (!exists('g:neocomplete#sources#include#paths'))
+				let g:neocomplete#sources#include#paths = {}
+				let g:neocomplete#sources#include#paths.cpp = ""
+			endif
 
-            let g:neocomplete#sources#include#paths.cpp .= ".,/usr/local/include/"
+			let g:neocomplete#sources#include#paths.cpp .= ".,/usr/local/include/"
 		" }}}
 		NeoBundle 'luochen1990/rainbow' " rainbow brackets {{{
 			let g:rainbow_active = 1
@@ -216,7 +217,7 @@ filetype off
 			imap <expr><S-TAB> pumvisible() ? "\<C-p>" : ""
 			smap <expr><S-TAB> pumvisible() ? "\<C-p>" : ""
 		" }}}
-		NeoBundle 'Shougo/unite.vim' " unite plugin {{{
+		NeoBundle 'Shougo/unite.vim', {'depends':['Shougo/vimproc.vim']} " unite plugin {{{
 			let g:unite_enable_start_insert=1
 			let g:unite_winwidth=10
 			let g:unite_split_rule='botright'
@@ -229,24 +230,27 @@ filetype off
 				let g:unite_source_grep_encoding = 'utf-8'
 			endif
 
-            nnor <silent> <leader>? :Unite -buffer-name=keymap mapping<cr>
+			nnor <silent> <leader>? :Unite -buffer-name=keymap mapping<cr>
+
+			" replaceing CtrlP plugin?
+			nnor <silent>  :Unite -buffer-name=files file_rec/async<cr>
 		
-            NeoBundleLazy 'Shougo/unite-outline', {'autoload':{'unite_sources':'outline'}}
-            NeoBundleLazy 'tsukkee/unite-help', {'autoload':{'unite_sources':'help'}}
-            NeoBundleLazy 'ujihisa/unite-colorscheme', {'autoload':{'unite_sources':
-                        \ 'colorscheme'}}
-            NeoBundleLazy 'ujihisa/unite-locate', {'autoload':{'unite_sources':'locate'}}
-            NeoBundleLazy 'thinca/vim-unite-history', { 'autoload' : { 'unite_sources' :
-                        \ ['history/command', 'history/search']}}
-            NeoBundleLazy 'osyo-manga/unite-filetype', { 'autoload' : {'unite_sources' :
-                        \ 'filetype', }}
-            NeoBundleLazy 'osyo-manga/unite-quickfix', {'autoload':{'unite_sources':
-                        \ ['quickfix', 'location_list']}}
-            " NeoBundleLazy 'osyo-manga/vim-snowdrop', {'autoload':{'unite_sources': ['snowdrop']}}
-            NeoBundleLazy 'osyo-manga/unite-fold', {'autoload':{'unite_sources':'fold'}}
-            NeoBundleLazy 'tacroe/unite-mark', {'autoload':{'unite_sources':'mark'}}
-            NeoBundleLazy 'Shougo/neomru.vim', {'autoload':{'unite_sources': 
-                        \['file_mru', 'directory_mru']}}
+			NeoBundleLazy 'Shougo/unite-outline', {'autoload':{'unite_sources':'outline'}}
+			NeoBundleLazy 'tsukkee/unite-help', {'autoload':{'unite_sources':'help'}}
+			NeoBundleLazy 'ujihisa/unite-colorscheme', {'autoload':{'unite_sources':
+						\ 'colorscheme'}}
+			NeoBundleLazy 'ujihisa/unite-locate', {'autoload':{'unite_sources':'locate'}}
+			NeoBundleLazy 'thinca/vim-unite-history', { 'autoload' : { 'unite_sources' :
+						\ ['history/command', 'history/search']}}
+			NeoBundleLazy 'osyo-manga/unite-filetype', { 'autoload' : {'unite_sources' :
+						\ 'filetype', }}
+			NeoBundleLazy 'osyo-manga/unite-quickfix', {'autoload':{'unite_sources':
+						\ ['quickfix', 'location_list']}}
+			" NeoBundleLazy 'osyo-manga/vim-snowdrop', {'autoload':{'unite_sources': ['snowdrop']}}
+			NeoBundleLazy 'osyo-manga/unite-fold', {'autoload':{'unite_sources':'fold'}}
+			NeoBundleLazy 'tacroe/unite-mark', {'autoload':{'unite_sources':'mark'}}
+			NeoBundleLazy 'Shougo/neomru.vim', {'autoload':{'unite_sources': 
+						\['file_mru', 'directory_mru']}}
 
 		" }}}
 		NeoBundleLazy 'Shougo/vimproc.vim', {'build':{'mac': 'make -f make_mac.mak', 'unix' : 'make -f make_unix.mak'}}
@@ -274,21 +278,21 @@ filetype off
 		NeoBundle 'tommcdo/vim-ninja-feet'
 		NeoBundle 'tommcdo/vim-text-objects'
 	" }}}
-	NeoBundle 'kien/ctrlp.vim' " ctrlp {{{
-		let g:ctrlp_regex_search=1
-		let g:ctrlp_cmd='CtrlPLastMode --dir'
-		let g:ctrlp_use_caching=1
-		let g:ctrlp_cache_dir="~/.vim/cache/ctrlp"
-		let g:ctrlp_extensions=['quickfix','dir','funky','undo','changes','line']
-		if executable('ag')
-			set grepprg=ag\ --nogroup\ --nocolor
-			let g:ctrlp_user_command='ag %s -l --nocolor -g ""'
-		endif
-		nnor <leader>gw :CtrlP<c-\>w<cr>
-	" }}}
-	NeoBundleLazy 'tacahiroy/ctrlp-funky.git', {'depends': ['kien/ctrlp.vim']} " {{{
-		let g:ctrlp_extensions = ['funky']
-	" }}}
+	"NeoBundle 'kien/ctrlp.vim' " ctrlp {{{
+	"	let g:ctrlp_regex_search=1
+	"	let g:ctrlp_cmd='CtrlPLastMode --dir'
+	"	let g:ctrlp_use_caching=1
+	"	let g:ctrlp_cache_dir="~/.vim/cache/ctrlp"
+	"	let g:ctrlp_extensions=['quickfix','dir','funky','undo','changes','line']
+	"	if executable('ag')
+	"		set grepprg=ag\ --nogroup\ --nocolor
+	"		let g:ctrlp_user_command='ag %s -l --nocolor -g ""'
+	"	endif
+	"	nnor <leader>gw :CtrlP<c-\>w<cr>
+	"" }}}
+	"NeoBundleLazy 'tacahiroy/ctrlp-funky.git', {'depends': ['kien/ctrlp.vim']} " {{{
+	"	let g:ctrlp_extensions = ['funky']
+	"" }}}
 	" Scroolose bundles {{{
 		NeoBundle 'scrooloose/nerdtree'
 		NeoBundle 'scrooloose/syntastic' " Syntastic {{{
@@ -308,7 +312,7 @@ filetype off
 			" c++ options
 			let g:syntastic_cpp_compiler = 'clang++'
 			let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
-            let g:syntastic_cpp_include_dirs=['/usr/local/include']
+			let g:syntastic_cpp_include_dirs=['/usr/local/include']
 		" }}}
 	" }}}
 	NeoBundle 'ciaranm/detectindent' " {{{
@@ -369,6 +373,7 @@ filetype off
 	" }}}
 	
 	NeoBundle 'airblade/vim-gitgutter'
+	" NeoBundle 'airblade/'
 	NeoBundle 'mhinz/vim-tmuxify'
 	NeoBundle 'gregsexton/gitv'
 	" Language-specific bundles {{{
@@ -404,10 +409,12 @@ filetype off
 		nnor <leader>G :Goyo<cr>
 		function! GoyoBefore()
 			Limelight
+			silent !tmux set status off
 		endfunction
 		
 		function! GoyoAfter()
 			Limelight!
+			silent !tmux set status on
 		endfunction
 		let g:goyo_callbacks = [function('GoyoBefore'), function('GoyoAfter')]
 	" }}}
