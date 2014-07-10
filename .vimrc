@@ -76,8 +76,8 @@ filetype off
 	nnor g, g,zz
 	
 	" visual block reselect
-	vnor < <gv
-	vnor > >gv
+	xnor < <gv
+	xnor > >gv
 	
 	" let ; function as :
 	nnor ; :
@@ -131,8 +131,8 @@ filetype off
 	" }}}
 	" Language-specific bundles {{{
 		" vim
-        NeoBundleLazy 'dbakker/vim-lint', {'autoload':{'filetypes':['vim']}}
-        " python
+		NeoBundleLazy 'dbakker/vim-lint', {'autoload':{'filetypes':['vim']}}
+		" python
 		NeoBundleLazy 'ivanov/vim-ipython', {'autoload':{'filetypes':['python']}}
 		
 		" scala
@@ -243,6 +243,7 @@ filetype off
 			smap <expr><S-TAB> pumvisible() ? "\<C-p>" : ""
 		" }}}
 		NeoBundle 'Shougo/unite.vim', {'depends':['Shougo/vimproc.vim']} " unite plugin {{{
+			let g:unite_source_history_yank_enable=1
 			let g:unite_enable_start_insert=1
 			let g:unite_winwidth=10
 			let g:unite_split_rule='botright'
@@ -259,24 +260,24 @@ filetype off
 
 			" replaceing CtrlP plugin?
 			nnor <silent>  :Unite -buffer-name=files file_rec/async<cr>
-		
-			NeoBundleLazy 'Shougo/unite-outline', {'autoload':{'unite_sources':'outline'}}
-			NeoBundleLazy 'tsukkee/unite-help', {'autoload':{'unite_sources':'help'}}
-			NeoBundleLazy 'ujihisa/unite-colorscheme', {'autoload':{'unite_sources':
-						\ 'colorscheme'}}
-			NeoBundleLazy 'ujihisa/unite-locate', {'autoload':{'unite_sources':'locate'}}
-			NeoBundleLazy 'thinca/vim-unite-history', { 'autoload' : { 'unite_sources' :
-						\ ['history/command', 'history/search']}}
-			NeoBundleLazy 'osyo-manga/unite-filetype', { 'autoload' : {'unite_sources' :
-						\ 'filetype', }}
-			NeoBundleLazy 'osyo-manga/unite-quickfix', {'autoload':{'unite_sources':
-						\ ['quickfix', 'location_list']}}
-			" NeoBundleLazy 'osyo-manga/vim-snowdrop', {'autoload':{'unite_sources': ['snowdrop']}}
-			NeoBundleLazy 'osyo-manga/unite-fold', {'autoload':{'unite_sources':'fold'}}
-			NeoBundleLazy 'tacroe/unite-mark', {'autoload':{'unite_sources':'mark'}}
-			NeoBundleLazy 'Shougo/neomru.vim', {'autoload':{'unite_sources': 
-						\['file_mru', 'directory_mru']}}
-
+			" moar bundles {{{	
+				NeoBundleLazy 'Shougo/unite-outline', {'autoload':{'unite_sources':'outline'}}
+				NeoBundleLazy 'tsukkee/unite-help', {'autoload':{'unite_sources':'help'}}
+				NeoBundleLazy 'ujihisa/unite-colorscheme', {'autoload':{'unite_sources':
+							\ 'colorscheme'}}
+				NeoBundleLazy 'ujihisa/unite-locate', {'autoload':{'unite_sources':'locate'}}
+				NeoBundleLazy 'thinca/vim-unite-history', { 'autoload' : { 'unite_sources' :
+							\ ['history/command', 'history/search']}}
+				NeoBundleLazy 'osyo-manga/unite-filetype', { 'autoload' : {'unite_sources' :
+							\ 'filetype', }}
+				NeoBundleLazy 'osyo-manga/unite-quickfix', {'autoload':{'unite_sources':
+							\ ['quickfix', 'location_list']}}
+				" NeoBundleLazy 'osyo-manga/vim-snowdrop', {'autoload':{'unite_sources': ['snowdrop']}}
+				NeoBundleLazy 'osyo-manga/unite-fold', {'autoload':{'unite_sources':'fold'}}
+				NeoBundleLazy 'tacroe/unite-mark', {'autoload':{'unite_sources':'mark'}}
+				NeoBundleLazy 'Shougo/neomru.vim', {'autoload':{'unite_sources': 
+							\['file_mru', 'directory_mru']}}
+			" }}}
 		" }}}
 		NeoBundleLazy 'Shougo/vimproc.vim', {'build':{'mac': 'make -f make_mac.mak', 'unix' : 'make -f make_unix.mak'}}
 
