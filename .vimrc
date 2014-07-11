@@ -218,7 +218,7 @@ filetype off
 		NeoBundle 'luochen1990/rainbow' " rainbow brackets {{{
 			let g:rainbow_active = 1
 			let g:rainbow_conf = {
-			\	'guifgs' : ['RoyalBlue3', 'DarkOrange3', 'DarkOrchid3', 'FireBrick', 'magenta'],
+			\	'guifgs' : ['RoyalBlue3',  'DarkOrange3', 'DarkOrchid3', 'FireBrick', 'magenta'],
 			\	'ctermfgs' : ['lightblue', 'lightgreen', 'yellow', 'red', 'magenta'],
 			\	'operators' : '_,_',
 			\	'parentheses' : [['(',')'], ['\[','\]'], ['{','}'], ['<','>']],
@@ -242,13 +242,13 @@ filetype off
 			imap <expr><S-TAB> pumvisible() ? "\<C-p>" : ""
 			smap <expr><S-TAB> pumvisible() ? "\<C-p>" : ""
 		" }}}
-		NeoBundle 'Shougo/unite.vim', {'depends':['Shougo/vimproc.vim']} " unite plugin {{{
+            NeoBundle 'Shougo/unite.vim', {'depends':['Shougo/vimproc.vim']} " unite plugin {{{
 			let g:unite_source_history_yank_enable=1
 			let g:unite_enable_start_insert=1
 			let g:unite_winwidth=10
 			let g:unite_split_rule='botright'
 			
-			nnor <silent> <leader>/ :<C-u>Unite grep:. -buffer-name=results<cr>
+			nnor <silent> <leader>/ :<C-u>Unite -buffer-name=results grep:.<cr>
 			if executable('ag')
 				let g:unite_source_grep_command='ag'
 				let g:unite_source_grep_default_opts = '--nogroup --nocolor'
@@ -256,10 +256,10 @@ filetype off
 				let g:unite_source_grep_encoding = 'utf-8'
 			endif
 
-			nnor <silent> <leader>? :Unite -buffer-name=keymap mapping<cr>
+			nnor <silent> <leader>? :<C-u>Unite -buffer-name=keymap mapping<cr>
 
 			" replaceing CtrlP plugin?
-			nnor <silent>  :Unite -buffer-name=files file_rec/async<cr>
+			nnor <silent>  :<C-u>Unite -buffer-name=files file_rec/async<cr>
 			" moar bundles {{{	
 				NeoBundleLazy 'Shougo/unite-outline', {'autoload':{'unite_sources':'outline'}}
 				NeoBundleLazy 'tsukkee/unite-help', {'autoload':{'unite_sources':'help'}}
