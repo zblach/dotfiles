@@ -34,7 +34,7 @@ if [ ! -f "$HOME/.zsh/${HOSTNAME_SHORT}.history" ]; then
 fi
 
 export HISTFILE="$HOME/.zsh/${HOSTNAME_SHORT}.history"
-export HISTSIZE=5000
+export HISTSIZE=10000
 export SAVEHIST=5000
 
 # Options
@@ -51,7 +51,7 @@ setopt longlistjobs
 setopt nobgnice
 setopt noclobber
 setopt prompt_subst
-setopt share_history
+#setopt share_history
 
 # ZStyle
 
@@ -129,10 +129,10 @@ export LESS_TERMCAP_us=$'\e[01;32m'
 
 # Proper key behaviour
 bindkey -v 
-bindkey "[3~" delete-char
-bindkey "[1~" beginning-of-line
-bindkey "[4~" end-of-line
-bindkey "[2~" quoted-insert
+#bindkey "[3~" delete-char
+#bindkey "[1~" beginning-of-line
+#bindkey "[4~" end-of-line
+#bindkey "[2~" quoted-insert
 
 # History search
 bindkey "[A" history-beginning-search-backward

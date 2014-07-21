@@ -134,6 +134,7 @@ filetype off
 		NeoBundleLazy 'dbakker/vim-lint', {'autoload':{'filetypes':['vim']}}
 		" python
 		NeoBundleLazy 'ivanov/vim-ipython', {'autoload':{'filetypes':['python']}}
+        NeoBundleLazy 'nvie/vim-flake8', {'autload':{'filetypes':['python']}}
 		
 		" scala
 		NeoBundleLazy 'derekwyatt/vim-scala', {'autoload':{'filetypes':['scala']}}
@@ -260,9 +261,11 @@ filetype off
 			endif
 
 			nnor <silent> <leader>? :<C-u>Unite -buffer-name=keymap mapping<cr>
+			nnor <silent> <leader>b :<C-u>Unite -buffer-name=buffers buffer<cr>
 
 			" replaceing CtrlP plugin?
 			nnor <silent>  :<C-u>Unite -buffer-name=files file_rec/async<cr>
+            let g:unite_source_file_async_command = "find"
 			" moar bundles {{{	
 				NeoBundleLazy 'Shougo/unite-outline', {'autoload':{'unite_sources':'outline'}}
 				NeoBundleLazy 'tsukkee/unite-help', {'autoload':{'unite_sources':'help'}}
