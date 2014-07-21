@@ -242,7 +242,7 @@ filetype off
 			imap <expr><S-TAB> pumvisible() ? "\<C-p>" : ""
 			smap <expr><S-TAB> pumvisible() ? "\<C-p>" : ""
 		" }}}
-            NeoBundle 'Shougo/unite.vim', {'depends':['Shougo/vimproc.vim']} " unite plugin {{{
+			NeoBundle 'Shougo/unite.vim', {'depends':['Shougo/vimproc.vim']} " unite plugin {{{
 			let g:unite_source_history_yank_enable=1
 			let g:unite_enable_start_insert=1
 			let g:unite_winwidth=10
@@ -393,6 +393,7 @@ filetype off
 " }}}
 " Colors {{{
 	NeoBundleLazy 'chrisbra/Colorizer', {'autoload':{'commands':'ColorToggle'}}
+	NeoBundleLazy 'jaxbot/semantic-highlight.vim', {'autoload':{'commands':'SemanticHighlight'}}
 	NeoBundleLazy 'junegunn/limelight.vim', {'autoload':{'commands':'Limelight'}}
 	NeoBundleLazy 'junegunn/goyo.vim', {'autoload':{'commands':'Goyo'}} " {{{
 		nnor <leader>G :Goyo<cr>
@@ -407,13 +408,17 @@ filetype off
 		endfunction
 		let g:goyo_callbacks = [function('GoyoBefore'), function('GoyoAfter')]
 	" }}}
-	
+
 	NeoBundle 'chriskempson/base16-vim'
 	NeoBundle 'sjl/badwolf'
 	NeoBundle 'w0ng/vim-hybrid'
 	NeoBundle 'trapd00r/neverland-vim-theme'
 	NeoBundle 'junegunn/seoul256.vim'
-	
+	NeoBundle 'jonstoler/werewolf.vim' " {{{
+		let g:werewolf_day_themes=['seoul256-light']
+		let g:werewolf_night_themes = ['seoul256']
+	" }}}
+
 	set background=dark
 	let b:colorscheme = 'badwolf' 
 " }}}
