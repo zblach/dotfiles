@@ -128,13 +128,17 @@ filetype off
 		
 		" NeoBundle is my package manager of choice
 		NeoBundleFetch 'Shougo/neobundle.vim'
+
+	" Disabled bundles {
+		NeoBundleDisable 'jonstoler/werewolf.vim'
+	" }
 	" }}}
 	" Language-specific bundles {{{
 		" vim
 		NeoBundleLazy 'dbakker/vim-lint', {'autoload':{'filetypes':['vim']}}
 		" python
 		NeoBundleLazy 'ivanov/vim-ipython', {'autoload':{'filetypes':['python']}}
-        NeoBundleLazy 'nvie/vim-flake8', {'autload':{'filetypes':['python']}}
+	NeoBundleLazy 'nvie/vim-flake8', {'autload':{'filetypes':['python']}}
 		
 		" scala
 		NeoBundleLazy 'derekwyatt/vim-scala', {'autoload':{'filetypes':['scala']}}
@@ -265,7 +269,7 @@ filetype off
 
 			" replaceing CtrlP plugin?
 			nnor <silent>  :<C-u>Unite -buffer-name=files file_rec/async<cr>
-            let g:unite_source_file_async_command = "find"
+	    let g:unite_source_file_async_command = "find"
 			" moar bundles {{{	
 				NeoBundleLazy 'Shougo/unite-outline', {'autoload':{'unite_sources':'outline'}}
 				NeoBundleLazy 'tsukkee/unite-help', {'autoload':{'unite_sources':'help'}}
@@ -417,10 +421,10 @@ filetype off
 	NeoBundle 'w0ng/vim-hybrid'
 	NeoBundle 'trapd00r/neverland-vim-theme'
 	NeoBundle 'junegunn/seoul256.vim'
-	NeoBundle 'jonstoler/werewolf.vim' " {{{
-		let g:werewolf_day_themes=['seoul256-light']
-		let g:werewolf_night_themes = ['seoul256']
-	" }}}
+	"NeoBundle 'jonstoler/werewolf.vim' " {{{
+	"	let g:werewolf_day_themes=['seoul256-light']
+	"	let g:werewolf_night_themes = ['seoul256']
+	"" }}}
 
 	set background=dark
 	let b:colorscheme = 'badwolf' 
