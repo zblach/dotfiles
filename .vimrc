@@ -130,7 +130,7 @@ filetype off
 		NeoBundleFetch 'Shougo/neobundle.vim'
 
 	" Disabled bundles {
-		NeoBundleDisable 'jonstoler/werewolf.vim'
+	"	NeoBundleDisable 'jonstoler/werewolf.vim'
 	" }
 	" }}}
 	" Language-specific bundles {{{
@@ -421,10 +421,10 @@ filetype off
 	NeoBundle 'w0ng/vim-hybrid'
 	NeoBundle 'trapd00r/neverland-vim-theme'
 	NeoBundle 'junegunn/seoul256.vim'
-	"NeoBundle 'jonstoler/werewolf.vim' " {{{
-	"	let g:werewolf_day_themes=['seoul256-light']
-	"	let g:werewolf_night_themes = ['seoul256']
-	"" }}}
+	NeoBundle 'jonstoler/werewolf.vim' " {{{
+		let g:werewolf_day_themes=['seoul256-light']
+		let g:werewolf_night_themes = ['seoul256']
+	" }}}
 
 	set background=dark
 	let b:colorscheme = 'badwolf' 
