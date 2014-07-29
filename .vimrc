@@ -153,11 +153,11 @@ filetype off
 		let g:airline_right_alt_sep = '⮃'
 		
 		let g:airline_symbols = { 
-			     \ 'space': ' ',
-			     \ 'paste': 'paste',
-			    \ 'branch': '⭠',
+				 \ 'space': ' ',
+				 \ 'paste': 'paste',
+				\ 'branch': '⭠',
 			  \ 'readonly': '⭤',
-			    \ 'linenr': '⭡',
+				\ 'linenr': '⭡',
 			\ 'whitespace': ' '
 		\ }
 		
@@ -186,6 +186,7 @@ filetype off
 		\ }
 	" }}}
 	NeoBundle 'dhruvasagar/vim-dotoo'
+	NeoBundle 'jceb/vim-orgmode'
 	NeoBundle 'dbakker/vim-projectroot'
 	" Shougo Bundles {{{
 		NeoBundle 'Shougo/neocomplete' " tab-completion {{{
@@ -401,7 +402,11 @@ filetype off
 		let g:goyo_callbacks = [function('GoyoBefore'), function('GoyoAfter')]
 	" }}}
 
-	NeoBundle 'chriskempson/base16-vim'
+	NeoBundleLazy 'chriskempson/base16-vim' " {{{
+		if has('gui_running')
+			NeoBundleSource 'base16-vim'
+		endif
+	" }}}
 	NeoBundle 'sjl/badwolf'
 	NeoBundle 'w0ng/vim-hybrid'
 	NeoBundle 'trapd00r/neverland-vim-theme'
