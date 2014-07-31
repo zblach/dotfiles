@@ -1,5 +1,5 @@
 " .vimrc - zblach 2014
-" vim: set fmr={{{,}}} fdm=marker ts=4 nospell tw=0 sbr=\\ noet
+" vim: set fmr={{{,}}} fdm=marker ts=4 nospell tw=0 sbr=\\ noet set nosta
 set nocompatible
 filetype off
 
@@ -27,8 +27,7 @@ filetype off
 	
 	" misc 
 	set backspace=indent,eol,start
-	set scrolloff=7
-	set scrolljump=4
+	set scrolloff=7 scrolljump=4
 	set virtualedit="all,onemore"
 	set display+=lastline
 	
@@ -269,7 +268,7 @@ filetype off
 				NeoBundleLazy 'osyo-manga/vim-snowdrop', {'autoload':{'unite_sources': ['snowdrop']}}
 				NeoBundleLazy 'tacroe/unite-mark', {'autoload':{'unite_sources':'mark'}}
 				NeoBundleLazy 'thinca/vim-unite-history', { 'autoload' : { 'unite_sources' : ['history/command', 'history/search']}}
-				NeoBundleLazy 'tsukkee/unite-help', {'autoload':{'unite_sources':'help'}}
+				NeoBundleLazy 'tsukkee/unite-help', {'autoload':{'unite_source'}}
 				NeoBundleLazy 'ujihisa/unite-colorscheme', {'autoload':{'unite_sources': 'colorscheme'}} " {{{
 					call unite#custom#profile('source/colorscheme', 'context', {
 					\   'auto_preview' : 1
@@ -445,10 +444,14 @@ filetype off
 " }}}
 " Language-specific settings {{{
 	" xml
-	au FileType xml let &l:equalprg='xmllint --format --recover -'
+	if executable('xmllint')
+		au FileType xml let &l:equalprg='xmllint --format --recover -'
+	endif
 	
 	" rust
-	au FileType rust setlocal makeprg='rustc "%"'
+	if executable('rustc')
+		au FileType rust setlocal makeprg='rustc "%"'
+	endif
 " }}}
 
 filetype plugin indent on
