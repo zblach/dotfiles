@@ -44,6 +44,8 @@ filetype off
 	let mapleader=','
 	
 	" common bindings
+	map Y y$
+
 	" toggles 
 	nnor <leader>i :set list! list?<cr>
 	nnor <leader>n :set number! number?<cr>
@@ -112,7 +114,7 @@ filetype off
 		NeoBundleFetch 'Shougo/neobundle.vim'
 
 	" Disabled bundles {
-		NeoBundleDisable 'jonstoler/werewolf.vim'
+		"NeoBundleDisable 'jonstoler/werewolf.vim'
 	" }
 	" }}}
 	" Language-specific bundles {{{
@@ -153,11 +155,11 @@ filetype off
 		let g:airline_right_alt_sep = '⮃'
 		
 		let g:airline_symbols = { 
-			     \ 'space': ' ',
-			     \ 'paste': 'paste',
-			    \ 'branch': '⭠',
+				 \ 'space': ' ',
+				 \ 'paste': 'paste',
+				\ 'branch': '⭠',
 			  \ 'readonly': '⭤',
-			    \ 'linenr': '⭡',
+				\ 'linenr': '⭡',
 			\ 'whitespace': ' '
 		\ }
 		
@@ -268,8 +270,8 @@ filetype off
 				NeoBundleLazy 'thinca/vim-unite-history', { 'autoload' : { 'unite_sources' : ['history/command', 'history/search']}}
 				NeoBundleLazy 'tsukkee/unite-help', {'autoload':{'unite_sources':'help'}}
 				NeoBundleLazy 'ujihisa/unite-colorscheme', {'autoload':{'unite_sources': 'colorscheme'}} " {{{
-					call unite#custom#profile('colorscheme', 'context', {
-					\   'auto-preview' : 1
+					call unite#custom#profile('source/colorscheme', 'context', {
+					\   'auto_preview' : 1
 					\ })
 				" }}}
 				NeoBundleLazy 'ujihisa/unite-locate', {'autoload':{'unite_sources':'locate'}}
@@ -341,6 +343,7 @@ filetype off
 	" }}}
 	NeoBundle 'nathanaelkane/vim-indent-guides'
 	NeoBundle 'Lokaltog/vim-easymotion'
+	NeoBundle 'felixr/vim-multiedit' " multi-editing for vim
 	" Disabled legacy bundles {{{
 		" YankRing
 		" grep
@@ -401,15 +404,19 @@ filetype off
 		let g:goyo_callbacks = [function('GoyoBefore'), function('GoyoAfter')]
 	" }}}
 
-	NeoBundle 'chriskempson/base16-vim'
 	NeoBundle 'sjl/badwolf'
 	NeoBundle 'w0ng/vim-hybrid'
 	NeoBundle 'trapd00r/neverland-vim-theme'
 	NeoBundle 'junegunn/seoul256.vim'
 
+	NeoBundleLazy 'chriskempson/base16-vim'
+
+	if has('gui_running') 
+		NeoBundleSource base16-vim
+	endif
 	NeoBundle 'jonstoler/werewolf.vim' " {{{
-		let g:werewolf_day_themes=['seoul256-light']
-		let g:werewolf_night_themes = ['seoul256']
+		let g:werewolf_day_themes=['seoul256-light', 'hybrid-light']
+		let g:werewolf_night_themes = ['seoul256', 'hybrid']
 	" }}}
 
 	set background=dark
