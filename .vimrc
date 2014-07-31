@@ -188,6 +188,7 @@ filetype off
 		\ }
 	" }}}
 	NeoBundle 'dhruvasagar/vim-dotoo'
+	NeoBundle 'jceb/vim-orgmode'
 	NeoBundle 'dbakker/vim-projectroot'
 	" Shougo Bundles {{{
 		NeoBundle 'Shougo/neocomplete' " tab-completion {{{
@@ -404,6 +405,11 @@ filetype off
 		let g:goyo_callbacks = [function('GoyoBefore'), function('GoyoAfter')]
 	" }}}
 
+	NeoBundleLazy 'chriskempson/base16-vim' " {{{
+		if has('gui_running')
+			NeoBundleSource 'base16-vim'
+		endif
+	" }}}
 	NeoBundle 'sjl/badwolf'
 	NeoBundle 'w0ng/vim-hybrid'
 	NeoBundle 'trapd00r/neverland-vim-theme'
