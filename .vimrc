@@ -114,6 +114,7 @@ filetype off
 
 	" Disabled bundles {
 		"NeoBundleDisable 'jonstoler/werewolf.vim'
+        NeoBundleDisable vim-multiedit
 	" }
 	" }}}
 	" Language-specific bundles {{{
@@ -265,10 +266,10 @@ filetype off
 				NeoBundleLazy 'osyo-manga/unite-filetype', {'autoload':{'unite_sources' : 'filetype'}}
 				NeoBundleLazy 'osyo-manga/unite-fold', {'autoload':{'unite_sources':'fold'}}
 				NeoBundleLazy 'osyo-manga/unite-quickfix', {'autoload':{'unite_sources': ['quickfix', 'location_list']}}
-				NeoBundleLazy 'osyo-manga/vim-snowdrop', {'autoload':{'unite_sources': ['snowdrop']}}
+				NeoBundleLazy 'osyo-manga/vim-snowdrop', {'autoload':{'unite_sources': 'snowdrop'}}
 				NeoBundleLazy 'tacroe/unite-mark', {'autoload':{'unite_sources':'mark'}}
 				NeoBundleLazy 'thinca/vim-unite-history', { 'autoload' : { 'unite_sources' : ['history/command', 'history/search']}}
-				NeoBundleLazy 'tsukkee/unite-help', {'autoload':{'unite_source'}}
+				NeoBundleLazy 'tsukkee/unite-help', {'autoload':{'unite_sources' : 'help'}}
 				NeoBundleLazy 'ujihisa/unite-colorscheme', {'autoload':{'unite_sources': 'colorscheme'}} " {{{
 					call unite#custom#profile('source/colorscheme', 'context', {
 					\   'auto_preview' : 1
