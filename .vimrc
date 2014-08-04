@@ -1,5 +1,5 @@
 " .vimrc - zblach 2014
-" vim: set fmr={{{,}}} fdm=marker ts=4 nospell tw=0 sbr=\\ noet set nosta
+" vim: set fmr={{{,}}} fdm=marker ts=4 nospell tw=0 sbr=\\ noet nosta
 set nocompatible
 filetype off
 
