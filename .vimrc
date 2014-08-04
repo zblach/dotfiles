@@ -114,7 +114,7 @@ filetype off
 
 	" Disabled bundles {
 		"NeoBundleDisable 'jonstoler/werewolf.vim'
-        NeoBundleDisable vim-multiedit
+		NeoBundleDisable vim-multiedit
 	" }
 	" }}}
 	" Language-specific bundles {{{
@@ -344,7 +344,7 @@ filetype off
 	" }}}
 	NeoBundle 'nathanaelkane/vim-indent-guides'
 	NeoBundle 'Lokaltog/vim-easymotion'
-	NeoBundle 'felixr/vim-multiedit' " multi-editing for vim
+	NeoBundleLazy 'felixr/vim-multiedit' " multi-editing for vim
 	" Disabled legacy bundles {{{
 		" YankRing
 		" grep
