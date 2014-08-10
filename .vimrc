@@ -437,8 +437,8 @@ filetype off
 		NeoBundleSource base16-vim
 	endif
 	NeoBundle 'jonstoler/werewolf.vim' " {{{
-		let g:werewolf_day_themes   = ['seoul256-light', 'hybrid-light']
-		let g:werewolf_night_themes = ['seoul256', 'hybrid']
+		let g:werewolf_day_themes   = ['seoul256-light', 'hybrid-light', 'morning']
+		let g:werewolf_night_themes = ['seoul256'      , 'hybrid'      , 'evening']
 	" }}}
 
 	set background=dark
