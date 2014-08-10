@@ -112,10 +112,18 @@ filetype off
 		" NeoBundle is my package manager of choice
 		NeoBundleFetch 'Shougo/neobundle.vim'
 
+		let g:neobundle#install_max_processes = 100 " overdrive!
+		let g:neobundle#install_process_timeout = 360
+
 	" Disabled bundles {
 		"NeoBundleDisable 'jonstoler/werewolf.vim'
-        NeoBundleDisable vim-multiedit
+		NeoBundleDisable vim-multiedit
 	" }
+	" }}}
+	" fuck the arrow-keys
+	NeoBundle 'wikitopian/hardmode' " {{{
+		au BufReadPost * silent! call HardMode()
+		let g:HardMode_level = 'wannabe'
 	" }}}
 	" Language-specific bundles {{{
 		" vim
@@ -195,7 +203,7 @@ filetype off
 			" Use neocomplete.
 			let g:acp_enableAtStartup = 0
 			let g:neocomplete#enable_at_startup = 1
-			let g:neocomplete#data_directory='~/.vim/cache/neocomplete'
+			let g:neocomplete#data_directory = '~/.vim/cache/neocomplete'
 			" Use smartcase.
 			let g:neocomplete#enable_smart_case = 1
 			let g:neocomplete#enable_fuzzy_completion = 1
@@ -211,12 +219,12 @@ filetype off
 		NeoBundle 'luochen1990/rainbow' " rainbow brackets {{{
 			let g:rainbow_active = 1
 			let g:rainbow_conf = {
-			\	'guifgs' : ['RoyalBlue',  'DarkOrange', 'DarkOrchid', 'FireBrick', 'magenta'],
-			\	'ctermfgs' : ['lightblue', 'lightgreen', 'yellow', 'red', 'magenta'],
-			\	'operators' : '_,_',
-			\	'parentheses' : [['(',')'], ['\[','\]'], ['{','}'], ['<','>']],
-			\	'separately' : {
-			\		'*' : {},
+			\	'guifgs'      : ['RoyalBlue', 'DarkOrange', 'DarkOrchid', 'FireBrick', 'magenta'],
+			\	'ctermfgs'    : ['lightblue', 'lightgreen', 'yellow'    , 'red'      , 'magenta'],
+			\	'parentheses' : [['(',')']  , ['\[','\]'] , ['{','}']   , ['<','>'] ],
+			\	'operators'   : '_,_',
+			\	'separately'  : {
+			\		'*'   : {},
 			\		'vim' : {
 			\			'parentheses' : [['{{{','}}}']]
 			\		},
@@ -236,7 +244,10 @@ filetype off
 			smap <expr><S-TAB> pumvisible() ? "\<C-p>" : ""
 		" }}}
 			NeoBundle 'Shougo/unite.vim', {'depends':['Shougo/vimproc.vim']} " unite plugin {{{
-			let g:unite_source_history_yank_enable=1
+			call unite#custom#profile('default', 'context', {
+				\ 'log' : 1,
+			\ })
+			let g:unite_source_history_yank_enable=2
 			let g:unite_enable_start_insert=1
 			let g:unite_winwidth=10
 			let g:unite_split_rule='botright'
@@ -256,23 +267,26 @@ filetype off
 
 			nnor <silent> <leader>? :<C-u>Unite -buffer-name=keymap mapping<cr>
 			nnor <silent> <leader>b :<C-u>Unite -buffer-name=buffers buffer<cr>
+			nnor <silent> <leader>m :<C-u>Unite -buffer-name=mark mark<cr>
 
 			" replaceing CtrlP plugin?
 			nnor <silent>  :<C-u>Unite -buffer-name=files file_rec/async<cr>
 			let g:unite_source_file_async_command = "find"
 			" moar bundles {{{	
-				NeoBundleLazy 'Shougo/neomru.vim', {'autoload':{'unite_sources': ['file_mru', 'directory_mru']}}
-				NeoBundleLazy 'Shougo/unite-outline', {'autoload':{'unite_sources':'outline'}}
-				NeoBundleLazy 'osyo-manga/unite-filetype', {'autoload':{'unite_sources' : 'filetype'}}
-				NeoBundleLazy 'osyo-manga/unite-fold', {'autoload':{'unite_sources':'fold'}}
-				NeoBundleLazy 'osyo-manga/unite-quickfix', {'autoload':{'unite_sources': ['quickfix', 'location_list']}}
-				NeoBundleLazy 'osyo-manga/vim-snowdrop', {'autoload':{'unite_sources': 'snowdrop'}}
-				NeoBundleLazy 'tacroe/unite-mark', {'autoload':{'unite_sources':'mark'}}
-				NeoBundleLazy 'thinca/vim-unite-history', { 'autoload' : { 'unite_sources' : ['history/command', 'history/search']}}
-				NeoBundleLazy 'tsukkee/unite-help', {'autoload':{'unite_sources' : 'help'}}
-				NeoBundleLazy 'ujihisa/unite-colorscheme', {'autoload':{'unite_sources': 'colorscheme'}} " {{{
+				NeoBundleLazy 'Shougo/neomru.vim',         {'autoload': {'unite_sources': ['file_mru', 'directory_mru']}}
+				NeoBundleLazy 'Shougo/unite-outline',      {'autoload': {'unite_sources': 'outline'}}
+				NeoBundleLazy 'osyo-manga/unite-filetype', {'autoload': {'unite_sources': 'filetype'}}
+				NeoBundleLazy 'osyo-manga/unite-fold',     {'autoload': {'unite_sources': 'fold'}}
+				NeoBundleLazy 'osyo-manga/unite-quickfix', {'autoload': {'unite_sources': ['quickfix', 'location_list']}}
+				NeoBundleLazy 'osyo-manga/vim-snowdrop',   {'autoload': {'unite_sources': 'snowdrop'}}
+				NeoBundleLazy 'tacroe/unite-mark',         {'autoload': {'unite_sources': 'mark'}}
+				NeoBundleLazy 'thinca/vim-unite-history',  {'autoload': {'unite_sources': ['history/command', 'history/search']}}
+				NeoBundleLazy 'tsukkee/unite-help',        {'autoload': {'unite_sources': 'help'}}
+				NeoBundleLazy 'ujihisa/unite-colorscheme', {'autoload': {'unite_sources': 'colorscheme'}} " {{{
 					call unite#custom#profile('source/colorscheme', 'context', {
-					\   'auto_preview' : 1
+					\	'auto_preview' : 1,
+					\	         'log' : 0,
+					\	'start_insert' : 0,
 					\ })
 				" }}}
 				NeoBundleLazy 'ujihisa/unite-locate', {'autoload':{'unite_sources':'locate'}}
@@ -414,6 +428,8 @@ filetype off
 	NeoBundle 'w0ng/vim-hybrid'
 	NeoBundle 'trapd00r/neverland-vim-theme'
 	NeoBundle 'junegunn/seoul256.vim'
+	NeoBundle 'altercation/vim-colors-solarized'
+	NeoBundle 'baeuml/summerfruit256.vim'
 
 	NeoBundleLazy 'chriskempson/base16-vim'
 
@@ -421,7 +437,7 @@ filetype off
 		NeoBundleSource base16-vim
 	endif
 	NeoBundle 'jonstoler/werewolf.vim' " {{{
-		let g:werewolf_day_themes=['seoul256-light', 'hybrid-light']
+		let g:werewolf_day_themes   = ['seoul256-light', 'hybrid-light']
 		let g:werewolf_night_themes = ['seoul256', 'hybrid']
 	" }}}
 
