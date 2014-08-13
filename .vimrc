@@ -4,9 +4,6 @@ set nocompatible
 filetype off
 
 " Vim Settings & Options {{{
-	" auto-scan files for vim settings
-	set modeline modelines=10
-	
 	set laststatus=2
 	set cursorline
 	set shiftround
@@ -37,6 +34,10 @@ filetype off
 	set autoindent
 	set expandtab smarttab tabstop=4 softtabstop=4 shiftwidth=4 nowrap
 	set wrapmargin=0
+	
+	" modeline overrides default options
+	set modeline modelines=10
+
 " }}}
 " Key Remapping {{{
 	" Rebind leader key
@@ -122,7 +123,7 @@ filetype off
 		let g:neobundle#install_process_timeout = 360
 
 	" Disabled bundles {
-		"NeoBundleDisable 'jonstoler/werewolf.vim'
+		"NeoBundleDisable jonstoler/werewolf.vim
 		NeoBundleDisable vim-multiedit
 	" }
 	" }}}
