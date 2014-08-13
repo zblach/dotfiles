@@ -257,7 +257,7 @@ filetype off
 			nnor <silent> <leader>b :<C-u>Unite -buffer-name=buffers buffer<cr>
 			nnor <silent> <leader>m :<C-u>Unite -buffer-name=mark mark<cr>
 
-			" replaceing CtrlP plugin?
+			" replacing CtrlP plugin?
 			nnor <silent>  :<C-u>Unite -buffer-name=files file_rec/async<cr>
 			let g:unite_source_file_async_command = "find"
 			" moar bundles {{{	
@@ -300,7 +300,10 @@ filetype off
 		NeoBundle 'tpope/vim-unimpaired'
 	" }}}
 	" tommcdo bundles {{{
-		NeoBundle 'tommcdo/vim-lion'
+		NeoBundle 'tommcdo/vim-lion' " {{{
+			vmap <Enter> gl/
+			vmap <S-Enter> gL/
+		" }}}
 		NeoBundle 'tommcdo/vim-fugitive-blame-ext', {'depends' : 'tpope/vim-fugitive'}
 		NeoBundle 'tommcdo/vim-ninja-feet'
 		NeoBundle 'tommcdo/vim-text-objects'
@@ -332,10 +335,7 @@ filetype off
 		let g:detectindent_preferred_expandtab=0
 		au BufReadPost * :DetectIndent
 	" }}}
-	NeoBundle 'junegunn/vim-easy-align' " {{{
-		vmap <Enter> <Plug>(EasyAlign)
-		nmap <Leader>a <Plug>(EasyAlign)
-	" }}}
+	" NeoBundle 'junegunn/vim-easy-align' " removed in favor of vim-lion
 	NeoBundle 'benmills/vimux' " {{{
 		let g:VimuxPromptString=":t! "
 		
@@ -379,7 +379,6 @@ filetype off
 	" }}}
 	
 	NeoBundle 'airblade/vim-gitgutter'
-	" NeoBundle 'airblade/'
 	NeoBundle 'mhinz/vim-tmuxify'
 	NeoBundle 'gregsexton/gitv'
 " }}}
