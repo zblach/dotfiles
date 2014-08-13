@@ -83,7 +83,7 @@ filetype off
 	sil !mkdir -p ~/.vim_temp/{views,backup,undo,cache}
 	
 	set noswapfile
-	set backup backupdir=~/.vim_temp/backup/
+	set backupdir=~/.vim_temp/backup/ backup
 	set undodir=~/.vim_temp/undo/ undofile undolevels=10000
 	set viewdir=~/.vim_temp/views/
 
@@ -128,29 +128,32 @@ filetype off
 	" Language-specific bundles {{{
 		" vim
 		NeoBundleLazy 'dbakker/vim-lint', {'autoload':{'filetypes':['vim']}}
-		
+
 		" python
 		NeoBundleLazy 'ivanov/vim-ipython', {'autoload':{'filetypes':['python']}}
 		NeoBundleLazy 'nvie/vim-flake8', {'autload':{'filetypes':['python']}}
-		
+
 		" scala
 		NeoBundleLazy 'derekwyatt/vim-scala', {'autoload':{'filetypes':['scala']}}
 		NeoBundleLazy 'megaannum/vimside', {'autoload':{'filetypes':['scala']}, 'depends': ['Shougo/vimshell.vim', 'Shougo/vimproc']}
-		
+
 		" haskell
 		NeoBundleLazy 'ujihisa/neco-ghc', {'autoload':{'filetypes':['ghc']}}
-		
+
 		" csv
 		NeoBundleLazy 'chrisbra/csv.vim', {'autoload':{'filetypes':['csv']}}
-		
+
 		" swift
 		NeoBundleLazy 'toyamarinyon/vim-swift', {'autoload':{'filetypes':['swift','playground']}}
-		
+
 		" markdown
 		NeoBundleLazy 'nelstrom/vim-markdown-folding', {'autoload':{'filetypes':['markdown','md']}}
-		
+
 		" rust
 		NeoBundleLazy 'wting/rust.vim', {'autoload':{'filetypes':['rust', 'rs']}}
+
+		" hex
+		NeoBundleLazy 'Shougo/vinarise.vim', {'autoload':{'filetypes':['bin', 'xxd', 'hex']}}
 	" }}}
 	NeoBundle 'bling/vim-airline' " powerline replacement {{{
 		set noshowmode
@@ -163,11 +166,11 @@ filetype off
 		let g:airline_right_alt_sep = '⮃'
 		
 		let g:airline_symbols = { 
-				 \ 'space': ' ',
 				 \ 'paste': 'paste',
+				 \ 'space': ' ',
 				\ 'branch': '⭠',
-			  \ 'readonly': '⭤',
 				\ 'linenr': '⭡',
+			  \ 'readonly': '⭤',
 			\ 'whitespace': ' '
 		\ }
 		
@@ -216,21 +219,6 @@ filetype off
 
 			let g:neocomplete#sources#include#paths.cpp .= ".,/usr/local/include/"
 		" }}}
-		NeoBundle 'luochen1990/rainbow' " rainbow brackets {{{
-			let g:rainbow_active = 1
-			let g:rainbow_conf = {
-			\	'guifgs'      : ['RoyalBlue', 'DarkOrange', 'DarkOrchid', 'FireBrick', 'magenta'],
-			\	'ctermfgs'    : ['lightblue', 'lightgreen', 'yellow'    , 'red'      , 'magenta'],
-			\	'parentheses' : [['(',')']  , ['\[','\]'] , ['{','}']   , ['<','>'] ],
-			\	'operators'   : '_,_',
-			\	'separately'  : {
-			\		'*'   : {},
-			\		'vim' : {
-			\			'parentheses' : [['{{{','}}}']]
-			\		},
-			\	},
-			\}
-		" }}}
 		NeoBundle 'Shougo/neosnippet', {'depends':['honza/vim-snippets', 'Shougo/neosnippet-snippets']} " snippets {{{
 			" NeoBundle 'honza/vim-snippets'
 			" NeoBundle 'Shougo/neosnippet-snippets'
@@ -257,7 +245,7 @@ filetype off
 			
 			nnor <silent> <leader>/ :<C-u>Unite -buffer-name=results grep:.<cr>
 			if executable('ag')
-				let g:unite_source_grep_command='ag'
+				let g:unite_source_grep_command = 'ag'
 				let g:unite_source_grep_default_opts = '--nogroup --nocolor'
 				let g:unite_source_grep_recursive_opt = ''
 				let g:unite_source_grep_encoding = 'utf-8'
@@ -288,6 +276,7 @@ filetype off
 					\	         'log' : 0,
 					\	'start_insert' : 0,
 					\ })
+					nnor <leader>c <C-u>:Unite colorscheme<cr>
 				" }}}
 				NeoBundleLazy 'ujihisa/unite-locate', {'autoload':{'unite_sources':'locate'}}
 			" }}}
@@ -359,19 +348,12 @@ filetype off
 	NeoBundle 'nathanaelkane/vim-indent-guides'
 	NeoBundle 'Lokaltog/vim-easymotion'
 	NeoBundleLazy 'felixr/vim-multiedit' " multi-editing for vim
-	" Disabled legacy bundles {{{
-		" YankRing
-		" grep
-		" vim-multiedit
-		" vim-snipmate
-	" }}}
-	"NeoBundle 'terryma/vim-expand-region'
 	NeoBundle 'terryma/vim-multiple-cursors'
 	
 	NeoBundle 'szw/vim-ctrlspace' " {{{
 		let g:airline_exclude_preview = 1
 	" }}}
-	
+
 	NeoBundle 'bkad/CamelCaseMotion' " {{{
 		" overwrite default behaviour
 		map <silent> w <Plug>CamelCaseMotion_w
@@ -389,7 +371,7 @@ filetype off
 		omap <silent> ie <Plug>CamelCaseMotion_ie
 		xmap <silent> ie <Plug>CamelCaseMotion_ie
 	" }}}
-	
+
 	NeoBundle 'guns/vim-sexp'
 	NeoBundleLazy 'majutsushi/tagbar', {'autoload':{'commands':'TagbarToggle'}} " {{{
 		let g:tagbar_left=1
@@ -402,6 +384,21 @@ filetype off
 	NeoBundle 'gregsexton/gitv'
 " }}}
 " Colors {{{
+	NeoBundle 'luochen1990/rainbow' " rainbow brackets {{{
+		let g:rainbow_active = 1
+		let g:rainbow_conf = {
+		\	'guifgs'      : ['RoyalBlue', 'DarkOrange', 'DarkOrchid', 'FireBrick', 'magenta'],
+		\	'ctermfgs'    : ['lightblue', 'lightgreen', 'yellow'    , 'red'      , 'magenta'],
+		\	'parentheses' : [['(',')']  , ['\[','\]'] , ['{','}']   , ['<','>'] ],
+		\	'operators'   : '_,_',
+		\	'separately'  : {
+		\		'*'   : {},
+		\		'vim' : {
+		\			'parentheses' : [['{{{','}}}']]
+		\		},
+		\	},
+		\}
+	" }}}
 	NeoBundleLazy 'chrisbra/Colorizer', {'autoload':{'commands':'ColorToggle'}}
 	NeoBundleLazy 'jaxbot/semantic-highlight.vim', {'autoload':{'commands':'SemanticHighlight'}}
 	NeoBundleLazy 'junegunn/limelight.vim', {'autoload':{'commands':'Limelight'}}
