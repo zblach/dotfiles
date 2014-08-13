@@ -1,5 +1,5 @@
 " .vimrc - zblach 2014
-" vim: set fmr={{{,}}} fdm=marker ts=4 nospell tw=0 sbr=\\ noet nosta
+" vim: set fmr={{{,}}} fdm=marker ts=4 nospell tw=0 sbr=\\ noet nosta 
 set nocompatible
 filetype off
 
@@ -95,6 +95,12 @@ filetype off
 " Language-specific configuration options {{{
 	" cpp {{{
 		let g:additional_cpp_sources = "/usr/local/include/boost/"
+	" }}}
+
+	" vim {{{
+		set path+=~/.vim/bundle/
+		set inex=strpart(v:fname,strridx(v:fname,'/')+1).'/README' " trim repo name
+		set sua=.md,.txt,.markdown
 	" }}}
 " }}}
 " Bundles {{{
