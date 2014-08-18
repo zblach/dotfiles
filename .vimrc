@@ -460,7 +460,7 @@ filetype off
 	" }}}
 	
 	" super sudo write
-	cno w!! w !sudo tee % >/dev/null
+	cno w!! exec 'w !sudo tee % >/dev/null' | e!
 " }}}
 " Language-specific settings {{{
 	" xml
