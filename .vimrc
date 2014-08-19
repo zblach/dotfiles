@@ -279,9 +279,10 @@ filetype off
 				NeoBundleLazy 'tsukkee/unite-help',        {'autoload': {'unite_sources': 'help'}}
 				NeoBundleLazy 'ujihisa/unite-colorscheme', {'autoload': {'unite_sources': 'colorscheme'}} " {{{
 					call unite#custom#profile('source/colorscheme', 'context', {
-					\	'auto_preview' : 1,
-					\	         'log' : 0,
-					\	'start_insert' : 0,
+					\	  'auto_preview' : 1,
+					\	           'log' : 0,
+					\	  'start-insert' : 0,
+					\	'prompt-visible' : 0,
 					\ })
 					nnor <leader>c <C-u>:Unite colorscheme<cr>
 				" }}}
