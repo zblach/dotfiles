@@ -173,12 +173,12 @@ filetype off
 		let g:airline_right_alt_sep = '⮃'
 		
 		let g:airline_symbols = { 
-				 \ 'paste': 'paste',
-				 \ 'space': ' ',
-				\ 'branch': '⭠',
-				\ 'linenr': '⭡',
-			  \ 'readonly': '⭤',
-			\ 'whitespace': ' '
+			     \ 'paste' : 'paste',
+			     \ 'space' : ' ',
+			    \ 'branch' : '⭠',
+			    \ 'linenr' : '⭡',
+			  \ 'readonly' : '⭤',
+			\ 'whitespace' : ' '
 		\ }
 		
 		let g:airline#extensions#whitespace#enabled = 0
