@@ -88,7 +88,6 @@ filetype off
 	set undodir=~/.vim_temp/undo/ undofile undolevels=10000
 	set viewdir=~/.vim_temp/views/
 
-	
 	" bind view creation to focus loss/gain
 	au BufWinLeave * if expand("%") != "" | mkview | endif
 	au BufWinEnter * if expand("%") != "" | silent loadview | endif
@@ -162,8 +161,8 @@ filetype off
 		" hex
 		NeoBundleLazy 'Shougo/vinarise.vim', {'autoload':{'filetypes':['bin', 'xxd', 'hex']}}
 
-        " html
-        NeoBundleLazy 'rstacruz/sparkup', {'autoload':{'filetypes':['html','xml']}}
+		" html
+		NeoBundleLazy 'rstacruz/sparkup', {'autoload':{'filetypes':['html','xml']}}
 
 	" }}}
 	NeoBundle 'bling/vim-airline' " powerline replacement {{{
@@ -177,12 +176,12 @@ filetype off
 		let g:airline_right_alt_sep = '⮃'
 		
 		let g:airline_symbols = { 
-				 \ 'paste': 'paste',
-				 \ 'space': ' ',
-				\ 'branch': '⭠',
-				\ 'linenr': '⭡',
-			  \ 'readonly': '⭤',
-			\ 'whitespace': ' '
+			     \ 'paste' : 'paste',
+			     \ 'space' : ' ',
+			    \ 'branch' : '⭠',
+			    \ 'linenr' : '⭡',
+			  \ 'readonly' : '⭤',
+			\ 'whitespace' : ' '
 		\ }
 		
 		let g:airline#extensions#whitespace#enabled = 0
@@ -196,17 +195,17 @@ filetype off
 		let g:airline#extensions#tabline#right_sep = '⮂'
 		let g:airline#extensions#tabline#right_alt_sep = '⮃'
 		let g:airline_mode_map = {
-			\ '__': '---',
-			 \ 'n': 'NOR',
-			 \ 'i': 'INS',
-			 \ 'R': 'REP',
-			 \ 'c': 'CMD',
-			 \ 'v': 'VIS',
-			 \ 'V': 'VSL',
-			\ '': 'VBK',
-			 \ 's': 'SCH',
-			 \ 'S': 'SLN',
-			\ '': 'SBK',
+			\ '__' : '---',
+			 \ 'n' : 'NOR',
+			 \ 'i' : 'INS',
+			 \ 'R' : 'REP',
+			 \ 'c' : 'CMD',
+			 \ 'v' : 'VIS',
+			 \ 'V' : 'VSL',
+			\ '' : 'VBK',
+			 \ 's' : 'SCH',
+			 \ 'S' : 'SLN',
+			\ '' : 'SBK',
 		\ }
 	" }}}
 	NeoBundle 'dhruvasagar/vim-dotoo'
@@ -453,7 +452,7 @@ filetype off
 	" }}}
 
 	set background=dark
-	let b:colorscheme = 'badwolf' 
+	let b:colorscheme = 'badwolf'
 " }}}
 " Misc tricks & hax {{{
 	" Automatically source .vimrc and local on modification
@@ -469,7 +468,7 @@ filetype off
 	
 	" super sudo write
 	command! W exec 'w !sudo tee % > /dev/null' | :e!
-    cno w!! W
+	cno w!! W
 " }}}
 " Language-specific settings {{{
 	" xml
