@@ -161,6 +161,10 @@ filetype off
 
 		" hex
 		NeoBundleLazy 'Shougo/vinarise.vim', {'autoload':{'filetypes':['bin', 'xxd', 'hex']}}
+
+        " html
+        NeoBundleLazy 'rstacruz/sparkup', {'autoload':{'filetypes':['html','xml']}}
+
 	" }}}
 	NeoBundle 'bling/vim-airline' " powerline replacement {{{
 		set noshowmode
@@ -308,9 +312,11 @@ filetype off
 		NeoBundle 'tpope/vim-unimpaired'
 	" }}}
 	" tommcdo bundles {{{
-		NeoBundle 'tommcdo/vim-lion' " {{{
-			vmap <Enter> gl/
-			vmap <S-Enter> gL/
+		NeoBundle 'zblach/vim-lion' " {{{
+			let g:lion_create_maps = 0
+			let g:lion_prompt = 'Prompt [/]: '
+			vmap <Enter> <Plug>VLionLeft/
+			vmap <S-Enter> <Plug>VLionRight/
 		" }}}
 		NeoBundle 'tommcdo/vim-fugitive-blame-ext', {'depends' : 'tpope/vim-fugitive'}
 		NeoBundle 'tommcdo/vim-ninja-feet'
@@ -462,7 +468,8 @@ filetype off
 	" }}}
 	
 	" super sudo write
-	cno w!! exec 'w !sudo tee % >/dev/null' | e!
+	command! W exec 'w !sudo tee % > /dev/null' | :e!
+    cno w!! W
 " }}}
 " Language-specific settings {{{
 	" xml
