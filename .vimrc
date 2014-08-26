@@ -285,7 +285,6 @@ filetype off
 					\ })
 					nnor <leader>c <C-u>:Unite colorscheme<cr>
 				" }}}
-				NeoBundleLazy 'ujihisa/unite-locate', {'autoload':{'unite_sources':'locate'}}
 			" }}}
 		" }}}
 		NeoBundleLazy 'Shougo/vimproc.vim', {'build':{'mac': 'make -f make_mac.mak', 'unix' : 'make -f make_unix.mak'}}
