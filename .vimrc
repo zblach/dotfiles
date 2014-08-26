@@ -78,7 +78,7 @@ filetype off
 " Display Character Settings {{{
 	set listchars=tab:>-,eol:$,precedes:<,extends:>,trail:~,conceal:#,nbsp:_
 	set fillchars=vert:\│,fold:-
-	let &showbreak = '↪ '
+	let &showbreak='↪ '
 " }}}
 " Backups, History, and Views {{{
 	sil !mkdir -p ~/.vim_temp/{views,backup,undo,cache}
@@ -88,14 +88,13 @@ filetype off
 	set undodir=~/.vim_temp/undo/ undofile undolevels=10000
 	set viewdir=~/.vim_temp/views/
 
-	
 	" bind view creation to focus loss/gain
 	au BufWinLeave * if expand("%") != "" | mkview | endif
 	au BufWinEnter * if expand("%") != "" | silent loadview | endif
 " }}}
 " Language-specific configuration options {{{
 	" cpp {{{
-		let g:additional_cpp_sources = "/usr/local/include/boost/"
+		let g:additional_cpp_sources="/usr/local/include/boost/"
 	" }}}
 
 	" vim {{{
@@ -119,8 +118,8 @@ filetype off
 		" NeoBundle is my package manager of choice
 		NeoBundleFetch 'Shougo/neobundle.vim'
 
-		let g:neobundle#install_max_processes = 100 " overdrive!
-		let g:neobundle#install_process_timeout = 360
+		let g:neobundle#install_max_processes=100 " overdrive!
+		let g:neobundle#install_process_timeout=360
 
 	" Disabled bundles {
 		"NeoBundleDisable jonstoler/werewolf.vim
@@ -130,7 +129,7 @@ filetype off
 	" fuck the arrow-keys
 	NeoBundle 'wikitopian/hardmode' " {{{
 		au BufReadPost * silent! call HardMode()
-		let g:HardMode_level = 'wannabe'
+		let g:HardMode_level='wannabe'
 	" }}}
 	" Language-specific bundles {{{
 		" vim
@@ -161,48 +160,52 @@ filetype off
 
 		" hex
 		NeoBundleLazy 'Shougo/vinarise.vim', {'autoload':{'filetypes':['bin', 'xxd', 'hex']}}
+
+		" html
+		NeoBundleLazy 'rstacruz/sparkup', {'autoload':{'filetypes':['html','xml']}}
+
 	" }}}
 	NeoBundle 'bling/vim-airline' " powerline replacement {{{
 		set noshowmode
 		
-		let g:airline_powerline_fonts = 1
+		let g:airline_powerline_fonts=1
 		
-		let g:airline_left_sep = '⮀'
-		let g:airline_left_alt_sep = '⮁'
-		let g:airline_right_sep = '⮂'
-		let g:airline_right_alt_sep = '⮃'
+		let g:airline_left_sep='⮀'
+		let g:airline_left_alt_sep='⮁'
+		let g:airline_right_sep='⮂'
+		let g:airline_right_alt_sep='⮃'
 		
-		let g:airline_symbols = { 
-				 \ 'paste': 'paste',
-				 \ 'space': ' ',
-				\ 'branch': '⭠',
-				\ 'linenr': '⭡',
-			  \ 'readonly': '⭤',
-			\ 'whitespace': ' '
+		let g:airline_symbols={ 
+			     \ 'paste' : 'paste',
+			     \ 'space' : ' ',
+			    \ 'branch' : '⭠',
+			    \ 'linenr' : '⭡',
+			  \ 'readonly' : '⭤',
+			\ 'whitespace' : ' '
 		\ }
 		
-		let g:airline#extensions#whitespace#enabled = 0
+		let g:airline#extensions#whitespace#enabled=0
 		
-		let g:airline#extensions#tabline#enabled = 1
+		let g:airline#extensions#tabline#enabled=1
 		
-		let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
+		let g:airline#extensions#tabline#formatter='unique_tail_improved'
 		
-		let g:airline#extensions#tabline#left_sep = '⮀'
-		let g:airline#extensions#tabline#left_alt_sep = '⮁'
-		let g:airline#extensions#tabline#right_sep = '⮂'
-		let g:airline#extensions#tabline#right_alt_sep = '⮃'
-		let g:airline_mode_map = {
-			\ '__': '---',
-			 \ 'n': 'NOR',
-			 \ 'i': 'INS',
-			 \ 'R': 'REP',
-			 \ 'c': 'CMD',
-			 \ 'v': 'VIS',
-			 \ 'V': 'VSL',
-			\ '': 'VBK',
-			 \ 's': 'SCH',
-			 \ 'S': 'SLN',
-			\ '': 'SBK',
+		let g:airline#extensions#tabline#left_sep='⮀'
+		let g:airline#extensions#tabline#left_alt_sep='⮁'
+		let g:airline#extensions#tabline#right_sep='⮂'
+		let g:airline#extensions#tabline#right_alt_sep='⮃'
+		let g:airline_mode_map={
+			\ '__' : '---',
+			 \ 'n' : 'NOR',
+			 \ 'i' : 'INS',
+			 \ 'R' : 'REP',
+			 \ 'c' : 'CMD',
+			 \ 'v' : 'VIS',
+			 \ 'V' : 'VSL',
+			\ '' : 'VBK',
+			 \ 's' : 'SCH',
+			 \ 'S' : 'SLN',
+			\ '' : 'SBK',
 		\ }
 	" }}}
 	NeoBundle 'dhruvasagar/vim-dotoo'
@@ -211,17 +214,17 @@ filetype off
 	" Shougo Bundles {{{
 		NeoBundle 'Shougo/neocomplete' " tab-completion {{{
 			" Use neocomplete.
-			let g:acp_enableAtStartup = 0
-			let g:neocomplete#enable_at_startup = 1
-			let g:neocomplete#data_directory = '~/.vim/cache/neocomplete'
+			let g:acp_enableAtStartup=0
+			let g:neocomplete#enable_at_startup=1
+			let g:neocomplete#data_directory='~/.vim/cache/neocomplete'
 			" Use smartcase.
-			let g:neocomplete#enable_smart_case = 1
-			let g:neocomplete#enable_fuzzy_completion = 1
+			let g:neocomplete#enable_smart_case=1
+			let g:neocomplete#enable_fuzzy_completion=1
 
 			" additional C++ sources
 			if (!exists('g:neocomplete#sources#include#paths'))
-				let g:neocomplete#sources#include#paths = {}
-				let g:neocomplete#sources#include#paths.cpp = ""
+				let g:neocomplete#sources#include#paths={}
+				let g:neocomplete#sources#include#paths.cpp=""
 			endif
 
 			let g:neocomplete#sources#include#paths.cpp .= ".,/usr/local/include/"
@@ -251,13 +254,14 @@ filetype off
 			call unite#filters#sorter_default#use(['sorter_rank'])
 			
 			nnor <silent> <leader>/ :<C-u>Unite -buffer-name=results grep:.<cr>
+            nnor <silent> <leader>gf :<C-u>UniteWithCursorWord -buffer-name='gf canddiates' grep:.<cr>
 			if executable('ag')
-				let g:unite_source_grep_command = 'ag'
-				let g:unite_source_grep_default_opts = '--nogroup --nocolor'
-				let g:unite_source_grep_recursive_opt = ''
-				let g:unite_source_grep_encoding = 'utf-8'
+				let g:unite_source_grep_command='ag'
+				let g:unite_source_grep_default_opts='--nogroup --nocolor'
+				let g:unite_source_grep_recursive_opt=''
+				let g:unite_source_grep_encoding='utf-8'
 
-				let g:unite_source_rec_async_command = 'ag --follow --nocolor --group --hidden -g ""'
+				let g:unite_source_rec_async_command='ag --follow --nocolor --group --hidden -g ""'
 			endif
 
 			nnor <silent> <leader>? :<C-u>Unite -buffer-name=keymap mapping<cr>
@@ -266,7 +270,7 @@ filetype off
 
 			" replacing CtrlP plugin?
 			nnor <silent>  :<C-u>Unite -buffer-name=files file_rec/async<cr>
-			let g:unite_source_file_async_command = "find"
+			let g:unite_source_file_async_command="find"
 			" moar bundles {{{	
 				NeoBundleLazy 'Shougo/neomru.vim',         {'autoload': {'unite_sources': ['file_mru', 'directory_mru']}}
 				NeoBundleLazy 'Shougo/unite-outline',      {'autoload': {'unite_sources': 'outline'}}
@@ -279,9 +283,10 @@ filetype off
 				NeoBundleLazy 'tsukkee/unite-help',        {'autoload': {'unite_sources': 'help'}}
 				NeoBundleLazy 'ujihisa/unite-colorscheme', {'autoload': {'unite_sources': 'colorscheme'}} " {{{
 					call unite#custom#profile('source/colorscheme', 'context', {
-					\	'auto_preview' : 1,
-					\	         'log' : 0,
-					\	'start_insert' : 0,
+					\	  'auto_preview' : 1,
+					\	           'log' : 0,
+					\	  'start-insert' : 0,
+					\	'prompt-visible' : 0,
 					\ })
 					nnor <leader>c <C-u>:Unite colorscheme<cr>
 				" }}}
@@ -306,9 +311,11 @@ filetype off
 		NeoBundle 'tpope/vim-unimpaired'
 	" }}}
 	" tommcdo bundles {{{
-		NeoBundle 'tommcdo/vim-lion' " {{{
-			vmap <Enter> gl/
-			vmap <S-Enter> gL/
+		NeoBundle 'zblach/vim-lion', 'expose_prompt' " {{{
+			let g:lion_create_maps=1
+			let g:lion_prompt='[/]: '
+			vmap <Enter> <Plug>VLionLeft/
+			vmap <S-Enter> <Plug>VLionRight/
 		" }}}
 		NeoBundle 'tommcdo/vim-fugitive-blame-ext', {'depends' : 'tpope/vim-fugitive'}
 		NeoBundle 'tommcdo/vim-ninja-feet'
@@ -328,11 +335,11 @@ filetype off
 			let g:syntastic_style_warning_symbol='+'
 			
 			let g:syntastic_enable_highlighting=1
-			let g:syntastic_stl_format = '⮂[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
+			let g:syntastic_stl_format='⮂[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 			
 			" c++ options
-			let g:syntastic_cpp_compiler = 'clang++'
-			let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
+			let g:syntastic_cpp_compiler='clang++'
+			let g:syntastic_cpp_compiler_options=' -std=c++11 -stdlib=libc++'
 			let g:syntastic_cpp_include_dirs=['/usr/local/include']
 		" }}}
 	" }}}
@@ -357,7 +364,7 @@ filetype off
 	NeoBundle 'terryma/vim-multiple-cursors'
 	
 	NeoBundle 'szw/vim-ctrlspace' " {{{
-		let g:airline_exclude_preview = 1
+		let g:airline_exclude_preview=1
 	" }}}
 
 	NeoBundle 'bkad/CamelCaseMotion' " {{{
@@ -390,8 +397,8 @@ filetype off
 " }}}
 " Colors {{{
 	NeoBundle 'luochen1990/rainbow' " rainbow brackets {{{
-		let g:rainbow_active = 1
-		let g:rainbow_conf = {
+		let g:rainbow_active=1
+		let g:rainbow_conf={
 		\	'guifgs'      : ['RoyalBlue', 'DarkOrange', 'DarkOrchid', 'FireBrick', 'magenta'],
 		\	'ctermfgs'    : ['lightblue', 'lightgreen', 'yellow'    , 'red'      , 'magenta'],
 		\	'parentheses' : [['(',')']  , ['\[','\]'] , ['{','}']   , ['<','>'] ],
@@ -418,7 +425,7 @@ filetype off
 			Limelight!
 			silent !tmux set status on
 		endfunction
-		let g:goyo_callbacks = [function('GoyoBefore'), function('GoyoAfter')]
+		let g:goyo_callbacks=[function('GoyoBefore'), function('GoyoAfter')]
 	" }}}
 
 	NeoBundleLazy 'chriskempson/base16-vim' " {{{
@@ -439,12 +446,13 @@ filetype off
 		NeoBundleSource base16-vim
 	endif
 	NeoBundle 'jonstoler/werewolf.vim' " {{{
-		let g:werewolf_day_themes   = ['seoul256-light', 'hybrid-light', 'morning']
-		let g:werewolf_night_themes = ['seoul256'      , 'hybrid'      , 'evening']
+		let g:werewolf_change_automatically=0
+		let g:werewolf_day_themes  =['seoul256-light', 'hybrid-light', 'morning']
+		let g:werewolf_night_themes=['seoul256'      , 'hybrid'      , 'evening']
 	" }}}
 
 	set background=dark
-	let b:colorscheme = 'badwolf' 
+	let b:colorscheme='badwolf'
 " }}}
 " Misc tricks & hax {{{
 	" Automatically source .vimrc and local on modification
@@ -459,7 +467,8 @@ filetype off
 	" }}}
 	
 	" super sudo write
-	cno w!! w !sudo tee % >/dev/null
+	command! W exec 'w !sudo tee % > /dev/null' | :e!
+	cno w!! W
 " }}}
 " Language-specific settings {{{
 	" xml

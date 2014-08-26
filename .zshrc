@@ -167,13 +167,8 @@ alias -g '@U'='| sort | uniq'
 # Prompts
 colors
 
-#export PS1="[%n@%2m:%40<..<%~]%# "
 export PS1="%{$fg[default]%}[%{$fg[cyan]%}%n%{$fg[white]%}@%{$fg[red]%}%2m%{$fg[default]%}:%{$fg[green]%}%40<..<%{$fg[magenta]%}%~%{$fg[default]%}]%# "
-#export PS1="%{$fg[black]$bg[cyan]%} %n %{$fg[cyan]$bg[red]%}⮀%{$fg[black]%} ${HOSTNAME_SHORT} %{$fg[red]$bg[magenta]%}⮀%{$fg[black]%} %~ %{$fg[magenta]$bg[default]%}⮀%{$fg[default]$bg[default]%} "
-
-#export RPS1="%{$fg[default](?.$fg[white].$fg[red])%}⮂%{$fg[black]%(?.$bg[white].$bg[red])%} %? %{$fg[grey]%}⮂%{$bg[grey]$fg[white]%} %D{%H:%M:%S}%{$fg[default]$bg[default]%}" 
 export RPS1="%{$fg[default]%}[%{%(?.$fg[gray].$fg[red])%}%?%{$fg[default]%} %D{%H:%M:%S}]%{$fg[default]%}"
-#export RPS1="[%? %D{%H:%M:%S}]"
 
 # Break ancient xterm compatibility
 export TERM=xterm-256color
