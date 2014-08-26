@@ -311,6 +311,13 @@ filetype off
 		NeoBundle 'tpope/vim-repeat'
 		NeoBundle 'tpope/vim-unimpaired'
 	" }}}
+    " SnipMate {{{
+        NeoBundle 'MarcWeber/vim-addon-mw-utils'
+        NeoBundle 'tomtom/tlib_vim'
+        NeoBundle 'garbas/vim-snipmate'
+
+        NeoBundle 'honza/vim-snippets'
+    " }}}
 	" tommcdo bundles {{{
 		NeoBundle 'zblach/vim-lion', 'expose_prompt' " {{{
 			let g:lion_create_maps=1
