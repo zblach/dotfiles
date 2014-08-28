@@ -283,10 +283,10 @@ filetype off
 				NeoBundleLazy 'tsukkee/unite-help',        {'autoload': {'unite_sources': 'help'}}
 				NeoBundleLazy 'ujihisa/unite-colorscheme', {'autoload': {'unite_sources': 'colorscheme'}} " {{{
 					call unite#custom#profile('source/colorscheme', 'context', {
-					\	  'auto_preview' : 1,
-					\	           'log' : 0,
-					\	  'start-insert' : 0,
-					\	'prompt-visible' : 0,
+						\  'auto_preview' : 1,
+						\           'log' : 0,
+						\  'start-insert' : 0,
+						\'prompt-visible' : 0,
 					\ })
 					nnor <leader>c <C-u>:Unite colorscheme<cr>
 				" }}}
@@ -311,13 +311,13 @@ filetype off
 		NeoBundle 'tpope/vim-repeat'
 		NeoBundle 'tpope/vim-unimpaired'
 	" }}}
-    " SnipMate {{{
-        NeoBundle 'MarcWeber/vim-addon-mw-utils'
-        NeoBundle 'tomtom/tlib_vim'
-        NeoBundle 'garbas/vim-snipmate'
+	" SnipMate {{{
+		NeoBundle 'MarcWeber/vim-addon-mw-utils'
+		NeoBundle 'tomtom/tlib_vim'
+		NeoBundle 'garbas/vim-snipmate'
 
-        NeoBundle 'honza/vim-snippets'
-    " }}}
+		NeoBundle 'honza/vim-snippets'
+	" }}}
 	" tommcdo bundles {{{
 		NeoBundle 'zblach/vim-lion', 'expose_prompt' " {{{
 			let g:lion_create_maps=1
