@@ -118,7 +118,7 @@ filetype off
 		" NeoBundle is my package manager of choice
 		NeoBundleFetch 'Shougo/neobundle.vim'
 
-		let g:neobundle#install_max_processes=100 " overdrive!
+		let g:neobundle#install_max_processes=20 " overdrive!
 		let g:neobundle#install_process_timeout=360
 
 	" Disabled bundles {
@@ -133,36 +133,36 @@ filetype off
 	" }}}
 	" Language-specific bundles {{{
 		" vim
-		NeoBundleLazy 'dbakker/vim-lint', {'autoload':{'filetypes':['vim']}}
+		NeoBundleLazy 'dbakker/vim-lint',              {'autoload':{'filetypes':['vim']}}
 
 		" python
-		NeoBundleLazy 'ivanov/vim-ipython', {'autoload':{'filetypes':['python']}}
-		NeoBundleLazy 'nvie/vim-flake8', {'autload':{'filetypes':['python']}}
+		NeoBundleLazy 'ivanov/vim-ipython',            {'autoload':{'filetypes':['python']}}
+		NeoBundleLazy 'nvie/vim-flake8',               {'autoload':{'filetypes':['python']}}
 
 		" scala
-		NeoBundleLazy 'derekwyatt/vim-scala', {'autoload':{'filetypes':['scala']}}
-		NeoBundleLazy 'megaannum/vimside', {'autoload':{'filetypes':['scala']}, 'depends': ['Shougo/vimshell.vim', 'Shougo/vimproc']}
+		NeoBundleLazy 'derekwyatt/vim-scala',          {'autoload':{'filetypes':['scala']}}
+		NeoBundleLazy 'megaannum/vimside',             {'autoload':{'filetypes':['scala']}, 'depends': ['Shougo/vimshell.vim', 'Shougo/vimproc']}
 
 		" haskell
-		NeoBundleLazy 'ujihisa/neco-ghc', {'autoload':{'filetypes':['ghc']}}
+		NeoBundleLazy 'ujihisa/neco-ghc',              {'autoload':{'filetypes':['ghc']}}
 
 		" csv
-		NeoBundleLazy 'chrisbra/csv.vim', {'autoload':{'filetypes':['csv']}}
+		NeoBundleLazy 'chrisbra/csv.vim',              {'autoload':{'filetypes':['csv']}}
 
 		" swift
-		NeoBundleLazy 'toyamarinyon/vim-swift', {'autoload':{'filetypes':['swift','playground']}}
+		NeoBundleLazy 'toyamarinyon/vim-swift',        {'autoload':{'filetypes':['swift','playground']}}
 
 		" markdown
 		NeoBundleLazy 'nelstrom/vim-markdown-folding', {'autoload':{'filetypes':['markdown','md']}}
 
 		" rust
-		NeoBundleLazy 'wting/rust.vim', {'autoload':{'filetypes':['rust', 'rs']}}
+		NeoBundleLazy 'wting/rust.vim',                {'autoload':{'filetypes':['rust', 'rs']}}
 
 		" hex
-		NeoBundleLazy 'Shougo/vinarise.vim', {'autoload':{'filetypes':['bin', 'xxd', 'hex']}}
+		NeoBundleLazy 'Shougo/vinarise.vim',           {'autoload':{'filetypes':['bin', 'xxd', 'hex']}}
 
 		" html
-		NeoBundleLazy 'rstacruz/sparkup', {'autoload':{'filetypes':['html','xml']}}
+		NeoBundleLazy 'rstacruz/sparkup',              {'autoload':{'filetypes':['html','xml']}}
 
 	" }}}
 	NeoBundle 'bling/vim-airline' " powerline replacement {{{
@@ -254,7 +254,7 @@ filetype off
 			call unite#filters#sorter_default#use(['sorter_rank'])
 			
 			nnor <silent> <leader>/ :<C-u>Unite -buffer-name=results grep:.<cr>
-            nnor <silent> <leader>gf :<C-u>UniteWithCursorWord -buffer-name='gf canddiates' grep:.<cr>
+			nnor <silent> <leader>gf :<C-u>UniteWithCursorWord -buffer-name='gf canddiates' grep:.<cr>
 			if executable('ag')
 				let g:unite_source_grep_command='ag'
 				let g:unite_source_grep_default_opts='--nogroup --nocolor'
@@ -283,10 +283,10 @@ filetype off
 				NeoBundleLazy 'tsukkee/unite-help',        {'autoload': {'unite_sources': 'help'}}
 				NeoBundleLazy 'ujihisa/unite-colorscheme', {'autoload': {'unite_sources': 'colorscheme'}} " {{{
 					call unite#custom#profile('source/colorscheme', 'context', {
-						\  'auto_preview' : 1,
-						\           'log' : 0,
-						\  'start-insert' : 0,
-						\'prompt-visible' : 0,
+					\	  'auto_preview' : 1,
+					\	           'log' : 0,
+					\	  'start-insert' : 0,
+					\	'prompt-visible' : 0,
 					\ })
 					nnor <leader>c <C-u>:Unite colorscheme<cr>
 				" }}}
@@ -305,10 +305,11 @@ filetype off
 	" }}}
 	
 	" tpope Bundles {{{
+		NeoBundle 'tpope/vim-dispatch'
 		NeoBundle 'tpope/vim-fugitive'
+		NeoBundle 'tpope/vim-repeat'
 		NeoBundle 'tpope/vim-speeddating'
 		NeoBundle 'tpope/vim-surround'
-		NeoBundle 'tpope/vim-repeat'
 		NeoBundle 'tpope/vim-unimpaired'
 	" }}}
 	" SnipMate {{{
@@ -412,8 +413,11 @@ filetype off
 		\	'parentheses' : [['(',')']  , ['\[','\]'] , ['{','}']   , ['<','>'] ],
 		\	'operators'   : '_,_',
 		\	'separately'  : {
-		\		'*'   : {},
-		\		'vim' : {
+		\		'*'      : {},
+		\		'python' : {
+		\		   'parentheses' : [['(',')'], ['\[','\]'], ['{','}']]
+		\		},
+		\		'vim'    : {
 		\			'parentheses' : [['{{{','}}}']]
 		\		},
 		\	},
