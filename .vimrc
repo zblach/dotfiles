@@ -1,3 +1,4 @@
+" .vimrc - zblach 2014
 " vim: set fmr={{{,}}} fdm=marker ts=4 nospell tw=0 sbr=\\ noet nosta 
 set nocompatible
 filetype off
@@ -80,42 +81,42 @@ filetype off
 	let &showbreak='↪ '
 " }}}
 " Backups, History, and Views {{{
-sil !mkdir -p ~/.vim_temp/{views,backup,undo,cache}
+	sil !mkdir -p ~/.vim_temp/{views,backup,undo,cache}
+	
+	set noswapfile
+	set backupdir=~/.vim_temp/backup/ backup
+	set undodir=~/.vim_temp/undo/ undofile undolevels=10000
+	set viewdir=~/.vim_temp/views/
 
-set noswapfile
-set backupdir=~/.vim_temp/backup/ backup
-set undodir=~/.vim_temp/undo/ undofile undolevels=10000
-set viewdir=~/.vim_temp/views/
-
-" bind view creation to focus loss/gain
-au BufWinLeave * if expand("%") != "" | mkview | endif
-au BufWinEnter * if expand("%") != "" | silent loadview | endif
+	" bind view creation to focus loss/gain
+	au BufWinLeave * if expand("%") != "" | mkview | endif
+	au BufWinEnter * if expand("%") != "" | silent loadview | endif
 " }}}
 " Language-specific configuration options {{{
-" cpp {{{
-	let g:additional_cpp_sources="/usr/local/include/boost/"
-" }}}
+	" cpp {{{
+		let g:additional_cpp_sources="/usr/local/include/boost/"
+	" }}}
 
-" vim {{{
-	set path+=~/.vim/bundle/
-	set inex=strpart(v:fname,strridx(v:fname,'/')+1).'/README' " trim repo name
-	set sua=.md,.txt,.markdown
-" }}}
+	" vim {{{
+		set path+=~/.vim/bundle/
+		set inex=strpart(v:fname,strridx(v:fname,'/')+1).'/README' " trim repo name
+		set sua=.md,.txt,.markdown
+	" }}}
 " }}}
 " Bundles {{{
-" Neobundle Configuration {{{
-	" Bootstrapping {{{
-	if empty(glob("~/.vim/bundle/neobundle.vim"))
-		echo "NeoBundle not found, bootstrapping."
-		sil !mkdir -p ~/.vim/bundle/
-		sil !git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
-	endif
-	" }}}
-	set runtimepath+=~/.vim/bundle/neobundle.vim/
-	call neobundle#rc(expand('~/.vim/bundle/'))
-	
-	" NeoBundle is my package manager of choice
-	NeoBundleFetch 'Shougo/neobundle.vim'
+	" Neobundle Configuration {{{
+		" Bootstrapping {{{
+		if empty(glob("~/.vim/bundle/neobundle.vim"))
+			echo "NeoBundle not found, bootstrapping."
+			sil !mkdir -p ~/.vim/bundle/
+			sil !git clone https://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
+		endif
+		" }}}
+		set runtimepath+=~/.vim/bundle/neobundle.vim/
+		call neobundle#rc(expand('~/.vim/bundle/'))
+		
+		" NeoBundle is my package manager of choice
+		NeoBundleFetch 'Shougo/neobundle.vim'
 
 		let g:neobundle#install_max_processes=20 " overdrive!
 		let g:neobundle#install_process_timeout=360
@@ -196,15 +197,15 @@ au BufWinEnter * if expand("%") != "" | silent loadview | endif
 		let g:airline#extensions#tabline#right_alt_sep='⮃'
 		let g:airline_mode_map={
 			\ '__' : '---',
-			\ 'n' : 'NOR',
-			\ 'i' : 'INS',
-			\ 'R' : 'REP',
-			\ 'c' : 'CMD',
-			\ 'v' : 'VIS',
-			\ 'V' : 'VSL',
+			 \ 'n' : 'NOR',
+			 \ 'i' : 'INS',
+			 \ 'R' : 'REP',
+			 \ 'c' : 'CMD',
+			 \ 'v' : 'VIS',
+			 \ 'V' : 'VSL',
 			\ '' : 'VBK',
-			\ 's' : 'SCH',
-			\ 'S' : 'SLN',
+			 \ 's' : 'SCH',
+			 \ 'S' : 'SLN',
 			\ '' : 'SBK',
 		\ }
 	" }}}
@@ -336,7 +337,6 @@ au BufWinEnter * if expand("%") != "" | silent loadview | endif
 			NeoBundle 'MarcWeber/vim-addon-mw-utils'
 			NeoBundle 'tomtom/tlib_vim'
 			NeoBundle 'garbas/vim-snipmate'
-
 			NeoBundle 'honza/vim-snippets'
 		" }}}
 		" tommcdo bundles {{{
