@@ -292,21 +292,21 @@ NeoBundle 'dbakker/vim-projectroot'
 
 		let g:unite_source_file_async_command="find"
 		" moar bundles {{{	
-			NeoBundleLazy 'Shougo/neomru.vim',		 {'autoload': {'unite_sources': ['file_mru', 'directory_mru']}}
-			NeoBundleLazy 'Shougo/unite-outline',	  {'autoload': {'unite_sources': 'outline'}}
-			NeoBundleLazy 'osyo-manga/unite-filetype', {'autoload': {'unite_sources': 'filetype'}}
-			NeoBundleLazy 'osyo-manga/unite-fold',	 {'autoload': {'unite_sources': 'fold'}}
-			NeoBundleLazy 'osyo-manga/unite-quickfix', {'autoload': {'unite_sources': ['quickfix', 'location_list']}}
-			NeoBundleLazy 'osyo-manga/vim-snowdrop',   {'autoload': {'unite_sources': 'snowdrop'}}
-			NeoBundleLazy 'tacroe/unite-mark',		 {'autoload': {'unite_sources': 'mark'}}
-			NeoBundleLazy 'thinca/vim-unite-history',  {'autoload': {'unite_sources': ['history/command', 'history/search']}}
-			NeoBundleLazy 'tsukkee/unite-help',		{'autoload': {'unite_sources': 'help'}}
-			NeoBundleLazy 'ujihisa/unite-colorscheme', {'autoload': {'unite_sources': 'colorscheme'}} " {{{
+		NeoBundleLazy 'Shougo/neomru.vim',         {'autoload': {'unite_sources': ['file_mru', 'directory_mru']}}
+		NeoBundleLazy 'Shougo/unite-outline',      {'autoload': {'unite_sources': 'outline'}}
+		NeoBundleLazy 'osyo-manga/unite-filetype', {'autoload': {'unite_sources': 'filetype'}}
+		NeoBundleLazy 'osyo-manga/unite-fold',     {'autoload': {'unite_sources': 'fold'}}
+		NeoBundleLazy 'osyo-manga/unite-quickfix', {'autoload': {'unite_sources': ['quickfix', 'location_list']}}
+		NeoBundleLazy 'osyo-manga/vim-snowdrop',   {'autoload': {'unite_sources': 'snowdrop'}}
+		NeoBundleLazy 'tacroe/unite-mark',         {'autoload': {'unite_sources': 'mark'}}
+		NeoBundleLazy 'thinca/vim-unite-history',  {'autoload': {'unite_sources': ['history/command', 'history/search']}}
+		NeoBundleLazy 'tsukkee/unite-help',        {'autoload': {'unite_sources': 'help'}}
+		NeoBundleLazy 'ujihisa/unite-colorscheme', {'autoload': {'unite_sources': 'colorscheme'}} " {{{
 				call unite#custom#profile('source/colorscheme', 'context', {
-				\	  'auto_preview' : 1,
-				\	           'log' : 0,
-				\	  'start-insert' : 0,
-				\	'prompt-visible' : 0,
+				\     'auto_preview' : 1,
+				\              'log' : 0,
+				\     'start-insert' : 0,
+				\   'prompt-visible' : 0,
 				\ })
 				nnor <leader>c <C-u>:Unite colorscheme<cr>
 			" }}}
