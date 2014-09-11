@@ -53,7 +53,6 @@ filetype off
 	nnor <leader>v :set paste! paste?<cr>
 	nnor <leader>w :set wrap! wrap?<cr>
 	
-	nnor <silent><leader># :nohl<cr>
 	" nnor <leader>? :map<cr> -- deprecated in favor of unite
 	
 	" search and navigation
@@ -84,9 +83,9 @@ filetype off
 	sil !mkdir -p ~/.vim_temp/{views,backup,undo,cache}
 	
 	set noswapfile
-	set backupdir=~/.vim_temp/backup/ backup
-	set undodir=~/.vim_temp/undo/ undofile undolevels=10000
-	set viewdir=~/.vim_temp/views/
+	set backupdir=~/.vim_temp/backup// backup
+	set undodir=~/.vim_temp/undo// undofile undolevels=10000
+	set viewdir=~/.vim_temp/views//
 
 	" bind view creation to focus loss/gain
 	au BufWinLeave * if expand("%") != "" | mkview | endif
@@ -126,7 +125,28 @@ filetype off
 		NeoBundleDisable vim-multiedit
 	" }
 	" }}}
-	NeoBundle 'idbrii/vim-mark'
+	NeoBundle 'idbrii/vim-mark' " {{{
+		" work in progress
+		let g:mark_no_mappings = 1 
+		
+		nmap <silent><leader>#<BS> :nohl<cr>
+
+		nmap <leader>#+ <Plug>MarkSet
+		nmap <leader>#r <Plug>MarkRegex
+		nmap <leader>#- <Plug>MarkClear
+		nmap <leader>#! <Plug>MarkAllClear
+
+		nmap * <Plug>MarkSearchOrCurNext
+		nmap # <Plug>MarkSearchOrCurPrev
+
+		nmap n <Plug>MarkSearchOrAnyNext
+		nmap N <Plug>MarkSearchOrAnyPrev
+
+		xmap <leader>#+ <plug>MarkSet
+		xmap <leader>#r <plug>MarkRegexVisual
+		xmap <leader>#- <plug>MarkClear
+		xmap <leader>#! <Plug>MarkAllClear
+	" }}}
 	" fuck the arrow-keys
 	NeoBundle 'wikitopian/hardmode' " {{{
 		au BufReadPost * silent! call HardMode()
