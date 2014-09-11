@@ -1,5 +1,5 @@
 " .vimrc - zblach 2014
-" vim: set fmr={{{,}}} fdm=marker ts=4 nospell tw=0 sbr=\\ noet nosta 
+" vim: fmr='{{{','}}}' fdm=marker ts=4 nospell tw=0 sbr=\\ noet nosta 
 set nocompatible
 filetype off
 
@@ -321,15 +321,15 @@ filetype off
 			NeoBundleLazy 'thinca/vim-unite-history',  {'autoload': {'unite_sources': ['history/command', 'history/search']}}
 			NeoBundleLazy 'tsukkee/unite-help',        {'autoload': {'unite_sources': 'help'}}
 			NeoBundleLazy 'ujihisa/unite-colorscheme', {'autoload': {'unite_sources': 'colorscheme'}} " {{{
-					call unite#custom#profile('source/colorscheme', 'context', {
-					\     'auto_preview' : 1,
-					\              'log' : 0,
-					\     'start-insert' : 0,
-					\   'prompt-visible' : 0,
-					\ })
-					nnor <leader>c <C-u>:Unite colorscheme<cr>
-				" }}}
-				NeoBundleLazy 'ujihisa/unite-locate', {'autoload':{'unite_sources':'locate'}}
+				call unite#custom#profile('source/colorscheme', 'context', {
+				\     'auto_preview' : 1,
+				\              'log' : 0,
+				\     'start-insert' : 0,
+				\   'prompt-visible' : 0,
+				\ })
+				nnor <leader>c <C-u>:Unite colorscheme<cr>
+			" }}}
+			NeoBundleLazy 'ujihisa/unite-locate', {'autoload':{'unite_sources':'locate'}}
 				" }}}
 			" }}}
 
