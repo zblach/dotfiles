@@ -97,9 +97,11 @@ filetype off
 	" }}}
 
 	" vim {{{
-		set path+=~/.vim/bundle/
-		set inex=strpart(v:fname,strridx(v:fname,'/')+1).'/README' " trim repo name
-		set sua=.md,.txt,.markdown
+		if &ft == 'vim'
+			set path+=~/.vim/bundle/
+			set inex=strpart(v:fname,strridx(v:fname,'/')+1).'/README' " trim repo name
+			set sua=.md,.txt,.markdown
+		endif
 	" }}}
 " }}}
 " Bundles {{{
