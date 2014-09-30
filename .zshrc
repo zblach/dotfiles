@@ -145,12 +145,14 @@ bindkey "[B" history-beginning-search-forward
 zle-keymap-select () {
 	if [ "$TERM" = "xterm-256color" ]; then
 		if [ $KEYMAP = vicmd ]; then
-			echo -ne "\e[2 q"
-		else
 			echo -ne "\e[4 q"
+		else
+			echo -ne "\e[2 q"
 		fi
 	fi
 }
+
+zle -N zle-keymap-select
 
 ################################################################################
 # HOST-SPECIFIC ALIASES AND CONFIGURATIONS                                     #
