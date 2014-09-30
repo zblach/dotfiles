@@ -139,8 +139,8 @@ filetype off
 		nmap * <Plug>MarkSearchOrCurNext
 		nmap # <Plug>MarkSearchOrCurPrev
 
-		nmap n <Plug>MarkSearchOrAnyNext
-		nmap N <Plug>MarkSearchOrAnyPrev
+		"nmap n <Plug>MarkSearchOrAnyNext
+		"nmap N <Plug>MarkSearchOrAnyPrev
 
 		xmap <leader>#+ <plug>MarkSet
 		xmap <leader>#r <plug>MarkRegexVisual
@@ -184,6 +184,9 @@ filetype off
 
 		" html
 		NeoBundleLazy 'rstacruz/sparkup',              {'autoload':{'filetypes':['html','xml']}}
+
+		" mediawiki
+		NeoBundleLazy 'chikamichi/mediawiki.vim',	   {'autoload':{'filetypes':['wiki','mediawiki']}}
 
 	" }}}
 	NeoBundle 'bling/vim-airline' " powerline replacement {{{
@@ -263,6 +266,11 @@ filetype off
 			smap <expr><S-TAB> pumvisible() ? "\<C-p>" : ""
 		" }}}
 		NeoBundle 'Shougo/unite.vim', {'depends':['Shougo/vimproc.vim']} " unite plugin {{{
+		
+			" if unite needs its own modal set, we can go this route
+			nnoremap [unite] <Nop>
+			nmap <leader>. [unite]
+
 			call unite#custom#profile('default', 'context', {
 			\ 'log' : 1,
 			\ })
@@ -284,17 +292,17 @@ filetype off
 			endif
 			
 			" grep
-			nnor <silent> <leader>/ :<C-u>Unite -buffer-name=results grep:.<cr>
-			nnor <silent> <leader>w/ :<C-u>UniteWithCursorWord -buffer-name=results grep:.<cr>
+			nnor <silent> [unite]/ :<C-u>Unite -buffer-name=results grep:.<cr>
+			nnor <silent> [unite]w/ :<C-u>UniteWithCursorWord -buffer-name=results grep:.<cr>
 
 			" Misc	
-			nnor <silent> <leader>? :<C-u>Unite -buffer-name=keymap mapping<cr>
-			nnor <silent> <leader>b :<C-u>Unite -buffer-name=buffers buffer<cr>
-			nnor <silent> <leader>" :<C-u>Unite -buffer-name=mark mark<cr>
+			nnor <silent> [unite]? :<C-u>Unite -buffer-name=keymap mapping<cr>
+			nnor <silent> [unite]b :<C-u>Unite -buffer-name=buffers buffer<cr>
+			nnor <silent> [unite]" :<C-u>Unite -buffer-name=mark mark<cr>
 
 			" replacing CtrlP plugin
 			nnor <silent>  :<C-u>Unite -buffer-name=files file_rec/async<cr>
-			nnor <silent> <leader>gf :<C-u>UniteWithCursorWord -buffer-name=files file_rec/async<cr>
+			nnor <silent> [unite]gf :<C-u>UniteWithCursorWord -buffer-name=files file_rec/async<cr>
 
 			" less-style ampersand filter
 			call unite#custom#profile('source/line', 'context', {
@@ -306,8 +314,8 @@ filetype off
 			\   'toggle' : 1,
 			\ })
 			call unite#custom#source('source/line', 'matchers', 'matcher_regexp')
-			nnor <silent> <leader>& :<C-u>UniteWithInput line:backward<cr>
-			nnor <silent> <leader>w& :<C-u>UniteWithCursorWord line:backward<cr>
+			nnor <silent> [unite]& :<C-u>UniteWithInput line:backward<cr>
+			nnor <silent> [unite]w& :<C-u>UniteWithCursorWord line:backward<cr>
 
 			let g:unite_source_file_async_command="find"
 			" moar bundles {{{	
@@ -327,7 +335,7 @@ filetype off
 				\     'start-insert' : 0,
 				\   'prompt-visible' : 0,
 				\ })
-				nnor <leader>c <C-u>:Unite colorscheme<cr>
+				nnor [unite]c <C-u>:Unite colorscheme<cr>
 			" }}}
 			NeoBundleLazy 'ujihisa/unite-locate', {'autoload':{'unite_sources':'locate'}}
 				" }}}
