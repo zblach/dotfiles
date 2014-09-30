@@ -266,7 +266,7 @@ filetype off
 		
 			" if unite needs its own modal set, we can go this route
 			nnoremap [unite] <Nop>
-			nmap <leader> [unite]
+			nmap <leader>. [unite]
 
 			call unite#custom#profile('default', 'context', {
 			\ 'log' : 1,
