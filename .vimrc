@@ -185,6 +185,9 @@ filetype off
 		" html
 		NeoBundleLazy 'rstacruz/sparkup',              {'autoload':{'filetypes':['html','xml']}}
 
+		" mediawiki
+		NeoBundleLazy 'chikamichi/mediawiki.vim',	   {'autoload':{'filetypes':['wiki','mediawiki']}}
+
 	" }}}
 	NeoBundle 'bling/vim-airline' " powerline replacement {{{
 		set noshowmode
