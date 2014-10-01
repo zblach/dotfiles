@@ -187,6 +187,9 @@ filetype off
 		" html
 		NeoBundleLazy 'rstacruz/sparkup',              {'autoload':{'filetypes':['html','xml']}}
 
+		" mediawiki
+		NeoBundleLazy 'chikamichi/mediawiki.vim',	   {'autoload':{'filetypes':['wiki','mediawiki']}}
+
 	" }}}
 	NeoBundle 'bling/vim-airline' " powerline replacement {{{
 		set noshowmode
@@ -268,7 +271,7 @@ filetype off
 		
 			" if unite needs its own modal set, we can go this route
 			nnoremap [unite] <Nop>
-			nmap <leader> [unite]
+			nmap <leader>. [unite]
 
 			call unite#custom#profile('default', 'context', {
 			\ 'log' : 1,
