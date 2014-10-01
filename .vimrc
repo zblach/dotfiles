@@ -340,7 +340,14 @@ filetype off
 				" }}}
 			" }}}
 
-			NeoBundleLazy 'Shougo/vimproc.vim', {'build':{'mac': 'make -f make_mac.mak', 'unix' : 'make -f make_unix.mak'}}
+			NeoBundleLazy 'Shougo/vimproc.vim', {
+				\ 'build' : {
+				\     'windows' : 'tools\\update-dll-mingw',
+				\     'cygwin' : 'make -f make_cygwin.mak',
+				\     'mac' : 'make -f make_mac.mak',
+				\     'unix' : 'make -f make_unix.mak',
+				\    },
+				\ }
 
 			" NeoBundle 'Shougo/vimshell.vim'
 		" }}}
@@ -367,7 +374,7 @@ filetype off
 			NeoBundle 'honza/vim-snippets'
 		" }}}
 		" tommcdo bundles {{{
-			NeoBundle 'zblach/vim-lion', 'expose_prompt' " {{{
+			NeoBundle 'tommcdo/vim-lion' " {{{
 				let g:lion_create_maps=1
 				let g:lion_prompt='[/]: '
 				vmap <Enter> <Plug>VLionLeft/
@@ -395,7 +402,7 @@ filetype off
 				
 				" c++ options
 				let g:syntastic_cpp_compiler='clang++'
-				let g:syntastic_cpp_compiler_options=' -std=c++11 -stdlib=libc++'
+				let g:syntastic_cpp_compiler_options='-std=c++11 -stdlib=libc++'
 				let g:syntastic_cpp_include_dirs=['/usr/local/include']
 			" }}}
 		" }}}
@@ -466,6 +473,9 @@ filetype off
 			\		},
 			\		'vim'    : {
 			\			'parentheses' : [['{{{','}}}']]
+			\		},
+			\		'cpp'    : {
+			\			'operators' : '_<<,>>_'
 			\		},
 			\	},
 			\}

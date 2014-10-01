@@ -163,11 +163,13 @@ alias -g '@C'='| acat'
 alias -g '@S'='| sort'
 alias -g '@T'='| tail -f'
 alias -g '@U'='| sort | uniq'
+alias -g '@F'='**/*(.)'
 
 # Prompts
 colors
 
 export PS1="%{$fg[default]%}[%{$fg[cyan]%}%n%{$fg[white]%}@%{$fg[red]%}%2m%{$fg[default]%}:%{$fg[green]%}%40<..<%{$fg[magenta]%}%~%{$fg[default]%}]%# "
+
 export RPS1="%{$fg[default]%}[%{%(?.$fg[gray].$fg[red])%}%?%{$fg[default]%} %D{%H:%M:%S}]%{$fg[default]%}"
 
 # Break ancient xterm compatibility
