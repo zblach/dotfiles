@@ -5,7 +5,7 @@
 source ~/.profile
 
 # Set default handlers
-Terminal = gnome-terminal --start-factory-server --use-factory
+Terminal = lxterminal
 TermExec = ${Terminal} -e
 AlwaysInTerm = ssh telnet ftp lynx mc vi vim pine centericq perldoc man find 
 
