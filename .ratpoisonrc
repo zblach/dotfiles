@@ -1,0 +1,37 @@
+# free
+unmanage gmrun
+unmanage xfce4-panel
+unmanage xfce4-notifyd
+
+# settings
+set padding 0 0 0 0
+set startup_message off
+set font terminus:9
+set fgcolor #BBBBBB
+set bgcolor #222222
+set bargravity c
+
+# autostart
+exec xsetroot -cursor_name left_ptr 
+exec setxkbmap -option compose:ralt
+# meta key
+exec syndaemon -t -d
+exec xscreensaver 
+
+exec terminal
+
+exec nm-applet
+exec jupiter
+exec clipit
+exec dropboxd
+exec stalonetray
+
+# bindings
+bind r exec gmrun
+bind M-Escape exec xkill
+bind Escape abort
+bind c exec terminal
+bind L exec xscreensaver-command -lock
+bind b exec ratpoison -c "echo $(acpi -bat)"
+
+#frestore ~/.ratpoison_frame
