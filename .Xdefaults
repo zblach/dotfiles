@@ -144,6 +144,7 @@ Xautolock.corners:                           +++-
 
 ! Select the fonts to be used. This is a comma separated list of font names that are checked in order when trying to find glyphs for characters. The first font defines the cell size for characters; other fonts
 ! URxvt*font: fontlist
+URxvt*font: -*-terminesspowerline-*-*-*-*-*-*-*-*-*-*-*-*
 
 ! URxvt*boldFont: fontlist
 
@@ -306,10 +307,10 @@ URxvt*scrollBar: false
 ! Compile frills: Associate string with keysym sym. The intervening resource name keysym. cannot be omitted.
 ! URxvt*keysym.sym: string
 
-! URxvt*perl-ext-common: string
+URxvt*perl-ext-common: default,clipboard
 
 ! Comma-separated list(s) of perl extension scripts (default: "default") to use in this terminal instance; option -pe.
-! URxvt*perl-ext: string
+URxvt*perl-ext: selection-to-clipboard
 
 ! Perl code to be evaluated when all extensions have been registered. See the urxvtperl(3) manpage.
 ! URxvt*perl-eval: string
