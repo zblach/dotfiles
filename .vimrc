@@ -97,9 +97,11 @@ filetype off
 	" }}}
 
 	" vim {{{
-		set path+=~/.vim/bundle/
-		set inex=strpart(v:fname,strridx(v:fname,'/')+1).'/README' " trim repo name
-		set sua=.md,.txt,.markdown
+		if &ft == 'vim'
+			set path+=~/.vim/bundle/
+			set inex=strpart(v:fname,strridx(v:fname,'/')+1).'/README' " trim repo name
+			set sua=.md,.txt,.markdown
+		endif
 	" }}}
 " }}}
 " Bundles {{{
@@ -341,7 +343,14 @@ filetype off
 				" }}}
 			" }}}
 
-			NeoBundleLazy 'Shougo/vimproc.vim', {'build':{'mac': 'make -f make_mac.mak', 'unix' : 'make -f make_unix.mak'}}
+			NeoBundleLazy 'Shougo/vimproc.vim', {
+				\ 'build' : {
+				\     'windows' : 'tools\\update-dll-mingw',
+				\     'cygwin' : 'make -f make_cygwin.mak',
+				\     'mac' : 'make -f make_mac.mak',
+				\     'unix' : 'make -f make_unix.mak',
+				\    },
+				\ }
 
 			" NeoBundle 'Shougo/vimshell.vim'
 		" }}}
@@ -368,7 +377,7 @@ filetype off
 			NeoBundle 'honza/vim-snippets'
 		" }}}
 		" tommcdo bundles {{{
-			NeoBundle 'zblach/vim-lion', 'expose_prompt' " {{{
+			NeoBundle 'tommcdo/vim-lion' " {{{
 				let g:lion_create_maps=1
 				let g:lion_prompt='[/]: '
 				vmap <Enter> <Plug>VLionLeft/
@@ -401,7 +410,7 @@ filetype off
 					let g:syntastic_cpp_include_dirs=['/usr/local/include']
 					let g:syntastic_cpp_checkers=['clang_check']
 				endif
-				" }}}
+			" }}}
 		" }}}
 		NeoBundle 'ciaranm/detectindent' " {{{
 			let g:detectindent_preferred_indent=4
@@ -471,9 +480,9 @@ filetype off
 			\		'vim'    : {
 			\			'parentheses' : [['{{{','}}}']]
 			\		},
-			\		'cpp'	 : {
-			\			'operators' : ['<<','>>']
-			\		}
+			\		'cpp'    : {
+			\			'operators' : '_<<,>>_'
+			\		},
 			\	},
 			\}
 		" }}}
