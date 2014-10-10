@@ -395,10 +395,13 @@ filetype off
 				let g:syntastic_stl_format='⮂[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 				
 				" c++ options
-				let g:syntastic_cpp_compiler='clang++'
-				let g:syntastic_cpp_compiler_options=' -std=c++11 -stdlib=libc++'
-				let g:syntastic_cpp_include_dirs=['/usr/local/include']
-			" }}}
+				if executable('clang++')
+					let g:syntastic_cpp_compiler='clang++'
+					let g:syntastic_cpp_compiler_options=' -std=c++11 -stdlib=libc++'
+					let g:syntastic_cpp_include_dirs=['/usr/local/include']
+					let g:syntastic_cpp_checkers=['clang_check']
+				endif
+				" }}}
 		" }}}
 		NeoBundle 'ciaranm/detectindent' " {{{
 			let g:detectindent_preferred_indent=4
@@ -468,6 +471,9 @@ filetype off
 			\		'vim'    : {
 			\			'parentheses' : [['{{{','}}}']]
 			\		},
+			\		'cpp'	 : {
+			\			'operators' : ['<<','>>']
+			\		}
 			\	},
 			\}
 		" }}}
@@ -528,8 +534,8 @@ filetype off
 	" }}}
 	
 	" super sudo write
-	command! W exec 'w !sudo tee % > /dev/null' | :e!
-	cno w!! W
+	command! SudoWrite exec 'w !sudo tee % > /dev/null' | :e!
+	cno w!! SudoWrite
 " }}}
 " Language-specific settings {{{
 	" xml
