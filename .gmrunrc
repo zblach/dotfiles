@@ -5,8 +5,8 @@
 source ~/.profile
 
 # Set default handlers
-Terminal = gnome-terminal --start-factory-server --use-factory
-TermExec = ${Terminal} -e
+Terminal = urxvt
+TermExec = ${Terminal} +hold
 AlwaysInTerm = ssh telnet ftp lynx mc vi vim pine centericq perldoc man find 
 
 Browser = firefox
