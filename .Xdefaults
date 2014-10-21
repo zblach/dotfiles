@@ -144,7 +144,9 @@ Xautolock.corners:                           +++-
 
 ! Select the fonts to be used. This is a comma separated list of font names that are checked in order when trying to find glyphs for characters. The first font defines the cell size for characters; other fonts
 ! URxvt*font: fontlist
-URxvt*font: -*-terminesspowerline-*-*-*-*-*-*-*-*-*-*-*-*
+!URxvt*font: -*-terminesspowerline-*-*-*-*-*-*-*-*-*-*-*-*
+URxvt*font: xft:Terminess\ Powerline:pixelsize=11,\
+            xft:Fixed:antialias=false
 
 ! URxvt*boldFont: fontlist
 
@@ -307,10 +309,13 @@ URxvt*scrollBar: false
 ! Compile frills: Associate string with keysym sym. The intervening resource name keysym. cannot be omitted.
 ! URxvt*keysym.sym: string
 
-URxvt*perl-ext-common: default,clipboard
+URxvt*perl-ext-common: default,clipboard,font
 
 ! Comma-separated list(s) of perl extension scripts (default: "default") to use in this terminal instance; option -pe.
 URxvt*perl-ext: selection-to-clipboard
+
+URxvt.keysym.Control-Shift-Up:    perl:font:increment
+URxvt.keysym.Control-Shift-Down:  perl:font:decrement
 
 ! Perl code to be evaluated when all extensions have been registered. See the urxvtperl(3) manpage.
 ! URxvt*perl-eval: string
@@ -337,7 +342,14 @@ URxvt*perl-ext: selection-to-clipboard
 ! URxvt*override-redirect: boolean
 
 ! Turn on/off ISO 14755 (default enabled).
-! URxvt*iso14755: boolean
+URxvt*iso14755: false
 
 ! Turn on/off ISO 14755 5.2 mode (default enabled).
 ! URxvt*iso14755_52: boolean
+!
+! XFT options
+Xft.dpi:        96
+Xft.antialias:  true
+Xft.rgba:       rgb
+Xft.hinting:    true
+Xft.hintstyle:  hinstlight

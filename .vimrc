@@ -31,8 +31,8 @@ filetype off
 	" tab-expansion configuration
 	set wildmenu wildmode=longest,full wildignorecase wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.idea/*,*/.DS_Store
 	
-	set autoindent
-	set expandtab smarttab tabstop=4 softtabstop=4 shiftwidth=4 nowrap
+	set autoindent breakindent
+	set expandtab smarttab tabstop=4 softtabstop=4 shiftwidth=4 nowrap briopt=sbr
 	set wrapmargin=0
 	
 	" modeline overrides default options
@@ -114,7 +114,7 @@ filetype off
 		endif
 		" }}}
 		set runtimepath+=~/.vim/bundle/neobundle.vim/
-		call neobundle#rc(expand('~/.vim/bundle/'))
+		call neobundle#begin(expand('~/.vim/bundle/'))
 		
 		" NeoBundle is my package manager of choice
 		NeoBundleFetch 'Shougo/neobundle.vim'
@@ -179,7 +179,7 @@ filetype off
 		NeoBundleLazy 'nelstrom/vim-markdown-folding', {'autoload':{'filetypes':['markdown','md']}}
 
 		" rust
-		NeoBundleLazy 'wting/rust.vim',                {'autoload':{'filetypes':['rust', 'rs']}}
+		"NeoBundleLazy 'wting/rust.vim',                {'autoload':{'filetypes':['rust', 'rs']}}
 
 		" hex
 		NeoBundleLazy 'Shougo/vinarise.vim',           {'autoload':{'filetypes':['bin', 'xxd', 'hex']}}
@@ -405,10 +405,11 @@ filetype off
 				
 				" c++ options
 				if executable('clang++')
+					let g:syntastic_cpp_checkers=['gcc', 'clang_check']
 					let g:syntastic_cpp_compiler='clang++'
-					let g:syntastic_cpp_compiler_options=' -std=c++11 -stdlib=libc++'
+					let g:syntastic_cpp_compiler_options=' -Wall -std=c++11-extensions -stdlib=libc++'
+					let g:syntastic_clang_check_options = g:syntastic_cpp_compiler_options
 					let g:syntastic_cpp_include_dirs=['/usr/local/include']
-					let g:syntastic_cpp_checkers=['clang_check']
 				endif
 			" }}}
 		" }}}
@@ -557,7 +558,7 @@ filetype off
 		au FileType rust setlocal makeprg='rustc "%"'
 	endif
 " }}}
-
+call neobundle#end()
 filetype plugin indent on
 syntax on
 exe "colorscheme ". b:colorscheme
