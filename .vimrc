@@ -38,6 +38,9 @@ filetype off
 	" modeline overrides default options
 	set modeline modelines=10
 
+	" vimdiff options {{{ 
+		set diffopt+=iwhite
+	" }}}
 " }}}
 " Key Remapping {{{
 	" Rebind leader key
