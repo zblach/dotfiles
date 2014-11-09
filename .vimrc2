@@ -247,7 +247,25 @@ filetype off
 
 	" }-
 	" unite {+
-		let b:preferred_finder_executables = ['fzf', 'ag', 'find']
+		let g:finders = ['ag', 'fzf', 'find']
+		call unite#custom#profile('default', 'context', {
+		\              'log' : 1,
+		\ })
+		call unite#custom#profile('source/colorscheme', 'context', {
+		\     'auto_preview' : 1,
+		\              'log' : 0,
+		\     'start-insert' : 0,
+		\   'prompt-visible' : 0,
+		\ })
+		call unite#custom#profile('source/line', 'context', {
+		\      'buffer_name' : 'filter',
+		\ 'prompt_direction' : 'below',
+		\            'split' : 1,
+		\              'tab' : 0,
+		\           'prompt' : '&/',
+		\           'toggle' : 1,
+		\ })
+		call unite#custom#source('source/line', 'matchers', 'matcher_regexp')
 		if executable('ag')
 
 		endif
@@ -256,7 +274,7 @@ filetype off
 " }-
 " keymapping {+
 	" Rebind leader key
-	let mapleader=','
+	let mapleader=' '
 
 	" Unite leader key
 	nnor [unite] <nop>
@@ -294,7 +312,7 @@ filetype off
 	" nuke 'ex' mode
 	nnor Q <nop>
 
-	" plugin mappings {+
+	" CamelCaseMotion mappings{+
 		map <silent> w <Plug>CamelCaseMotion_w
 		map <silent> b <Plug>CamelCaseMotion_b
 		map <silent> e <Plug>CamelCaseMotion_e
@@ -309,7 +327,6 @@ filetype off
 		xmap <silent> ib <Plug>CamelCaseMotion_ib
 		omap <silent> ie <Plug>CamelCaseMotion_ie
 		xmap <silent> ie <Plug>CamelCaseMotion_ie
-
 	" }-
 " }-
 " language-specific settings {+
