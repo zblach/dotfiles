@@ -4,7 +4,7 @@ set nocompatible
 filetype off
 
 " core vim settings {+
-	let g:colorscheme = 'badwolf'
+	let g:colorscheme = 'hybrid'
 
 	set laststatus=2
 	set cursorline
@@ -48,10 +48,6 @@ filetype off
 		call neobundle#begin(vim_bundle_path)
 
 		NeoBundleFetch 'Shougo/neobundle.vim'
-
-		"let g:neobundle#install_max_processes=20 " overdrive!
-		"let g:neobundle#install_process_timeout=360
-
 	" }-
 	" core bundles {+
 		" tommcdo plugins {+
