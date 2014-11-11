@@ -120,11 +120,11 @@ filetype off
 		" keys and external bindings {+
 			NeoBundle 'kana/vim-arpeggio'
 			NeoBundle 'wikitopian/hardmode'
-			NeoBundle 'benmills/vimux'
-			NeoBundle 'mhinz/vim-tmuxify'
+			NeoBundle 'benmills/vimux' " unused?
+			NeoBundle 'mhinz/vim-tmuxify' " unused?
 		" }-
 		NeoBundle 'chrisbra/NrrwRgn'
-		NeoBundle 'scrooloose/nerdtree'
+		NeoBundle 'scrooloose/nerdtree' " unneeded
 	" }-
 	" color and visual bundles {+
 		" color schemes {+
@@ -242,11 +242,12 @@ filetype off
 			\ 'S'  : 'SLN',
 			\ '' : 'SBK',
 		\ }
-	" }
+	" }-
 	" syntastic {+
 
 	" }-
 	" unite {+
+		let b:preferred_finder_executables = ['fzf', 'ag', 'find']
 		if executable('ag')
 
 		endif
