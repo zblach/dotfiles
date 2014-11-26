@@ -145,6 +145,7 @@ filetype off
 			NeoBundle 'nathanaelkane/vim-indent-guides'
 			NeoBundle 'airblade/vim-gitgutter'
 			NeoBundleLazy 'junegunn/goyo.vim',             {'autoload':{'commands':'Goyo'}}
+			NeoBundle 'ryanoasis/vim-webdevicons'
 		" }-
 		" additional syntax highlighting and matching {+
 			NeoBundle 'luochen1990/rainbow'
