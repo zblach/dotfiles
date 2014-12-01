@@ -3,6 +3,10 @@
 # GPL v2.0 applies
 
 source ~/.profile
+<<<<<<< HEAD
+=======
+source ~/.local.gmrunrc
+>>>>>>> e6777f77d3939e3dec5861b364803a4ed3b6f513
 
 # Set default handlers
 Terminal = urxvt
@@ -45,16 +49,6 @@ URL_readme = ${TermExec} 'less /usr/doc/%s/README'
 URL_sh = sh -c '%s'
 #URL_paci = ${TermExec} 'pacman -S %s'
 #URL_pacs = ${TermExec} 'pacman -Ss %s'
-
-# Amazon-specific handlers
-URL_ap = ${Browser} 'https://apollo.amazon.com/search.html?query=%s'
-URL_awiki = ${Browser} 'https://w.amazon.com/index.php?search=%s'
-URL_nin = ${Browser} 'https://improvement-ninjas.amazon.com/ninja-search/?q=%s'
-URL_omg = ${Browser} 'https://omni-grok.amazon.com/search?q=%s'
-URL_whois = ${Browser} 'https://connect.amazon.com/search/phone?q=%s'
-URL_tt = ${Browser} 'https://tt.amazon.com/search?phrase_search_text=%s&search=Search!'
-URL_w = ${Browser} 'w?%s'
-URL_is = ${Browser} 'is?%s'
 
 # extension handlers
 #EXT:doc,rtf = AbiWord %s

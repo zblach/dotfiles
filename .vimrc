@@ -38,6 +38,9 @@ filetype off
 	" modeline overrides default options
 	set modeline modelines=10
 
+	" vimdiff options {{{ 
+		set diffopt+=iwhite
+	" }}}
 " }}}
 " Key Remapping {{{
 	" Rebind leader key
@@ -560,6 +563,7 @@ filetype off
 		au FileType rust setlocal makeprg='rustc "%"'
 	endif
 " }}}
+call neobundle#end()
 filetype plugin indent on
 syntax on
 exe "colorscheme ". b:colorscheme
