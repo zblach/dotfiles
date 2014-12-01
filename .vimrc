@@ -527,6 +527,8 @@ filetype off
 			let g:werewolf_night_themes=['seoul256'      , 'hybrid'      , 'evening']
 		" }}}
 
+		
+		call neobundle#end()
 		set background=dark
 		let b:colorscheme='badwolf'
 	" }}}
@@ -558,7 +560,6 @@ filetype off
 		au FileType rust setlocal makeprg='rustc "%"'
 	endif
 " }}}
-call neobundle#end()
 filetype plugin indent on
 syntax on
 exe "colorscheme ". b:colorscheme
