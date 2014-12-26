@@ -37,15 +37,15 @@ filetype off
 " }-
 " bundles {+
 	" neobundle configuration {+
-		let vim_bundle_path=expand('~/.vim/bundle/')
+		"let expand('/.vim/bundle/')=expand('~/.vim/bundle/')
 		" bootstrapping {+
-			if empty(glob(vim_bundle_path."neobundle.vim"))
+			if empty(glob(expand('~/.vim/bundle/')."neobundle.vim"))
 				echom "NeoBundle not found, bootstrapping."
-				exe "!git clone https://github.com/Shougo/neobundle.vim ".vim_bundle_path.'neobundle.vim'
+				exe "!git clone https://github.com/Shougo/neobundle.vim ".expand('~/.vim/bundle').'neobundle.vim'
 			endif
 		" }-
-		"set runtimepath+=vim_bundle_path
-		call neobundle#begin(vim_bundle_path)
+		set runtimepath+=~/.vim/bundle/neobundle.vim
+		call neobundle#begin(expand('~/.vim/bundle/'))
 
 		NeoBundleFetch 'Shougo/neobundle.vim'
 	" }-
@@ -241,10 +241,40 @@ filetype off
 		\ }
 	" }-
 	" syntastic {+
+		" symbols
+		let g:syntastic_check_on_open=1
+		let g:syntastic_warning_symbol='>'
+		let g:syntastic_error_symbol='x'
+		let g:syntastic_style_error_symbol='*'
+		let g:syntastic_style_warning_symbol='+'
+		
+		let g:syntastic_enable_highlighting=1
+		let g:syntastic_stl_format='⮂[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 
+		" language-specific settings {+
+			" c++ {+
+				if executable('clang++')
+					let g:syntastic_cpp_checkers=['gcc', 'clang_check']
+					let g:syntastic_cpp_compiler='clang++'
+					let g:syntastic_cpp_compiler_options=' -Wall -std=c++11-extensions -stdlib=libc++'
+					let g:syntastic_clang_check_options = g:syntastic_cpp_compiler_options
+					let g:syntastic_cpp_include_dirs=['/usr/local/include']
+				endif
+			" }-
+			" javascript {+
+				let g:syntastic_javascript_checkers=['jsl']
+			" }-
+		" }-
 	" }-
 	" unite {+
-		let g:finders = ['ag', 'fzf', 'find']
+		let g:unite_source_history_yank_enable=2
+		let g:unite_enable_start_insert=1
+		let g:unite_winwidth=10
+		let g:unite_split_rule='botright'
+
+		call unite#filters#matcher_default#use(['matcher_fuzzy'])
+		call unite#filters#sorter_default#use(['sorter_rank'])
+
 		call unite#custom#profile('default', 'context', {
 		\              'log' : 1,
 		\ })
@@ -262,12 +292,45 @@ filetype off
 		\           'prompt' : '&/',
 		\           'toggle' : 1,
 		\ })
+		" less-style ampersand filter
+		call unite#custom#profile('source/line', 'context', {
+		\   'buffer_name' : 'filter',
+		\   'prompt_direction' : 'below',
+		\   'split' : 1,
+		\   'tab' : 0,
+		\   'prompt' : '&/',
+		\   'toggle' : 1,
+		\ })
 		call unite#custom#source('source/line', 'matchers', 'matcher_regexp')
-		if executable('ag')
 
-		endif
+		" set fuzzy finder
+		if !exists('g:finders') | let g:finders = ['ag', 'fzf', 'find'] | endif
+
+		for finder in g:finders
+			if !executable(finder) 
+				continue
+			endif
+			if finder == 'ag'
+				let g:unite_source_grep_command='ag'
+				let g:unite_source_grep_default_opts='--nogroup --nocolor'
+				let g:unite_source_grep_recursive_opt=''
+				let g:unite_source_grep_encoding='utf-8'
+
+				let g:unite_source_rec_async_command='ag --follow --nocolor --group --hidden -g ""'
+
+				break	
+			elseif finder == 'fzf'
+				" TBD
+				break
+			elseif finder == 'find'
+				" TBD
+				break
+			else
+				echom "Unhandled finder ".finder." used. You\'re on your own."
+				break
+			endif
+		endfor
 	" }-
-
 " }-
 " keymapping {+
 	" Rebind leader key
@@ -309,7 +372,7 @@ filetype off
 	" nuke 'ex' mode
 	nnor Q <nop>
 
-	" CamelCaseMotion mappings{+
+	" CamelCaseMotion {+
 		map <silent> w <Plug>CamelCaseMotion_w
 		map <silent> b <Plug>CamelCaseMotion_b
 		map <silent> e <Plug>CamelCaseMotion_e
@@ -325,6 +388,51 @@ filetype off
 		omap <silent> ie <Plug>CamelCaseMotion_ie
 		xmap <silent> ie <Plug>CamelCaseMotion_ie
 	" }-
+	" NeoComplete {+
+		" Use neocomplete.
+		let g:acp_enableAtStartup=0
+		let g:neocomplete#enable_at_startup=1
+		let g:neocomplete#data_directory='~/.vim/cache/neocomplete'
+		" Use smartcase.
+		let g:neocomplete#enable_smart_case=1
+		let g:neocomplete#enable_fuzzy_completion=1
+
+		" additional C++ sources
+		if (!exists('g:neocomplete#sources#include#paths'))
+			let g:neocomplete#sources#include#paths={}
+			let g:neocomplete#sources#include#paths.cpp=""
+		endif
+
+		let g:neocomplete#sources#include#paths.cpp .= ".,/usr/local/include/"
+
+		let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets,~/.vim/snippets'
+		let g:neosnippet#enable_snipmate_compatibility=1
+
+		imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : (pumvisible() ? "\<C-n>" : "\<TAB>")
+		smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+		imap <expr><S-TAB> pumvisible() ? "\<C-p>" : ""
+		smap <expr><S-TAB> pumvisible() ? "\<C-p>" : ""
+	" }-
+	" Unite {+
+		" grep
+		nnor <silent> [unite]/ :<C-u>Unite -buffer-name=results grep:.<cr>
+		nnor <silent> [unite]w/ :<C-u>UniteWithCursorWord -buffer-name=results grep:.<cr>
+
+		" Misc	
+		nnor <silent> [unite]? :<C-u>Unite -buffer-name=keymap mapping<cr>
+		nnor <silent> [unite]b :<C-u>Unite -buffer-name=buffers buffer<cr>
+		nnor <silent> [unite]" :<C-u>Unite -buffer-name=mark mark<cr>
+
+		" CtrlP alternative
+		nnor <silent>  :<C-u>Unite -buffer-name=files file_rec/async<cr>
+		nnor <silent> [unite]gf :<C-u>UniteWithCursorWord -buffer-name=files file_rec/async<cr>
+	" }-
+	" vim-lion {+
+		let g:lion_create_maps=1
+		let g:lion_prompt='[/]: '
+		vmap <Enter> <Plug>VLionLeft/
+		vmap <S-Enter> <Plug>VLionRight/
+	" }-
 " }-
 " language-specific settings {+
 	" set rust compiler
@@ -335,7 +443,7 @@ filetype off
 " }-
 " extended settings options {+
 	let g:colorizer_auto_color = 1
-	let g:indent_guides_enable_on_vim_startup = 1
+	let g:indent_guides_enable_on_vim_startup = 0
 
 	" local bundles should be added via ':NeoBundleExtraEdit'
 	if filereadable(glob("~/.local.vimrc"))
@@ -343,8 +451,8 @@ filetype off
 	endif
 " }-
 " autocommands {+
-	au BufReadPost * if buftype == "" | DetectIndent | endif
-	au BufWritePre * if buftype == "" | :%s/\s\+$//e | endif " trim trailing whitespace
+	" au BufReadPost * if buftype == "" | DetectIndent | endif
+	" au BufWritePre * if buftype == "" | %s/\s\+$//e | endif 	" trim trailing whitespace
 
 	au BufWinLeave * if expand("%") != "" | mkview | endif
 	au BufWinEnter * if expand("%") != "" | silent loadview | endif
