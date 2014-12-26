@@ -34,6 +34,15 @@ filetype off
 
 	" modeline overrides default options
 	set modeline modelines=10
+
+	" undo, history, and persistent views
+	sil !mkdir -p ~/.vim_temp/{backup,cache,undo,views}
+
+	set noswapfile
+	set backup backupdir=~/.vim_temp/backup//
+	set undofile undolevels=10000 undodir=~/.vim_temp/undo//
+	set viewdir=~/.vim_temp/views//
+
 " }-
 " bundles {+
 	" neobundle configuration {+
@@ -240,6 +249,27 @@ filetype off
 			\ '' : 'SBK',
 		\ }
 	" }-
+	" rainbow brackets {+
+		let g:rainbow_active=1
+		let g:rainbow_conf={
+		\	'guifgs'      : ['RoyalBlue', 'DarkOrange', 'DarkOrchid', 'FireBrick', 'magenta'],
+		\	'ctermfgs'    : ['lightblue', 'lightgreen', 'yellow'    , 'red'      , 'magenta'],
+		\	'parentheses' : [['(',')']  , ['\[','\]'] , ['{','}']   , ['<','>'] ],
+		\	'operators'   : '_,_',
+		\	'separately'  : {
+		\		'*'      : {},
+		\		'python' : {
+		\		   'parentheses' : [['(',')'], ['\[','\]'], ['{','}']]
+		\		},
+		\		'vim'    : {
+		\			'parentheses' : [['{{{','}}}']]
+		\		},
+		\		'cpp'    : {
+		\			'operators' : '_<<,>>_'
+		\		},
+		\	},
+		\}
+	" }-
 	" syntastic {+
 		" symbols
 		let g:syntastic_check_on_open=1
@@ -291,15 +321,6 @@ filetype off
 		\              'tab' : 0,
 		\           'prompt' : '&/',
 		\           'toggle' : 1,
-		\ })
-		" less-style ampersand filter
-		call unite#custom#profile('source/line', 'context', {
-		\   'buffer_name' : 'filter',
-		\   'prompt_direction' : 'below',
-		\   'split' : 1,
-		\   'tab' : 0,
-		\   'prompt' : '&/',
-		\   'toggle' : 1,
 		\ })
 		call unite#custom#source('source/line', 'matchers', 'matcher_regexp')
 
@@ -371,6 +392,10 @@ filetype off
 
 	" nuke 'ex' mode
 	nnor Q <nop>
+
+	" super sudo write
+	command! SudoWrite exec 'w !sudo tee % > /dev/null' | :e!
+	cno w!! SudoWrite
 
 	" CamelCaseMotion {+
 		map <silent> w <Plug>CamelCaseMotion_w
