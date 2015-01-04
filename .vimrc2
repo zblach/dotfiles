@@ -18,6 +18,10 @@ filetype off
 	" terminal settings
 	set hidden lazyredraw
 	set encoding=utf-8 shell=/bin/zsh title hidden ttyfast visualbell
+	
+	" fill chars
+	set listchars=tab:>-,eol:$,precedes:<,extends:>,trail:~,conceal:#,nbsp:_
+	set fillchars=vert:\│,fold:-
 
 	" misc
 	set backspace=indent,eol,start
@@ -98,7 +102,7 @@ filetype off
 			NeoBundle 'dhruvasagar/vim-dotoo'
 			NeoBundle 'jceb/vim-orgmode'
 			NeoBundle 'sjl/gundo.vim'
-			NeoBundle 'szw/vim-ctrlspace'
+			NeoBundleLazy 'szw/vim-ctrlspace',			{'autoload':{'commands':'CtrlSpace'}}
 			NeoBundleLazy 'majutsushi/tagbar',          {'autoload':{'commands':'TagbarToggle'}}
 		" }-
 		" version control plugins {+
@@ -155,6 +159,7 @@ filetype off
 			NeoBundle 'airblade/vim-gitgutter'
 			NeoBundleLazy 'junegunn/goyo.vim',             {'autoload':{'commands':'Goyo'}}
 			NeoBundle 'ryanoasis/vim-webdevicons'
+			NeoBundleLazy 'scrooloose/nerdtree',           {'autoload':{'commands':'NERDTreeToggle'}}
 		" }-
 		" additional syntax highlighting and matching {+
 			NeoBundle 'luochen1990/rainbow'
@@ -465,6 +470,15 @@ filetype off
 
 	" allow =filter to use xmllint
 	au FileType xml,html if executable("xmllint") | let &l:equalprg='xmllint --format --recover -' | endif
+
+	" vim {{{
+	" TODO: change this to use augroups
+		if &ft == 'vim'
+			set path+=~/.vim/bundle/
+			set inex=strpart(v:fname,strridx(v:fname,'/')+1).'/README' " trim repo name
+			set sua=.md,.txt,.markdown
+		endif
+	" }}}
 " }-
 " extended settings options {+
 	let g:colorizer_auto_color = 1
