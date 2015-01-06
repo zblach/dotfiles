@@ -156,8 +156,6 @@ export TERM=xterm-256color
 
 #zle -N zle-keymap-select
 
-zle -N zle-keymap-select
-
 ################################################################################
 # HOST-SPECIFIC ALIASES AND CONFIGURATIONS                                     #
 ################################################################################

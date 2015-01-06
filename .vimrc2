@@ -133,7 +133,6 @@ filetype off
 			NeoBundle 'mhinz/vim-tmuxify' " unused?
 		" }-
 		NeoBundle 'chrisbra/NrrwRgn'
-		NeoBundle 'scrooloose/nerdtree' " unneeded
 	" }-
 	" color and visual bundles {+
 		" color schemes {+
@@ -285,7 +284,7 @@ filetype off
 		let g:syntastic_style_warning_symbol='+'
 		
 		let g:syntastic_enable_highlighting=1
-		let g:syntastic_stl_format='⮂[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
+		let g:syntastic_stl_format='[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 
 		" language-specific settings {+
 			" c++ {+
