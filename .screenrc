@@ -18,5 +18,5 @@ autonuke on
 msgwait 1
 
 caption string '%?%F%{.R.}%?%3n %t%? [%h]%?'
-hardstatus string "%{= .d}[%{B}$USER%{W}@%{R}%H%{d}][%{+b y}%n %{g}%t%{d}][%L=%-w%L>%{c}%n %t%{-}%+w%-17=][%{g}%d.%m.%y %{m}%c%{d}]"
+hardstatus string "%{= .d}[%{B}$USER%{W}@%{R}%H%{d}][%{+b y}%n %{-b g}%t%{d}][%L=%-w%L>%{c}%n %t%{-}%+w%-17=][%{g}%d.%m.%y %{m}%c%{d}]"
 

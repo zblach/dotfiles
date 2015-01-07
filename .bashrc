@@ -1,5 +1,6 @@
 # Shell Options
 shopt -s histappend
+shopt -s histverify
 shopt -s cdspell
 shopt -s autocd
 

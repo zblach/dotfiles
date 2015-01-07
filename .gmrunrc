@@ -2,11 +2,6 @@
 # gmrun is (C) Mihai Bazon, <mishoo@infoiasi.ro>
 # GPL v2.0 applies
 
-source ~/.profile
-<<<<<<< HEAD
-=======
-source ~/.local.gmrunrc
->>>>>>> e6777f77d3939e3dec5861b364803a4ed3b6f513
 
 # Set default handlers
 Terminal = urxvt
@@ -57,3 +52,6 @@ EXT:txt,cc,cpp,h,java,html,htm,epl,tex,latex,js,css,xml,xsl,am,php,css,js,py,rb 
 #EXT:mp3,ogg,m4a,wmv,wma = deadbeef %s
 #EXT:ps = gv %s
 #EXT:pdf = epdfview %s
+
+# Source local.gmrunrc
+source ~/.local.gmrunrc
