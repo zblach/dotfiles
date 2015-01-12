@@ -51,6 +51,10 @@ setopt longlistjobs
 setopt nobgnice
 setopt noclobber
 setopt prompt_subst
+setopt pushdignoredups
+setopt pushdminus
+setopt pushdsilent
+setopt pushdtohome
 #setopt share_history
 
 # ZStyle
@@ -108,7 +112,7 @@ zstyle ':completion:*:*:-subscript-:*' tag-order indexes parameters
 zstyle :insert-last-word match '*([[:digit:]]?|[[:alpha:]/\\])*'
 
 # Store the expansion cache here
-zstyle :compinstall filename "$HOME/.zshrc"
+zstyle :compinstall filename "$HOME/.zsh/cache/comp_cache"
 
 ################################################################################
 # MODULES, EXPORTS, PROMPTS, ALIASES, AND COLORS                               #
