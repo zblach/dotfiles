@@ -23,6 +23,7 @@ filetype off
 	" fill chars
 	set listchars=tab:>-,eol:$,precedes:<,extends:>,trail:~,conceal:#,nbsp:_
 	set fillchars=vert:\│,fold:-
+	set diffopt+=iwhite
 
 	" misc
 	set backspace=indent,eol,start
@@ -200,6 +201,7 @@ filetype off
 		" python
 		NeoBundleLazy 'ivanov/vim-ipython',            {'autoload':{'filetypes':['python']}}
 		NeoBundleLazy 'nvie/vim-flake8',               {'autoload':{'filetypes':['python']}}
+		NeoBundleLazy 'klen/python-mode',              {'autoload':{'filetypes':['python']}}
 
 		" rust
 		NeoBundleLazy 'wting/rust.vim',                {'autoload':{'filetypes':['rust', 'rs']}}
@@ -294,6 +296,8 @@ filetype off
 		let g:syntastic_enable_highlighting=1
 		let g:syntastic_stl_format='[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 
+		let g:syntastic_mode_map = {"mode" : "active", "passive_filetypes" : []}
+
 		" language-specific settings {+
 			" c++ {+
 				if executable('clang++')
@@ -306,6 +310,11 @@ filetype off
 			" }-
 			" javascript {+
 				let g:syntastic_javascript_checkers=['jsl']
+			" }-
+			" python {+
+				"let g:syntastic_mode_map.passive_filetypes=['python']
+				let g:pymode_lint_write = 0
+				let g:pymode_virtualenv_enabled = 1
 			" }-
 		" }-
 	" }-
@@ -484,7 +493,7 @@ filetype off
 		if &ft == 'vim'
 			set path+=~/.vim/bundle/
 			set inex=strpart(v:fname,strridx(v:fname,'/')+1).'/README' " trim repo name
-			set sua=.md,.txt,.markdown
+			set sua=.md,.txt,.markdown,.rst,.mdown
 		endif
 	" }}}
 " }-
