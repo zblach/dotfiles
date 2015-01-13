@@ -18,10 +18,12 @@ filetype off
 	" terminal settings
 	set hidden lazyredraw
 	set encoding=utf-8 shell=/bin/zsh title hidden ttyfast visualbell
+	set t_ut= " disable BCE
 	
 	" fill chars
 	set listchars=tab:>-,eol:$,precedes:<,extends:>,trail:~,conceal:#,nbsp:_
 	set fillchars=vert:\│,fold:-
+	set diffopt+=iwhite
 
 	" misc
 	set backspace=indent,eol,start
@@ -37,7 +39,7 @@ filetype off
 	set wrapmargin=0
 
 	" modeline overrides default options
-	set modeline modelines=10
+	set modeline modelines=10 noshowmode
 
 	" undo, history, and persistent views
 	sil !mkdir -p ~/.vim_temp/{backup,cache,undo,views}
@@ -78,7 +80,7 @@ filetype off
 		" }-
 		" shougo plugins {+
 			NeoBundleLazy 'Shougo/vimproc.vim'
-			NeoBundle 'Shougo/neocomplete'
+			NeoBundle 'Shougo/neocomplete' " depends on lua, which isn't always available
 			NeoBundle 'Shougo/neosnippet', {'depends':['honza/vim-snippets', 'Shougo/neosnippet-snippets']} " snippets {{{
 			NeoBundle 'Shougo/neosnippet-snippets'
 			NeoBundle 'Shougo/unite.vim',  {'depends':['Shougo/vimproc.vim']}
@@ -96,6 +98,13 @@ filetype off
 				NeoBundleLazy 'Shougo/neomru.vim',         {'autoload': {'unite_sources': ['file_mru', 'directory_mru']}}
 				NeoBundleLazy 'Shougo/unite-outline',      {'autoload': {'unite_sources': 'outline'}}
 			" }-
+		" }-
+		" alternatives {+
+			" NeoComplete requires if_lua
+			" TBD: find alternative
+			"if has('lua')
+			"	NeoBundleSource neocomplete
+			"end
 		" }-
 		" productivity tools {+
 			NeoBundle 'dbakker/vim-projectroot'
@@ -192,6 +201,7 @@ filetype off
 		" python
 		NeoBundleLazy 'ivanov/vim-ipython',            {'autoload':{'filetypes':['python']}}
 		NeoBundleLazy 'nvie/vim-flake8',               {'autoload':{'filetypes':['python']}}
+		NeoBundleLazy 'klen/python-mode',              {'autoload':{'filetypes':['python']}}
 
 		" rust
 		NeoBundleLazy 'wting/rust.vim',                {'autoload':{'filetypes':['rust', 'rs']}}
@@ -286,6 +296,8 @@ filetype off
 		let g:syntastic_enable_highlighting=1
 		let g:syntastic_stl_format='[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 
+		let g:syntastic_mode_map = {"mode" : "active", "passive_filetypes" : []}
+
 		" language-specific settings {+
 			" c++ {+
 				if executable('clang++')
@@ -298,6 +310,11 @@ filetype off
 			" }-
 			" javascript {+
 				let g:syntastic_javascript_checkers=['jsl']
+			" }-
+			" python {+
+				"let g:syntastic_mode_map.passive_filetypes=['python']
+				let g:pymode_lint_write = 0
+				let g:pymode_virtualenv_enabled = 1
 			" }-
 		" }-
 	" }-
@@ -338,7 +355,7 @@ filetype off
 			endif
 			if finder == 'ag'
 				let g:unite_source_grep_command='ag'
-				let g:unite_source_grep_default_opts='--nogroup --nocolor'
+				let g:unite_source_grep_default_opts='-i --line-numbers --nocolor --nogroup --hidden --ignore ".hg" --ignore ".svn" --ignore ".git" --ignore ".bzr"'
 				let g:unite_source_grep_recursive_opt=''
 				let g:unite_source_grep_encoding='utf-8'
 
@@ -476,7 +493,7 @@ filetype off
 		if &ft == 'vim'
 			set path+=~/.vim/bundle/
 			set inex=strpart(v:fname,strridx(v:fname,'/')+1).'/README' " trim repo name
-			set sua=.md,.txt,.markdown
+			set sua=.md,.txt,.markdown,.rst,.mdown
 		endif
 	" }}}
 " }-
@@ -495,7 +512,11 @@ filetype off
 
 	au BufWinLeave * if expand("%") != "" | mkview | endif
 	au BufWinEnter * if expand("%") != "" | silent loadview | endif
+
 " }-
 exe "colorscheme ". g:colorscheme
 filetype plugin indent on
 syntax on
+
+" If % is a logfile, I like to use 'dcl' highlighting rules
+if expand("%:e") == "log" | set ft=dcl | endif
