@@ -164,7 +164,7 @@ filetype off
 			NeoBundle 'bling/vim-airline'
 			NeoBundle 'idbrii/vim-mark'
 			NeoBundle 'nathanaelkane/vim-indent-guides'
-			NeoBundle 'airblade/vim-gitgutter'
+			NeoBundle 'mhinz/vim-signify'
 			NeoBundleLazy 'junegunn/goyo.vim',             {'autoload':{'commands':'Goyo'}}
 			NeoBundle 'ryanoasis/vim-webdevicons'
 			NeoBundleLazy 'scrooloose/nerdtree',           {'autoload':{'commands':'NERDTreeToggle'}}
