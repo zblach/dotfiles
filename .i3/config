@@ -184,6 +184,7 @@ focus_follows_mouse no
 
 
 # autostart
-exec xautolock -time 30 -locker "sudo pm-suspend" -detectsleep
-exec syndaemon -i 0.5 -d -t 
-exec xbindkeys
+exec --no-startup-id xautolock -time 30 -locker "sudo pm-suspend" -detectsleep
+exec --no-startup-id syndaemon -i 0.5 -d -t 
+exec --no-startup-id xbindkeys
+exec --no-startup-id clipit
