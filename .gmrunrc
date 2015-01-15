@@ -2,7 +2,6 @@
 # gmrun is (C) Mihai Bazon, <mishoo@infoiasi.ro>
 # GPL v2.0 applies
 
-
 # Set default handlers
 Terminal = urxvt
 TermExec = ${Terminal} +hold
