@@ -194,6 +194,7 @@ filetype off
 
 		" markdown
 		NeoBundleLazy 'nelstrom/vim-markdown-folding', {'autoload':{'filetypes':['markdown','md']}}
+		NeoBundleLazy 'suan/vim-instant-markdown',     {'autoload':{'filetypes':['markdown','md']}}
 
 		" mediawiki
 		NeoBundleLazy 'chikamichi/mediawiki.vim',      {'autoload':{'filetypes':['wiki','mediawiki']}}
@@ -312,8 +313,8 @@ filetype off
 				let g:syntastic_javascript_checkers=['jsl']
 			" }-
 			" python {+
-				"let g:syntastic_mode_map.passive_filetypes=['python']
-				let g:pymode_lint_write = 0
+				let g:syntastic_mode_map.passive_filetypes=['python']
+				"let g:pymode_lint_write = 0
 				let g:pymode_virtualenv_enabled = 1
 			" }-
 		" }-
@@ -488,14 +489,14 @@ filetype off
 	" allow =filter to use xmllint
 	au FileType xml,html if executable("xmllint") | let &l:equalprg='xmllint --format --recover -' | endif
 
-	" vim {{{
+	" vim {+
 	" TODO: change this to use augroups
 		if &ft == 'vim'
 			set path+=~/.vim/bundle/
 			set inex=strpart(v:fname,strridx(v:fname,'/')+1).'/README' " trim repo name
 			set sua=.md,.txt,.markdown,.rst,.mdown
 		endif
-	" }}}
+	" }-
 " }-
 " extended settings options {+
 	let g:colorizer_auto_color = 1
@@ -520,3 +521,19 @@ syntax on
 
 " If % is a logfile, I like to use 'dcl' highlighting rules
 if expand("%:e") == "log" | set ft=dcl | endif
+"augroup dcl
+"	autocmd BufReadPost syntax on
+"augroup END
+
+" html/xml entity replacement {+
+"augroup xml
+"	syntax match xmlEntity "&quot;" conceal cchar="
+"	syntax match xmlEntity "&amp;" conceal cchar=&
+"	syntax match xmlEntity "&lt;" conceal cchar=<
+"	syntax match xmlEntity "&gt;" conceal cchar=>
+"	set cole=2
+"	set concealcursor=nv
+"augroup END
+" ^ this makes my vim unhappy :(
+" }-
+
