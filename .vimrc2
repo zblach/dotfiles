@@ -110,7 +110,7 @@ filetype off
 			NeoBundle 'dbakker/vim-projectroot'
 			"NeoBundle 'dhruvasagar/vim-dotoo'
 			"NeoBundle 'jceb/vim-orgmode'
-			NeoBundleLazy 'sjl/gundo.vim'               {'autoload':{'commands':'GundoToggle'}}
+			NeoBundleLazy 'sjl/gundo.vim',              {'autoload':{'commands':'GundoToggle'}}
 			NeoBundleLazy 'szw/vim-ctrlspace',          {'autoload':{'commands':'CtrlSpace'}}
 			NeoBundleLazy 'majutsushi/tagbar',          {'autoload':{'commands':'TagbarToggle'}}
 		" }-
