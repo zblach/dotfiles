@@ -108,10 +108,10 @@ filetype off
 		" }-
 		" productivity tools {+
 			NeoBundle 'dbakker/vim-projectroot'
-			NeoBundle 'dhruvasagar/vim-dotoo'
-			NeoBundle 'jceb/vim-orgmode'
-			NeoBundle 'sjl/gundo.vim'
-			NeoBundleLazy 'szw/vim-ctrlspace',			{'autoload':{'commands':'CtrlSpace'}}
+			"NeoBundle 'dhruvasagar/vim-dotoo'
+			"NeoBundle 'jceb/vim-orgmode'
+			NeoBundleLazy 'sjl/gundo.vim'               {'autoload':{'commands':'GundoToggle'}}
+			NeoBundleLazy 'szw/vim-ctrlspace',          {'autoload':{'commands':'CtrlSpace'}}
 			NeoBundleLazy 'majutsushi/tagbar',          {'autoload':{'commands':'TagbarToggle'}}
 		" }-
 		" version control plugins {+
@@ -131,12 +131,12 @@ filetype off
 			NeoBundle 'Lokaltog/vim-easymotion'
 			NeoBundle 'bkad/CamelCaseMotion'
 			NeoBundle 'guns/vim-sexp'
-			NeoBundleLazy 'felixr/vim-multiedit'
-			NeoBundle 'terryma/vim-multiple-cursors'
+			"NeoBundleLazy 'felixr/vim-multiedit'
+			"NeoBundle 'terryma/vim-multiple-cursors'
 			NeoBundle 'ciaranm/detectindent'
 		" }-
 		" keys and external bindings {+
-			NeoBundle 'kana/vim-arpeggio'
+			"NeoBundle 'kana/vim-arpeggio'
 			NeoBundle 'wikitopian/hardmode'
 			NeoBundle 'benmills/vimux' " unused?
 			NeoBundle 'mhinz/vim-tmuxify' " unused?
@@ -192,6 +192,9 @@ filetype off
 		" html
 		NeoBundleLazy 'rstacruz/sparkup',              {'autoload':{'filetypes':['html','xml']}}
 
+		" json
+		NeoBundleLazy 'elzr/vim-json',                 {'autoload':{'filetypes':['json']}}
+
 		" markdown
 		NeoBundleLazy 'nelstrom/vim-markdown-folding', {'autoload':{'filetypes':['markdown','md']}}
 		NeoBundleLazy 'suan/vim-instant-markdown',     {'autoload':{'filetypes':['markdown','md']}}
@@ -228,29 +231,13 @@ filetype off
 " }-
 " bundle settings {+
 	" airline {+
-		let g:airline_left_sep=''
-		let g:airline_left_alt_sep=''
-		let g:airline_right_sep=''
-		let g:airline_right_alt_sep=''
-		let g:airline_symbols={ 
-			\ 'paste' : 'paste',
-			\ 'space' : ' ',
-			\ 'branch' : '',
-			\ 'linenr' : '',
-			\ 'readonly' : '',
-			\ 'whitespace' : ' '
-		\ }
+		let g:airline_powerline_fonts=1
 		
 		let g:airline#extensions#whitespace#enabled=0
 
 		let g:airline#extensions#tabline#enabled=1
-
 		let g:airline#extensions#tabline#formatter='unique_tail_improved'
 
-		let g:airline#extensions#tabline#left_sep=g:airline_left_sep
-		let g:airline#extensions#tabline#left_alt_sep=g:airline_left_alt_sep
-		let g:airline#extensions#tabline#right_sep=g:airline_right_sep
-		let g:airline#extensions#tabline#right_alt_sep=g:airline_right_alt_sep
 		let g:airline_mode_map={
 			\ '__' : '---',
 			\ 'n'  : 'NOR',
