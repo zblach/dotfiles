@@ -368,10 +368,6 @@ filetype off
 	" Rebind leader key
 	let mapleader=' '
 
-	" Unite leader key
-	nnor [unite] <nop>
-	nmap <leader>. [unite]
-
 	" common bindings
 	map Y y$
 
@@ -450,6 +446,10 @@ filetype off
 		smap <expr><S-TAB> pumvisible() ? "\<C-p>" : ""
 	" }-
 	" Unite {+
+		" Unite leader key
+		nnor [unite] <nop>
+		nmap <leader>. [unite]
+
 		" grep
 		nnor <silent> [unite]/ :<C-u>Unite -buffer-name=results grep:.<cr>
 		nnor <silent> [unite]w/ :<C-u>UniteWithCursorWord -buffer-name=results grep:.<cr>
