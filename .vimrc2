@@ -79,7 +79,7 @@ filetype off
 			NeoBundle 'tpope/vim-unimpaired'
 		" }-
 		" shougo plugins {+
-			NeoBundleLazy 'Shougo/vimproc.vim'
+			NeoBundle 'Shougo/vimproc.vim', {'build': {'mac' : 'make -f make_mac.mak', 'linux' : 'make'}}
 			NeoBundle 'Shougo/neocomplete' " depends on lua, which isn't always available
 			NeoBundle 'Shougo/neosnippet', {'depends':['honza/vim-snippets', 'Shougo/neosnippet-snippets']} " snippets {{{
 			NeoBundle 'Shougo/neosnippet-snippets'
@@ -111,7 +111,7 @@ filetype off
 			"NeoBundle 'dhruvasagar/vim-dotoo'
 			"NeoBundle 'jceb/vim-orgmode'
 			NeoBundleLazy 'sjl/gundo.vim',              {'autoload':{'commands':'GundoToggle'}}
-			NeoBundleLazy 'szw/vim-ctrlspace',          {'autoload':{'commands':'CtrlSpace'}}
+			"NeoBundleLazy 'szw/vim-ctrlspace',          {'autoload':{'commands':'CtrlSpace'}}
 			NeoBundleLazy 'majutsushi/tagbar',          {'autoload':{'commands':'TagbarToggle'}}
 		" }-
 		" version control plugins {+
@@ -139,7 +139,7 @@ filetype off
 			"NeoBundle 'kana/vim-arpeggio'
 			NeoBundle 'wikitopian/hardmode'
 			NeoBundle 'benmills/vimux' " unused?
-			NeoBundle 'mhinz/vim-tmuxify' " unused?
+			"NeoBundle 'mhinz/vim-tmuxify' " unused?
 		" }-
 		NeoBundle 'chrisbra/NrrwRgn'
 	" }-
@@ -381,9 +381,11 @@ filetype off
 	nnor [toggle]v :set paste! paste?<cr>
 	nnor [toggle]w :set wrap! wrap?<cr>
 
-	" search and navigation
+	" search and visual navigation
 	nnor j gj
 	nnor k gk
+	vnor j gj
+	vnor j gk
 
 	nnor n nzzzv
 	nnor N Nzzzv
@@ -509,9 +511,9 @@ syntax on
 
 " If % is a logfile, I like to use 'dcl' highlighting rules
 if expand("%:e") == "log" | set ft=dcl | endif
-"augroup dcl
-"	autocmd BufReadPost syntax on
-"augroup END
+
+" Spring files aren't recognized
+if expand("%:e") == "spring" | set ft=xml | endif
 
 " html/xml entity replacement {+
 "augroup xml
