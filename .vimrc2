@@ -137,9 +137,9 @@ filetype off
 		" }-
 		" keys and external bindings {+
 			"NeoBundle 'kana/vim-arpeggio'
-			NeoBundle 'wikitopian/hardmode'
+			NeoBundle 'takac/vim-hardtime'
 			NeoBundle 'benmills/vimux' " unused?
-			"NeoBundle 'mhinz/vim-tmuxify' " unused?
+			NeoBundle 'mhinz/vim-tmuxify' " unused?
 		" }-
 		NeoBundle 'chrisbra/NrrwRgn'
 	" }-
@@ -166,7 +166,7 @@ filetype off
 			NeoBundle 'nathanaelkane/vim-indent-guides'
 			NeoBundle 'mhinz/vim-signify'
 			NeoBundleLazy 'junegunn/goyo.vim',             {'autoload':{'commands':'Goyo'}}
-			NeoBundle 'ryanoasis/vim-webdevicons'
+			NeoBundleLazy 'ryanoasis/vim-webdevicons'
 			NeoBundleLazy 'scrooloose/nerdtree',           {'autoload':{'commands':'NERDTreeToggle'}}
 		" }-
 		" additional syntax highlighting and matching {+
@@ -305,6 +305,12 @@ filetype off
 				let g:pymode_virtualenv_enabled = 1
 			" }-
 		" }-
+	" }-
+	" hardtime {+
+		let g:hardtime_showmsg=1
+		let g:hardtime_default_on=1
+		let g:hardtime_ignore_quickfix=1
+		let g:hardtime_ignore_buffer_patterns=["Unite","Gundo","Help"]
 	" }-
 	" unite {+
 		let g:unite_source_history_yank_enable=2
