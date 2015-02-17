@@ -385,7 +385,7 @@ filetype off
 	nnor j gj
 	nnor k gk
 	vnor j gj
-	vnor j gk
+	vnor k gk
 
 	nnor n nzzzv
 	nnor N Nzzzv
@@ -510,7 +510,7 @@ filetype plugin indent on
 syntax on
 
 " If % is a logfile, I like to use 'dcl' highlighting rules
-if expand("%:e") == "log" | set ft=dcl | endif
+if expand("%:e") == "log|conf|out" | set ft=dcl | endif
 
 " Spring files aren't recognized
 if expand("%:e") == "spring" | set ft=xml | endif
