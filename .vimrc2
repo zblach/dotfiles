@@ -110,7 +110,8 @@ filetype off
 			NeoBundle 'dbakker/vim-projectroot'
 			"NeoBundle 'dhruvasagar/vim-dotoo'
 			"NeoBundle 'jceb/vim-orgmode'
-			NeoBundleLazy 'sjl/gundo.vim',              {'autoload':{'commands':'GundoToggle'}}
+			"NeoBundleLazy 'sjl/gundo.vim',              {'autoload':{'commands':'GundoToggle'}}
+			NeoBundleLazy 'mbbill/undotree',			{'autoload':{'commands':'UndotreeToggle'}}
 			"NeoBundleLazy 'szw/vim-ctrlspace',          {'autoload':{'commands':'CtrlSpace'}}
 			NeoBundleLazy 'majutsushi/tagbar',          {'autoload':{'commands':'TagbarToggle'}}
 		" }-
@@ -252,6 +253,11 @@ filetype off
 			\ '' : 'SBK',
 		\ }
 	" }-
+	" undotree {+
+		"let g:gundo_preview_bottom=1
+		let g:undotree_WindowLayout=2
+		let g:undotree_TreeNodeShape="*"
+	" }-	
 	" rainbow brackets {+
 		let g:rainbow_active=1
 		let g:rainbow_conf={
@@ -310,7 +316,7 @@ filetype off
 		let g:hardtime_showmsg=1
 		let g:hardtime_default_on=1
 		let g:hardtime_ignore_quickfix=1
-		let g:hardtime_ignore_buffer_patterns=["Unite","Gundo","Help"]
+		let g:hardtime_ignore_buffer_patterns=["Unite","undo*","Help"]
 	" }-
 	" unite {+
 		let g:unite_source_history_yank_enable=2
