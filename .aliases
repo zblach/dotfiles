@@ -3,6 +3,7 @@ alias pyg="pygmentize -f 256 -O bg=dark,style=monokai,linenos=1,encoding=utf-8"
 alias acat="pyg -g"
 alias bcat="pyg -l bash"
 alias jcat="pyg -l java"
+alias lcat="pyg -l dcl" 
 alias xcat="pyg -l xml"
 
 export LESSOPEN='|acat %s'
@@ -34,3 +35,6 @@ u () {
 	cd ${(j:../:)ud}
 }
 
+# lazy commands
+alias f='find . -type f -mmin -61 '
+alias :e='vim '
