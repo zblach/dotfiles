@@ -354,7 +354,9 @@ filetype off
 				continue
 			endif
 			if finder == 'ag'
-				set grepprg=ag
+				set grepprg=ag\ --vimgrep\ $*
+				set grepformat=%f:%l:%c:%m
+
 				let g:unite_source_grep_command='ag'
 				let g:unite_source_grep_default_opts='-i --line-numbers --nocolor --nogroup --hidden --ignore ".hg" --ignore ".svn" --ignore ".git" --ignore ".bzr"'
 				let g:unite_source_grep_recursive_opt=''
@@ -397,7 +399,7 @@ filetype off
 	nnor j gj
 	nnor k gk
 	vnor j gj
-	vnor j gk
+	vnor k gk
 
 	nnor n nzzzv
 	nnor N Nzzzv
@@ -433,6 +435,9 @@ filetype off
 		xmap <silent> ib <Plug>CamelCaseMotion_ib
 		omap <silent> ie <Plug>CamelCaseMotion_ie
 		xmap <silent> ie <Plug>CamelCaseMotion_ie
+	" }-
+	" HardTime {+
+		nnor [toggle]h :HardTimeToggle<cr>
 	" }-
 	" NeoComplete {+
 		" Use neocomplete.
@@ -524,7 +529,7 @@ syntax on
 if expand("%e:") == "md"  | set ft=markdown | endif
 
 " If % is a logfile, I like to use 'dcl' highlighting rules
-if expand("%:e") == "log" | set ft=dcl | endif
+if expand("%:e") == "log|conf|out" | set ft=dcl | endif
 
 " Spring files aren't recognized
 if expand("%:e") == "spring" | set ft=xml | endif

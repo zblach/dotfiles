@@ -184,7 +184,6 @@ alias -g '@C'='| acat'
 alias -g '@S'='| sort'
 alias -g '@T'='| tail -f'
 alias -g '@U'='| sort | uniq'
-alias -g '@F'='**/*(.)'
 
 # Prompts
 colors
