@@ -108,11 +108,7 @@ filetype off
 		" }-
 		" productivity tools {+
 			NeoBundle 'dbakker/vim-projectroot'
-			"NeoBundle 'dhruvasagar/vim-dotoo'
-			"NeoBundle 'jceb/vim-orgmode'
-			"NeoBundleLazy 'sjl/gundo.vim',              {'autoload':{'commands':'GundoToggle'}}
 			NeoBundleLazy 'mbbill/undotree',			{'autoload':{'commands':'UndotreeToggle'}}
-			"NeoBundleLazy 'szw/vim-ctrlspace',          {'autoload':{'commands':'CtrlSpace'}}
 			NeoBundleLazy 'majutsushi/tagbar',          {'autoload':{'commands':'TagbarToggle'}}
 		" }-
 		" version control plugins {+
@@ -131,6 +127,8 @@ filetype off
 		" text navigation and alignment {+
 			NeoBundle 'Lokaltog/vim-easymotion'
 			NeoBundle 'bkad/CamelCaseMotion'
+			NeoBundle 'michaeljsmith/vim-indent-object'
+			NeoBundle 'vim-scripts/argtextobj.vim'
 			NeoBundle 'guns/vim-sexp'
 			"NeoBundleLazy 'felixr/vim-multiedit'
 			"NeoBundle 'terryma/vim-multiple-cursors'
@@ -274,7 +272,7 @@ filetype off
 		\			'parentheses' : [['{+','}-']]
 		\		},
 		\		'cpp'    : {
-		\			'operators' : '_<<,>>_'
+		\			'operators' : ['_<<_','_>>_']
 		\		},
 		\	},
 		\}
@@ -300,6 +298,9 @@ filetype off
 					let g:syntastic_cpp_compiler_options=' -Wall -std=c++11-extensions -stdlib=libc++'
 					let g:syntastic_clang_check_options = g:syntastic_cpp_compiler_options
 					let g:syntastic_cpp_include_dirs=['/usr/local/include']
+				elseif executable('g++')
+					let g:syntastic_cpp_compiler='g++'
+					let g:syntastic_cpp_compiler_options='-Wall -std=c++0x -stdlib=libc++'
 				endif
 			" }-
 			" javascript {+
