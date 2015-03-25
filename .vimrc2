@@ -526,6 +526,8 @@ filetype off
 exe "colorscheme ". g:colorscheme
 filetype plugin indent on
 syntax on
+" I don't use modula, but I do use .md as a markdown extension.
+if expand("%e:") == "md"  | set ft=markdown | endif
 
 " If % is a logfile, I like to use 'dcl' highlighting rules
 if expand("%:e") == "log|conf|out" | set ft=dcl | endif
