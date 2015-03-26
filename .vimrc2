@@ -72,6 +72,8 @@ filetype off
 		" }-
 		" tpope plugins {+
 			NeoBundleLazy 'tpope/vim-dispatch'
+			NeoBundle 'tpope/vim-eunuch'
+			NeoBundle 'tpope/vim-fugitive'
 			NeoBundle 'tpope/vim-obsession'
 			NeoBundle 'tpope/vim-repeat'
 			NeoBundle 'tpope/vim-speeddating'
@@ -112,7 +114,6 @@ filetype off
 			NeoBundleLazy 'majutsushi/tagbar',          {'autoload':{'commands':'TagbarToggle'}}
 		" }-
 		" version control plugins {+
-			NeoBundle 'tpope/vim-fugitive'
 			NeoBundle 'tommcdo/vim-fugitive-blame-ext', {'depends' : 'tpope/vim-fugitive'}
 			NeoBundle 'gregsexton/gitv'
 		" }-
