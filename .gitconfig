@@ -1,16 +1,16 @@
 [color]
-	ui = auto
+    ui = auto
 [core]
-	pager = less -FMRiX
+    pager = less -FMRiX
     excludesfile = /home/blacherz/.gitignore_global
 [push]
-	default = simple
+    default = simple
 [diff]
-	tool = vimdiff
+    tool = vimdiff
 [difftool]
-	prompt = false
+    prompt = false
 [merge]
-	tool = vimdiff
+    tool = vimdiff
 [alias]
     ammend = commit --amend
     ds = diff --staged
@@ -21,14 +21,14 @@
     ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]\\ %Cgreen(%cd)%Creset" --decorate --date=local
     ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]\\ %Cgreen(%cd)%Creset" --decorate --numstat --date=local
     unadd = reset HEAD --
-	last = log -1 HEAD
-	diffa = whatchanged --diff-filter=A
+    last = log -1 HEAD
+    diffa = whatchanged --diff-filter=A
 [color "status"]
-	branch = magenta
-	added = "green "
-	changed = "yellow "
+    branch = magenta
+    added = "green "
+    changed = "yellow "
 [branch]
-	autosetuprebase = always
+    autosetuprebase = always
 [user]
-	name = Zak Blacher
-	email = zblach@gmail.com
+    name = Zak Blacher
+    email = zblach@gmail.com
