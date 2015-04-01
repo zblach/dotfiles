@@ -397,7 +397,10 @@ filetype off
 	nnor [toggle]v :set paste! paste?<cr>
 	nnor [toggle]w :set wrap! wrap?<cr>
 
-	" search and visual navigation
+	nnor [toggle]h :HardTimeToggle<cr>
+	nnor [toggle]u :UndotreeToggle<cr>
+	nnor [toggle]z :Goyo<cr>
+
 	nnor j gj
 	nnor k gk
 	vnor j gj
@@ -413,7 +416,7 @@ filetype off
 	xnor > >gv
 
 	" let ; function as :
-	nnor ; :
+	" nnor ; :
 
 	" nuke 'ex' mode
 	nnor Q <nop>
@@ -437,9 +440,6 @@ filetype off
 		xmap <silent> ib <Plug>CamelCaseMotion_ib
 		omap <silent> ie <Plug>CamelCaseMotion_ie
 		xmap <silent> ie <Plug>CamelCaseMotion_ie
-	" }-
-	" HardTime {+
-		nnor [toggle]h :HardTimeToggle<cr>
 	" }-
 	" NeoComplete {+
 		" Use neocomplete.
