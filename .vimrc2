@@ -4,7 +4,7 @@ set nocompatible
 filetype off
 
 " core vim settings {+
-	let g:colorscheme = 'hybrid'
+	let g:colorscheme='hybrid'
 
 	set laststatus=2
 	set cursorline
@@ -18,18 +18,18 @@ filetype off
 	" terminal settings
 	set hidden lazyredraw
 	set encoding=utf-8 shell=/bin/zsh title hidden ttyfast visualbell
-	set t_ut= " disable BCE
+	set t_ut=" disable BCE
 	
 	" fill chars
 	set listchars=tab:>-,eol:$,precedes:<,extends:>,trail:~,conceal:#,nbsp:_
 	set fillchars=vert:\│,fold:-
-	set diffopt+=iwhite
+	set diffopt=iwhite
 
 	" misc
 	set backspace=indent,eol,start
 	set scrolloff=7 scrolljump=4
 	set virtualedit="all,onemore"
-	set display+=lastline
+	set display=lastline
 
 	" tab-expansion configuration
 	set wildmenu wildmode=list:longest,list:full wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.idea/*,*/.DS_Store
@@ -137,7 +137,7 @@ filetype off
 		" }-
 		" keys and external bindings {+
 			"NeoBundle 'kana/vim-arpeggio'
-			NeoBundle 'takac/vim-hardtime'
+			"NeoBundle 'takac/vim-hardtime'
 			NeoBundle 'benmills/vimux' " unused?
 			NeoBundle 'mhinz/vim-tmuxify' " unused?
 		" }-
@@ -289,7 +289,7 @@ filetype off
 		let g:syntastic_enable_highlighting=1
 		let g:syntastic_stl_format='[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 
-		let g:syntastic_mode_map = {"mode" : "active", "passive_filetypes" : []}
+		let g:syntastic_mode_map={"mode" : "active", "passive_filetypes" : []}
 
 		" language-specific settings {+
 			" c++ {+
@@ -297,7 +297,7 @@ filetype off
 					let g:syntastic_cpp_checkers=['gcc', 'clang_check']
 					let g:syntastic_cpp_compiler='clang++'
 					let g:syntastic_cpp_compiler_options=' -Wall -std=c++11-extensions -stdlib=libc++'
-					let g:syntastic_clang_check_options = g:syntastic_cpp_compiler_options
+					let g:syntastic_clang_check_options=g:syntastic_cpp_compiler_options
 					let g:syntastic_cpp_include_dirs=['/usr/local/include']
 				elseif executable('g++')
 					let g:syntastic_cpp_compiler='g++'
@@ -309,14 +309,14 @@ filetype off
 			" }-
 			" python {+
 				let g:syntastic_mode_map.passive_filetypes=['python']
-				"let g:pymode_lint_write = 0
-				let g:pymode_virtualenv_enabled = 1
+				"let g:pymode_lint_write=0
+				let g:pymode_virtualenv_enabled=1
 			" }-
 		" }-
 	" }-
 	" hardtime {+
 		let g:hardtime_showmsg=1
-		let g:hardtime_default_on=1
+		let g:hardtime_default_on=0
 		let g:hardtime_ignore_quickfix=1
 		let g:hardtime_ignore_buffer_patterns=["Unite","undo*","Help"]
 	" }-
@@ -349,7 +349,7 @@ filetype off
 		call unite#custom#source('source/line', 'matchers', 'matcher_regexp')
 
 		" set fuzzy finder
-		if !exists('g:finders') | let g:finders = ['ag', 'fzf', 'find'] | endif
+		if !exists('g:finders') | let g:finders=['ag', 'fzf', 'find'] | endif
 
 		for finder in g:finders
 			if !executable(finder) 
@@ -397,7 +397,7 @@ filetype off
 	nnor [toggle]v :set paste! paste?<cr>
 	nnor [toggle]w :set wrap! wrap?<cr>
 
-	nnor [toggle]h :HardTimeToggle<cr>
+	"nnor [toggle]h :HardTimeToggle<cr>
 	nnor [toggle]u :UndotreeToggle<cr>
 	nnor [toggle]z :Goyo<cr>
 
@@ -495,21 +495,21 @@ filetype off
 	" set rust compiler
 	au FileType rust if executable("rustc") | setlocal makeprg='rustc %' | endif
 
-	" allow =filter to use xmllint
+	" allow  = filter to use xmllint
 	au FileType xml,html if executable("xmllint") | let &l:equalprg='xmllint --format --recover -' | endif
 
 	" vim {+
 	" TODO: change this to use augroups
 		if &ft == 'vim'
-			set path+=~/.vim/bundle/
+			set path=~/.vim/bundle/
 			set inex=strpart(v:fname,strridx(v:fname,'/')+1).'/README' " trim repo name
 			set sua=.md,.txt,.markdown,.rst,.mdown
 		endif
 	" }-
 " }-
 " extended settings options {+
-	let g:colorizer_auto_color = 1
-	let g:indent_guides_enable_on_vim_startup = 0
+	let g:colorizer_auto_color=1
+	let g:indent_guides_enable_on_vim_startup=0
 
 	" local bundles should be added via ':NeoBundleExtraEdit'
 	if filereadable(glob("~/.local.vimrc"))
