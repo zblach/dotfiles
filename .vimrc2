@@ -109,7 +109,8 @@ filetype off
 			"end
 		" }-
 		" productivity tools {+
-			NeoBundle 'dbakker/vim-projectroot'
+			"NeoBundle 'dbakker/vim-projectroot'
+			NeoBundle 'airblade/vim-rooter'
 			NeoBundleLazy 'mbbill/undotree',			{'autoload':{'commands':'UndotreeToggle'}}
 			NeoBundleLazy 'majutsushi/tagbar',          {'autoload':{'commands':'TagbarToggle'}}
 		" }-
@@ -162,7 +163,7 @@ filetype off
 		" }-
 		" visual indicators {+
 			NeoBundle 'bling/vim-airline'
-			NeoBundle 'bootleq/ShowMarks'
+			"NeoBundle 'jacquesbh/vim-showmarks'
 			NeoBundle 'nathanaelkane/vim-indent-guides'
 			NeoBundle 'mhinz/vim-signify'
 			NeoBundleLazy 'junegunn/goyo.vim',             {'autoload':{'commands':'Goyo'}}
