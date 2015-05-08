@@ -27,7 +27,7 @@ alias ls='ls -G'
 alias pwd='echo ${PWD//\//"\033[1;32m"\/"\033[0m"}'
 
 cdd() {
-	cd `dirname $1`
+	cd `dirname ${1}`
 }
 u () {
 	set -A ud

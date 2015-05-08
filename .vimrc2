@@ -328,8 +328,8 @@ filetype off
 		let g:unite_winwidth=10
 		let g:unite_split_rule='botright'
 
-		call unite#filters#matcher_default#use(['matcher_fuzzy'])
-		call unite#filters#sorter_default#use(['sorter_rank'])
+		call unite#filters#matcher_default#use(['matcher_regexp'])
+		call unite#filters#sorter_default#use(['sorter_selecta'])
 
 		call unite#custom#profile('default', 'context', {
 		\              'log' : 1,
@@ -483,7 +483,7 @@ filetype off
 		nnor <silent> [unite]" :<C-u>Unite -buffer-name=mark mark<cr>
 
 		" CtrlP alternative
-		nnor <silent>  :<C-u>Unite -buffer-name=files file_rec/async<cr>
+		nnor <silent>  :<C-u>Unite -buffer-name=files file_mru file_rec/async<cr>
 		nnor <silent> [unite]gf :<C-u>UniteWithCursorWord -buffer-name=files file_rec/async<cr>
 	" }-
 	" vim-lion {+
