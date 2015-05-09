@@ -132,8 +132,7 @@ filetype off
 			NeoBundle 'michaeljsmith/vim-indent-object'
 			NeoBundle 'vim-scripts/argtextobj.vim'
 			NeoBundle 'guns/vim-sexp'
-			"NeoBundleLazy 'felixr/vim-multiedit'
-			"NeoBundle 'terryma/vim-multiple-cursors'
+			NeoBundle 'terryma/vim-multiple-cursors'
 			NeoBundle 'ciaranm/detectindent'
 		" }-
 		" keys and external bindings {+
@@ -480,11 +479,20 @@ filetype off
 		vmap <S-Enter> <Plug>VLionRight/
 	" }-
 	" vim-mark {+
+		let g:mwAutoLoadMarks=1
+		let g:mwDefaultHighlightingPalette='maximum'	
+		
 		map [toggle]m+ <Plug>MarkSet<cr>
 		map [toggle]m- <Plug>MarkClear<cr>
 		map [toggle]mr <Plug>MarkRegex<cr>
 		map [toggle]m<BS> <Plug>MarkAllClear<cr>
 		map [toggle]m! <Plug>MarkToggle<cr>
+
+		nmap * <Plug>MarkSearchOrCurNext<cr>
+		nmap # <Plug>MarkSearchOrCurPrev<cr>
+		nmap n <Plug>MarkSearchNext<cr>
+		nmap N <Plug>MarkSearchPrev<cr>
+
 	" }-
 	" ShowMarks {+
 		let g:showmarks_no_mappings=1
