@@ -1,6 +1,26 @@
+# zshrc - zblach 2015
+# Load a pre.zshrc file, if exists
 typeset -U path
 if [[ -a "$HOME/.local.pre.zshrc" ]]; then
 	source "$HOME/.local.pre.zshrc"
+fi
+################################################################################
+# ZGEN bundle management                                                       #
+################################################################################
+# https://github.com/tarjoilija/zgen
+if [[ -a "$HOME/.zsh/zgen/zgen.zsh" ]]; then
+    source "$HOME/.zsh/zgen/zgen.zsh"
+    if ! zgen saved; then
+        echo "zgen not initialized. initializing."
+
+        # Plugins 
+        zgen load zsh-users/zsh-completions src
+        zgen load zsh-users/zsh-syntax-highlighting
+        zgen load supercrabtree/k
+        zgen load unixorn/git-extra-commands
+
+        zgen save
+    fi
 fi
 
 ################################################################################
