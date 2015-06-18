@@ -153,6 +153,7 @@ filetype off
 			NeoBundle 'trapd00r/neverland-vim-theme'
 			NeoBundle 'w0ng/vim-hybrid'
 			NeoBundle 'wellsjo/wells-colorscheme.vim'
+			NeoBundle 'NLKNguyen/papercolor-theme'
 		" }-
 		" gui-only colorschemes {+
 			NeoBundleLazy 'chriskempson/base16-vim' "not compatible with CSApprox
@@ -233,7 +234,6 @@ filetype off
 		NeoBundleDisable vim-multiedit
 	" }-
 	call neobundle#end()
-	NeoBundleCheck
 " }-
 " bundle settings {+
 	" airline {+
@@ -488,10 +488,10 @@ filetype off
 		map [toggle]m<BS> <Plug>MarkAllClear<cr>
 		map [toggle]m! <Plug>MarkToggle<cr>
 
-		nmap * <Plug>MarkSearchOrCurNext<cr>
-		nmap # <Plug>MarkSearchOrCurPrev<cr>
-		nmap n <Plug>MarkSearchNext<cr>
-		nmap N <Plug>MarkSearchPrev<cr>
+		"nmap * <Plug>MarkSearchOrCurNext<cr>
+		"nmap # <Plug>MarkSearchOrCurPrev<cr>
+		"nmap n <Plug>MarkSearchNext<cr>
+		"nmap N <Plug>MarkSearchPrev<cr>
 
 	" }-
 	" ShowMarks {+
