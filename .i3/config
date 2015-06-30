@@ -174,10 +174,6 @@ bar {
     urgent_workspace #2f343a #900000 #ffffff
   }
 }
-client.focused #0088CC #0088CC #ffffff #dddddd
-client.focused_inactive #333333 #333333 #888888 #292d2e
-client.unfocused #333333 #333333 #888888 #292d2e
-client.urgent #2f343a #900000 #ffffff #900000
 
 # settings
 focus_follows_mouse no
@@ -190,3 +186,7 @@ exec --no-startup-id xbindkeys
 exec --no-startup-id clipit
 exec --no-startup-id start-pulseaudio-x11 --start
 exec --no-startup-id source ~/.fehbg
+client.focused #0088CC #0088CC #ffffff #dddddd
+client.focused_inactive #333333 #333333 #888888 #292d2e
+client.unfocused #333333 #333333 #888888 #292d2e
+client.urgent #2f343a #900000 #ffffff #900000
