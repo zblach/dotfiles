@@ -18,6 +18,7 @@ if [[ -a "$HOME/.zsh/zgen/zgen.zsh" ]]; then
         zgen load zsh-users/zsh-syntax-highlighting
         zgen load supercrabtree/k
         zgen load unixorn/git-extra-commands
+        zgen load tarruda/zsh-autosuggestions
 
         zgen save
     fi

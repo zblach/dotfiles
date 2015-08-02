@@ -489,9 +489,9 @@ filetype off
 		map [toggle]m! <Plug>MarkToggle<cr>
 
 		"nmap * <Plug>MarkSearchOrCurNext<cr>
-		"nmap # <Plug>MarkSearchOrCurPrev<cr>
-		"nmap n <Plug>MarkSearchNext<cr>
-		"nmap N <Plug>MarkSearchPrev<cr>
+		nmap # <Plug>MarkSet<cr>
+		nmap n <Plug>MarkSearchAnyNext<cr>
+		nmap N <Plug>MarkSearchAnyPrev<cr>
 
 	" }-
 	" ShowMarks {+
