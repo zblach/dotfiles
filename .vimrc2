@@ -490,8 +490,8 @@ filetype off
 
 		"nmap * <Plug>MarkSearchOrCurNext<cr>
 		nmap # <Plug>MarkSet<cr>
-		nmap n <Plug>MarkSearchAnyNext<cr>
-		nmap N <Plug>MarkSearchAnyPrev<cr>
+		"nmap n <Plug>MarkSearchAnyNext<cr>
+		"nmap N <Plug>MarkSearchAnyPrev<cr>
 
 	" }-
 	" ShowMarks {+
