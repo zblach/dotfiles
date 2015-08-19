@@ -18,6 +18,7 @@ if [[ -a "$HOME/.zsh/zgen/zgen.zsh" ]]; then
         zgen load zsh-users/zsh-syntax-highlighting
         zgen load supercrabtree/k
         zgen load unixorn/git-extra-commands
+        zgen load tarruda/zsh-autosuggestions
 
         zgen save
     fi
@@ -183,15 +184,6 @@ export TERM=xterm-256color
 ################################################################################
 # HOST-SPECIFIC ALIASES AND CONFIGURATIONS                                     #
 ################################################################################
-
-# Custom .zshrc
-if [ ! -f "$HOME/.zsh/$HOSTNAME_SHORT.zshrc" ]; then
-	colors
-	echo "${fg_bold[yellow]}warning: ${fg[default]} could not find host-specific zshrc file. Creating empty one." >&2
-	echo "# define any ${HOSTNAME_SHORT}-specific zsh settings here\n# define any shell-agnostic settings (like aliases) in \$HOME/.aliases/${HOSTNAME_SHORT}" > "$HOME/.zsh/$HOSTNAME_SHORT.zshrc"
-else
-    . "$HOME/.zsh/${HOSTNAME_SHORT}.zshrc"
-fi
 
 # Additional shell-agnostic aliases
 if [ -f "$HOME/.aliases" ]; then

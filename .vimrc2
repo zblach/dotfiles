@@ -131,8 +131,7 @@ filetype off
 			NeoBundle 'michaeljsmith/vim-indent-object'
 			NeoBundle 'vim-scripts/argtextobj.vim'
 			NeoBundle 'guns/vim-sexp'
-			"NeoBundleLazy 'felixr/vim-multiedit'
-			"NeoBundle 'terryma/vim-multiple-cursors'
+			NeoBundle 'terryma/vim-multiple-cursors'
 			NeoBundle 'ciaranm/detectindent'
 		" }-
 		" keys and external bindings {+
@@ -152,6 +151,8 @@ filetype off
 			NeoBundle 'sjl/badwolf'
 			NeoBundle 'trapd00r/neverland-vim-theme'
 			NeoBundle 'w0ng/vim-hybrid'
+			NeoBundle 'wellsjo/wells-colorscheme.vim'
+			NeoBundle 'NLKNguyen/papercolor-theme'
 		" }-
 		" gui-only colorschemes {+
 			NeoBundleLazy 'chriskempson/base16-vim' "not compatible with CSApprox
@@ -170,7 +171,7 @@ filetype off
 			NeoBundleLazy 'scrooloose/nerdtree',           {'autoload':{'commands':'NERDTreeToggle'}}
 		" }-
 		" additional syntax highlighting and matching {+
-			NeoBundle 'luochen1990/rainbow'
+			NeoBundle 'junegunn/rainbow_parentheses.vim'
 			NeoBundleLazy 'chrisbra/Colorizer',            {'autoload':{'commands':'ColorToggle'}}
 			NeoBundleLazy 'junegunn/limelight.vim',        {'autoload':{'commands':'Limelight'}}
 			NeoBundleLazy 'jaxbot/semantic-highlight.vim', {'autoload':{'commands':'SemanticHighlightToggle'}}
@@ -192,6 +193,10 @@ filetype off
 
 		" html
 		NeoBundleLazy 'rstacruz/sparkup',              {'autoload':{'filetypes':['html','xml']}}
+
+		" java
+		NeoBundleLazy 'sighforever/vim-syntastic-java-gradle-plugin', {'autoload':{'filetypes':['java']}}
+		
 
 		" json
 		NeoBundleLazy 'elzr/vim-json',                 {'autoload':{'filetypes':['json']}}
@@ -228,7 +233,6 @@ filetype off
 		NeoBundleDisable vim-multiedit
 	" }-
 	call neobundle#end()
-	NeoBundleCheck
 " }-
 " bundle settings {+
 	" airline {+
@@ -259,25 +263,7 @@ filetype off
 		let g:undotree_TreeNodeShape="*"
 	" }-	
 	" rainbow brackets {+
-		let g:rainbow_active=1
-		let g:rainbow_conf={
-		\	'guifgs'      : ['RoyalBlue', 'DarkOrange', 'DarkOrchid', 'FireBrick', 'magenta'],
-		\	'ctermfgs'    : ['lightblue', 'lightgreen', 'yellow'    , 'red'      , 'magenta'],
-		\	'parentheses' : [['(',')']  , ['\[','\]'] , ['{','}']   , ['<','>'] ],
-		\	'operators'   : '_,_',
-		\	'separately'  : {
-		\		'*'      : {},
-		\		'python' : {
-		\		   'parentheses' : [['(',')'], ['\[','\]'], ['{','}']]
-		\		},
-		\		'vim'    : {
-		\			'parentheses' : [['{+','}-']]
-		\		},
-		\		'cpp'    : {
-		\			'operators' : ['_<<_','_>>_']
-		\		},
-		\	},
-		\}
+		let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}'], ['<', '>']]
 	" }-
 	" syntastic {+
 		" symbols
@@ -492,11 +478,20 @@ filetype off
 		vmap <S-Enter> <Plug>VLionRight/
 	" }-
 	" vim-mark {+
+		let g:mwAutoLoadMarks=1
+		let g:mwDefaultHighlightingPalette='maximum'	
+		
 		map [toggle]m+ <Plug>MarkSet<cr>
 		map [toggle]m- <Plug>MarkClear<cr>
 		map [toggle]mr <Plug>MarkRegex<cr>
 		map [toggle]m<BS> <Plug>MarkAllClear<cr>
 		map [toggle]m! <Plug>MarkToggle<cr>
+
+		"nmap * <Plug>MarkSearchOrCurNext<cr>
+		nmap # <Plug>MarkSet<cr>
+		nmap n <Plug>MarkSearchAnyNext<cr>
+		nmap N <Plug>MarkSearchAnyPrev<cr>
+
 	" }-
 	" ShowMarks {+
 		let g:showmarks_no_mappings=1
