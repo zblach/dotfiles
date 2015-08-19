@@ -52,11 +52,10 @@ filetype off
 " }-
 " bundles {+
 	" neobundle configuration {+
-		"let expand('/.vim/bundle/')=expand('~/.vim/bundle/')
 		" bootstrapping {+
 			if empty(glob(expand('~/.vim/bundle/')."neobundle.vim"))
 				echom "NeoBundle not found, bootstrapping."
-				exe "!git clone https://github.com/Shougo/neobundle.vim ".expand('~/.vim/bundle').'neobundle.vim'
+				exe "!git clone https://github.com/Shougo/neobundle.vim ".expand('~/.vim/bundle/').'neobundle.vim'
 			endif
 		" }-
 		set runtimepath+=~/.vim/bundle/neobundle.vim
