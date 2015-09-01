@@ -1,3 +1,8 @@
+# Local zshenv?
+if [[ -a "$HOME/.local.zshenv" ]]; then
+	source "$HOME/.local.zshenv"
+fi
+
 # Colorcat!
 alias pyg="pygmentize -f 256 -O bg=dark,style=monokai,linenos=1,encoding=utf-8"
 alias acat="pyg -g"
