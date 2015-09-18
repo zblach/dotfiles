@@ -211,14 +211,14 @@ filetype off
 		" python
 		NeoBundleLazy 'ivanov/vim-ipython',            {'autoload':{'filetypes':['python']}}
 		NeoBundleLazy 'nvie/vim-flake8',               {'autoload':{'filetypes':['python']}}
-		NeoBundleLazy 'klen/python-mode',              {'autoload':{'filetypes':['python']}}
+		NeoBundleLazy 'davidhalter/jedi-vim',		   {'autoload':{'filetypes':['python']}}
 
 		" rust
 		NeoBundleLazy 'wting/rust.vim',                {'autoload':{'filetypes':['rust', 'rs']}}
 
 		" scala
 		NeoBundleLazy 'derekwyatt/vim-scala',          {'autoload':{'filetypes':['scala']}}
-		NeoBundleLazy 'megaannum/vimside',             {'autoload':{'filetypes':['scala']}, 'depends': ['Shougo/vimshell.vim', 'Shougo/vimproc']}
+		NeoBundleLazy 'megaannum/vimside',             {'autoload':{'filetypes':['scala']}, 'depends': ['Shougo/vimshell.vim', 'Shougo/vimproc.vim']}
 
 		" swift
 		NeoBundleLazy 'toyamarinyon/vim-swift',        {'autoload':{'filetypes':['swift','playground']}}
@@ -230,7 +230,6 @@ filetype off
 		NeoBundleLazy 'dbakker/vim-lint',              {'autoload':{'filetypes':['vim']}}
 	" }-
 	" disabled bundles {+
-		NeoBundleDisable vim-multiedit
 	" }-
 	call neobundle#end()
 " }-
