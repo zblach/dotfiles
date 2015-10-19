@@ -8,8 +8,11 @@ fi
 # ZGEN bundle management                                                       #
 ################################################################################
 # https://github.com/tarjoilija/zgen
-if [[ -a "$HOME/.zsh/zgen/zgen.zsh" ]]; then
-    source "$HOME/.zsh/zgen/zgen.zsh"
+if [ ! -d "$HOME/.zgen" ]; then
+    git clone https://github.com/tarjoilija/zgen "$HOME/.zgen"
+fi
+if [[ -a "$HOME/.zgen/zgen.zsh" ]]; then
+    source "$HOME/.zgen/zgen.zsh"
     if ! zgen saved; then
         echo "zgen not initialized. initializing."
 

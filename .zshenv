@@ -29,7 +29,7 @@ alias grep='grep --color=auto -n -C 5'
 alias ls='ls -G'
 
 #colorize directory separators
-alias pwd='echo ${PWD//\//"\033[1;32m"\/"\033[0m"}'
+alias cpwd='echo ${PWD//\//"\033[1;32m"\/"\033[0m"}'
 
 cdd() {
 	cd `dirname ${1}`
