@@ -8,7 +8,7 @@ fi
 # ZGEN bundle management                                                       #
 ################################################################################
 # https://github.com/tarjoilija/zgen
-if [ ! -d "$HOME/.zgen" ]; then
+if [[ -d "$HOME/.zgen" && ! -f "$HOME/.zgen/zgen.zsh" ]]; then
     git clone https://github.com/tarjoilija/zgen "$HOME/.zgen"
 fi
 if [[ -a "$HOME/.zgen/zgen.zsh" ]]; then

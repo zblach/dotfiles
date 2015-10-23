@@ -4,7 +4,7 @@ set nocompatible
 filetype off
 
 " core vim settings {+
-	let g:colorscheme='hybrid'
+	let g:colorscheme='badwolf'
 
 	set laststatus=2
 	set cursorline
@@ -504,6 +504,9 @@ filetype off
 
 	" allow  = filter to use xmllint
 	au FileType xml,html if executable("xmllint") | let &l:equalprg='xmllint --format --recover -' | endif
+
+	" allow = filter to use python's json.tool
+	au FileType json let &l:equalprg='python -m json.tool'
 
 	" vim {+
 	" TODO: change this to use augroups
