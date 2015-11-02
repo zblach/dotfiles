@@ -4,7 +4,7 @@ set nocompatible
 filetype off
 
 " core vim settings {+
-	let g:colorscheme='hybrid'
+	let g:colorscheme='badwolf'
 
 	set laststatus=2
 	set cursorline
@@ -52,184 +52,178 @@ filetype off
 " }-
 " bundles {+
 	" neobundle configuration {+
-		"let expand('/.vim/bundle/')=expand('~/.vim/bundle/')
-		" bootstrapping {+
-			if empty(glob(expand('~/.vim/bundle/')."neobundle.vim"))
-				echom "NeoBundle not found, bootstrapping."
-				exe "!git clone https://github.com/Shougo/neobundle.vim ".expand('~/.vim/bundle').'neobundle.vim'
-			endif
-		" }-
-		set runtimepath+=~/.vim/bundle/neobundle.vim
-		call neobundle#begin(expand('~/.vim/bundle/'))
+		if empty(glob('~/.vim/autoload/plug.vim'))
+			silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+				\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+			autocmd VimEnter * PlugInstall | source $MYVIMRC
+		endif	
 
-		NeoBundleFetch 'Shougo/neobundle.vim'
+		call plug#begin(expand('~/.vim/bundle/'))
+		let g:plug_window='horizontal bottomright new'
 	" }-
 	" core bundles {+
 		" tommcdo plugins {+
-			NeoBundle 'tommcdo/vim-lion'
-			NeoBundle 'tommcdo/vim-ninja-feet'
-			NeoBundle 'tommcdo/vim-text-objects'
+			Plug 'tommcdo/vim-lion'
+			Plug 'tommcdo/vim-ninja-feet'
+			Plug 'tommcdo/vim-text-objects'
 		" }-
 		" tpope plugins {+
-			NeoBundleLazy 'tpope/vim-dispatch'
-			NeoBundle 'tpope/vim-eunuch'
-			NeoBundle 'tpope/vim-fugitive'
-			NeoBundle 'tpope/vim-obsession'
-			NeoBundle 'tpope/vim-repeat'
-			NeoBundle 'tpope/vim-speeddating'
-			NeoBundle 'tpope/vim-surround'
-			NeoBundle 'tpope/vim-unimpaired'
+			Plug 'tpope/vim-dispatch'
+			Plug 'tpope/vim-eunuch'
+			Plug 'tpope/vim-fugitive'
+			Plug 'tpope/vim-obsession'
+			Plug 'tpope/vim-repeat'
+			Plug 'tpope/vim-speeddating'
+			Plug 'tpope/vim-surround'
+			Plug 'tpope/vim-unimpaired'
 		" }-
 		" shougo plugins {+
-			NeoBundle 'Shougo/vimproc.vim', {'build': {'mac' : 'make -f make_mac.mak', 'linux' : 'make'}}
-			NeoBundle 'Shougo/neocomplete' " depends on lua, which isn't always available
-			NeoBundle 'Shougo/neosnippet', {'depends':['honza/vim-snippets', 'Shougo/neosnippet-snippets']} " snippets {{{
-			NeoBundle 'Shougo/neosnippet-snippets'
-			NeoBundle 'Shougo/unite.vim',  {'depends':['Shougo/vimproc.vim']}
-			NeoBundle 'Shougo/vimshell.vim'
+			Plug 'Shougo/vimproc.vim', {'do':'make'}
+			Plug 'Shougo/neocomplete' " depends on lua, which isn't always available
+			Plug 'Shougo/neosnippet', {'depends':['honza/vim-snippets', 'Shougo/neosnippet-snippets']} " snippets {{{
+			Plug 'Shougo/neosnippet-snippets'
+			Plug 'Shougo/unite.vim',  {'depends':['Shougo/vimproc.vim']}
+			Plug 'Shougo/vimshell.vim'
 			" unite plugins {+
-				NeoBundleLazy 'osyo-manga/unite-filetype', {'autoload': {'unite_sources': 'filetype'}}
-				NeoBundleLazy 'osyo-manga/unite-fold',     {'autoload': {'unite_sources': 'fold'}}
-				NeoBundleLazy 'osyo-manga/unite-quickfix', {'autoload': {'unite_sources': ['quickfix', 'location_list']}}
-				NeoBundleLazy 'osyo-manga/vim-snowdrop',   {'autoload': {'unite_sources': 'snowdrop'}}
-				NeoBundleLazy 'tacroe/unite-mark',         {'autoload': {'unite_sources': 'mark'}}
-				NeoBundleLazy 'thinca/vim-unite-history',  {'autoload': {'unite_sources': ['history/command', 'history/search']}}
-				NeoBundleLazy 'tsukkee/unite-help',        {'autoload': {'unite_sources': 'help'}}
-				NeoBundleLazy 'ujihisa/unite-colorscheme', {'autoload': {'unite_sources': 'colorscheme'}}
-				NeoBundleLazy 'ujihisa/unite-locate',      {'autoload': {'unite_sources': 'locate'}}
-				NeoBundleLazy 'Shougo/neomru.vim',         {'autoload': {'unite_sources': ['file_mru', 'directory_mru']}}
-				NeoBundleLazy 'Shougo/unite-outline',      {'autoload': {'unite_sources': 'outline'}}
+				" PlugLazy 'osyo-manga/unite-filetype', {'autoload': {'unite_sources': 'filetype'}}
+				" PlugLazy 'osyo-manga/unite-fold',     {'autoload': {'unite_sources': 'fold'}}
+				" PlugLazy 'osyo-manga/unite-quickfix', {'autoload': {'unite_sources': ['quickfix', 'location_list']}}
+				" PlugLazy 'osyo-manga/vim-snowdrop',   {'autoload': {'unite_sources': 'snowdrop'}}
+				" PlugLazy 'tacroe/unite-mark',         {'autoload': {'unite_sources': 'mark'}}
+				" PlugLazy 'thinca/vim-unite-history',  {'autoload': {'unite_sources': ['history/command', 'history/search']}}
+				" PlugLazy 'tsukkee/unite-help',        {'autoload': {'unite_sources': 'help'}}
+				" PlugLazy 'ujihisa/unite-colorscheme', {'autoload': {'unite_sources': 'colorscheme'}}
+				" PlugLazy 'ujihisa/unite-locate',      {'autoload': {'unite_sources': 'locate'}}
+				" PlugLazy 'Shougo/neomru.vim',         {'autoload': {'unite_sources': ['file_mru', 'directory_mru']}}
+				" PlugLazy 'Shougo/unite-outline',      {'autoload': {'unite_sources': 'outline'}}
 			" }-
 		" }-
-		" alternatives {+
-			" NeoComplete requires if_lua
-			" TBD: find alternative
-			"if has('lua')
-			"	NeoBundleSource neocomplete
-			"end
-		" }-
 		" productivity tools {+
-			"NeoBundle 'dbakker/vim-projectroot'
-			NeoBundle 'airblade/vim-rooter'
-			NeoBundleLazy 'mbbill/undotree',			{'autoload':{'commands':'UndotreeToggle'}}
-			NeoBundleLazy 'majutsushi/tagbar',          {'autoload':{'commands':'TagbarToggle'}}
+			"Plug 'dbakker/vim-projectroot'
+			Plug 'airblade/vim-rooter'
+			Plug 'mbbill/undotree',			   {'on':'UndotreeToggle'}
+			Plug 'majutsushi/tagbar' " ,          {'on':'TagbarToggle'}
 		" }-
 		" version control plugins {+
-			NeoBundle 'tommcdo/vim-fugitive-blame-ext', {'depends' : 'tpope/vim-fugitive'}
-			NeoBundle 'gregsexton/gitv'
+			Plug 'tommcdo/vim-fugitive-blame-ext', {'depends' : 'tpope/vim-fugitive'}
+			Plug 'gregsexton/gitv'
 		" }-
 		" code and tab completion {+
-			NeoBundle 'tomtom/tlib_vim'
-			NeoBundle 'MarcWeber/vim-addon-mw-utils'
-			NeoBundle 'honza/vim-snippets'
-			NeoBundle 'garbas/vim-snipmate'
-			NeoBundle 'scrooloose/syntastic'
-			NeoBundle 'honza/vim-snippets'
+			Plug 'tomtom/tlib_vim'
+			Plug 'MarcWeber/vim-addon-mw-utils'
+			Plug 'honza/vim-snippets'
+			Plug 'garbas/vim-snipmate'
+			Plug 'scrooloose/syntastic'
+			Plug 'honza/vim-snippets'
 		" }-
 		" text navigation and alignment {+
-			NeoBundle 'Lokaltog/vim-easymotion'
-			NeoBundle 'bkad/CamelCaseMotion'
-			NeoBundle 'michaeljsmith/vim-indent-object'
-			NeoBundle 'vim-scripts/argtextobj.vim'
-			NeoBundle 'guns/vim-sexp'
-			"NeoBundleLazy 'felixr/vim-multiedit'
-			"NeoBundle 'terryma/vim-multiple-cursors'
-			NeoBundle 'ciaranm/detectindent'
+			Plug 'Lokaltog/vim-easymotion'
+			Plug 'bkad/CamelCaseMotion'
+			Plug 'michaeljsmith/vim-indent-object'
+			Plug 'vim-scripts/argtextobj.vim'
+			Plug 'guns/vim-sexp'
+			Plug 'terryma/vim-multiple-cursors'
+			Plug 'ciaranm/detectindent'
 		" }-
 		" keys and external bindings {+
-			"NeoBundle 'kana/vim-arpeggio'
-			"NeoBundle 'takac/vim-hardtime'
-			NeoBundle 'benmills/vimux' " unused?
-			NeoBundle 'mhinz/vim-tmuxify' " unused?
+			"Plug 'kana/vim-arpeggio'
+			"Plug 'takac/vim-hardtime'
+			Plug 'benmills/vimux' " unused?
+			Plug 'mhinz/vim-tmuxify' " unused?
 		" }-
-		NeoBundle 'chrisbra/NrrwRgn'
+		Plug 'chrisbra/NrrwRgn'
 	" }-
 	" color and visual bundles {+
 		" color schemes {+
-			NeoBundle 'altercation/vim-colors-solarized'
-			NeoBundle 'baeuml/summerfruit256.vim'
-			NeoBundle 'jonstoler/werewolf.vim'
-			NeoBundle 'junegunn/seoul256.vim'
-			NeoBundle 'sjl/badwolf'
-			NeoBundle 'trapd00r/neverland-vim-theme'
-			NeoBundle 'w0ng/vim-hybrid'
+			Plug 'altercation/vim-colors-solarized'
+			Plug 'baeuml/summerfruit256.vim'
+			Plug 'jonstoler/werewolf.vim'
+			Plug 'junegunn/seoul256.vim'
+			Plug 'sjl/badwolf'
+			Plug 'trapd00r/neverland-vim-theme'
+			Plug 'w0ng/vim-hybrid'
+			Plug 'wellsjo/wells-colorscheme.vim'
+			Plug 'NLKNguyen/papercolor-theme'
 		" }-
 		" gui-only colorschemes {+
-			NeoBundleLazy 'chriskempson/base16-vim' "not compatible with CSApprox
-
-			if has('gui_running')
-				NeoBundleSource 'base16-vim'
-			endif
+			Plug 'chriskempson/base16-vim',       {'on':[]}
+			if has('gui_running') | call plug#load('base16-vim') | endif
 		" }-
 		" visual indicators {+
-			NeoBundle 'bling/vim-airline'
-			"NeoBundle 'jacquesbh/vim-showmarks'
-			NeoBundle 'nathanaelkane/vim-indent-guides'
-			NeoBundle 'mhinz/vim-signify'
-			NeoBundleLazy 'junegunn/goyo.vim',             {'autoload':{'commands':'Goyo'}}
-			NeoBundleLazy 'ryanoasis/vim-webdevicons'
-			NeoBundleLazy 'scrooloose/nerdtree',           {'autoload':{'commands':'NERDTreeToggle'}}
+			Plug 'bling/vim-airline'
+			Plug 'jacquesbh/vim-showmarks'
+			Plug 'nathanaelkane/vim-indent-guides'
+			Plug 'mhinz/vim-signify'
+			Plug 't9md/vim-choosewin'
+			Plug 'junegunn/goyo.vim',             {'on':'Goyo'}
+			Plug 'scrooloose/nerdtree',           {'on':'NERDTreeToggle'}
+
+			Plug 'ryanoasis/vim-webdevicons',     {'on':[]}
+			if has('gui_running') | call plug#load('vim-webdevicons') | endif
 		" }-
 		" additional syntax highlighting and matching {+
-			NeoBundle 'luochen1990/rainbow'
-			NeoBundleLazy 'chrisbra/Colorizer',            {'autoload':{'commands':'ColorToggle'}}
-			NeoBundleLazy 'junegunn/limelight.vim',        {'autoload':{'commands':'Limelight'}}
-			NeoBundleLazy 'jaxbot/semantic-highlight.vim', {'autoload':{'commands':'SemanticHighlightToggle'}}
-			NeoBundle 'idbrii/vim-mark'
+			Plug 'junegunn/rainbow_parentheses.vim'
+			Plug 'chrisbra/Colorizer',            {'on':'ColorToggle'}}
+			Plug 'junegunn/limelight.vim',        {'on':'Limelight'}}
+			Plug 'jaxbot/semantic-highlight.vim', {'on':'SemanticHighlightToggle'}}
+			Plug 'idbrii/vim-mark'
 		" }-
 		" experimental {+
-			NeoBundle 'Shougo/vimfiler'
+			Plug 'Shougo/vimfiler'
 		" }-
 	" }-
 	" language-specific bundles {+
 		" csv
-		NeoBundleLazy 'chrisbra/csv.vim',              {'autoload':{'filetypes':['csv']}}
+		Plug 'chrisbra/csv.vim',                  {'for':['csv']}
 
 		" haskell
-		NeoBundleLazy 'ujihisa/neco-ghc',              {'autoload':{'filetypes':['h']}}
+		Plug 'ujihisa/neco-ghc',                  {'for':['h']}}
 
 		" hex
-		NeoBundleLazy 'Shougo/vinarise.vim',           {'autoload':{'filetypes':['bin', 'xxd', 'hex']}}
+		Plug 'Shougo/vinarise.vim',               {'for':['bin', 'xxd', 'hex']}}
 
 		" html
-		NeoBundleLazy 'rstacruz/sparkup',              {'autoload':{'filetypes':['html','xml']}}
+		Plug 'rstacruz/sparkup',                  {'for':['html','xml']}}
+
+		" java
+		Plug 'sighforever/vim-syntastic-java-gradle-plugin',     {'for':['java']}}
+		
 
 		" json
-		NeoBundleLazy 'elzr/vim-json',                 {'autoload':{'filetypes':['json']}}
+		Plug 'elzr/vim-json',                     {'for':['json']}}
 
 		" markdown
-		NeoBundleLazy 'nelstrom/vim-markdown-folding', {'autoload':{'filetypes':['markdown','md']}}
-		NeoBundleLazy 'suan/vim-instant-markdown',     {'autoload':{'filetypes':['markdown','md']}}
+		Plug 'nelstrom/vim-markdown-folding',     {'for':['markdown','md']}}
+		Plug 'suan/vim-instant-markdown',         {'for':['markdown','md']}}
 
 		" mediawiki
-		NeoBundleLazy 'chikamichi/mediawiki.vim',      {'autoload':{'filetypes':['wiki','mediawiki']}}
+		Plug 'chikamichi/mediawiki.vim',          {'for':['wiki','mediawiki']}}
 
 		" python
-		NeoBundleLazy 'ivanov/vim-ipython',            {'autoload':{'filetypes':['python']}}
-		NeoBundleLazy 'nvie/vim-flake8',               {'autoload':{'filetypes':['python']}}
-		NeoBundleLazy 'klen/python-mode',              {'autoload':{'filetypes':['python']}}
+		Plug 'ivanov/vim-ipython',                {'for':['python']}}
+		Plug 'nvie/vim-flake8',                   {'for':['python']}}
+		" PlugLazy 'klen/python-mode',              {'autoload':{'filetypes':['python']}}
+		Plug 'davidhalter/jedi-vim',    		  {'for':['python']}}
 
 		" rust
-		NeoBundleLazy 'wting/rust.vim',                {'autoload':{'filetypes':['rust', 'rs']}}
+		Plug 'wting/rust.vim',                    {'for':['rust', 'rs']}}
 
 		" scala
-		NeoBundleLazy 'derekwyatt/vim-scala',          {'autoload':{'filetypes':['scala']}}
-		NeoBundleLazy 'megaannum/vimside',             {'autoload':{'filetypes':['scala']}, 'depends': ['Shougo/vimshell.vim', 'Shougo/vimproc']}
+		Plug 'derekwyatt/vim-scala',              {'for':['scala']}}
+		Plug 'megaannum/vimside',                 {'for':['scala']}, 'depends': ['Shougo/vimshell.vim', 'Shougo/vimproc.vim']}
 
 		" swift
-		NeoBundleLazy 'toyamarinyon/vim-swift',        {'autoload':{'filetypes':['swift','playground']}}
+		Plug 'toyamarinyon/vim-swift',            {'for':['swift','playground']}}
 
 		" sql
-		NeoBundleLazy 'vim-scripts/dbext.vim',         {'autoload':{'filetypes':['sql']}}
+		Plug 'vim-scripts/dbext.vim',             {'for':['sql']}}
 
 		" vim
-		NeoBundleLazy 'dbakker/vim-lint',              {'autoload':{'filetypes':['vim']}}
+		Plug 'dbakker/vim-lint',                  {'for':['vim']}}
 	" }-
 	" disabled bundles {+
-		NeoBundleDisable vim-multiedit
 	" }-
-	call neobundle#end()
-	NeoBundleCheck
+	call plug#end()
 " }-
 " bundle settings {+
 	" airline {+
@@ -260,25 +254,7 @@ filetype off
 		let g:undotree_TreeNodeShape="*"
 	" }-	
 	" rainbow brackets {+
-		let g:rainbow_active=1
-		let g:rainbow_conf={
-		\	'guifgs'      : ['RoyalBlue', 'DarkOrange', 'DarkOrchid', 'FireBrick', 'magenta'],
-		\	'ctermfgs'    : ['lightblue', 'lightgreen', 'yellow'    , 'red'      , 'magenta'],
-		\	'parentheses' : [['(',')']  , ['\[','\]'] , ['{','}']   , ['<','>'] ],
-		\	'operators'   : '_,_',
-		\	'separately'  : {
-		\		'*'      : {},
-		\		'python' : {
-		\		   'parentheses' : [['(',')'], ['\[','\]'], ['{','}']]
-		\		},
-		\		'vim'    : {
-		\			'parentheses' : [['{+','}-']]
-		\		},
-		\		'cpp'    : {
-		\			'operators' : ['_<<_','_>>_']
-		\		},
-		\	},
-		\}
+		let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}'], ['<', '>']]
 	" }-
 	" syntastic {+
 		" symbols
@@ -493,11 +469,20 @@ filetype off
 		vmap <S-Enter> <Plug>VLionRight/
 	" }-
 	" vim-mark {+
+		let g:mwAutoLoadMarks=1
+		let g:mwDefaultHighlightingPalette='maximum'	
+		
 		map [toggle]m+ <Plug>MarkSet<cr>
 		map [toggle]m- <Plug>MarkClear<cr>
 		map [toggle]mr <Plug>MarkRegex<cr>
 		map [toggle]m<BS> <Plug>MarkAllClear<cr>
 		map [toggle]m! <Plug>MarkToggle<cr>
+
+		"nmap * <Plug>MarkSearchOrCurNext<cr>
+		"nmap # <Plug>MarkSet<cr>
+		"nmap n <Plug>MarkSearchAnyNext<cr>
+		"nmap N <Plug>MarkSearchAnyPrev<cr>
+
 	" }-
 	" ShowMarks {+
 		let g:showmarks_no_mappings=1
@@ -509,6 +494,9 @@ filetype off
 
 	" allow  = filter to use xmllint
 	au FileType xml,html if executable("xmllint") | let &l:equalprg='xmllint --format --recover -' | endif
+
+	" allow = filter to use python's json.tool
+	au FileType json let &l:equalprg='python -m json.tool'
 
 	" vim {+
 	" TODO: change this to use augroups
@@ -523,7 +511,7 @@ filetype off
 	let g:colorizer_auto_color=1
 	let g:indent_guides_enable_on_vim_startup=0
 
-	" local bundles should be added via ':NeoBundleExtraEdit'
+	" local bundles should be added via ':PlugExtraEdit'
 	if filereadable(glob("~/.local.vimrc"))
 		so ~/.local.vimrc
 	endif
