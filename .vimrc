@@ -163,9 +163,9 @@ filetype off
 		" }-
 		" additional syntax highlighting and matching {+
 			Plug 'junegunn/rainbow_parentheses.vim'
-			Plug 'chrisbra/Colorizer',            {'on':'ColorToggle'}}
-			Plug 'junegunn/limelight.vim',        {'on':'Limelight'}}
-			Plug 'jaxbot/semantic-highlight.vim', {'on':'SemanticHighlightToggle'}}
+			Plug 'chrisbra/Colorizer',            {'on':'ColorToggle'}
+			Plug 'junegunn/limelight.vim',        {'on':'Limelight'}
+			Plug 'jaxbot/semantic-highlight.vim', {'on':'SemanticHighlightToggle'}
 			Plug 'idbrii/vim-mark'
 		" }-
 		" experimental {+
@@ -177,49 +177,49 @@ filetype off
 		Plug 'chrisbra/csv.vim',                  {'for':['csv']}
 
 		" haskell
-		Plug 'ujihisa/neco-ghc',                  {'for':['h']}}
+		Plug 'ujihisa/neco-ghc',                  {'for':['h']}
 
 		" hex
-		Plug 'Shougo/vinarise.vim',               {'for':['bin', 'xxd', 'hex']}}
+		Plug 'Shougo/vinarise.vim',               {'for':['bin', 'xxd', 'hex']}
 
 		" html
-		Plug 'rstacruz/sparkup',                  {'for':['html','xml']}}
+		Plug 'rstacruz/sparkup',                  {'for':['html','xml']}
 
 		" java
-		Plug 'sighforever/vim-syntastic-java-gradle-plugin',     {'for':['java']}}
+		Plug 'sighforever/vim-syntastic-java-gradle-plugin',     {'for':['java']}
 		
 
 		" json
-		Plug 'elzr/vim-json',                     {'for':['json']}}
+		Plug 'elzr/vim-json',                     {'for':['json']}
 
 		" markdown
-		Plug 'nelstrom/vim-markdown-folding',     {'for':['markdown','md']}}
-		Plug 'suan/vim-instant-markdown',         {'for':['markdown','md']}}
+		Plug 'nelstrom/vim-markdown-folding',     {'for':['markdown','md']}
+		Plug 'suan/vim-instant-markdown',         {'for':['markdown','md']}
 
 		" mediawiki
-		Plug 'chikamichi/mediawiki.vim',          {'for':['wiki','mediawiki']}}
+		Plug 'chikamichi/mediawiki.vim',          {'for':['wiki','mediawiki']}
 
 		" python
-		Plug 'ivanov/vim-ipython',                {'for':['python']}}
-		Plug 'nvie/vim-flake8',                   {'for':['python']}}
+		Plug 'ivanov/vim-ipython',                {'for':['python']}
+		Plug 'nvie/vim-flake8',                   {'for':['python']}
 		" PlugLazy 'klen/python-mode',              {'autoload':{'filetypes':['python']}}
-		Plug 'davidhalter/jedi-vim',    		  {'for':['python']}}
+		Plug 'davidhalter/jedi-vim',    		  {'for':['python']}
 
 		" rust
-		Plug 'wting/rust.vim',                    {'for':['rust', 'rs']}}
+		Plug 'wting/rust.vim',                    {'for':['rust', 'rs']}
 
 		" scala
-		Plug 'derekwyatt/vim-scala',              {'for':['scala']}}
-		Plug 'megaannum/vimside',                 {'for':['scala']}, 'depends': ['Shougo/vimshell.vim', 'Shougo/vimproc.vim']}
+		Plug 'derekwyatt/vim-scala',              {'for':['scala']}
+		Plug 'megaannum/vimside',                 {'for':['scala']} ", 'depends': ['Shougo/vimshell.vim', 'Shougo/vimproc.vim']
 
 		" swift
-		Plug 'toyamarinyon/vim-swift',            {'for':['swift','playground']}}
+		Plug 'toyamarinyon/vim-swift',            {'for':['swift','playground']}
 
 		" sql
-		Plug 'vim-scripts/dbext.vim',             {'for':['sql']}}
+		Plug 'vim-scripts/dbext.vim',             {'for':['sql']}
 
 		" vim
-		Plug 'dbakker/vim-lint',                  {'for':['vim']}}
+		Plug 'dbakker/vim-lint',                  {'for':['vim']}
 	" }-
 	" disabled bundles {+
 	" }-
