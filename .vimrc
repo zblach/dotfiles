@@ -18,7 +18,8 @@ filetype off
 	" terminal settings
 	set hidden lazyredraw
 	set encoding=utf-8 shell=/bin/zsh title hidden ttyfast visualbell
-	set t_ut=" disable BCE
+	set t_ut=  
+	" disable BCE
 	
 	" fill chars
 	set listchars=tab:>-,eol:$,precedes:<,extends:>,trail:~,conceal:#,nbsp:_
@@ -89,13 +90,13 @@ filetype off
 				" PlugLazy 'osyo-manga/unite-fold',     {'autoload': {'unite_sources': 'fold'}}
 				" PlugLazy 'osyo-manga/unite-quickfix', {'autoload': {'unite_sources': ['quickfix', 'location_list']}}
 				" PlugLazy 'osyo-manga/vim-snowdrop',   {'autoload': {'unite_sources': 'snowdrop'}}
-				" PlugLazy 'tacroe/unite-mark',         {'autoload': {'unite_sources': 'mark'}}
+				Plug 'tacroe/unite-mark' " ,         {'autoload': {'unite_sources': 'mark'}}
 				" PlugLazy 'thinca/vim-unite-history',  {'autoload': {'unite_sources': ['history/command', 'history/search']}}
-				" PlugLazy 'tsukkee/unite-help',        {'autoload': {'unite_sources': 'help'}}
-				" PlugLazy 'ujihisa/unite-colorscheme', {'autoload': {'unite_sources': 'colorscheme'}}
+				Plug 'tsukkee/unite-help' " ,        {'autoload': {'unite_sources': 'help'}}
+				Plug 'ujihisa/unite-colorscheme', {'autoload': {'unite_sources': 'colorscheme'}}
 				" PlugLazy 'ujihisa/unite-locate',      {'autoload': {'unite_sources': 'locate'}}
-				" PlugLazy 'Shougo/neomru.vim',         {'autoload': {'unite_sources': ['file_mru', 'directory_mru']}}
-				" PlugLazy 'Shougo/unite-outline',      {'autoload': {'unite_sources': 'outline'}}
+				Plug 'Shougo/neomru.vim' " ,         {'autoload': {'unite_sources': ['file_mru', 'directory_mru']}}
+				" Plug 'Shougo/unite-outline',      {'autoload': {'unite_sources': 'outline'}}
 			" }-
 		" }-
 		" productivity tools {+
@@ -418,6 +419,11 @@ filetype off
 		xmap <silent> ib <Plug>CamelCaseMotion_ib
 		omap <silent> ie <Plug>CamelCaseMotion_ie
 		xmap <silent> ie <Plug>CamelCaseMotion_ie
+	" }-
+	" ChooseWin {+
+		nmap <silent> <C-w>? <Plug>(choosewin)
+		let g:choosewin_overlay_enable = 1
+		let g:choosewin_overlay_shade = 1
 	" }-
 	" NeoComplete {+
 		" Use neocomplete.
