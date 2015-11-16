@@ -60,7 +60,7 @@ filetype off
 		endif	
 
 		call plug#begin(expand('~/.vim/bundle/'))
-		let g:plug_window='horizontal bottomright new'
+		" let g:plug_window='horizontal bottomright new'
 	" }-
 	" core bundles {+
 		" tommcdo plugins {+
