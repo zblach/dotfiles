@@ -124,7 +124,7 @@ filetype off
 			Plug 'vim-scripts/argtextobj.vim'
 			Plug 'guns/vim-sexp'
 			Plug 'terryma/vim-multiple-cursors'
-			Plug 'ciaranm/detectindent'
+			Plug 'tpope/vim-sleuth'
 		" }-
 		" keys and external bindings {+
 			"Plug 'kana/vim-arpeggio'
@@ -194,9 +194,9 @@ filetype off
 		Plug 'elzr/vim-json',                     {'for':['json']}
 
 		" markdown
-		Plug 'nelstrom/vim-markdown-folding',     {'for':['markdown','md']}
-		Plug 'suan/vim-instant-markdown',         {'for':['markdown','md']}
-
+		Plug 'nelstrom/vim-markdown-folding',     {'for':['markdown','md','rst']}
+		Plug 'suan/vim-instant-markdown',         {'for':['markdown','md','rst']}
+		Plug 'junegunn/vim-xmark',                {'for':['markdown','md','rst'], 'do':'make'}
 		" mediawiki
 		Plug 'chikamichi/mediawiki.vim',          {'for':['wiki','mediawiki']}
 
@@ -523,7 +523,7 @@ filetype off
 	endif
 " }-
 " autocommands {+
-	" au BufReadPost * if buftype == "" | DetectIndent | endif
+	" au BufReadPost * if buftype == "" | Indent | endif
 	" au BufWritePre * if buftype == "" | %s/\s\+$//e | endif 	" trim trailing whitespace
 
 	au BufWinLeave * if expand("%") != "" | mkview | endif
