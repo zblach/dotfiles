@@ -60,7 +60,7 @@ filetype off
     endif  
 
     call plug#begin(expand('~/.vim/bundle/'))
-    let g:plug_window='horizontal bottomright new'
+    " let g:plug_window='horizontal bottomright new'
   " }-
   " core bundles {+
     " tommcdo plugins {+
@@ -86,16 +86,16 @@ filetype off
       Plug 'Shougo/unite.vim',               {'depends':['Shougo/vimproc.vim']}
       Plug 'Shougo/vimshell.vim'
       " unite plugins {+
-        " PlugLazy 'osyo-manga/unite-filetype', {'autoload': {'unite_sources': 'filetype'}}
-        " PlugLazy 'osyo-manga/unite-fold',     {'autoload': {'unite_sources': 'fold'}}
-        " PlugLazy 'osyo-manga/unite-quickfix', {'autoload': {'unite_sources': ['quickfix', 'location_list']}}
+        Plug 'osyo-manga/unite-filetype'
+        Plug 'osyo-manga/unite-fold'
+        Plug 'osyo-manga/unite-quickfix'
         " PlugLazy 'osyo-manga/vim-snowdrop',   {'autoload': {'unite_sources': 'snowdrop'}}
-        Plug 'tacroe/unite-mark' " ,         {'autoload': {'unite_sources': 'mark'}}
-        " PlugLazy 'thinca/vim-unite-history',  {'autoload': {'unite_sources': ['history/command', 'history/search']}}
-        Plug 'tsukkee/unite-help' " ,        {'autoload': {'unite_sources': 'help'}}
-        Plug 'ujihisa/unite-colorscheme',    {'autoload': {'unite_sources': 'colorscheme'}}
+        Plug 'tacroe/unite-mark' 
+        Plug 'thinca/vim-unite-history'
+        Plug 'tsukkee/unite-help' 
+        Plug 'ujihisa/unite-colorscheme'
         " PlugLazy 'ujihisa/unite-locate',      {'autoload': {'unite_sources': 'locate'}}
-        Plug 'Shougo/neomru.vim' " ,         {'autoload': {'unite_sources': ['file_mru', 'directory_mru']}}
+        Plug 'Shougo/neomru.vim' 
         " Plug 'Shougo/unite-outline',      {'autoload': {'unite_sources': 'outline'}}
       " }-
     " }-
@@ -184,7 +184,7 @@ filetype off
     Plug 'Shougo/vinarise.vim',             {'for':['bin', 'xxd', 'hex']}
 
     " html
-    Plug 'rstacruz/sparkup',                {'for':['html','xml']}
+    Plug 'rstacruz/sparkup',                {'for':['html', 'xml']}
 
     " java
     Plug 'sighforever/vim-syntastic-java-gradle-plugin', {'for':['java']}
@@ -194,11 +194,11 @@ filetype off
     Plug 'elzr/vim-json',                   {'for':['json']}
 
     " markdown
-    Plug 'nelstrom/vim-markdown-folding',   {'for':['markdown','md','rst']}
-    Plug 'suan/vim-instant-markdown',       {'for':['markdown','md','rst']}
-    Plug 'junegunn/vim-xmark',              {'for':['markdown','md','rst'], 'do':'make'}
+    Plug 'nelstrom/vim-markdown-folding',   {'for':['markdown', 'md', 'rst']}
+    Plug 'suan/vim-instant-markdown',       {'for':['markdown', 'md', 'rst']}
+    Plug 'junegunn/vim-xmark',              {'for':['markdown', 'md', 'rst'], 'do':'make'}
     " mediawiki
-    Plug 'chikamichi/mediawiki.vim',        {'for':['wiki','mediawiki']}
+    Plug 'chikamichi/mediawiki.vim',        {'for':['wiki', 'mediawiki']}
 
     " python
     Plug 'ivanov/vim-ipython',              {'for':['python']}
@@ -214,7 +214,7 @@ filetype off
     Plug 'megaannum/vimside',               {'for':['scala']} ", 'depends': ['Shougo/vimshell.vim', 'Shougo/vimproc.vim']
 
     " swift
-    Plug 'toyamarinyon/vim-swift',          {'for':['swift','playground']}
+    Plug 'toyamarinyon/vim-swift',          {'for':['swift', 'playground']}
 
     " sql
     Plug 'vim-scripts/dbext.vim',           {'for':['sql']}
