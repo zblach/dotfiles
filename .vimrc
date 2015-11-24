@@ -149,6 +149,8 @@ filetype off
     " gui-only colorschemes {+
       Plug 'chriskempson/base16-vim',       {'on':[]}
       if has('gui_running') | call plug#load('base16-vim') | endif
+	  Plug 'morhetz/gruvbox', 				{'on':[]}
+      if has('gui_running') | call plug#load('gruvbox') | endif
     " }-
     " visual indicators {+
       Plug 'bling/vim-airline'
