@@ -79,11 +79,11 @@ filetype off
       Plug 'tpope/vim-unimpaired'
     " }-
     " shougo plugins {+
-      Plug 'Shougo/vimproc.vim',             {'do':'make'}
+      Plug 'Shougo/vimproc.vim',             {'do': 'make'}
       Plug 'Shougo/neocomplete' " depends on lua, which isn't always available
-      Plug 'Shougo/neosnippet',              {'depends':['honza/vim-snippets', 'Shougo/neosnippet-snippets']} " snippets {{{
+      Plug 'Shougo/neosnippet',              {'depends': ['honza/vim-snippets', 'Shougo/neosnippet-snippets']} " snippets {{{
       Plug 'Shougo/neosnippet-snippets'
-      Plug 'Shougo/unite.vim',               {'depends':['Shougo/vimproc.vim']}
+      Plug 'Shougo/unite.vim',               {'depends': ['Shougo/vimproc.vim']}
       Plug 'Shougo/vimshell.vim'
       " unite plugins {+
         Plug 'osyo-manga/unite-filetype'
@@ -102,11 +102,11 @@ filetype off
     " productivity tools {+
       "Plug 'dbakker/vim-projectroot'
       Plug 'airblade/vim-rooter'
-      Plug 'mbbill/undotree',                {'on':'UndotreeToggle'}
-      Plug 'majutsushi/tagbar' " ,           {'on':'TagbarToggle'}
+      Plug 'mbbill/undotree',                {'on': 'UndotreeToggle'}
+      Plug 'majutsushi/tagbar' " ,           {'on': 'TagbarToggle'}
     " }-
     " version control plugins {+
-      Plug 'tommcdo/vim-fugitive-blame-ext', {'depends' : 'tpope/vim-fugitive'}
+      Plug 'tommcdo/vim-fugitive-blame-ext', {'depends': 'tpope/vim-fugitive'}
       Plug 'gregsexton/gitv'
     " }-
     " code and tab completion {+
@@ -147,28 +147,29 @@ filetype off
       Plug 'NLKNguyen/papercolor-theme'
     " }-
     " gui-only colorschemes {+
-      Plug 'chriskempson/base16-vim',       {'on':[]}
+      Plug 'chriskempson/base16-vim',       {'on': []}
       if has('gui_running') | call plug#load('base16-vim') | endif
-	  Plug 'morhetz/gruvbox', 				{'on':[]}
-      if has('gui_running') | call plug#load('gruvbox') | endif
+	  Plug 'morhetz/gruvbox' " ,            {'on': []}
+      " if has('gui_running') | call plug#load('gruvbox') | endif
     " }-
     " visual indicators {+
       Plug 'bling/vim-airline'
+	  Plug 'edkolev/tmuxline.vim'
       Plug 'jacquesbh/vim-showmarks'
       Plug 'nathanaelkane/vim-indent-guides'
       Plug 'mhinz/vim-signify'
       Plug 't9md/vim-choosewin'
-      Plug 'junegunn/goyo.vim',             {'on':'Goyo'}
-      Plug 'scrooloose/nerdtree',           {'on':'NERDTreeToggle'}
+      Plug 'junegunn/goyo.vim',             {'on': 'Goyo'}
+      Plug 'scrooloose/nerdtree',           {'on': 'NERDTreeToggle'}
 
-      Plug 'ryanoasis/vim-webdevicons',     {'on':[]}
+      Plug 'ryanoasis/vim-webdevicons',     {'on': []}
       if has('gui_running') | call plug#load('vim-webdevicons') | endif
     " }-
     " additional syntax highlighting and matching {+
       Plug 'junegunn/rainbow_parentheses.vim'
-      Plug 'chrisbra/Colorizer',            {'on':'ColorToggle'}
-      Plug 'junegunn/limelight.vim',        {'on':'Limelight'}
-      Plug 'jaxbot/semantic-highlight.vim', {'on':'SemanticHighlightToggle'}
+      Plug 'chrisbra/Colorizer',            {'on': 'ColorToggle'}
+      Plug 'junegunn/limelight.vim',        {'on': 'Limelight'}
+      Plug 'jaxbot/semantic-highlight.vim', {'on': 'SemanticHighlightToggle'}
       Plug 'idbrii/vim-mark'
     " }-
     " experimental {+
@@ -177,52 +178,52 @@ filetype off
   " }-
   " language-specific bundles {+
     " csv
-    Plug 'chrisbra/csv.vim',                {'for':['csv']}
+    Plug 'chrisbra/csv.vim',                {'for': ['csv']}
 
     " haskell
-    Plug 'ujihisa/neco-ghc',                {'for':['h']}
+    Plug 'ujihisa/neco-ghc',                {'for': ['h']}
 
     " hex
-    Plug 'Shougo/vinarise.vim',             {'for':['bin', 'xxd', 'hex']}
+    Plug 'Shougo/vinarise.vim',             {'for': ['bin', 'xxd', 'hex']}
 
     " html
-    Plug 'rstacruz/sparkup',                {'for':['html', 'xml']}
+    Plug 'rstacruz/sparkup',                {'for': ['html', 'xml']}
 
     " java
-    Plug 'sighforever/vim-syntastic-java-gradle-plugin', {'for':['java']}
+    Plug 'sighforever/vim-syntastic-java-gradle-plugin', {'for': ['java']}
     
 
     " json
-    Plug 'elzr/vim-json',                   {'for':['json']}
+    Plug 'elzr/vim-json',                   {'for': ['json']}
 
     " markdown
-    Plug 'nelstrom/vim-markdown-folding',   {'for':['markdown', 'md', 'rst']}
-    Plug 'suan/vim-instant-markdown',       {'for':['markdown', 'md', 'rst']}
-    Plug 'junegunn/vim-xmark',              {'for':['markdown', 'md', 'rst'], 'do':'make'}
+    Plug 'nelstrom/vim-markdown-folding',   {'for': ['markdown', 'md', 'rst']}
+    Plug 'suan/vim-instant-markdown',       {'for': ['markdown', 'md', 'rst']}
+    Plug 'junegunn/vim-xmark',              {'for': ['markdown', 'md', 'rst'], 'do': 'make'}
     " mediawiki
-    Plug 'chikamichi/mediawiki.vim',        {'for':['wiki', 'mediawiki']}
+    Plug 'chikamichi/mediawiki.vim',        {'for': ['wiki', 'mediawiki']}
 
     " python
-    Plug 'ivanov/vim-ipython',              {'for':['python']}
-    Plug 'nvie/vim-flake8',                 {'for':['python']}
-    " PlugLazy 'klen/python-mode',            {'autoload':{'filetypes':['python']}}
-    Plug 'davidhalter/jedi-vim',            {'for':['python']}
+    Plug 'ivanov/vim-ipython',              {'for': ['python']}
+    Plug 'nvie/vim-flake8',                 {'for': ['python']}
+    " PlugLazy 'klen/python-mode',            {'autoload':{'filetypes': ['python']}}
+    Plug 'davidhalter/jedi-vim',            {'for': ['python']}
 
     " rust
-    Plug 'wting/rust.vim',                  {'for':['rust', 'rs']}
+    Plug 'wting/rust.vim',                  {'for': ['rust', 'rs']}
 
     " scala
-    Plug 'derekwyatt/vim-scala',            {'for':['scala']}
-    Plug 'megaannum/vimside',               {'for':['scala']} ", 'depends': ['Shougo/vimshell.vim', 'Shougo/vimproc.vim']
+    Plug 'derekwyatt/vim-scala',            {'for': ['scala']}
+    Plug 'megaannum/vimside',               {'for': ['scala']} ", 'depends': ['Shougo/vimshell.vim', 'Shougo/vimproc.vim']
 
     " swift
-    Plug 'toyamarinyon/vim-swift',          {'for':['swift', 'playground']}
+    Plug 'toyamarinyon/vim-swift',          {'for': ['swift', 'playground']}
 
     " sql
-    Plug 'vim-scripts/dbext.vim',           {'for':['sql']}
+    Plug 'vim-scripts/dbext.vim',           {'for': ['sql']}
 
     " vim
-    Plug 'dbakker/vim-lint',                {'for':['vim']}
+    Plug 'dbakker/vim-lint',                {'for': ['vim']}
   " }-
   " disabled bundles {+
   " }-
@@ -556,3 +557,11 @@ if expand("%:e") == "spring" | set ft=xml | endif
 " ^ this makes my vim unhappy :(
 " }-
 
+function! s:DiskDiff()
+  let filetype=&ft
+  diffthis
+  vnew | r # | normal! 1Gdd
+  diffthis
+  exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
+endfunction
+com! DiffSaved call s:DiskDiff()

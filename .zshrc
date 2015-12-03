@@ -18,10 +18,10 @@ if [[ -a "$HOME/.zgen/zgen.zsh" ]]; then
 
         # Plugins 
         zgen load zsh-users/zsh-completions src
-        zgen load zsh-users/zsh-syntax-highlighting
         zgen load supercrabtree/k
         zgen load unixorn/git-extra-commands
         zgen load tarruda/zsh-autosuggestions
+        zgen load zsh-users/zsh-syntax-highlighting
 
         zgen save
     fi
