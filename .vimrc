@@ -94,7 +94,7 @@ filetype off
         Plug 'thinca/vim-unite-history'
         Plug 'tsukkee/unite-help' 
         Plug 'ujihisa/unite-colorscheme'
-        " PlugLazy 'ujihisa/unite-locate',      {'autoload': {'unite_sources': 'locate'}}
+        Plug 'ujihisa/unite-locate'
         Plug 'Shougo/neomru.vim' 
         " Plug 'Shougo/unite-outline',      {'autoload': {'unite_sources': 'outline'}}
       " }-
@@ -301,6 +301,9 @@ filetype off
     let g:hardtime_default_on=0
     let g:hardtime_ignore_quickfix=1
     let g:hardtime_ignore_buffer_patterns=["Unite","undo*","Help"]
+  " }-
+  " tmuxline {+
+    let g:tmuxline_preset='minimal'
   " }-
   " unite {+
     let g:unite_source_history_yank_enable=2
