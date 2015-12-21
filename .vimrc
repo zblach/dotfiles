@@ -79,11 +79,15 @@ filetype off
       Plug 'tpope/vim-unimpaired'
     " }-
     " shougo plugins {+
-      Plug 'Shougo/vimproc.vim',             {'do': 'make'}
       Plug 'Shougo/neocomplete' " depends on lua, which isn't always available
       Plug 'Shougo/neosnippet',              {'depends': ['honza/vim-snippets', 'Shougo/neosnippet-snippets']} " snippets {{{
       Plug 'Shougo/neosnippet-snippets'
       Plug 'Shougo/unite.vim',               {'depends': ['Shougo/vimproc.vim']}
+      Plug 'Shougo/vimfiler'
+	  " {+
+	  	let g:vimfiler_as_default_explorer = 1
+	  " }-
+      Plug 'Shougo/vimproc.vim',             {'do': 'make'}
       Plug 'Shougo/vimshell.vim'
       " unite plugins {+
         Plug 'osyo-manga/unite-filetype'
@@ -154,7 +158,8 @@ filetype off
     " }-
     " visual indicators {+
       Plug 'bling/vim-airline'
-	  Plug 'edkolev/tmuxline.vim'
+	  Plug 'edkolev/tmuxline.vim',          {'on': []}
+	  if !has('gui_running') | call plug#load('tmuxline.vim') | endif
       Plug 'jacquesbh/vim-showmarks'
       Plug 'nathanaelkane/vim-indent-guides'
       Plug 'mhinz/vim-signify'
@@ -173,7 +178,6 @@ filetype off
       Plug 'idbrii/vim-mark'
     " }-
     " experimental {+
-      Plug 'Shougo/vimfiler'
     " }-
   " }-
   " language-specific bundles {+
@@ -206,8 +210,8 @@ filetype off
     " python
     Plug 'ivanov/vim-ipython',              {'for': ['python']}
     Plug 'nvie/vim-flake8',                 {'for': ['python']}
-    " PlugLazy 'klen/python-mode',            {'autoload':{'filetypes': ['python']}}
-    Plug 'davidhalter/jedi-vim',            {'for': ['python']}
+    Plug 'klen/python-mode',                {'for': ['python']}
+    " Plug 'davidhalter/jedi-vim',            {'for': ['python']}
 
     " rust
     Plug 'wting/rust.vim',                  {'for': ['rust', 'rs']}
