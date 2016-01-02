@@ -131,10 +131,10 @@ filetype off
       Plug 'tpope/vim-sleuth'
     " }-
     " keys and external bindings {+
-      "Plug 'kana/vim-arpeggio'
-      "Plug 'takac/vim-hardtime'
       Plug 'benmills/vimux' " unused?
       Plug 'mhinz/vim-tmuxify' " unused?
+	  Plug 'justinmk/vim-gtfo'
+	  Plug 'christoomey/vim-tmux-navigator'
     " }-
     Plug 'chrisbra/NrrwRgn'
   " }-
