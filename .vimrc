@@ -157,7 +157,8 @@ filetype off
       " if has('gui_running') | call plug#load('gruvbox') | endif
     " }-
     " visual indicators {+
-      Plug 'bling/vim-airline'
+      Plug 'vim-airline/vim-airline'
+	  Plug 'vim-airline/vim-airline-themes'
 	  Plug 'edkolev/tmuxline.vim',          {'on': []}
 	  if !has('gui_running') | call plug#load('tmuxline.vim') | endif
       Plug 'jacquesbh/vim-showmarks'
