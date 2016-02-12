@@ -85,7 +85,7 @@ setopt pushdtohome
 
 # Cache Tab Expansions
 zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path "$HOME/.zsh/cache/$HOSTNAME_SHORT"
+zstyle ':completion:*' cache-path "$HOME/.zsh/cache"
 zstyle ':completion:*:expand:*' tag-order all-expansions
 
 # ...EXCEPT for CVS
