@@ -20,33 +20,16 @@ if [[ -a "$HOME/.zgen/zgen.zsh" ]]; then
         zgen load horosgrisa/zsh-completions src
         zgen load supercrabtree/k
         zgen load unixorn/git-extra-commands
+        zgen load zsh-users/zsh-history-substring-search
         zgen load horosgrisa/zsh-autosuggestions
-        zgen load zsh-users/zsh-syntax-highlighting
+        if is-at-least 4.3.17; then
+            zgen load zsh-users/zsh-syntax-highlighting
+        fi
         zgen load jocelynmallon/zshmarks
 
         zgen save
     fi
 fi
-#
-#if [[ ! -f ~/.zpm/zpm.zsh ]]; then
-#    git clone --recursive https://github.com/horosgrisa/zpm ~/.zpm
-#fi
-
-#source ~/.zpm/zpm.zsh
-# Plug nvm horosgrisa/zsh-gvm  #Package managers
-# Plug myip extract tmux genpasswd readers desktop #Programs
-# Plug colors grc dircolors  #Colors
-# Plug human zsh-core ls cd hosts  #ZSH
-# Plug node status path git  #Prompt
-# Plug horosgrisa/zsh-completions horosgrisa/autoenv horosgrisa/mysql-colorize jocelynmallon/zshmarks
-# Plug zsh-users/zsh-syntax-highlighting 
-# Plug horosgrisa/zsh-history-substring-search 
-# Plug horosgrisa/zsh-autosuggestions
-# Plug oh-my-zsh-wrapper termux # Wrapper for oh-my-zsh
-#
-#Plug zsh-users/zsh-syntax-highlighting 
-#Plug supercrabtree/k
-#Plug tarruda/zsh-autosuggestions zsh-users/zsh-completions
 
 ################################################################################
 # VARIABLES, MODULES, OPTIONS, HISTORY, AND ZSTYLE                             #
@@ -55,6 +38,7 @@ fi
 # Modules
 autoload colors zsh/terminfo
 autoload -Uz compinit && compinit -u
+autoload -U is-at-least
 
 # History
 export HOSTNAME_SHORT=${$(hostname)//[\.\-][0-9]+/}
@@ -184,8 +168,10 @@ bindkey -v
 #bindkey "[2~" quoted-insert
 
 # History search
-bindkey "[A" history-beginning-search-backward
-bindkey "[B" history-beginning-search-forward
+bindkey "[A" history-substring-search-up
+bindkey "[B" history-substring-search-down
+bindkey "^ " end-of-line
+bindkey "" forward-word
 
 ################################################################################
 # TERMINAL DISPLAY HOOKS                                                       #
@@ -220,12 +206,12 @@ alias -g '@C'='| acat'
 alias -g '@S'='| sort'
 alias -g '@T'='| tail -f'
 alias -g '@U'='| sort | uniq'
+alias -g '@f'='**/*(.mm-61)'
 
 # Prompts
 colors
 
 export PS1="%{$fg[default]%}[%{$fg[cyan]%}%n%{$fg[white]%}@%{$fg[red]%}%2m%{$fg[default]%}:%{$fg[green]%}%40<..<%{$fg[magenta]%}%~%{$fg[default]%}]%# "
-
 export RPS1="%{$fg[default]%}[%(?.%{$fg[gray]%}.%{$fg[red]%})%?%{$fg[default]%} %D{%H:%M:%S}]%{$fg[default]%}"
 
 # source local configuration file

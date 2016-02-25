@@ -42,4 +42,6 @@ u () {
 
 # lazy commands
 alias f='find . -type f -mmin -61 '
+alias -g @f='**/*(.mm-61)'
+
 alias :e='vim '
