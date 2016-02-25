@@ -17,15 +17,36 @@ if [[ -a "$HOME/.zgen/zgen.zsh" ]]; then
         echo "zgen not initialized. initializing."
 
         # Plugins 
-        zgen load zsh-users/zsh-completions src
+        zgen load horosgrisa/zsh-completions src
         zgen load supercrabtree/k
         zgen load unixorn/git-extra-commands
-        zgen load tarruda/zsh-autosuggestions
+        zgen load horosgrisa/zsh-autosuggestions
         zgen load zsh-users/zsh-syntax-highlighting
+        zgen load jocelynmallon/zshmarks
 
         zgen save
     fi
 fi
+#
+#if [[ ! -f ~/.zpm/zpm.zsh ]]; then
+#    git clone --recursive https://github.com/horosgrisa/zpm ~/.zpm
+#fi
+
+#source ~/.zpm/zpm.zsh
+# Plug nvm horosgrisa/zsh-gvm  #Package managers
+# Plug myip extract tmux genpasswd readers desktop #Programs
+# Plug colors grc dircolors  #Colors
+# Plug human zsh-core ls cd hosts  #ZSH
+# Plug node status path git  #Prompt
+# Plug horosgrisa/zsh-completions horosgrisa/autoenv horosgrisa/mysql-colorize jocelynmallon/zshmarks
+# Plug zsh-users/zsh-syntax-highlighting 
+# Plug horosgrisa/zsh-history-substring-search 
+# Plug horosgrisa/zsh-autosuggestions
+# Plug oh-my-zsh-wrapper termux # Wrapper for oh-my-zsh
+#
+#Plug zsh-users/zsh-syntax-highlighting 
+#Plug supercrabtree/k
+#Plug tarruda/zsh-autosuggestions zsh-users/zsh-completions
 
 ################################################################################
 # VARIABLES, MODULES, OPTIONS, HISTORY, AND ZSTYLE                             #
@@ -85,7 +106,7 @@ setopt pushdtohome
 
 # Cache Tab Expansions
 zstyle ':completion:*' use-cache on
-zstyle ':completion:*' cache-path "$HOME/.zsh/cache/$HOSTNAME_SHORT"
+zstyle ':completion:*' cache-path "$HOME/.zsh/cache"
 zstyle ':completion:*:expand:*' tag-order all-expansions
 
 # ...EXCEPT for CVS

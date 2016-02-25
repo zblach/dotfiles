@@ -13,7 +13,7 @@ filetype off
   set colorcolumn=80,+1
 
   " search and navigation
-  set incsearch ignorecase smartcase hlsearch
+  set incsearch ignorecase smartcase nohlsearch
 
   " terminal settings
   set hidden lazyredraw
@@ -107,6 +107,7 @@ filetype off
       "Plug 'dbakker/vim-projectroot'
       Plug 'airblade/vim-rooter'
       Plug 'mbbill/undotree',                {'on': 'UndotreeToggle'}
+	  " Plug 'ludovicchabant/vim-gutentags'
       Plug 'majutsushi/tagbar' " ,           {'on': 'TagbarToggle'}
     " }-
     " version control plugins {+
@@ -140,8 +141,6 @@ filetype off
   " }-
   " color and visual bundles {+
     " color schemes {+
-      Plug 'altercation/vim-colors-solarized'
-      Plug 'baeuml/summerfruit256.vim'
       Plug 'jonstoler/werewolf.vim'
       Plug 'junegunn/seoul256.vim'
       Plug 'sjl/badwolf'
@@ -178,8 +177,6 @@ filetype off
       Plug 'jaxbot/semantic-highlight.vim', {'on': 'SemanticHighlightToggle'}
       Plug 'dimasg/vim-mark'
     " }-
-    " experimental {+
-    " }-
   " }-
   " language-specific bundles {+
     " csv
@@ -205,6 +202,7 @@ filetype off
     Plug 'nelstrom/vim-markdown-folding',   {'for': ['markdown', 'md', 'rst']}
     Plug 'suan/vim-instant-markdown',       {'for': ['markdown', 'md', 'rst']}
     Plug 'junegunn/vim-xmark',              {'for': ['markdown', 'md', 'rst'], 'do': 'make'}
+
     " mediawiki
     Plug 'chikamichi/mediawiki.vim',        {'for': ['wiki', 'mediawiki']}
 
@@ -212,9 +210,9 @@ filetype off
     Plug 'ivanov/vim-ipython',              {'for': ['python']}
     Plug 'nvie/vim-flake8',                 {'for': ['python']}
     Plug 'klen/python-mode',                {'for': ['python']}
-    " Plug 'davidhalter/jedi-vim',            {'for': ['python']}
-
-    " rust
+    Plug 'davidhalter/jedi-vim',            {'for': ['python']}
+    
+	" rust
     Plug 'wting/rust.vim',                  {'for': ['rust', 'rs']}
 
     " scala
@@ -229,8 +227,6 @@ filetype off
 
     " vim
     Plug 'dbakker/vim-lint',                {'for': ['vim']}
-  " }-
-  " disabled bundles {+
   " }-
   call plug#end()
 " }-
@@ -256,6 +252,9 @@ filetype off
       \ 'S'  : 'SLN',
       \ '' : 'SBK',
     \ }
+	" obsession indicator {+
+	
+	" }-
   " }-
   " undotree {+
     "let g:gundo_preview_bottom=1
@@ -295,7 +294,18 @@ filetype off
         let g:syntastic_javascript_checkers=['jsl']
       " }-
       " python {+
+		autocmd FileType python setlocal omnifunc=jedi#completions
         let g:syntastic_mode_map.passive_filetypes=['python']
+
+		let g:jedi#completions_enabled=0
+		let g:jedi#auto_vim_configuration=0
+		if !exists('g:neocomplete#force_omni_input_patterns')
+		  let g:neocomplete#force_omni_input_patterns = {}
+		endif
+		let g:neocomplete#force_omni_input_patterns.python = 
+		\ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
+		" alternative pattern: '\h\w*\|[^. \t]\.\w*'
+
         "let g:pymode_lint_write=0
         let g:pymode_virtualenv_enabled=1
       " }-
