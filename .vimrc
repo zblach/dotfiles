@@ -132,8 +132,8 @@ filetype off
       Plug 'tpope/vim-sleuth'
     " }-
     " keys and external bindings {+
-      Plug 'benmills/vimux' " unused?
-      Plug 'mhinz/vim-tmuxify' " unused?
+      " Plug 'benmills/vimux' " unused?
+      " Plug 'mhinz/vim-tmuxify' " unused?
 	  Plug 'justinmk/vim-gtfo'
 	  Plug 'christoomey/vim-tmux-navigator'
     " }-
@@ -175,7 +175,7 @@ filetype off
       Plug 'chrisbra/Colorizer',            {'on': 'ColorToggle'}
       Plug 'junegunn/limelight.vim',        {'on': 'Limelight'}
       Plug 'jaxbot/semantic-highlight.vim', {'on': 'SemanticHighlightToggle'}
-      Plug 'idbrii/vim-mark'
+      Plug 'dimasg/vim-mark'
     " }-
   " }-
   " language-specific bundles {+
@@ -416,9 +416,6 @@ filetype off
   xnor < <gv
   xnor > >gv
 
-  " let ; function as :
-  " nnor ; :
-
   " nuke 'ex' mode
   nnor Q <nop>
 
@@ -499,18 +496,9 @@ filetype off
   " vim-mark {+
     let g:mwAutoLoadMarks=1
     let g:mwDefaultHighlightingPalette='maximum'  
-    
-    "map [toggle]m+ <Plug>MarkSet<cr>
-    "map [toggle]m- <Plug>MarkClear<cr>
-    "map [toggle]mr <Plug>MarkRegex<cr>
-    "map [toggle]m<BS> <Plug>MarkAllClear<cr>
-    "map [toggle]m! <Plug>MarkToggle<cr>
 
-    " map * <Plug>MarkSearchOrCurNext
-    " map # <Plug>MarkSet
-    " map n <Plug>MarkSearchAnyNext
-    " map N <Plug>MarkSearchAnyPrev
-	" cmap / <Plug>MarkRegex
+	nmap * <Plug>MarkSearchGroupNext
+	nmap # <Plug>MarkSearchGroupPrev
 
   " }-
   " ShowMarks {+
