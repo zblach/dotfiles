@@ -1,4 +1,9 @@
 # zshrc - zblach 2015
+# Modules
+autoload colors zsh/terminfo
+autoload -Uz compinit && compinit -u
+autoload -U is-at-least
+
 # Load a pre.zshrc file, if exists
 typeset -U path
 if [[ -a "$HOME/.local.pre.zshrc" ]]; then
@@ -21,7 +26,7 @@ if [[ -a "$HOME/.zgen/zgen.zsh" ]]; then
         zgen load supercrabtree/k
         zgen load unixorn/git-extra-commands
         zgen load zsh-users/zsh-history-substring-search
-        zgen load horosgrisa/zsh-autosuggestions
+        # zgen load horosgrisa/zsh-autosuggestions
         if is-at-least 4.3.17; then
             zgen load zsh-users/zsh-syntax-highlighting
         fi
@@ -34,11 +39,6 @@ fi
 ################################################################################
 # VARIABLES, MODULES, OPTIONS, HISTORY, AND ZSTYLE                             #
 ################################################################################
-
-# Modules
-autoload colors zsh/terminfo
-autoload -Uz compinit && compinit -u
-autoload -U is-at-least
 
 # History
 export HOSTNAME_SHORT=${$(hostname)//[\.\-][0-9]+/}

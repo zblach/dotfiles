@@ -33,3 +33,6 @@
 [user]
     name = Zak Blacher
     email = zblacher@linkedin.com
+[pager]
+	diff = diff-so-fancy | less --tabs=4 -RFX
+	show = diff-so-fancy | less --tabs=4 -RFX

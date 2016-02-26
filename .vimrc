@@ -18,9 +18,9 @@ filetype off
   " terminal settings
   set hidden lazyredraw
   set encoding=utf-8 shell=/bin/zsh title hidden ttyfast visualbell
-  set t_ut=  
+  set t_ut=
   " disable BCE
-  
+
   " fill chars
   set listchars=tab:>-,eol:$,precedes:<,extends:>,trail:~,conceal:#,nbsp:_
   set fillchars=vert:\│,fold:-
@@ -57,7 +57,7 @@ filetype off
       silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
       autocmd VimEnter * PlugInstall | source $MYVIMRC
-    endif  
+    endif
 
     call plug#begin(expand('~/.vim/bundle/'))
     " let g:plug_window='horizontal bottomright new'
@@ -94,12 +94,12 @@ filetype off
         Plug 'osyo-manga/unite-fold'
         Plug 'osyo-manga/unite-quickfix'
         " PlugLazy 'osyo-manga/vim-snowdrop',   {'autoload': {'unite_sources': 'snowdrop'}}
-        Plug 'tacroe/unite-mark' 
+        Plug 'tacroe/unite-mark'
         Plug 'thinca/vim-unite-history'
-        Plug 'tsukkee/unite-help' 
+        Plug 'tsukkee/unite-help'
         Plug 'ujihisa/unite-colorscheme'
         Plug 'ujihisa/unite-locate'
-        Plug 'Shougo/neomru.vim' 
+        Plug 'Shougo/neomru.vim'
         " Plug 'Shougo/unite-outline',      {'autoload': {'unite_sources': 'outline'}}
       " }-
     " }-
@@ -193,7 +193,7 @@ filetype off
 
     " java
     Plug 'sighforever/vim-syntastic-java-gradle-plugin', {'for': ['java']}
-    
+
 
     " json
     Plug 'elzr/vim-json',                   {'for': ['json']}
@@ -212,7 +212,7 @@ filetype off
     Plug 'klen/python-mode',                {'for': ['python']}
     Plug 'davidhalter/jedi-vim',            {'for': ['python']}
 	Plug 'tweekmonster/braceless.vim',		{'for': ['python']}
-    
+
 	" rust
     Plug 'wting/rust.vim',                  {'for': ['rust', 'rs']}
 
@@ -234,7 +234,7 @@ filetype off
 " bundle settings {+
   " airline {+
     let g:airline_powerline_fonts=1
-    
+
     let g:airline#extensions#whitespace#enabled=0
 
     let g:airline#extensions#tabline#enabled=1
@@ -261,7 +261,7 @@ filetype off
     "let g:gundo_preview_bottom=1
     let g:undotree_WindowLayout=2
     let g:undotree_TreeNodeShape="*"
-  " }-  
+  " }-
   " rainbow brackets {+
     let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}'], ['<', '>']]
   " }-
@@ -272,7 +272,7 @@ filetype off
     let g:syntastic_error_symbol='x'
     let g:syntastic_style_error_symbol='*'
     let g:syntastic_style_warning_symbol='+'
-    
+
     let g:syntastic_enable_highlighting=1
     let g:syntastic_stl_format='[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 
@@ -303,7 +303,7 @@ filetype off
 		if !exists('g:neocomplete#force_omni_input_patterns')
 		  let g:neocomplete#force_omni_input_patterns = {}
 		endif
-		let g:neocomplete#force_omni_input_patterns.python = 
+		let g:neocomplete#force_omni_input_patterns.python =
 		\ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
 		" alternative pattern: '\h\w*\|[^. \t]\.\w*'
 
@@ -353,7 +353,7 @@ filetype off
     if !exists('g:finders') | let g:finders=['ag', 'fzf', 'find'] | endif
 
     for finder in g:finders
-      if !executable(finder) 
+      if !executable(finder)
         continue
       endif
       if finder == 'ag'
@@ -367,7 +367,7 @@ filetype off
 
         let g:unite_source_rec_async_command='ag --follow --nocolor --group --hidden -g ""'
 
-        break  
+        break
       elseif finder == 'fzf'
         " TBD
         break
@@ -478,7 +478,7 @@ filetype off
     nnor <silent> [unite]/ :<C-u>Unite -buffer-name=results grep:.<cr>
     nnor <silent> [unite]w/ :<C-u>UniteWithCursorWord -buffer-name=results grep:.<cr>
 
-    " Misc  
+    " Misc
     nnor <silent> [unite]? :<C-u>Unite -buffer-name=keymap mapping<cr>
     nnor <silent> [unite]b :<C-u>Unite -buffer-name=buffers buffer<cr>
     nnor <silent> [unite]" :<C-u>Unite -buffer-name=mark mark<cr>
@@ -495,7 +495,7 @@ filetype off
   " }-
   " vim-mark {+
     let g:mwAutoLoadMarks=1
-    let g:mwDefaultHighlightingPalette='maximum'  
+    let g:mwDefaultHighlightingPalette='maximum'
 
 	nmap * <Plug>MarkSearchGroupNext
 	nmap # <Plug>MarkSearchGroupPrev
