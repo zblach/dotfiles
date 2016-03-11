@@ -17,9 +17,9 @@ if [[ -a "$HOME/.zgen/zgen.zsh" ]]; then
         echo "zgen not initialized. initializing."
 
         # Plugins 
+        zgen load unixorn/git-extra-commands
         zgen load horosgrisa/zsh-completions src
         zgen load supercrabtree/k
-        zgen load unixorn/git-extra-commands
         zgen load zsh-users/zsh-history-substring-search
         zgen load horosgrisa/zsh-autosuggestions
         if is-at-least 4.3.17; then
