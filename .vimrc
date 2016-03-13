@@ -71,7 +71,8 @@ filetype off
     " tpope plugins {+
       Plug 'tpope/vim-dispatch'
       Plug 'tpope/vim-eunuch'
-      Plug 'tpope/vim-fugitive'
+	  " Plug 'tpope/vim-fugitive'
+	  Plug 'juneedahamed/vc.vim'
       Plug 'tpope/vim-obsession'
       Plug 'tpope/vim-repeat'
       Plug 'tpope/vim-speeddating'
@@ -319,7 +320,17 @@ filetype off
     let g:hardtime_ignore_buffer_patterns=["Unite","undo*","Help"]
   " }-
   " tmuxline {+
-    let g:tmuxline_preset='minimal'
+    let g:tmuxline_preset={
+	        \ 'a': '#S',
+			\ 'b': '#F',
+	        \ 'win': '#I #W',
+	        \ 'cwin': '#I #W',
+	        \ 'z': '%R',
+	        \ 'options': {
+				\'status-justify': 'left'
+			\}
+		\}
+	"let g:tmuxline_preset='minimal'
   " }-
   " unite {+
     let g:unite_source_history_yank_enable=2
@@ -497,8 +508,8 @@ filetype off
     let g:mwAutoLoadMarks=1
     let g:mwDefaultHighlightingPalette='maximum'
 
-	nmap * <Plug>MarkSearchGroupNext
-	nmap # <Plug>MarkSearchGroupPrev
+	" nmap * <Plug>MarkSearchGroupNext
+	" nmap # <Plug>MarkSearchGroupPrev
 
   " }-
   " ShowMarks {+
