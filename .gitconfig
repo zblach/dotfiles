@@ -1,16 +1,17 @@
+[include]
+    path = ~/.local.gitconfig
 [color]
     ui = auto
 [core]
     pager = less -FMRiX
-    excludesfile = /home/zblacher/.gitignore_global
 [push]
     default = simple
 [diff]
-	tool = vimdiff
+    tool = vimdiff
 [difftool]
     prompt = false
 [merge]
-	tool = vimdiff
+    tool = vimdiff
 [alias]
     amend = commit --amend
     branches = branch -a
@@ -23,16 +24,10 @@
     ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]\\ %Cgreen(%cd)%Creset" --decorate --numstat --date=local
     ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]\\ %Cgreen(%cd)%Creset" --decorate --date=local
     unadd = reset HEAD --
-	vimdiff = !vim -p `git diff --name-only`
+    vimdiff = !vim -p `git diff --name-only`
 [color "status"]
     branch = magenta
     added = "green "
     changed = "yellow "
 [branch]
     autosetuprebase = always
-[user]
-    name = Zak Blacher
-    email = zblacher@linkedin.com
-[pager]
-	diff = diff-so-fancy | less --tabs=4 -RFX
-	show = diff-so-fancy | less --tabs=4 -RFX
