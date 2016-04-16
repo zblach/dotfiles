@@ -52,7 +52,7 @@ filetype off
 
 " }-
 " bundles {+
-  " neobundle configuration {+
+  " vim-plug configuration {+
     if empty(glob('~/.vim/autoload/plug.vim'))
       silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -64,15 +64,14 @@ filetype off
   " }-
   " core bundles {+
     " tommcdo plugins {+
-      Plug 'tommcdo/vim-lion'
       Plug 'tommcdo/vim-ninja-feet'
       Plug 'tommcdo/vim-text-objects'
     " }-
     " tpope plugins {+
       Plug 'tpope/vim-dispatch'
       Plug 'tpope/vim-eunuch'
-	  " Plug 'tpope/vim-fugitive'
-	  Plug 'juneedahamed/vc.vim'
+      " Plug 'tpope/vim-fugitive'
+      Plug 'juneedahamed/vc.vim'
       Plug 'tpope/vim-obsession'
       Plug 'tpope/vim-repeat'
       Plug 'tpope/vim-speeddating'
@@ -85,9 +84,9 @@ filetype off
       Plug 'Shougo/neosnippet-snippets'
       Plug 'Shougo/unite.vim',               {'depends': ['Shougo/vimproc.vim']}
       Plug 'Shougo/vimfiler'
-	  " {+
-	  	let g:vimfiler_as_default_explorer = 1
-	  " }-
+      " {+
+          let g:vimfiler_as_default_explorer = 1
+      " }-
       Plug 'Shougo/vimproc.vim',             {'do': 'make'}
       Plug 'Shougo/vimshell.vim'
       " unite plugins {+
@@ -101,14 +100,14 @@ filetype off
         Plug 'ujihisa/unite-colorscheme'
         Plug 'ujihisa/unite-locate'
         Plug 'Shougo/neomru.vim'
-        " Plug 'Shougo/unite-outline',      {'autoload': {'unite_sources': 'outline'}}
+        Plug 'Shougo/unite-outline'
       " }-
     " }-
     " productivity tools {+
       "Plug 'dbakker/vim-projectroot'
       Plug 'airblade/vim-rooter'
       Plug 'mbbill/undotree',                {'on': 'UndotreeToggle'}
-	  " Plug 'ludovicchabant/vim-gutentags'
+      " Plug 'ludovicchabant/vim-gutentags'
       Plug 'majutsushi/tagbar' " ,           {'on': 'TagbarToggle'}
     " }-
     " version control plugins {+
@@ -132,35 +131,37 @@ filetype off
       Plug 'terryma/vim-multiple-cursors'
       Plug 'tpope/vim-sleuth'
     " }-
+    " junegunn {+
+      Plug 'junegunn/vim-easy-align'
+    " }-
     " keys and external bindings {+
       " Plug 'benmills/vimux' " unused?
       " Plug 'mhinz/vim-tmuxify' " unused?
-	  Plug 'justinmk/vim-gtfo'
-	  Plug 'christoomey/vim-tmux-navigator'
+      Plug 'justinmk/vim-gtfo'
+      Plug 'christoomey/vim-tmux-navigator'
     " }-
     Plug 'chrisbra/NrrwRgn'
   " }-
   " color and visual bundles {+
     " color schemes {+
+      Plug 'morhetz/gruvbox' 
+      Plug 'NLKNguyen/papercolor-theme'
       Plug 'jonstoler/werewolf.vim'
       Plug 'junegunn/seoul256.vim'
       Plug 'sjl/badwolf'
       Plug 'trapd00r/neverland-vim-theme'
       Plug 'w0ng/vim-hybrid'
       Plug 'wellsjo/wells-colorscheme.vim'
-      Plug 'NLKNguyen/papercolor-theme'
     " }-
     " gui-only colorschemes {+
       Plug 'chriskempson/base16-vim',       {'on': []}
       if has('gui_running') | call plug#load('base16-vim') | endif
-	  Plug 'morhetz/gruvbox' " ,            {'on': []}
-      " if has('gui_running') | call plug#load('gruvbox') | endif
     " }-
     " visual indicators {+
       Plug 'vim-airline/vim-airline'
-	  Plug 'vim-airline/vim-airline-themes'
-	  Plug 'edkolev/tmuxline.vim',          {'on': []}
-	  if !has('gui_running') | call plug#load('tmuxline.vim') | endif
+      Plug 'vim-airline/vim-airline-themes'
+      Plug 'edkolev/tmuxline.vim',          {'on': []}
+      if !has('gui_running') | call plug#load('tmuxline.vim') | endif
       Plug 'jacquesbh/vim-showmarks'
       Plug 'nathanaelkane/vim-indent-guides'
       Plug 'mhinz/vim-signify'
@@ -212,9 +213,9 @@ filetype off
     Plug 'nvie/vim-flake8',                 {'for': ['python']}
     Plug 'klen/python-mode',                {'for': ['python']}
     Plug 'davidhalter/jedi-vim',            {'for': ['python']}
-	Plug 'tweekmonster/braceless.vim',		{'for': ['python']}
+    Plug 'tweekmonster/braceless.vim',        {'for': ['python']}
 
-	" rust
+    " rust
     Plug 'wting/rust.vim',                  {'for': ['rust', 'rs']}
 
     " scala
@@ -254,9 +255,9 @@ filetype off
       \ 'S'  : 'SLN',
       \ '' : 'SBK',
     \ }
-	" obsession indicator {+
-	
-	" }-
+    " obsession indicator {+
+    
+    " }-
   " }-
   " undotree {+
     "let g:gundo_preview_bottom=1
@@ -296,17 +297,17 @@ filetype off
         let g:syntastic_javascript_checkers=['jsl']
       " }-
       " python {+
-		autocmd FileType python setlocal omnifunc=jedi#completions
+        autocmd FileType python setlocal omnifunc=jedi#completions
         let g:syntastic_mode_map.passive_filetypes=['python']
 
-		let g:jedi#completions_enabled=0
-		let g:jedi#auto_vim_configuration=0
-		if !exists('g:neocomplete#force_omni_input_patterns')
-		  let g:neocomplete#force_omni_input_patterns = {}
-		endif
-		let g:neocomplete#force_omni_input_patterns.python =
-		\ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
-		" alternative pattern: '\h\w*\|[^. \t]\.\w*'
+        let g:jedi#completions_enabled=0
+        let g:jedi#auto_vim_configuration=0
+        if !exists('g:neocomplete#force_omni_input_patterns')
+          let g:neocomplete#force_omni_input_patterns = {}
+        endif
+        let g:neocomplete#force_omni_input_patterns.python =
+        \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
+        " alternative pattern: '\h\w*\|[^. \t]\.\w*'
 
         "let g:pymode_lint_write=0
         let g:pymode_virtualenv_enabled=1
@@ -321,16 +322,16 @@ filetype off
   " }-
   " tmuxline {+
     let g:tmuxline_preset={
-	        \ 'a': '#S',
-			\ 'b': '#F',
-	        \ 'win': '#I #W',
-	        \ 'cwin': '#I #W',
-	        \ 'z': '%R',
-	        \ 'options': {
-				\'status-justify': 'left'
-			\}
-		\}
-	"let g:tmuxline_preset='minimal'
+            \ 'a': '#S',
+            \ 'b': '#F',
+            \ 'win': '#I #W',
+            \ 'cwin': '#I #W',
+            \ 'z': '%R',
+            \ 'options': {
+                \'status-justify': 'left'
+            \}
+        \}
+    "let g:tmuxline_preset='minimal'
   " }-
   " unite {+
     let g:unite_source_history_yank_enable=2
@@ -508,8 +509,8 @@ filetype off
     let g:mwAutoLoadMarks=1
     let g:mwDefaultHighlightingPalette='maximum'
 
-	" nmap * <Plug>MarkSearchGroupNext
-	" nmap # <Plug>MarkSearchGroupPrev
+    " nmap * <Plug>MarkSearchGroupNext
+    " nmap # <Plug>MarkSearchGroupPrev
 
   " }-
   " ShowMarks {+
