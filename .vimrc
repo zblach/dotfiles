@@ -146,7 +146,6 @@ filetype off
     " color schemes {+
       Plug 'morhetz/gruvbox'
       Plug 'NLKNguyen/papercolor-theme'
-      Plug 'jonstoler/werewolf.vim'
       Plug 'junegunn/seoul256.vim'
       Plug 'sjl/badwolf'
       Plug 'trapd00r/neverland-vim-theme'
@@ -197,7 +196,7 @@ filetype off
     Plug 'sighforever/vim-syntastic-java-gradle-plugin', {'for': ['java']}
 
     " journal
-    Plug 'junegunn/vim-journal',            {'for': ['note']}
+    Plug 'junegunn/vim-journal',            {'for': ['journal']}
 
     " json
     Plug 'elzr/vim-json',                   {'for': ['json']}
@@ -215,7 +214,7 @@ filetype off
     Plug 'nvie/vim-flake8',                 {'for': ['python']}
     Plug 'klen/python-mode',                {'for': ['python']}
     Plug 'davidhalter/jedi-vim',            {'for': ['python']}
-    Plug 'tweekmonster/braceless.vim',        {'for': ['python']}
+    Plug 'tweekmonster/braceless.vim',      {'for': ['python']}
 
     " rust
     Plug 'wting/rust.vim',                  {'for': ['rust', 'rs']}
@@ -435,20 +434,20 @@ filetype off
   cno w!! SudoWrite
 
   " CamelCaseMotion {+
-    map <silent> w <Plug>CamelCaseMotion_w
-    map <silent> b <Plug>CamelCaseMotion_b
-    map <silent> e <Plug>CamelCaseMotion_e
-    sunmap w
-    sunmap b
-    sunmap e
+    " map <silent> w <Plug>CamelCaseMotion_w
+    " map <silent> b <Plug>CamelCaseMotion_b
+    " map <silent> e <Plug>CamelCaseMotion_e
+    " sunmap w
+    " sunmap b
+    " sunmap e
 
-    " overwrite behaviour for text objects
-    omap <silent> iw <Plug>CamelCaseMotion_iw
-    xmap <silent> iw <Plug>CamelCaseMotion_iw
-    omap <silent> ib <Plug>CamelCaseMotion_ib
-    xmap <silent> ib <Plug>CamelCaseMotion_ib
-    omap <silent> ie <Plug>CamelCaseMotion_ie
-    xmap <silent> ie <Plug>CamelCaseMotion_ie
+    " " overwrite behaviour for text objects
+    " omap <silent> iw <Plug>CamelCaseMotion_iw
+    " xmap <silent> iw <Plug>CamelCaseMotion_iw
+    " omap <silent> ib <Plug>CamelCaseMotion_ib
+    " xmap <silent> ib <Plug>CamelCaseMotion_ib
+    " omap <silent> ie <Plug>CamelCaseMotion_ie
+    " xmap <silent> ie <Plug>CamelCaseMotion_ie
   " }-
   " ChooseWin {+
     nmap <silent> <C-w>? <Plug>(choosewin)
