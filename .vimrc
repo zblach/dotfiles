@@ -112,8 +112,8 @@ filetype off
       Plug 'majutsushi/tagbar' " ,           {'on': 'TagbarToggle'}
     " }-
     " version control plugins {+
-      Plug 'tommcdo/vim-fugitive-blame-ext', {'depends': 'tpope/vim-fugitive'}
-      Plug 'gregsexton/gitv'
+      " Plug 'tommcdo/vim-fugitive-blame-ext', {'depends': 'tpope/vim-fugitive'}
+      " Plug 'gregsexton/gitv',                {'depends': 'tpope/vim-fugitive'}
     " }-
     " code and tab completion {+
       Plug 'tomtom/tlib_vim'
@@ -202,7 +202,6 @@ filetype off
     " markdown
     Plug 'nelstrom/vim-markdown-folding',   {'for': ['markdown', 'md', 'rst']}
     Plug 'suan/vim-instant-markdown',       {'for': ['markdown', 'md', 'rst']}
-    Plug 'junegunn/vim-xmark',              {'for': ['markdown', 'md', 'rst'], 'do': 'make'}
 
     " mediawiki
     Plug 'chikamichi/mediawiki.vim',        {'for': ['wiki', 'mediawiki']}
