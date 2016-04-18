@@ -1,5 +1,5 @@
 " .vimrc - zblach 2014
-" vim: fmr={+,}- fdm=marker ts=2 nospell tw=0 sbr=\\ noet nosta
+" vim: fmr={+,}- fdm=marker ts=2 nospell tw=0 sbr=\\ et nosta
 set nocompatible
 filetype off
 
@@ -196,6 +196,8 @@ filetype off
     " java
     Plug 'sighforever/vim-syntastic-java-gradle-plugin', {'for': ['java']}
 
+    " journal
+    Plug 'junegunn/vim-journal',            {'for': ['note']}
 
     " json
     Plug 'elzr/vim-json',                   {'for': ['json']}
