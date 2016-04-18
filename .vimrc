@@ -255,9 +255,6 @@ filetype off
       \ 'S'  : 'SLN',
       \ '' : 'SBK',
     \ }
-    " obsession indicator {+
-
-    " }-
   " }-
   " undotree {+
     "let g:gundo_preview_bottom=1
