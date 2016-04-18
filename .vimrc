@@ -1,5 +1,5 @@
 " .vimrc - zblach 2014
-" vim: fmr={+,}- fdm=marker ts=4 nospell tw=0 sbr=\\ noet nosta
+" vim: fmr={+,}- fdm=marker ts=2 nospell tw=0 sbr=\\ et nosta
 set nocompatible
 filetype off
 
@@ -52,7 +52,7 @@ filetype off
 
 " }-
 " bundles {+
-  " neobundle configuration {+
+  " vim-plug configuration {+
     if empty(glob('~/.vim/autoload/plug.vim'))
       silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
         \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -64,15 +64,14 @@ filetype off
   " }-
   " core bundles {+
     " tommcdo plugins {+
-      Plug 'tommcdo/vim-lion'
       Plug 'tommcdo/vim-ninja-feet'
       Plug 'tommcdo/vim-text-objects'
     " }-
     " tpope plugins {+
       Plug 'tpope/vim-dispatch'
       Plug 'tpope/vim-eunuch'
-	  " Plug 'tpope/vim-fugitive'
-	  Plug 'juneedahamed/vc.vim'
+      " Plug 'tpope/vim-fugitive'
+      Plug 'juneedahamed/vc.vim'
       Plug 'tpope/vim-obsession'
       Plug 'tpope/vim-repeat'
       Plug 'tpope/vim-speeddating'
@@ -85,9 +84,9 @@ filetype off
       Plug 'Shougo/neosnippet-snippets'
       Plug 'Shougo/unite.vim',               {'depends': ['Shougo/vimproc.vim']}
       Plug 'Shougo/vimfiler'
-	  " {+
-	  	let g:vimfiler_as_default_explorer = 1
-	  " }-
+      " {+
+          let g:vimfiler_as_default_explorer = 1
+      " }-
       Plug 'Shougo/vimproc.vim',             {'do': 'make'}
       Plug 'Shougo/vimshell.vim'
       " unite plugins {+
@@ -101,14 +100,14 @@ filetype off
         Plug 'ujihisa/unite-colorscheme'
         Plug 'ujihisa/unite-locate'
         Plug 'Shougo/neomru.vim'
-        " Plug 'Shougo/unite-outline',      {'autoload': {'unite_sources': 'outline'}}
+        Plug 'Shougo/unite-outline'
       " }-
     " }-
     " productivity tools {+
       "Plug 'dbakker/vim-projectroot'
       Plug 'airblade/vim-rooter'
       Plug 'mbbill/undotree',                {'on': 'UndotreeToggle'}
-	  " Plug 'ludovicchabant/vim-gutentags'
+      " Plug 'ludovicchabant/vim-gutentags'
       Plug 'majutsushi/tagbar' " ,           {'on': 'TagbarToggle'}
     " }-
     " version control plugins {+
@@ -132,35 +131,36 @@ filetype off
       Plug 'terryma/vim-multiple-cursors'
       Plug 'tpope/vim-sleuth'
     " }-
+    " junegunn {+
+      Plug 'junegunn/vim-easy-align'
+    " }-
     " keys and external bindings {+
       " Plug 'benmills/vimux' " unused?
       " Plug 'mhinz/vim-tmuxify' " unused?
-	  Plug 'justinmk/vim-gtfo'
-	  Plug 'christoomey/vim-tmux-navigator'
+      Plug 'justinmk/vim-gtfo'
+      Plug 'christoomey/vim-tmux-navigator'
     " }-
     Plug 'chrisbra/NrrwRgn'
   " }-
   " color and visual bundles {+
     " color schemes {+
-      Plug 'jonstoler/werewolf.vim'
+      Plug 'morhetz/gruvbox'
+      Plug 'NLKNguyen/papercolor-theme'
       Plug 'junegunn/seoul256.vim'
       Plug 'sjl/badwolf'
       Plug 'trapd00r/neverland-vim-theme'
       Plug 'w0ng/vim-hybrid'
       Plug 'wellsjo/wells-colorscheme.vim'
-      Plug 'NLKNguyen/papercolor-theme'
     " }-
     " gui-only colorschemes {+
       Plug 'chriskempson/base16-vim',       {'on': []}
       if has('gui_running') | call plug#load('base16-vim') | endif
-	  Plug 'morhetz/gruvbox' " ,            {'on': []}
-      " if has('gui_running') | call plug#load('gruvbox') | endif
     " }-
     " visual indicators {+
       Plug 'vim-airline/vim-airline'
-	  Plug 'vim-airline/vim-airline-themes'
-	  Plug 'edkolev/tmuxline.vim',          {'on': []}
-	  if !has('gui_running') | call plug#load('tmuxline.vim') | endif
+      Plug 'vim-airline/vim-airline-themes'
+      Plug 'edkolev/tmuxline.vim',          {'on': []}
+      if !has('gui_running') | call plug#load('tmuxline.vim') | endif
       Plug 'jacquesbh/vim-showmarks'
       Plug 'nathanaelkane/vim-indent-guides'
       Plug 'mhinz/vim-signify'
@@ -195,6 +195,8 @@ filetype off
     " java
     Plug 'sighforever/vim-syntastic-java-gradle-plugin', {'for': ['java']}
 
+    " journal
+    Plug 'junegunn/vim-journal',            {'for': ['journal']}
 
     " json
     Plug 'elzr/vim-json',                   {'for': ['json']}
@@ -211,9 +213,9 @@ filetype off
     Plug 'nvie/vim-flake8',                 {'for': ['python']}
     Plug 'klen/python-mode',                {'for': ['python']}
     Plug 'davidhalter/jedi-vim',            {'for': ['python']}
-	Plug 'tweekmonster/braceless.vim',		{'for': ['python']}
+    Plug 'tweekmonster/braceless.vim',      {'for': ['python']}
 
-	" rust
+    " rust
     Plug 'wting/rust.vim',                  {'for': ['rust', 'rs']}
 
     " scala
@@ -253,9 +255,6 @@ filetype off
       \ 'S'  : 'SLN',
       \ '' : 'SBK',
     \ }
-	" obsession indicator {+
-	
-	" }-
   " }-
   " undotree {+
     "let g:gundo_preview_bottom=1
@@ -295,17 +294,17 @@ filetype off
         let g:syntastic_javascript_checkers=['jsl']
       " }-
       " python {+
-		autocmd FileType python setlocal omnifunc=jedi#completions
+        autocmd FileType python setlocal omnifunc=jedi#completions
         let g:syntastic_mode_map.passive_filetypes=['python']
 
-		let g:jedi#completions_enabled=0
-		let g:jedi#auto_vim_configuration=0
-		if !exists('g:neocomplete#force_omni_input_patterns')
-		  let g:neocomplete#force_omni_input_patterns = {}
-		endif
-		let g:neocomplete#force_omni_input_patterns.python =
-		\ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
-		" alternative pattern: '\h\w*\|[^. \t]\.\w*'
+        let g:jedi#completions_enabled=0
+        let g:jedi#auto_vim_configuration=0
+        if !exists('g:neocomplete#force_omni_input_patterns')
+          let g:neocomplete#force_omni_input_patterns = {}
+        endif
+        let g:neocomplete#force_omni_input_patterns.python =
+        \ '\%([^. \t]\.\|^\s*@\|^\s*from\s.\+import \|^\s*from \|^\s*import \)\w*'
+        " alternative pattern: '\h\w*\|[^. \t]\.\w*'
 
         "let g:pymode_lint_write=0
         let g:pymode_virtualenv_enabled=1
@@ -320,16 +319,16 @@ filetype off
   " }-
   " tmuxline {+
     let g:tmuxline_preset={
-	        \ 'a': '#S',
-			\ 'b': '#F',
-	        \ 'win': '#I #W',
-	        \ 'cwin': '#I #W',
-	        \ 'z': '%R',
-	        \ 'options': {
-				\'status-justify': 'left'
-			\}
-		\}
-	"let g:tmuxline_preset='minimal'
+            \ 'a': '#S',
+            \ 'b': '#F',
+            \ 'win': '#I #W',
+            \ 'cwin': '#I #W',
+            \ 'z': '%R',
+            \ 'options': {
+                \'status-justify': 'left'
+            \}
+        \}
+    "let g:tmuxline_preset='minimal'
   " }-
   " unite {+
     let g:unite_source_history_yank_enable=2
@@ -360,7 +359,7 @@ filetype off
     call unite#custom#source('source/line', 'matchers', 'matcher_regexp')
 
     " set fuzzy finder
-    if !exists('g:finders') | let g:finders=['ag', 'fzf', 'find'] | endif
+    if !exists('g:finders') | let g:finders=['pt', 'ag', 'fzf', 'find'] | endif
 
     for finder in g:finders
       if !executable(finder)
@@ -378,6 +377,11 @@ filetype off
         let g:unite_source_rec_async_command='ag --follow --nocolor --group --hidden -g ""'
 
         break
+      elseif finder == 'pt'
+        let g:unite_source_grep_command='pt'
+        let g:unite_source_grep_default_opts='--nogroup --nocolor'
+        let g:unite_source_grep_recursive_opt=''
+        let g:unite_source_grep_encoding='utf-8'
       elseif finder == 'fzf'
         " TBD
         break
@@ -434,20 +438,20 @@ filetype off
   cno w!! SudoWrite
 
   " CamelCaseMotion {+
-    map <silent> w <Plug>CamelCaseMotion_w
-    map <silent> b <Plug>CamelCaseMotion_b
-    map <silent> e <Plug>CamelCaseMotion_e
-    sunmap w
-    sunmap b
-    sunmap e
+    " map <silent> w <Plug>CamelCaseMotion_w
+    " map <silent> b <Plug>CamelCaseMotion_b
+    " map <silent> e <Plug>CamelCaseMotion_e
+    " sunmap w
+    " sunmap b
+    " sunmap e
 
-    " overwrite behaviour for text objects
-    omap <silent> iw <Plug>CamelCaseMotion_iw
-    xmap <silent> iw <Plug>CamelCaseMotion_iw
-    omap <silent> ib <Plug>CamelCaseMotion_ib
-    xmap <silent> ib <Plug>CamelCaseMotion_ib
-    omap <silent> ie <Plug>CamelCaseMotion_ie
-    xmap <silent> ie <Plug>CamelCaseMotion_ie
+    " " overwrite behaviour for text objects
+    " omap <silent> iw <Plug>CamelCaseMotion_iw
+    " xmap <silent> iw <Plug>CamelCaseMotion_iw
+    " omap <silent> ib <Plug>CamelCaseMotion_ib
+    " xmap <silent> ib <Plug>CamelCaseMotion_ib
+    " omap <silent> ie <Plug>CamelCaseMotion_ie
+    " xmap <silent> ie <Plug>CamelCaseMotion_ie
   " }-
   " ChooseWin {+
     nmap <silent> <C-w>? <Plug>(choosewin)
@@ -473,6 +477,9 @@ filetype off
 
     let g:neosnippet#snippets_directory='~/.vim/bundle/vim-snippets/snippets,~/.vim/snippets'
     let g:neosnippet#enable_snipmate_compatibility=1
+
+    inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+    " inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
 
     imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : (pumvisible() ? "\<C-n>" : "\<TAB>")
     smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
@@ -507,8 +514,8 @@ filetype off
     let g:mwAutoLoadMarks=1
     let g:mwDefaultHighlightingPalette='maximum'
 
-	" nmap * <Plug>MarkSearchGroupNext
-	" nmap # <Plug>MarkSearchGroupPrev
+    " nmap * <Plug>MarkSearchGroupNext
+    " nmap # <Plug>MarkSearchGroupPrev
 
   " }-
   " ShowMarks {+
@@ -545,7 +552,7 @@ filetype off
 " }-
 " autocommands {+
   " au BufReadPost * if buftype == "" | Indent | endif
-  " au BufWritePre * if buftype == "" | %s/\s\+$//e | endif   " trim trailing whitespace
+  au BufWritePre * if &buftype == "" | %s/\s\+$//e | endif   " trim trailing whitespace
 
   au BufWinLeave * if expand("%") != "" | mkview | endif
   au BufWinEnter * if expand("%") != "" | silent loadview | endif
