@@ -308,6 +308,8 @@ filetype off
 
         "let g:pymode_lint_write=0
         let g:pymode_virtualenv_enabled=1
+
+        autocmd FileType python BracelessEnable +indent
       " }-
     " }-
   " }-
