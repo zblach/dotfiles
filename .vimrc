@@ -209,12 +209,12 @@ filetype off
     Plug 'chikamichi/mediawiki.vim',        {'for': ['wiki', 'mediawiki']}
 
     " python
-    Plug 'ivanov/vim-ipython',              {'for': ['python']}
-    Plug 'nvie/vim-flake8',                 {'for': ['python']}
-    Plug 'klen/python-mode',                {'for': ['python']}
     Plug 'davidhalter/jedi-vim',            {'for': ['python']}
+    Plug 'ivanov/vim-ipython',              {'for': ['python']}
+    Plug 'jmcantrell/vim-virtualenv',       {'for': ['python']}
+    Plug 'klen/python-mode',                {'for': ['python']}
+    Plug 'nvie/vim-flake8',                 {'for': ['python']}
     Plug 'tweekmonster/braceless.vim',      {'for': ['python']}
-
     " rust
     Plug 'wting/rust.vim',                  {'for': ['rust', 'rs']}
 
