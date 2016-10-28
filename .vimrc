@@ -70,166 +70,172 @@ filetype off
     " tpope plugins {+
       Plug 'tpope/vim-dispatch'
       Plug 'tpope/vim-eunuch'
-      " Plug 'tpope/vim-fugitive'
-      Plug 'juneedahamed/vc.vim'
-      Plug 'tpope/vim-obsession'
-      Plug 'tpope/vim-repeat'
-      Plug 'tpope/vim-speeddating'
-      Plug 'tpope/vim-surround'
-      Plug 'tpope/vim-unimpaired'
-    " }-
-    " shougo plugins {+
-      Plug 'Shougo/neocomplete' " depends on lua, which isn't always available
-      Plug 'Shougo/neosnippet',              {'depends': ['honza/vim-snippets', 'Shougo/neosnippet-snippets']} " snippets {{{
-      Plug 'Shougo/neosnippet-snippets'
-      Plug 'Shougo/unite.vim',               {'depends': ['Shougo/vimproc.vim']}
-      Plug 'Shougo/vimfiler'
-      " {+
-          let g:vimfiler_as_default_explorer = 1
+      Plug 'tpope/vim-fugitive'
+        " Plug 'juneedahamed/vc.vim'
+        Plug 'tpope/vim-obsession'
+        Plug 'tpope/vim-repeat'
+        Plug 'tpope/vim-speeddating'
+        Plug 'tpope/vim-surround'
+        Plug 'tpope/vim-unimpaired'
       " }-
-      Plug 'Shougo/vimproc.vim',             {'do': 'make'}
-      Plug 'Shougo/vimshell.vim'
-      " unite plugins {+
-        Plug 'osyo-manga/unite-filetype'
-        Plug 'osyo-manga/unite-fold'
-        Plug 'osyo-manga/unite-quickfix'
-        " PlugLazy 'osyo-manga/vim-snowdrop',   {'autoload': {'unite_sources': 'snowdrop'}}
-        Plug 'tacroe/unite-mark'
-        Plug 'thinca/vim-unite-history'
-        Plug 'tsukkee/unite-help'
-        Plug 'ujihisa/unite-colorscheme'
-        Plug 'ujihisa/unite-locate'
-        Plug 'Shougo/neomru.vim'
-        Plug 'Shougo/unite-outline'
+      " shougo plugins {+
+        Plug 'Shougo/neocomplete' " depends on lua, which isn't always available
+        Plug 'Shougo/neosnippet',              {'depends': ['honza/vim-snippets', 'Shougo/neosnippet-snippets']} " snippets {{{
+        Plug 'Shougo/neosnippet-snippets'
+        Plug 'Shougo/unite.vim',               {'depends': ['Shougo/vimproc.vim']}
+        Plug 'Shougo/vimfiler'
+        " {+
+            let g:vimfiler_as_default_explorer = 1
+        " }-
+        Plug 'Shougo/vimproc.vim',             {'do': 'make'}
+        Plug 'Shougo/vimshell.vim'
+        " unite plugins {+
+          Plug 'osyo-manga/unite-filetype'
+          Plug 'osyo-manga/unite-fold'
+          Plug 'osyo-manga/unite-quickfix'
+          " PlugLazy 'osyo-manga/vim-snowdrop',   {'autoload': {'unite_sources': 'snowdrop'}}
+          Plug 'tacroe/unite-mark'
+          Plug 'thinca/vim-unite-history'
+          Plug 'tsukkee/unite-help'
+          Plug 'ujihisa/unite-colorscheme'
+          Plug 'ujihisa/unite-locate'
+          Plug 'Shougo/neomru.vim'
+          Plug 'Shougo/unite-outline'
+        " }-
+      " }-
+      " productivity tools {+
+        "Plug 'dbakker/vim-projectroot'
+        Plug 'airblade/vim-rooter'
+        Plug 'mbbill/undotree',                {'on': 'UndotreeToggle'}
+        " Plug 'ludovicchabant/vim-gutentags'
+        Plug 'majutsushi/tagbar' " ,           {'on': 'TagbarToggle'}
+      " }-
+      " version control plugins {+
+        " Plug 'tommcdo/vim-fugitive-blame-ext', {'depends': 'tpope/vim-fugitive'}
+        " Plug 'gregsexton/gitv',                {'depends': 'tpope/vim-fugitive'}
+      " }-
+      " code and tab completion {+
+        Plug 'tomtom/tlib_vim'
+        Plug 'MarcWeber/vim-addon-mw-utils'
+        Plug 'honza/vim-snippets'
+        Plug 'garbas/vim-snipmate'
+        Plug 'scrooloose/syntastic'
+        Plug 'honza/vim-snippets'
+      " }-
+      " text navigation and alignment {+
+        Plug 'Lokaltog/vim-easymotion'
+        Plug 'bkad/CamelCaseMotion'
+        Plug 'michaeljsmith/vim-indent-object'
+        Plug 'vim-scripts/argtextobj.vim'
+        Plug 'guns/vim-sexp'
+        Plug 'terryma/vim-multiple-cursors'
+        Plug 'tpope/vim-sleuth'
+      " }-
+      " junegunn {+
+        Plug 'junegunn/vim-easy-align'
+      " }-
+      " keys and external bindings {+
+        " Plug 'benmills/vimux' " unused?
+        " Plug 'mhinz/vim-tmuxify' " unused?
+        Plug 'justinmk/vim-gtfo'
+        Plug 'christoomey/vim-tmux-navigator'
+      " }-
+      Plug 'chrisbra/NrrwRgn'
+    " }-
+    " color and visual bundles {+
+      " color schemes {+
+        Plug 'morhetz/gruvbox'
+        Plug 'NLKNguyen/papercolor-theme'
+        Plug 'junegunn/seoul256.vim'
+        Plug 'sjl/badwolf'
+        Plug 'trapd00r/neverland-vim-theme'
+        Plug 'w0ng/vim-hybrid'
+        Plug 'wellsjo/wells-colorscheme.vim'
+      " }-
+      " gui-only colorschemes {+
+        Plug 'chriskempson/base16-vim',       {'on': []}
+        if has('gui_running') | call plug#load('base16-vim') | endif
+      " }-
+      " visual indicators {+
+        Plug 'vim-airline/vim-airline'
+        Plug 'vim-airline/vim-airline-themes'
+        Plug 'edkolev/tmuxline.vim',          {'on': []}
+        if !has('gui_running') | call plug#load('tmuxline.vim') | endif
+        Plug 'jacquesbh/vim-showmarks'
+        Plug 'nathanaelkane/vim-indent-guides'
+        Plug 'mhinz/vim-signify'
+        Plug 't9md/vim-choosewin'
+        Plug 'junegunn/goyo.vim',             {'on': 'Goyo'}
+        Plug 'scrooloose/nerdtree',           {'on': 'NERDTreeToggle'}
+
+        Plug 'ryanoasis/vim-webdevicons',     {'on': []}
+        if has('gui_running') | call plug#load('vim-webdevicons') | endif
+      " }-
+      " additional syntax highlighting and matching {+
+        Plug 'junegunn/rainbow_parentheses.vim'
+        Plug 'chrisbra/Colorizer',            {'on': 'ColorToggle'}
+        Plug 'junegunn/limelight.vim',        {'on': 'Limelight'}
+        Plug 'jaxbot/semantic-highlight.vim', {'on': 'SemanticHighlightToggle'}
+        Plug 'dimasg/vim-mark'
       " }-
     " }-
-    " productivity tools {+
-      "Plug 'dbakker/vim-projectroot'
-      Plug 'airblade/vim-rooter'
-      Plug 'mbbill/undotree',                {'on': 'UndotreeToggle'}
-      " Plug 'ludovicchabant/vim-gutentags'
-      Plug 'majutsushi/tagbar' " ,           {'on': 'TagbarToggle'}
-    " }-
-    " version control plugins {+
-      " Plug 'tommcdo/vim-fugitive-blame-ext', {'depends': 'tpope/vim-fugitive'}
-      " Plug 'gregsexton/gitv',                {'depends': 'tpope/vim-fugitive'}
-    " }-
-    " code and tab completion {+
-      Plug 'tomtom/tlib_vim'
-      Plug 'MarcWeber/vim-addon-mw-utils'
-      Plug 'honza/vim-snippets'
-      Plug 'garbas/vim-snipmate'
-      Plug 'scrooloose/syntastic'
-      Plug 'honza/vim-snippets'
-    " }-
-    " text navigation and alignment {+
-      Plug 'Lokaltog/vim-easymotion'
-      Plug 'bkad/CamelCaseMotion'
-      Plug 'michaeljsmith/vim-indent-object'
-      Plug 'vim-scripts/argtextobj.vim'
-      Plug 'guns/vim-sexp'
-      Plug 'terryma/vim-multiple-cursors'
-      Plug 'tpope/vim-sleuth'
-    " }-
-    " junegunn {+
-      Plug 'junegunn/vim-easy-align'
-    " }-
-    " keys and external bindings {+
-      " Plug 'benmills/vimux' " unused?
-      " Plug 'mhinz/vim-tmuxify' " unused?
-      Plug 'justinmk/vim-gtfo'
-      Plug 'christoomey/vim-tmux-navigator'
-    " }-
-    Plug 'chrisbra/NrrwRgn'
-  " }-
-  " color and visual bundles {+
-    " color schemes {+
-      Plug 'morhetz/gruvbox'
-      Plug 'NLKNguyen/papercolor-theme'
-      Plug 'junegunn/seoul256.vim'
-      Plug 'sjl/badwolf'
-      Plug 'trapd00r/neverland-vim-theme'
-      Plug 'w0ng/vim-hybrid'
-      Plug 'wellsjo/wells-colorscheme.vim'
-    " }-
-    " gui-only colorschemes {+
-      Plug 'chriskempson/base16-vim',       {'on': []}
-      if has('gui_running') | call plug#load('base16-vim') | endif
-    " }-
-    " visual indicators {+
-      Plug 'vim-airline/vim-airline'
-      Plug 'vim-airline/vim-airline-themes'
-      Plug 'edkolev/tmuxline.vim',          {'on': []}
-      if !has('gui_running') | call plug#load('tmuxline.vim') | endif
-      Plug 'jacquesbh/vim-showmarks'
-      Plug 'nathanaelkane/vim-indent-guides'
-      Plug 'mhinz/vim-signify'
-      Plug 't9md/vim-choosewin'
-      Plug 'junegunn/goyo.vim',             {'on': 'Goyo'}
-      Plug 'scrooloose/nerdtree',           {'on': 'NERDTreeToggle'}
+    " language-specific bundles {+
+      " csv
+      Plug 'chrisbra/csv.vim',                {'for': ['csv']}
 
-      Plug 'ryanoasis/vim-webdevicons',     {'on': []}
-      if has('gui_running') | call plug#load('vim-webdevicons') | endif
-    " }-
-    " additional syntax highlighting and matching {+
-      Plug 'junegunn/rainbow_parentheses.vim'
-      Plug 'chrisbra/Colorizer',            {'on': 'ColorToggle'}
-      Plug 'junegunn/limelight.vim',        {'on': 'Limelight'}
-      Plug 'jaxbot/semantic-highlight.vim', {'on': 'SemanticHighlightToggle'}
-      Plug 'dimasg/vim-mark'
-    " }-
-  " }-
-  " language-specific bundles {+
-    " csv
-    Plug 'chrisbra/csv.vim',                {'for': ['csv']}
+      " gradle
+      Plug 'tfnico/vim-gradle',               {'for': ['gradle']}
 
-    " haskell
-    Plug 'ujihisa/neco-ghc',                {'for': ['h']}
+      " haskell
+      Plug 'ujihisa/neco-ghc',                {'for': ['h']}
 
-    " hex
-    Plug 'Shougo/vinarise.vim',             {'for': ['bin', 'xxd', 'hex']}
+      " hex
+      Plug 'Shougo/vinarise.vim',             {'for': ['bin', 'xxd', 'hex']}
 
-    " html
-    Plug 'rstacruz/sparkup',                {'for': ['html', 'xml']}
+      " html
+      Plug 'rstacruz/sparkup',                {'for': ['html', 'xml']}
 
-    " java
-    Plug 'sighforever/vim-syntastic-java-gradle-plugin', {'for': ['java']}
+      " java
+      Plug 'sighforever/vim-syntastic-java-gradle-plugin', {'for': ['java']}
 
-    " journal
-    Plug 'junegunn/vim-journal',            {'for': ['journal']}
+      " journal
+      Plug 'junegunn/vim-journal',            {'for': ['journal']}
 
-    " json
-    Plug 'elzr/vim-json',                   {'for': ['json']}
+      " json
+      Plug 'elzr/vim-json',                   {'for': ['json']}
 
-    " markdown
-    Plug 'nelstrom/vim-markdown-folding',   {'for': ['markdown', 'md', 'rst']}
-    Plug 'suan/vim-instant-markdown',       {'for': ['markdown', 'md', 'rst']}
+      " markdown
+      Plug 'nelstrom/vim-markdown-folding',   {'for': ['markdown', 'md', 'rst']}
+      Plug 'suan/vim-instant-markdown',       {'for': ['markdown', 'md', 'rst']}
 
-    " mediawiki
-    Plug 'chikamichi/mediawiki.vim',        {'for': ['wiki', 'mediawiki']}
+      " mediawiki
+      Plug 'chikamichi/mediawiki.vim',        {'for': ['wiki', 'mediawiki']}
 
-    " python
-    Plug 'davidhalter/jedi-vim',            {'for': ['python']}
-    Plug 'ivanov/vim-ipython',              {'for': ['python']}
-    Plug 'jmcantrell/vim-virtualenv',       {'for': ['python']}
-    Plug 'klen/python-mode',                {'for': ['python']}
-    Plug 'nvie/vim-flake8',                 {'for': ['python']}
-    Plug 'tweekmonster/braceless.vim',      {'for': ['python']}
-    " rust
-    Plug 'wting/rust.vim',                  {'for': ['rust', 'rs']}
+      " python
+      Plug 'davidhalter/jedi-vim',            {'for': ['python']}
+      Plug 'ivanov/vim-ipython',              {'for': ['python']}
+      Plug 'jmcantrell/vim-virtualenv',       {'for': ['python']}
+      Plug 'klen/python-mode',                {'for': ['python']}
+      Plug 'nvie/vim-flake8',                 {'for': ['python']}
+      Plug 'tweekmonster/braceless.vim',      {'for': ['python']}
+      " rust
+      Plug 'wting/rust.vim',                  {'for': ['rust', 'rs']}
 
-    " scala
-    Plug 'derekwyatt/vim-scala',            {'for': ['scala']}
-    Plug 'megaannum/vimside',               {'for': ['scala']} ", 'depends': ['Shougo/vimshell.vim', 'Shougo/vimproc.vim']
+      " scala
+      Plug 'derekwyatt/vim-scala',            {'for': ['scala']}
+      Plug 'megaannum/vimside',               {'for': ['scala']} ", 'depends': ['Shougo/vimshell.vim', 'Shougo/vimproc.vim']
 
-    " swift
-    Plug 'toyamarinyon/vim-swift',          {'for': ['swift', 'playground']}
+      " swift
+      Plug 'toyamarinyon/vim-swift',          {'for': ['swift', 'playground']}
 
-    " sql
-    Plug 'vim-scripts/dbext.vim',           {'for': ['sql']}
+      " sql
+      Plug 'vim-scripts/dbext.vim',           {'for': ['sql']}
 
-    " vim
-    Plug 'dbakker/vim-lint',                {'for': ['vim']}
+      " tmux
+      Plug 'tmux-plugins/vim-tmux',           {'for': ['tmux']}
+
+      " vim
+      Plug 'dbakker/vim-lint',                {'for': ['vim']}
   " }-
   call plug#end()
 " }-

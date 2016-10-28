@@ -21,7 +21,7 @@ if [[ -a "$HOME/.zgen/zgen.zsh" ]]; then
     if ! zgen saved; then
         echo "zgen not initialized. initializing."
 
-        # Plugins 
+        # Plugins
         zgen load supercrabtree/k
         zgen load unixorn/git-extra-commands
         zgen load zsh-users/zsh-history-substring-search
@@ -41,7 +41,6 @@ fi
 ################################################################################
 
 # History
-export HOSTNAME_SHORT=${$(hostname)//[\.\-][0-9]+/}
 export EDITOR=vim
 export PAGER=less
 
@@ -56,13 +55,7 @@ if [ ! -d "$HOME/.zsh" ]; then
 	#mkdir "$HOME/.zsh/"
 fi
 
-if [ ! -f "$HOME/.zsh/${HOSTNAME_SHORT}.history" ]; then
-    colors
-    echo "${fg_bold[yellow]}warning: ${fg[default]} creating ~/.zsh/${HOSTNAME_SHORT}.history" >&2
-	touch "$HOME/.zsh/${HOSTNAME_SHORT}.history"
-fi
-
-export HISTFILE="$HOME/.zsh/${HOSTNAME_SHORT}.history"
+export HISTFILE="$HOME/.zsh/${HOSTNAME}.history"
 export HISTSIZE=10000
 export SAVEHIST=5000
 
@@ -161,7 +154,7 @@ export LESS_TERMCAP_us=$'\e[01;32m'
 ################################################################################
 
 # Proper key behaviour
-bindkey -v 
+bindkey -v
 #bindkey "[3~" delete-char
 #bindkey "[1~" beginning-of-line
 #bindkey "[4~" end-of-line

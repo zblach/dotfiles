@@ -1,5 +1,3 @@
-[include]
-    path = ~/.local.gitconfig
 [color]
     ui = auto
 [core]
