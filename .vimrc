@@ -487,8 +487,8 @@ filetype off
     let g:neosnippet#enable_snipmate_compatibility=1
 
     inoremap <expr><TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
-    inoremap <expr><C-g> neocomplete#undo_completion()
-    inoremap <expr><C-l> neocomplete#complete_common_string()
+    " inoremap <expr><C-g> neocomplete#undo_completion()
+    " inoremap <expr><C-l> neocomplete#complete_common_string()
     " inoremap <expr><Space> pumvisible() ? "\<C-y>" : "\<Space>"
 
     imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : (pumvisible() ? "\<C-n>" : "\<TAB>")
