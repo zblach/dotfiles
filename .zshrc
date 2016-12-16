@@ -27,10 +27,12 @@ if [[ -a "$HOME/.zgen/zgen.zsh" ]]; then
         zgen load zsh-users/zsh-history-substring-search
         zgen load zsh-users/zsh-completions src
         zgen load zsh-users/zsh-autosuggestions
-        if is-at-least 4.3.17; then
-            zgen load zsh-users/zsh-syntax-highlighting
-        fi
+        zgen load zsh-users/zsh-syntax-highlighting
+
         zgen load jocelynmallon/zshmarks
+        zgen load RobSis/zsh-completion-generator
+
+        zgen load bobthecow/git-flow-completion
 
         zgen save
     fi
@@ -200,6 +202,13 @@ alias -g '@S'='| sort'
 alias -g '@T'='| tail -f'
 alias -g '@U'='| sort | uniq'
 alias -g '@f'='**/*(.mm-61)'
+
+alias f='find . -mmin -61'
+alias sl=ls
+alias l=ls
+alias s=;
+
+cdd() { cd `dirname $1` }
 
 # Prompts
 colors

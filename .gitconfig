@@ -24,7 +24,7 @@
     ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]\\ %Cgreen(%cd)%Creset" --decorate --numstat --date=local
     ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]\\ %Cgreen(%cd)%Creset" --decorate --date=local
     unadd = reset HEAD --
-    vimdiff = !vim -p `git diff --name-only`
+    vimdiff = !vim -c 'tabdo :Gdiff' -p `git diff --name-only`
 [color "status"]
     branch = magenta
     added = "green "
