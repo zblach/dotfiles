@@ -1,5 +1,8 @@
 [color]
     ui = auto
+    branch = auto
+    diff = auto
+    status = auto
 [core]
     pager = less -FMRiX
 [push]
@@ -15,12 +18,12 @@
     branches = branch -a
     co = checkout
     cob = checkout -B
-	dag = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
-	diffa = whatchanged --diff-filter=A
-	diffs = diff --stat
+    dag = log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(bold yellow)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)' --all
+    diffa = whatchanged --diff-filter=A
+    diffs = diff --stat
     ds = diff --staged
-	last = log -1 HEAD
-	lignore = !vim $(git rev-parse --show-toplevel)/.git/info/exclude
+    last = log -1 HEAD
+    lignore = !vim $(git rev-parse --show-toplevel)/.git/info/exclude
     ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]\\ %Cgreen(%cd)%Creset" --decorate --numstat --date=local
     ls = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]\\ %Cgreen(%cd)%Creset" --decorate --date=local
     unadd = reset HEAD --
