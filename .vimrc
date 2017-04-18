@@ -111,7 +111,8 @@ filetype off
         Plug 'majutsushi/tagbar' " ,           {'on': 'TagbarToggle'}
       " }-
       " version control plugins {+
-        " Plug 'tommcdo/vim-fugitive-blame-ext', {'depends': 'tpope/vim-fugitive'}
+        Plug 'tommcdo/vim-fugitive-blame-ext', {'depends': 'tpope/vim-fugitive'}
+        Plug 'junegunn/gv.vim',                {'depends': 'tpope/vim-fugitive'}
         " Plug 'gregsexton/gitv',                {'depends': 'tpope/vim-fugitive'}
       " }-
       " code and tab completion {+

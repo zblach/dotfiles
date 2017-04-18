@@ -3,7 +3,7 @@
 declare -a FILES=(.zshrc .global.gitconfig .zshenv .tmux.conf .vimrc .gvimrc)
 
 for file in ${FILES[@]}; do
-  echo ln -is ${file} "${HOME}/${file}"
+  echo ln -is ${file} "${HOME}"
 done
 
 for template in $(find template -type f); do
