@@ -1,11 +1,12 @@
 # zshrc - zblach 2015
+typeset -gxU path PATH
+
 # Modules
 autoload colors zsh/terminfo
 autoload -Uz compinit && compinit -u
 autoload -U is-at-least
 
 # Load a pre.zshrc file, if exists
-typeset -U path
 if [[ -a "$HOME/.local.pre.zshrc" ]]; then
 	source "$HOME/.local.pre.zshrc"
 fi
@@ -79,7 +80,9 @@ setopt pushdignoredups
 setopt pushdminus
 setopt pushdsilent
 setopt pushdtohome
-#setopt share_history
+setopt share_history
+
+unsetopt nomatch
 
 # ZStyle
 

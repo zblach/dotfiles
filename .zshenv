@@ -1,4 +1,6 @@
 # Local zshenv?
+typeset -gxU path PATH
+
 if [[ -a "$HOME/.local.zshenv" ]]; then
 	source "$HOME/.local.zshenv"
 fi
@@ -45,3 +47,8 @@ alias f='find . -type f -mmin -61 '
 alias -g @f='**/*(.mm-61)'
 
 alias :e='vim '
+
+sign() {
+	echo "$@"
+	gpg2 --default-key $GPG_KEY -o ~/Google\ Drive/Contracts/ -ab $@
+}

@@ -116,21 +116,22 @@ filetype off
         " Plug 'gregsexton/gitv',                {'depends': 'tpope/vim-fugitive'}
       " }-
       " code and tab completion {+
-        Plug 'tomtom/tlib_vim'
         Plug 'MarcWeber/vim-addon-mw-utils'
-        Plug 'honza/vim-snippets'
         Plug 'garbas/vim-snipmate'
-        Plug 'scrooloose/syntastic'
         Plug 'honza/vim-snippets'
+        Plug 'honza/vim-snippets'
+        Plug 'scrooloose/syntastic'
+        Plug 'tomtom/tlib_vim'
       " }-
       " text navigation and alignment {+
         Plug 'Lokaltog/vim-easymotion'
         Plug 'bkad/CamelCaseMotion'
-        Plug 'michaeljsmith/vim-indent-object'
-        Plug 'vim-scripts/argtextobj.vim'
+        Plug 'editorconfig/editorconfig-vim'
         Plug 'guns/vim-sexp'
+        Plug 'michaeljsmith/vim-indent-object'
         Plug 'terryma/vim-multiple-cursors'
         Plug 'tpope/vim-sleuth'
+        Plug 'vim-scripts/argtextobj.vim'
       " }-
       " junegunn {+
         Plug 'junegunn/vim-easy-align'
@@ -187,6 +188,9 @@ filetype off
       " gradle
       Plug 'tfnico/vim-gradle',               {'for': ['gradle']}
 
+      " go
+      Plug 'fatih/vim-go', {'for': ['go']}
+
       " haskell
       Plug 'ujihisa/neco-ghc',                {'for': ['h']}
 
@@ -216,7 +220,7 @@ filetype off
       Plug 'davidhalter/jedi-vim',            {'for': ['python']}
       Plug 'ivanov/vim-ipython',              {'for': ['python']}
       Plug 'jmcantrell/vim-virtualenv',       {'for': ['python']}
-      Plug 'klen/python-mode',                {'for': ['python']}
+      " Plug 'klen/python-mode',                {'for': ['python']}
       Plug 'nvie/vim-flake8',                 {'for': ['python']}
       Plug 'tweekmonster/braceless.vim',      {'for': ['python']}
       " rust
